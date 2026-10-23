@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  SITIO DE MUESTRA · BARBERÍA  —  Diseño web: Facundo Social Media
+  ============================================================
+  CÓMO ADAPTARLO A UN CLIENTE NUEVO:
+  1. NOMBRE: buscá "Barbería Los Santos" y reemplazalo (aparece en <title>, metas,
+     header, footer y algunos textos). También la dirección y el barrio (Córdoba Capital).
+  2. COLORES: editá las variables de :root (al principio del <style>).
+     --brass es el dorado (botones, detalles), --ember el naranja quemado,
+     --bg / --bg-2 / --card los fondos oscuros, --cream el texto.
+  3. WHATSAPP: cambiá la constante WHATSAPP al principio del <script>
+     (formato 549 + código de área sin 0 + número sin 15, ej: 5493511234567).
+     Cada link con data-wa="..." usa ese número con su propio mensaje.
+  4. SERVICIOS: sección id="servicios" — cada servicio es un <article class="svc">.
+  5. PRECIOS: sección id="precios" — cada fila es un <li class="price-row">.
+     El combo destacado es <div class="combo"> y el pack es <div class="pack">.
+  6. FOTOS: reemplazá las URLs de images.unsplash.com por fotos reales del local
+     (hero en .hero, trabajos en id="trabajos", experiencia en .exp-img).
+  7. EQUIPO: sección id="equipo" — cada barbero es un <article class="barber">
+     (iniciales, nombre, especialidad y usuario de Instagram).
+  8. HORARIOS / MAPA: sección id="contacto". Cambiá la "q=" del iframe por la
+     dirección real y el link de Instagram (href="#").
+  ============================================================
+-->
+<html lang="es-AR">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbería Los Santos · Córdoba Capital, Córdoba</title>
+<meta name="description" content="Cortes clásicos, fades, barba con toalla caliente y color en Córdoba Capital, Córdoba. Reservá tu turno por WhatsApp en Barbería Los Santos.">
+<meta property="og:title" content="Barbería Los Santos · Córdoba Capital">
+<meta property="og:description" content="Tu mejor versión empieza en la silla. Cortes, fades y barba en Córdoba Capital. Reservá por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=70">
+<meta name="theme-color" content="#121110">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121110'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='none' stroke='%23c9a25b' stroke-width='3'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23c9a25b'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<style>
+:root{
+  /* ====== PALETA (editar acá) ====== */
+  --bg:#121110;        /* fondo principal (carbón) */
+  --bg-2:#181614;      /* fondo de secciones alternas */
+  --card:#1f1c19;      /* tarjetas */
+  --line:#34302a;      /* bordes */
+  --brass:#c9a25b;     /* dorado: botones y detalles */
+  --brass-2:#e2c285;   /* dorado claro (hover) */
+  --ember:#c8642f;     /* naranja quemado (acentos) */
+  --cream:#f2ead9;     /* texto principal */
+  --muted:#b3a893;     /* texto secundario */
+  --wa:#25d366;
+  /* ================================= */
+  --radius:14px;
+  --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --shadow:0 20px 45px -20px rgba(0,0,0,.7);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font-family:var(--sans);color:var(--cream);background:var(--bg);line-height:1.6;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* textura de grano sutil */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;margin:0 0 .4em;letter-spacing:.02em;text-transform:uppercase}
+h1{font-size:clamp(3.4rem,15vw,7.4rem)}
+h2{font-size:clamp(2.7rem,10vw,4.6rem)}
+h3{font-size:1.7rem;letter-spacing:.04em}
+p{margin:0 0 1em}
+em{font-family:var(--serif);font-style:italic;text-transform:none;color:var(--brass);letter-spacing:0;font-weight:500}
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+section{padding:88px 0;position:relative}
+.alt{background:var(--bg-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--brass)}
+.lead{color:var(--muted);font-size:1.06rem;max-width:560px}
+.head{margin-bottom:44px}
+.center{text-align:center}.center .lead{margin:0 auto}.center .eyebrow::after{content:"";width:28px;height:2px;background:var(--brass)}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:700;font-size:.98rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .25s,color .25s,transform .25s,border-color .25s;text-align:center;line-height:1.2}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--brass);color:#1a1510}
+.btn-primary:hover{background:var(--brass-2);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(242,234,217,.35);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--brass);color:var(--brass)}
+.btn-sm{padding:10px 18px;font-size:.88rem}
+
+/* Franja tipo poste de barbero */
+.pole{height:8px;background:repeating-linear-gradient(-45deg,var(--brass) 0 12px,var(--bg) 12px 20px,var(--ember) 20px 32px,var(--bg) 32px 40px)}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(18,17,16,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.header.scrolled{border-color:var(--line);background:rgba(18,17,16,.95)}
+.header .container{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:38px;height:38px;border:2px solid var(--brass);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;color:var(--brass);font-size:1.2rem;flex:none}
+.logo-txt{font-family:var(--display);font-size:1.55rem;letter-spacing:.06em;line-height:1}
+.logo-txt small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;color:var(--muted);margin-top:3px}
+.nav{display:none;gap:30px}
+.nav a{text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+.nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--brass);transition:width .25s}
+.nav a:hover{color:var(--cream)}.nav a:hover::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:10px}
+.menu-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--cream);display:grid;place-items:center;cursor:pointer}
+.menu-btn svg{width:22px;height:22px}
+.mobile-nav{display:none;flex-direction:column;padding:12px 20px 24px;border-top:1px solid var(--line);background:var(--bg)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{padding:14px 0;text-decoration:none;font-family:var(--display);font-size:1.7rem;letter-spacing:.05em;border-bottom:1px solid var(--line)}
+.mobile-nav a.btn{font-family:var(--sans);font-size:1rem;border-bottom:0}
+@media(max-width:400px){.hide-xs{display:none}}
+@media(min-width:900px){.nav{display:flex}.menu-btn{display:none}.mobile-nav,.mobile-nav.open{display:none}}
+
+/* Hero */
+.hero{min-height:min(calc(100svh - 68px),900px);display:flex;align-items:flex-end;padding:120px 0 64px;background:#0d0c0b url("https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=70") center/cover no-repeat;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,17,16,.55) 0%,rgba(18,17,16,.75) 45%,var(--bg) 100%),radial-gradient(ellipse at 20% 80%,rgba(200,100,47,.18),transparent 60%)}
+.hero .container{position:relative}
+.hero h1{max-width:900px;margin-bottom:.3em}
+.hero h1 em{display:block;font-size:.62em;line-height:1.1;margin-top:.12em}
+.hero .lead{font-size:1.12rem;color:#d8cfbe}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 30px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font-size:.92rem;color:var(--muted)}
+.trust b{color:var(--cream)}
+.stars{color:var(--brass);letter-spacing:2px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--brass)}
+@media(max-width:520px){.cta-row .btn{width:100%}.trust .dot{display:none}.trust{gap:6px 16px}}
+
+/* Marquesina */
+.ticker{overflow:hidden;border-block:1px solid var(--line);background:var(--bg-2);padding:16px 0}
+.ticker-track{display:flex;width:max-content;animation:tick 32s linear infinite}
+.ticker span{font-family:var(--display);font-size:1.6rem;letter-spacing:.08em;padding:0 22px;white-space:nowrap;color:var(--muted)}
+.ticker span:nth-child(odd){color:var(--brass)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Servicios */
+.svc-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:620px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.svc-grid{grid-template-columns:repeat(4,1fr)}.svc.wide{grid-column:span 2}}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.svc::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--brass),var(--ember));transition:width .4s}
+.svc:hover{transform:translateY(-4px);border-color:#4a4237}
+.svc:hover::after{width:100%}
+.svc-ico{width:52px;height:52px;border-radius:12px;background:rgba(201,162,91,.1);color:var(--brass);display:grid;place-items:center;margin-bottom:18px}
+.svc-ico svg{width:28px;height:28px}
+.svc h3{margin-bottom:.3em}
+.svc p{color:var(--muted);font-size:.95rem;margin:0}
+.svc .num{position:absolute;right:18px;top:14px;font-family:var(--display);font-size:2.4rem;color:rgba(242,234,217,.06)}
+
+/* Precios */
+.price-wrap{display:grid;gap:22px}
+@media(min-width:900px){.price-wrap{grid-template-columns:1.3fr 1fr;align-items:start}}
+.price-list{list-style:none;margin:0;padding:8px 26px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+.price-row{display:flex;align-items:baseline;gap:10px;padding:18px 0;border-bottom:1px dashed var(--line)}
+.price-row:last-child{border-bottom:0}
+.price-row .name{font-weight:700}
+.price-row .name small{display:block;font-weight:400;color:var(--muted);font-size:.85rem}
+.price-row .fill{flex:1;border-bottom:1px dotted #4a4237;transform:translateY(-5px);min-width:14px}
+.price-row .val small{font-family:var(--sans);font-size:.75rem;color:var(--muted);letter-spacing:.04em}
+.price-row .val{font-family:var(--display);font-size:1.75rem;color:var(--brass);letter-spacing:.03em;white-space:nowrap}
+.side{display:grid;gap:18px}
+.combo{position:relative;border-radius:var(--radius);padding:30px 26px;background:linear-gradient(140deg,#2a2217,#1b1712 60%);border:1px solid var(--brass);box-shadow:var(--shadow);overflow:hidden}
+.combo::before{content:"";position:absolute;right:-50px;top:-50px;width:160px;height:160px;border-radius:50%;border:24px solid rgba(201,162,91,.08)}
+.badge{display:inline-block;background:var(--ember);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:14px}
+.combo .big{font-family:var(--display);font-size:3.6rem;line-height:1;color:var(--brass)}
+.combo .big s{font-size:1.4rem;color:var(--muted);margin-left:8px}
+.combo p{color:#d8cfbe}
+.pack{border-radius:var(--radius);padding:26px;background:var(--cream);color:#1a1510}
+.pack h3{color:#1a1510}
+.pack .big{font-family:var(--display);font-size:2.8rem;line-height:1}
+.pack p{color:#4b4336;margin-bottom:16px}
+.pack .btn-primary{background:#1a1510;color:var(--cream)}
+.pack .btn-primary:hover{background:#000}
+.pay{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center;color:var(--muted);font-size:.9rem}
+.chip{border:1px solid var(--line);border-radius:999px;padding:7px 14px;color:var(--cream);font-size:.85rem}
+
+/* Galería */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:820px){.gallery{grid-template-columns:repeat(3,1fr);gap:14px}}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:10px;aspect-ratio:4/5;background:#26221d}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .6s;filter:grayscale(.25) contrast(1.05)}
+.gallery figure:hover img{transform:scale(1.06);filter:none}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-family:var(--display);font-size:1.25rem;letter-spacing:.06em}
+
+/* Equipo */
+.team{display:grid;gap:18px}
+@media(min-width:760px){.team{grid-template-columns:repeat(3,1fr)}}
+.barber{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;text-align:center;transition:transform .3s,border-color .3s}
+.barber:hover{transform:translateY(-4px);border-color:var(--brass)}
+.avatar{width:96px;height:96px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:2.4rem;letter-spacing:.04em;color:#1a1510;background:linear-gradient(135deg,var(--brass-2),var(--brass) 55%,#9c7a3c);box-shadow:0 0 0 5px var(--bg-2),0 0 0 6px var(--brass)}
+.barber .role{color:var(--brass);font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.barber p{color:var(--muted);font-size:.94rem}
+.ig{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:.9rem;color:var(--cream);border-bottom:1px solid transparent}
+.ig:hover{color:var(--brass);border-color:var(--brass)}
+.ig svg{width:16px;height:16px}
+
+/* Experiencia */
+.exp{display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.exp{grid-template-columns:1fr 1fr;gap:64px}}
+.exp-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:#26221d;position:relative}
+.exp-img img{width:100%;height:100%;object-fit:cover}
+.exp-img .stamp{position:absolute;left:16px;bottom:16px;background:var(--bg);border:1px solid var(--brass);border-radius:10px;padding:10px 16px;font-family:var(--display);font-size:1.3rem;letter-spacing:.06em;color:var(--brass)}
+.exp-list{display:grid;gap:22px;margin-top:8px}
+@media(min-width:560px){.exp-list{grid-template-columns:1fr 1fr}}
+.exp-item{display:flex;gap:14px}
+.exp-item svg{width:26px;height:26px;color:var(--ember);flex:none;margin-top:4px}
+.exp-item h3{font-size:1.4rem;margin-bottom:.2em}
+.exp-item p{color:var(--muted);font-size:.94rem;margin:0}
+
+/* Opiniones */
+.reviews{display:grid;gap:18px}
+@media(min-width:860px){.reviews{grid-template-columns:repeat(3,1fr)}}
+.review{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative}
+.review::before{content:"\201C";position:absolute;right:20px;top:-6px;font-family:var(--serif);font-size:5rem;color:rgba(201,162,91,.2);line-height:1}
+.review blockquote{margin:12px 0 18px;font-size:1.02rem}
+.review footer{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--muted)}
+.review footer b{color:var(--cream);display:block}
+.mini{width:40px;height:40px;border-radius:50%;background:#2d2822;display:grid;place-items:center;font-weight:700;color:var(--brass);flex:none}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;color:var(--cream);padding:22px 0;font:inherit;font-weight:700;font-size:1.05rem;text-align:left;cursor:pointer}
+.faq-q:hover{color:var(--brass)}
+.faq-q .plus{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);flex:none;position:relative;transition:transform .3s,background .3s}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:currentColor;transform:translate(-50%,-50%)}
+.faq-q .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-item.open .plus{transform:rotate(45deg);background:var(--brass);color:#1a1510;border-color:var(--brass)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.faq-a>div{overflow:hidden}
+.faq-a p{color:var(--muted);margin:0;padding:0 40px 22px 0}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+
+/* Contacto */
+.contact{display:grid;gap:28px}
+@media(min-width:900px){.contact{grid-template-columns:1fr 1.1fr;align-items:stretch}}
+.info{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
+.info-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.info-row:last-of-type{border-bottom:0}
+.info-row svg{width:24px;height:24px;color:var(--brass);flex:none;margin-top:2px}
+.info-row b{display:block;margin-bottom:2px}
+.info-row span,.info-row a{color:var(--muted);text-decoration:none}
+.info-row a:hover{color:var(--brass)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:2px 16px;color:var(--muted)}
+.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:340px;background:var(--card)}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:grayscale(1) invert(.92) contrast(.9)}
+
+/* CTA final */
+.final{text-align:center;padding:80px 0;background:radial-gradient(ellipse at center,rgba(201,162,91,.14),transparent 65%)}
+.final h2{max-width:760px;margin:0 auto .3em}
+
+/* Footer */
+.footer{background:#0b0a09;padding:48px 0 100px;text-align:center;color:var(--muted);font-size:.92rem}
+.footer .logo{justify-content:center;margin-bottom:16px;color:var(--cream)}
+.footer p{margin:.3em 0}
+.footer .credit{margin-top:18px;font-size:.78rem;opacity:.75}
+
+/* WhatsApp flotante */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 10px 25px -6px rgba(37,211,102,.55);transition:transform .25s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);z-index:-1;animation:pulse 2.4s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+
+/* Animaciones on-scroll (solo si hay JS; sin JS todo queda visible) */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.js .reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .wa-float::before,.ticker-track{animation:none}
+  *{transition-duration:.01ms!important}
+}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+  /* Deja lugar al cartel "Powered by Netlify" de abajo a la derecha */
+  .wa-float{bottom:64px!important}
+/* Celular: portada compacta, el título arranca arriba sin espacio vacío */
+@media (max-width:700px){.hero{min-height:0!important;align-items:flex-start!important;padding:44px 0 40px!important}}
+</style>
+</head>
+<body>
+<div style="position:relative;z-index:9999;background:#111827;color:#f3f4f6;font:500 13.5px/1.45 system-ui,sans-serif;padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid #262a33">
+  <span><strong style="color:#fbbf24">✨ Maqueta de diseño para Barbería Los Santos</strong> · por Facundo Social Media<br>
+  <span style="color:#9ca3af">Boceto inicial: textos, fotos y precios de ejemplo. La versión final se personaliza 100% para tu negocio.</span></span>
+  <a href="https://wa.me/5493516069281?text=Hola%20Facundo%21%20Vi%20la%20maqueta%20de%20p%C3%A1gina%20web%20para%20Barber%C3%ADa%20Los%20Santos%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" style="background:#fbbf24;color:#111827;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:800;white-space:nowrap">Quiero mi web</a>
+</div>
+
+<!-- SVG sprite (íconos) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.2-4.24 9.43-9.45 9.43m8.04-17.47A11.3 11.3 0 0 0 12.05.7C5.78.7.68 5.8.68 12.07c0 2 .52 3.96 1.52 5.68L.58 23.7l6.08-1.6a11.3 11.3 0 0 0 5.39 1.37h.01c6.27 0 11.37-5.1 11.37-11.37 0-3.04-1.18-5.9-3.33-8.05"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></g></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></g></symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="top">
+  <div class="container">
+    <a href="#top" class="logo" aria-label="Barbería Los Santos, inicio">
+      <span class="logo-mark" aria-hidden="true">B</span>
+      <span class="logo-txt">Barbería Los Santos<small>BARBERÍA · CÓRDOBA CAPITAL</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a><a href="#precios">Precios</a><a href="#trabajos">Trabajos</a><a href="#equipo">Equipo</a><a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-primary btn-sm hide-xs" data-wa="Hola! Quiero reservar un turno 💈" href="#contacto">Reservar</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menú móvil">
+    <a href="#servicios">Servicios</a><a href="#precios">Precios</a><a href="#trabajos">Trabajos</a><a href="#equipo">Equipo</a><a href="#contacto">Contacto</a>
+    <a class="btn btn-primary" style="margin-top:18px" data-wa="Hola! Quiero reservar un turno 💈" href="#contacto"><svg><use href="#i-wa"/></svg>Reservar turno</a>
+  </nav>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Presentación">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Barbería en Córdoba Capital · Córdoba</span>
+      <h1>Tu mejor versión empieza en la silla.<em>Corte, barba y buena onda.</em></h1>
+      <p class="lead">Cortes clásicos, fades prolijos y barba con toalla caliente, hechos con tiempo y a la vieja escuela. Vení, sentate y salí renovado.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" data-wa="Hola! Quiero reservar un turno. ¿Qué horarios tienen esta semana?" href="#contacto"><svg><use href="#i-wa"/></svg>Reservá tu turno por WhatsApp</a>
+        <a class="btn btn-ghost" href="#precios">Ver precios</a>
+      </div>
+      <div class="trust">
+        <span><span class="stars" aria-hidden="true">★★★★★</span> <b>4.9</b> en Google</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span><b>+3.000</b> cortes al año</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Desde <b>2015</b> en Córdoba Capital</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Corte clásico</span><span>✦</span><span>Fade</span><span>✦</span><span>Barba</span><span>✦</span><span>Toalla caliente</span><span>✦</span><span>Diseños</span><span>✦</span><span>Platinado</span><span>✦</span>
+    <span>Corte clásico</span><span>✦</span><span>Fade</span><span>✦</span><span>Barba</span><span>✦</span><span>Toalla caliente</span><span>✦</span><span>Diseños</span><span>✦</span><span>Platinado</span><span>✦</span>
+  </div>
+</div>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios">
+  <div class="container">
+    <div class="head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo que hacemos <em>en serio</em></h2>
+      <p class="lead">Cada corte arranca con una charla: qué querés, cómo te peinás y qué te queda bien. Después, manos a la obra.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="num">01</span>
+        <div class="svc-ico"><svg><use href="#i-scissors"/></svg></div>
+        <h3>Corte clásico</h3>
+        <p>Tijera y máquina, terminación a navaja y peinado con producto. El de siempre, bien hecho.</p>
+      </article>
+      <article class="svc reveal d1">
+        <span class="num">02</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M7 7h10M10 12h4M10 15h4"/></g></svg></div>
+        <h3>Fade / degradé</h3>
+        <p>Low, mid, high, taper o burst. Degradé limpio, sin escalones, como en las fotos que guardás.</p>
+      </article>
+      <article class="svc reveal d2">
+        <span class="num">03</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3c-.8 1-.8 2 0 3s.8 2 0 3M12 3c-.8 1-.8 2 0 3s.8 2 0 3M16 3c-.8 1-.8 2 0 3s.8 2 0 3"/><path d="M4 13h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/></g></svg></div>
+        <h3>Barba con toalla caliente</h3>
+        <p>Toalla caliente, aceite, perfilado a navaja y bálsamo. El ritual que te merecés.</p>
+      </article>
+      <article class="svc reveal d3">
+        <span class="num">04</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 0-7 7v2c0 4 3 9 7 9s7-5 7-9v-2a7 7 0 0 0-7-7z"/><path d="M5 11c2-1 4-3 5-5M8.5 15.5c1 .9 2.2 1.3 3.5 1.3s2.5-.4 3.5-1.3"/></g></svg></div>
+        <h3>Corte + barba</h3>
+        <p>El combo completo. Entrás con cara de lunes, salís con cara de viernes.</p>
+      </article>
+      <article class="svc reveal">
+        <span class="num">05</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 18 14 8M7 20l10-10M15 4l5 5M3 21l1.5-1.5"/></g></svg></div>
+        <h3>Diseño / rayitas</h3>
+        <p>Líneas, rayitas y diseños a mano alzada para darle personalidad a tu corte.</p>
+      </article>
+      <article class="svc reveal d1">
+        <span class="num">06</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></g></svg></div>
+        <h3>Color / platinado</h3>
+        <p>Platinado, mechas, cubrimiento de canas o un color fantasía. Con productos que cuidan el pelo.</p>
+      </article>
+      <article class="svc wide reveal d2">
+        <span class="num">07</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0M10.5 8h.01M13.5 8h.01"/></g></svg></div>
+        <h3>Corte infantil</h3>
+        <p>Para los más chicos (hasta 12 años), con paciencia, dibujitos en la tele y cero dramas. Traelo con vos y se cortan juntos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="pole" aria-hidden="true"></div>
+
+<!-- ============ PRECIOS ============ -->
+<section id="precios" class="alt">
+  <div class="container">
+    <div class="head reveal">
+      <span class="eyebrow">Precios</span>
+      <h2>Claros, <em>sin vueltas</em></h2>
+      <p class="lead">Lo que ves es lo que pagás. Incluye lavado, peinado y tu birra o café.</p>
+    </div>
+    <div class="price-wrap">
+      <ul class="price-list reveal">
+        <li class="price-row"><span class="name">Corte clásico<small>Tijera, máquina y navaja · 40 min</small></span><span class="fill"></span><span class="val">$12.000</span></li>
+        <li class="price-row"><span class="name">Fade / degradé<small>Cualquier altura · 45 min</small></span><span class="fill"></span><span class="val">$13.000</span></li>
+        <li class="price-row"><span class="name">Barba<small>Toalla caliente y navaja · 30 min</small></span><span class="fill"></span><span class="val">$8.000</span></li>
+        <li class="price-row"><span class="name">Diseño / rayitas<small>Adicional al corte</small></span><span class="fill"></span><span class="val">+$2.000</span></li>
+        <li class="price-row"><span class="name">Corte infantil<small>Hasta 12 años</small></span><span class="fill"></span><span class="val">$10.000</span></li>
+        <li class="price-row"><span class="name">Color / platinado<small>Según largo y técnica</small></span><span class="fill"></span><span class="val"><small>desde</small> $25.000</span></li>
+      </ul>
+      <div class="side">
+        <div class="combo reveal d1">
+          <span class="badge">El más pedido</span>
+          <h3>Corte + barba</h3>
+          <div class="big">$17.000 <s>$20.000</s></div>
+          <p>Corte a elección, barba con toalla caliente y perfilado a navaja. Una hora para vos.</p>
+          <a class="btn btn-primary" data-wa="Hola! Quiero reservar el combo Corte + barba 💈" href="#contacto"><svg><use href="#i-wa"/></svg>Quiero el combo</a>
+        </div>
+        <div class="pack reveal d2">
+          <span class="badge">Socio del mes</span>
+          <h3>Pack 4 cortes</h3>
+          <div class="big">$40.000</div>
+          <p>Un corte por semana durante el mes y te ahorrás $8.000. Siempre impecable, turno fijo asegurado.</p>
+          <a class="btn btn-primary" data-wa="Hola! Quiero hacerme socio del mes (pack 4 cortes)" href="#contacto"><svg><use href="#i-wa"/></svg>Hacerme socio</a>
+        </div>
+      </div>
+    </div>
+    <div class="pay reveal">Medios de pago: <span class="chip">Efectivo</span><span class="chip">Transferencia</span><span class="chip">Mercado Pago</span></div>
+  </div>
+</section>
+
+<!-- ============ TRABAJOS ============ -->
+<section id="trabajos">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow">Trabajos</span>
+      <h2>Salidos de <em>nuestra silla</em></h2>
+      <p class="lead">Algunos cortes de las últimas semanas. Más en nuestro Instagram.</p>
+    </div>
+    <div class="gallery">
+      <figure class="reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1200&q=70" alt="Barbero perfilando la barba de un cliente con navaja"><figcaption>Perfilado a navaja</figcaption></figure>
+      <figure class="reveal d1"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1200&q=70" alt="Corte con fade bajo y textura arriba"><figcaption>Fade + textura</figcaption></figure>
+      <figure class="reveal d2"><img loading="lazy" src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=1200&q=70" alt="Barbero trabajando un corte con rulos y color"><figcaption>Rulos con color</figcaption></figure>
+      <figure class="reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=1200&q=70" alt="Afeitado de barba con brocha y espuma"><figcaption>Barba ritual</figcaption></figure>
+      <figure class="reveal d1"><img loading="lazy" src="https://images.unsplash.com/photo-1622296089863-eb7fc530daa8?auto=format&fit=crop&w=1200&q=70" alt="Cliente con corte peinado hacia atrás y laterales rebajados"><figcaption>Clásico moderno</figcaption></figure>
+      <figure class="reveal d2"><img loading="lazy" src="https://images.unsplash.com/photo-1635273051937-a0ddef9573b6?auto=format&fit=crop&w=1200&q=70" alt="Barbero terminando un fade con peinado de costado"><figcaption>Side part</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPO ============ -->
+<section id="equipo" class="alt">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow">Equipo</span>
+      <h2>Los de <em>la tijera</em></h2>
+      <p class="lead">Tres barberos, tres estilos. Elegí con quién querés atenderte cuando reservás.</p>
+    </div>
+    <div class="team">
+      <article class="barber reveal">
+        <div class="avatar" aria-hidden="true">MR</div>
+        <h3>Martín Ríos</h3>
+        <div class="role">Fundador · Clásicos y navaja</div>
+        <p>Más de 12 años detrás de la silla. Si buscás un corte de caballero y un afeitado de los de antes, es tu hombre.</p>
+        <a class="ig" href="#"><svg><use href="#i-ig"/></svg>@martin.barber</a>
+      </article>
+      <article class="barber reveal d1">
+        <div class="avatar" aria-hidden="true">LS</div>
+        <h3>Lucas “Tano” Sosa</h3>
+        <div class="role">Fades y diseños</div>
+        <p>Obsesivo del degradé perfecto y de las rayitas a mano alzada. Traé la foto, él la mejora.</p>
+        <a class="ig" href="#"><svg><use href="#i-ig"/></svg>@tano.fades</a>
+      </article>
+      <article class="barber reveal d2">
+        <div class="avatar" aria-hidden="true">JP</div>
+        <h3>Juli Paz</h3>
+        <div class="role">Color y platinados</div>
+        <p>La que se anima a todo: platinados, mechas y colores que pegan. También la reina de los cortes infantiles.</p>
+        <a class="ig" href="#"><svg><use href="#i-ig"/></svg>@juli.colorbarber</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section id="experiencia">
+  <div class="container exp">
+    <div class="exp-img reveal">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?auto=format&fit=crop&w=1200&q=70" alt="Máquinas de cortar pelo alineadas sobre una mesada de madera">
+      <span class="stamp">Est. 2015 · Córdoba Capital</span>
+    </div>
+    <div>
+      <div class="reveal">
+        <span class="eyebrow">La experiencia</span>
+        <h2>No es solo <em>un corte</em></h2>
+        <p class="lead">Es tu rato de la semana. Por eso cuidamos cada detalle, desde que entrás hasta que te mirás al espejo.</p>
+      </div>
+      <div class="exp-list">
+        <div class="exp-item reveal"><svg><use href="#i-clock"/></svg><div><h3>Turnos puntuales</h3><p>Tu horario se respeta. Llegás y te sentás, sin esperas eternas.</p></div></div>
+        <div class="exp-item reveal d1"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 8h10v10a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3zM16 10h2a2 2 0 0 1 0 4h-2M8 4c0 1 1 1 1 2M12 4c0 1 1 1 1 2"/></g></svg><div><h3>Birra o café</h3><p>De cortesía, bien frío o bien caliente. Vos elegís.</p></div></div>
+        <div class="exp-item reveal d2"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="7" y="8" width="10" height="13" rx="2"/><path d="M9 8V5h6v3M10 2.5h4M10 13h4"/></g></svg><div><h3>Productos premium</h3><p>Pomadas, ceras y aceites de primera. Si te gustan, te los llevás.</p></div></div>
+        <div class="exp-item reveal d3"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></g></svg><div><h3>Buena música</h3><p>Rock nacional, soul, cuarteto los sábados. Buena vibra garantizada.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPINIONES ============ -->
+<section id="opiniones" class="alt">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow">Opiniones</span>
+      <h2>Lo dicen <em>ellos</em></h2>
+    </div>
+    <div class="reviews">
+      <article class="review reveal">
+        <span class="stars" aria-label="5 estrellas">★★★★★</span>
+        <blockquote>“El mejor fade que me hicieron en Córdoba. Puntuales, buena onda y encima te convidan una birra. Ya soy socio.”</blockquote>
+        <footer><span class="mini" aria-hidden="true">NG</span><div><b>Nico G.</b>Cliente desde 2022</div></footer>
+      </article>
+      <article class="review reveal d1">
+        <span class="stars" aria-label="5 estrellas">★★★★★</span>
+        <blockquote>“La barba con toalla caliente es otro nivel. Salís como nuevo. Martín es un crack, atención de diez.”</blockquote>
+        <footer><span class="mini" aria-hidden="true">FA</span><div><b>Facu A.</b>Vecino de Córdoba Capital</div></footer>
+      </article>
+      <article class="review reveal d2">
+        <span class="stars" aria-label="5 estrellas">★★★★★</span>
+        <blockquote>“Llevo a mi hijo de 6 y se queda re tranquilo. Nos cortamos los dos y salimos facheros. Lo recomiendo.”</blockquote>
+        <footer><span class="mini" aria-hidden="true">PM</span><div><b>Pablo M.</b>Papá y cliente</div></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Antes de <em>venir</em></h2>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Atienden sin turno?<span class="plus" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Sí, si hay un hueco te atendemos en el momento. Igual te recomendamos reservar por WhatsApp, sobre todo viernes y sábados que se llena.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Cuánto tarda un corte?<span class="plus" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Un corte lleva entre 40 y 45 minutos, la barba unos 30 y el combo corte + barba alrededor de una hora. Color y platinado, según la técnica (consultanos).</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Puedo cancelar o cambiar mi turno?<span class="plus" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Obvio. Avisanos por WhatsApp con al menos 3 horas de anticipación así le damos el lugar a otro. Sin drama.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Qué medios de pago aceptan?<span class="plus" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Efectivo, transferencia y Mercado Pago (QR o link). Pagás al terminar.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Venden productos?<span class="plus" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Sí: pomadas, ceras, aceites y bálsamos para barba, los mismos que usamos en el local. Te asesoramos según tu tipo de pelo.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pole" aria-hidden="true"></div>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" class="alt">
+  <div class="container">
+    <div class="head reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2>Vení a <em>conocernos</em></h2>
+      <p class="lead">Estamos en pleno Córdoba Capital, a pasos del Paseo de las Artes. Escribinos y te pasamos los horarios libres.</p>
+    </div>
+    <div class="contact">
+      <div class="info reveal">
+        <div class="info-row"><svg><use href="#i-pin"/></svg><div><b>Dirección</b><span>La Rinconada 1444, Córdoba Capital</span></div></div>
+        <div class="info-row"><svg><use href="#i-clock"/></svg><div><b>Horarios</b>
+          <div class="hours"><span>Martes a sábado</span><span>10 a 21 h</span><span>Lunes</span><span>14 a 21 h</span><span>Domingo</span><span>Cerrado</span></div></div></div>
+        <div class="info-row"><svg><use href="#i-wa"/></svg><div><b>WhatsApp</b><a data-wa="Hola! Quiero reservar un turno 💈" href="#contacto">Escribinos y reservá</a></div></div>
+        <div class="info-row"><svg><use href="#i-ig"/></svg><div><b>Instagram</b><a href="#">Instagram</a></div></div>
+        <a class="btn btn-primary" style="margin-top:14px;width:100%" data-wa="Hola! Quiero reservar un turno. ¿Me pasan disponibilidad?" href="#contacto"><svg><use href="#i-wa"/></svg>Reservá por WhatsApp</a>
+      </div>
+      <div class="map reveal d1">
+        <iframe title="Mapa de Barbería Los Santos en Córdoba Capital" src="https://www.google.com/maps?q=La+Rinconada+1444%2C+C%C3%B3rdoba%2C+Argentina&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="container reveal">
+    <span class="eyebrow">¿Arrancamos?</span>
+    <h2>Tu silla te <em>está esperando</em></h2>
+    <p class="lead" style="margin:0 auto 28px">Reservá en un minuto por WhatsApp y vení tranquilo.</p>
+    <a class="btn btn-primary" data-wa="Hola! Quiero reservar un turno en Barbería Los Santos 💈" href="#contacto"><svg><use href="#i-wa"/></svg>Reservá tu turno</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true">B</span><span class="logo-txt">Barbería Los Santos<small>BARBERÍA · CÓRDOBA CAPITAL</small></span></a>
+    <p>La Rinconada 1444 · Córdoba Capital · Córdoba</p>
+    <p>© 2026 Barbería Los Santos. Todos los derechos reservados.</p>
+    <p class="credit">Maqueta de diseño · Sitio de muestra · Diseño web: Facundo Social Media</p>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a class="wa-float" data-wa="Hola! Quiero reservar un turno para ..." href="#contacto" aria-label="Escribinos por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+const WHATSAPP = "5493513085378"; // ← reemplazar por el número real
+const NEGOCIO = "Barbería Los Santos"; // nombre del negocio (referencia)
+
+// Links de WhatsApp: cada [data-wa] lleva su propio mensaje
+document.querySelectorAll("[data-wa]").forEach(function (a) {
+  var msg = a.getAttribute("data-wa") || "Hola! Quiero reservar un turno";
+  a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+
+// Header con borde al scrollear
+var header = document.querySelector(".header");
+function onScroll() { header.classList.toggle("scrolled", window.scrollY > 10); }
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+// Menú móvil
+var menuBtn = document.getElementById("menuBtn");
+var mobileNav = document.getElementById("mobileNav");
+menuBtn.addEventListener("click", function () {
+  var open = mobileNav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+});
+mobileNav.querySelectorAll("a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    mobileNav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+// FAQ acordeón
+document.querySelectorAll(".faq-q").forEach(function (q) {
+  q.addEventListener("click", function () {
+    var item = q.parentElement;
+    var open = !item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(function (o) {
+      o.classList.remove("open");
+      o.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+    });
+    item.classList.toggle("open", open);
+    q.setAttribute("aria-expanded", String(open));
+  });
+});
+
+// Animaciones al scrollear (respeta prefers-reduced-motion)
+var reveals = document.querySelectorAll(".reveal");
+function showAll() { reveals.forEach(function (el) { el.classList.add("visible"); }); }
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (reduce || !("IntersectionObserver" in window)) {
+  showAll();
+} else {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  reveals.forEach(function (el) { io.observe(el); });
+  // Red de seguridad: nada queda oculto si algo falla
+  window.addEventListener("load", function () { setTimeout(function () { if (!document.querySelector(".reveal.visible")) showAll(); }, 2500); });
+}
+</script>
+<script src="../../muestras/pro.js" defer></script>
+<script src="../../muestras/fx3d.js" data-theme="barberia" defer></script>
+</body>
+</html>

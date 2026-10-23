@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  SITIO DE MUESTRA · GIMNASIO — Diseño web: Facundo Social Media
+  ------------------------------------------------------------
+  CÓMO ADAPTARLO A UN CLIENTE NUEVO:
+  1. NOMBRE: buscá "Africa Gym" y "FUERZA" y reemplazá
+     (aparece en <title>, meta, header, footer y mensajes de WhatsApp).
+  2. COLORES: editá las variables en :root (--accent es el color fuerte;
+     probá #ff5a1f para naranja). --bg / --bg-2 son los fondos oscuros.
+  3. WHATSAPP: cambiá la constante WHATSAPP al final del archivo (en <script>).
+     Cada botón con data-wa="..." lleva su propio mensaje pre-armado.
+  4. CLASES: sección id="clases" (una <article class="card"> por actividad).
+  5. PLANES Y PRECIOS: sección id="planes" (una <article class="plan"> por plan;
+     el destacado lleva la clase "featured"). Actualizá también el data-wa.
+  6. HORARIOS DE CLASES: sección id="horarios" (tabla, una <tr> por franja).
+  7. PROFES / OPINIONES: secciones id="profes" y id="opiniones".
+  8. DIRECCIÓN / HORARIOS / MAPA: sección id="contacto" (cambiá el q= del iframe).
+  9. FOTOS: URLs de Unsplash en .hero-bg, .promo y la galería id="instalaciones".
+  ============================================================
+-->
+<html lang="es-AR">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Africa Gym · Gimnasio en Nueva Córdoba, Córdoba</title>
+<meta name="description" content="Gimnasio en barrio Nueva Córdoba, Córdoba. Musculación, funcional, crossfit, spinning, boxeo y personalizado. Abierto de 6 a 23 h. Pedí tu clase de prueba gratis por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Africa Gym · Entrená en serio. Sin excusas.">
+<meta property="og:description" content="Musculación, funcional, crossfit y más en Nueva Córdoba, Córdoba. Pedí tu clase de prueba gratis por WhatsApp.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=70">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b0c'/%3E%3Cpath d='M36 6 14 36h14l-4 22 26-32H36l4-20z' fill='%23c6f432'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#c6f432;         /* verde lima eléctrico (probá #ff5a1f para naranja) */
+  --accent-ink:#0b0b0c;     /* texto sobre el acento */
+  --bg:#0b0b0c;             /* fondo casi negro */
+  --bg-2:#141416;           /* fondo de secciones alternas */
+  --card:#1a1a1d;
+  --line:#2a2a2f;
+  --text:#ffffff;
+  --muted:#a3a3ab;
+  --wa:#25d366;
+  --radius:16px;
+  --font-head:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{margin:0;font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.6;font-size:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-head);font-weight:400;line-height:1;margin:0 0 .4em;text-transform:uppercase;letter-spacing:.01em}
+h1{font-size:clamp(3.2rem,15vw,7.5rem);line-height:.92}
+h2{font-size:clamp(2.4rem,9vw,4.4rem)}
+h3{font-size:1.55rem;letter-spacing:.02em}
+p{margin:0 0 1em}
+.hl{color:var(--accent)}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+.alt{background:var(--bg-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.eyebrow::before{content:"";width:28px;height:3px;background:var(--accent)}
+.section-head{max-width:680px;margin-bottom:44px}
+.section-head p{color:var(--muted);font-size:1.05rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .eyebrow::after{content:"";width:28px;height:3px;background:var(--accent)}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-weight:800;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease;text-align:center}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px var(--accent)}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{min-height:42px;padding:9px 18px;font-size:.82rem;white-space:nowrap}
+.btn:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .25s,background .25s}
+.header.scrolled{background:rgba(11,11,12,.94);border-color:var(--line)}
+.header .container{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--font-head);font-size:1.7rem;letter-spacing:.04em;line-height:1}
+.logo svg{width:26px;height:26px;color:var(--accent)}
+.logo span{color:var(--accent)}
+.nav{display:none}
+.nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:#d6d6dc;padding:8px 2px;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav a:hover{color:#fff}
+.nav a:hover::after{transform:scaleX(1)}
+.head-actions{display:flex;align-items:center;gap:10px}
+.menu-btn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:#fff;display:grid;place-items:center;cursor:pointer}
+.menu-btn svg{width:22px;height:22px}
+.mnav{display:none;border-top:1px solid var(--line);background:var(--bg)}
+.mnav.open{display:block}
+.mnav a{display:block;padding:16px 20px;text-decoration:none;font-family:var(--font-head);font-size:1.6rem;text-transform:uppercase;border-bottom:1px solid var(--line)}
+.mnav a:hover{color:var(--accent)}
+@media (max-width:420px){.head-actions .btn-sm{display:none}}
+@media (min-width:900px){
+  .nav{display:flex;gap:28px}
+  .menu-btn,.mnav,.mnav.open{display:none}
+}
+
+/* Hero */
+.hero{position:relative;min-height:calc(100svh - 68px);display:flex;align-items:flex-end;padding:120px 0 0;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:#111 url("https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=70") center 30%/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.35) 35%,rgba(11,11,12,.92) 78%,var(--bg) 100%),linear-gradient(90deg,rgba(11,11,12,.8),rgba(11,11,12,0) 70%)}
+.hero-content{max-width:820px;padding-bottom:40px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.4);color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(198,244,50,.7)}70%{box-shadow:0 0 0 10px rgba(198,244,50,0)}100%{box-shadow:0 0 0 0 rgba(198,244,50,0)}}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px #fff}
+.hero-sub{font-size:clamp(1.05rem,3.6vw,1.3rem);color:#dcdce2;max-width:560px;margin:18px 0 28px}
+.hero-ctas{display:flex;flex-direction:column;gap:12px}
+@media (min-width:560px){.hero-ctas{flex-direction:row;flex-wrap:wrap}}
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(11,11,12,.9);margin-top:20px}
+.stats ul{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(2,1fr)}
+.stats li{padding:20px 12px;text-align:center;border-right:1px solid var(--line)}
+.stats li:nth-child(2n){border-right:0}
+.stats li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.stats strong{display:block;font-family:var(--font-head);font-weight:400;font-size:2.2rem;line-height:1;color:var(--accent)}
+.stats span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+@media (min-width:768px){.stats ul{grid-template-columns:repeat(4,1fr)}.stats li{border-bottom:0!important;border-right:1px solid var(--line)!important}.stats li:last-child{border-right:0!important}}
+
+/* Marquesina */
+.ticker-wrap{overflow:hidden;padding:26px 0 6px}
+.ticker{background:var(--accent);color:var(--accent-ink);overflow:hidden;padding:12px 0;transform:rotate(-1.2deg);margin:0 -10px;width:calc(100% + 20px)}
+.ticker-track{display:flex;gap:28px;width:max-content;animation:tick 28s linear infinite;font-family:var(--font-head);font-size:1.4rem;text-transform:uppercase;white-space:nowrap}
+.ticker-track span::after{content:"✦";margin-left:28px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Grillas y cards */
+.grid{display:grid;gap:16px}
+@media (min-width:640px){.grid-2{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.cards{grid-template-columns:repeat(4,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .25s ease,border-color .25s ease,background .25s ease;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card .ico{width:54px;height:54px;border-radius:14px;background:rgba(198,244,50,.1);color:var(--accent);display:grid;place-items:center;margin-bottom:18px;transition:background .25s,color .25s}
+.card:hover .ico{background:var(--accent);color:var(--accent-ink)}
+.card .ico svg{width:28px;height:28px}
+.card p{color:var(--muted);margin:0;font-size:.96rem}
+.card.cta-card{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.card.cta-card p{color:#1f2a05}
+.card.cta-card .btn{background:var(--accent-ink);color:#fff;align-self:flex-start}
+
+/* Planes */
+.plans{display:grid;gap:18px}
+@media (min-width:700px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.plans{grid-template-columns:repeat(4,1fr);align-items:stretch}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 24px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;position:relative}
+.plan:hover{transform:translateY(-4px);border-color:#4a4a52}
+.plan h3{font-size:1.7rem;margin-bottom:6px}
+.plan .desc{color:var(--muted);font-size:.93rem;min-height:3em}
+.price{font-family:var(--font-head);font-size:3.2rem;line-height:1;margin:10px 0 4px}
+.price small{font-family:var(--font-body);font-size:.9rem;color:var(--muted);font-weight:600}
+.plan ul{list-style:none;padding:0;margin:18px 0 26px;display:grid;gap:10px;flex:1}
+.plan li{display:flex;gap:10px;font-size:.95rem;color:#e2e2e7}
+.plan li svg{width:18px;height:18px;flex:none;color:var(--accent);margin-top:3px}
+.plan .btn{width:100%}
+.plan.featured{background:linear-gradient(160deg,#1f2410,#151517 60%);border:2px solid var(--accent)}
+.plan.featured:hover{border-color:var(--accent)}
+.tag{position:absolute;top:-14px;left:24px;background:var(--accent);color:var(--accent-ink);font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.plans-note{margin-top:28px;padding:20px 22px;border:1px dashed #3a3a42;border-radius:var(--radius);color:var(--muted);font-size:.95rem;display:grid;gap:8px}
+.plans-note strong{color:#fff}
+.pay{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.pay span{padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:#e2e2e7;font-size:.85rem;font-weight:600}
+
+/* Horarios */
+.sched-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+.sched{width:100%;min-width:640px;border-collapse:collapse;font-size:.9rem}
+.sched th,.sched td{padding:14px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.sched thead th{font-family:var(--font-head);font-weight:400;font-size:1.25rem;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);background:#111113}
+.sched tbody th{font-weight:800;color:#fff;white-space:nowrap;position:sticky;left:0;background:var(--card);border-right:1px solid var(--line)}
+.sched thead th:first-child{position:sticky;left:0;z-index:1}
+.sched tbody tr:last-child th,.sched tbody tr:last-child td{border-bottom:0}
+.sched td{color:#d6d6dc}
+.sched tbody tr:hover td{background:rgba(198,244,50,.05)}
+.c{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.c-fun{background:rgba(198,244,50,.14);color:var(--accent)}
+.c-cf{background:rgba(255,106,61,.16);color:#ff9a76}
+.c-sp{background:rgba(90,170,255,.16);color:#8cc4ff}
+.c-bx{background:rgba(255,80,110,.16);color:#ff8fa5}
+.c-yo{background:rgba(190,140,255,.16);color:#cfaeff}
+.sched-hint{color:var(--muted);font-size:.85rem;margin-top:12px}
+@media (min-width:700px){.sched-hint .swipe{display:none}}
+
+/* Galería */
+.gallery{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+.gallery figure{margin:0;position:relative;border-radius:14px;overflow:hidden;background:#1a1a1d}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s;filter:grayscale(.25) contrast(1.05)}
+.gallery figure:hover img{transform:scale(1.06);filter:none}
+.gallery figcaption{position:absolute;left:10px;bottom:10px;background:rgba(11,11,12,.8);padding:5px 10px;border-radius:8px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.gallery .big{grid-column:span 2;grid-row:span 2}
+@media (min-width:800px){.gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:210px}.gallery .wide{grid-column:span 2}}
+
+/* Profes */
+.coach{text-align:left}
+.avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-head);font-size:1.9rem;background:var(--accent);color:var(--accent-ink);margin-bottom:18px;border:4px solid #26262b}
+.coach .role{color:var(--accent);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chips span{font-size:.78rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:#d6d6dc}
+
+/* Opiniones */
+.review{display:flex;flex-direction:column;gap:14px}
+.review .stars{color:var(--accent);letter-spacing:3px;font-size:1.05rem}
+.review blockquote{margin:0;color:#e6e6ea;font-size:1.02rem}
+.review .result{font-family:var(--font-head);font-size:1.5rem;text-transform:uppercase;color:#fff;line-height:1.05}
+.review footer{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:6px;border-top:1px solid var(--line)}
+.review footer small{display:block;color:var(--muted);font-size:.85rem}
+.ini{width:42px;height:42px;border-radius:50%;background:#26262b;color:var(--accent);display:grid;place-items:center;font-weight:800;flex:none}
+
+/* Promo */
+.promo{position:relative;isolation:isolate;padding:90px 0;overflow:hidden;background:#111 url("https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1200&q=70") center/cover no-repeat}
+.promo::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(11,11,12,.95) 15%,rgba(11,11,12,.7) 60%,rgba(198,244,50,.35))}
+.promo h2{font-size:clamp(3rem,13vw,6.5rem);line-height:.9}
+.promo p{font-size:1.1rem;color:#e2e2e7;max-width:520px;margin-bottom:26px}
+.promo .fine{font-size:.82rem;color:var(--muted);margin-top:14px}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;transition:border-color .2s}
+.faq details[open]{border-color:var(--accent)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 22px;font-weight:700;font-size:1.03rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-head);font-size:1.8rem;line-height:1;color:var(--accent);transition:transform .25s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 22px 20px;margin:0;color:var(--muted)}
+
+/* Contacto */
+.contact{display:grid;gap:24px}
+@media (min-width:900px){.contact{grid-template-columns:1fr 1.15fr;align-items:stretch}}
+.info{display:grid;gap:14px}
+.info-item{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.info-item svg{width:24px;height:24px;color:var(--accent);flex:none;margin-top:2px}
+.info-item strong{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:2px}
+.info-item a{text-decoration:none}
+.info-item a:hover{color:var(--accent)}
+.hours{list-style:none;padding:0;margin:0}
+.hours li{display:flex;justify-content:space-between;gap:12px}
+.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:340px;background:#1a1a1d}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:grayscale(1) invert(.9) contrast(.9)}
+
+/* Footer */
+.footer{border-top:1px solid var(--line);padding:40px 0 110px;color:var(--muted);font-size:.92rem}
+.footer .container{display:flex;flex-direction:column;gap:14px}
+.footer .logo{color:#fff}
+.footer a{color:#fff}
+.footer-links{display:flex;flex-wrap:wrap;gap:16px}
+.footer-links a{text-decoration:none}
+.footer-links a:hover{color:var(--accent)}
+.credit{font-size:.82rem;color:#76767e}
+@media (min-width:768px){.footer .container{flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap}.credit{width:100%}}
+
+/* WhatsApp flotante */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.6);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+
+/* Reveal: el contenido es visible por defecto; solo se anima si JS agrega .js-anim al <html> */
+.js-anim .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.js-anim .reveal.in{opacity:1;transform:none}
+.grid .reveal:nth-child(2),.plans .reveal:nth-child(2){transition-delay:.08s}
+.grid .reveal:nth-child(3),.plans .reveal:nth-child(3){transition-delay:.16s}
+.grid .reveal:nth-child(4),.plans .reveal:nth-child(4){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js-anim .reveal{opacity:1;transform:none;transition:none}
+  .ticker-track,.wa-float::before,.badge i{animation:none}
+  *{transition-duration:.01ms!important}
+}
+  /* Deja lugar al cartel "Powered by Netlify" de abajo a la derecha */
+  .wa-float{bottom:64px!important}
+  /* En celulares chicos los botones en mayúsculas entran en una sola línea */
+  @media (max-width:420px){.btn{font-size:.84rem;letter-spacing:.015em;padding:14px 16px;gap:8px}}
+/* Celular: portada compacta, el título arranca arriba sin espacio vacío */
+@media (max-width:700px){.hero{min-height:0!important;align-items:flex-start!important;padding:44px 0 40px!important}}
+</style>
+</head>
+<body>
+<div style="position:relative;z-index:9999;background:#111827;color:#f3f4f6;font:500 13.5px/1.45 system-ui,sans-serif;padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid #262a33">
+  <span><strong style="color:#fbbf24">✨ Maqueta de diseño para Africa Gym</strong> · por Facundo Social Media<br>
+  <span style="color:#9ca3af">Boceto inicial: textos, fotos y precios de ejemplo. La versión final se personaliza 100% para tu negocio.</span></span>
+  <a href="https://wa.me/5493516069281?text=Hola%20Facundo%21%20Vi%20la%20maqueta%20de%20p%C3%A1gina%20web%20para%20Africa%20Gym%20y%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener" style="background:#fbbf24;color:#111827;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:800;white-space:nowrap">Quiero mi web</a>
+</div>
+
+<!-- SVG sprite: íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6-1.57a11.3 11.3 0 0 0 5.43 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 1 4 14h6.5L9 23l11-14h-7l.5-8z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m4 12.5 5 5L20 6.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+</svg>
+
+<header class="header">
+  <div class="container">
+    <a href="#inicio" class="logo" aria-label="Africa Gym, ir al inicio"><svg aria-hidden="true"><use href="#i-bolt"/></svg>AFRICA<span>GYM</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#planes">Planes</a>
+      <a href="#clases">Clases</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#instalaciones">Instalaciones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="head-actions">
+      <a class="btn btn-accent btn-sm" data-wa="¡Hola Africa Gym! Quiero pedir mi clase de prueba gratis." target="_blank" rel="noopener">Clase gratis</a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Menú móvil">
+    <a href="#planes">Planes</a>
+    <a href="#clases">Clases</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#instalaciones">Instalaciones</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg" role="img" aria-label="Atleta levantando una barra con discos en un gimnasio con luz tenue"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="badge"><i aria-hidden="true"></i>Nueva Córdoba · Córdoba</span>
+        <h1 id="hero-title">Entrená<br>en serio.<br><span class="hl">Sin</span> <span class="stroke">excusas.</span></h1>
+        <p class="hero-sub">Musculación, funcional, crossfit y más, con profes que te corrigen de verdad. Vení a probar: la primera clase corre por nuestra cuenta.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-accent" data-wa="¡Hola Africa Gym! Quiero pedir mi clase de prueba gratis. ¿Qué días y horarios tienen?" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedí tu clase de prueba gratis</a>
+          <a class="btn btn-ghost" href="#planes">Ver planes <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="stats" aria-label="Africa Gym en números">
+    <ul class="container">
+      <li><strong>+800</strong><span>Socios activos</span></li>
+      <li><strong>6 a 23 h</strong><span>Lunes a viernes</span></li>
+      <li><strong>+40</strong><span>Clases por semana</span></li>
+      <li><strong>100%</strong><span>Profes certificados</span></li>
+    </ul>
+  </div>
+  <div class="ticker-wrap" aria-hidden="true"><div class="ticker">
+    <div class="ticker-track">
+      <span>Musculación</span><span>Funcional</span><span>Crossfit</span><span>Spinning</span><span>Boxeo</span><span>Yoga</span><span>Personalizado</span>
+      <span>Musculación</span><span>Funcional</span><span>Crossfit</span><span>Spinning</span><span>Boxeo</span><span>Yoga</span><span>Personalizado</span>
+    </div>
+  </div></div>
+
+  <!-- CLASES -->
+  <section id="clases">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Actividades</span>
+        <h2>Elegí cómo <span class="hl">querés entrenar</span></h2>
+        <p>Desde fierros hasta guantes. Combiná actividades con el Pase Full y no te aburrís nunca.</p>
+      </div>
+      <div class="grid cards">
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h2M20 12h2M6 7v10M18 7v10M4 9v6M20 9v6M6 12h12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+          <h3>Musculación</h3>
+          <p>Sala amplia con peso libre, racks, poleas y máquinas. Te armamos la rutina según tu objetivo.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6l-1 3a5 5 0 1 1-4 0L9 4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></div>
+          <h3>Funcional</h3>
+          <p>Kettlebells, TRX, sogas y cajones. Clases dinámicas para ganar fuerza, resistencia y movilidad.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></div>
+          <h3>Crossfit / HIIT</h3>
+          <p>WODs intensos y cortos, en grupo y con escala para cada nivel. Transpirás, te divertís, volvés.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3.5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="17" r="3.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M6 17l4-8h5l3 8M10 9 9 6H7m8 3 1-3h2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Spinning</h3>
+          <p>Bicis de última generación, luces y buena música. 45 minutos que se pasan volando.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a4 4 0 0 1 4-4h3a4 4 0 0 1 4 4v6a5 5 0 0 1-5 5h-2a4 4 0 0 1-4-4v-4zm0 0h5a2 2 0 0 1 0 4H9M8 18v3h8v-3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Boxeo</h3>
+          <p>Técnica, bolsa y guantes. Descargás el día y ponés el cuerpo en forma. No hace falta experiencia.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M4 10c3 1 5 1.5 8 1.5s5-.5 8-1.5M12 11.5V15m0 0-4 6m4-6 4 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Pilates / Yoga</h3>
+          <p>Postura, core y flexibilidad. El complemento ideal para entrenar más y lesionarte menos.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="m17 3 1.2 1.2L21 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Personalizado</h3>
+          <p>Un profe solo para vos: plan a medida, seguimiento y resultados medibles semana a semana.</p>
+        </article>
+        <article class="card cta-card reveal">
+          <div>
+            <h3>¿No sabés por dónde arrancar?</h3>
+            <p>Contanos tu objetivo y te recomendamos la mejor combinación.</p>
+          </div>
+          <a class="btn btn-sm" data-wa="¡Hola Africa Gym! No sé qué actividad elegir, ¿me ayudan a armar mi plan?" target="_blank" rel="noopener">Asesorame <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section id="planes" class="alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Planes</span>
+        <h2>Precios claros. <span class="hl">Cero letra chica.</span></h2>
+        <p>Elegí el plan que se adapta a tu ritmo. Podés cambiarlo cuando quieras.</p>
+      </div>
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>3 veces x semana</h3>
+          <p class="desc">Para arrancar o mantener el ritmo.</p>
+          <div class="price">$30.000 <small>/mes</small></div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Sala de musculación 3 días</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Rutina personalizada</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Vestuarios y duchas</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="¡Hola Africa Gym! Me interesa el plan 3 veces por semana ($30.000/mes). ¿Cómo me inscribo?" target="_blank" rel="noopener">Quiero este</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Pase libre</h3>
+          <p class="desc">Musculación todos los días, a la hora que quieras.</p>
+          <div class="price">$38.000 <small>/mes</small></div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Musculación ilimitada</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Rutina y control mensual</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Acceso de 6 a 23 h</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Vestuarios y duchas</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="¡Hola Africa Gym! Me interesa el Pase libre de musculación ($38.000/mes). ¿Cómo me inscribo?" target="_blank" rel="noopener">Quiero este</a>
+        </article>
+        <article class="plan featured reveal">
+          <span class="tag">Más elegido</span>
+          <h3>Pase full</h3>
+          <p class="desc">Musculación + todas las clases. Lo tenés todo.</p>
+          <div class="price">$48.000 <small>/mes</small></div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Musculación ilimitada</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Funcional, crossfit, spinning, boxeo y yoga</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Evaluación física inicial</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Reserva de clases por WhatsApp</li>
+          </ul>
+          <a class="btn btn-accent" data-wa="¡Hola Africa Gym! Quiero el Pase full con clases ($48.000/mes). ¿Cómo me inscribo?" target="_blank" rel="noopener">Quiero el full</a>
+        </article>
+        <article class="plan reveal">
+          <h3>Personalizado</h3>
+          <p class="desc">Un profe para vos, 3 veces por semana.</p>
+          <div class="price">$80.000 <small>/mes</small></div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>12 sesiones 1 a 1</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Plan y seguimiento a medida</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Pase full incluido</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Guía de alimentación básica</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="¡Hola Africa Gym! Me interesa el entrenamiento Personalizado ($80.000/mes). ¿Qué horarios hay disponibles?" target="_blank" rel="noopener">Quiero este</a>
+        </article>
+      </div>
+      <div class="plans-note reveal">
+        <p style="margin:0"><strong>Matrícula:</strong> $10.000 por única vez (bonificada si te inscribís en el mes de tu clase de prueba).</p>
+        <div><strong>Medios de pago:</strong>
+          <div class="pay"><span>Efectivo</span><span>Transferencia</span><span>Mercado Pago</span><span>Débito automático</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIOS -->
+  <section id="horarios">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Horarios</span>
+        <h2>Grilla de <span class="hl">clases</span></h2>
+        <p>La sala de musculación está abierta todo el día. Estas son las clases grupales de lunes a sábado.</p>
+      </div>
+      <div class="sched-wrap reveal" role="region" aria-label="Grilla de horarios de clases" tabindex="0">
+        <table class="sched">
+          <thead>
+            <tr><th scope="col">Hora</th><th scope="col">Lun</th><th scope="col">Mar</th><th scope="col">Mié</th><th scope="col">Jue</th><th scope="col">Vie</th><th scope="col">Sáb</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">07:00</th><td><span class="c c-fun">Funcional</span></td><td><span class="c c-sp">Spinning</span></td><td><span class="c c-fun">Funcional</span></td><td><span class="c c-sp">Spinning</span></td><td><span class="c c-fun">Funcional</span></td><td>—</td></tr>
+            <tr><th scope="row">09:00</th><td><span class="c c-yo">Pilates</span></td><td><span class="c c-cf">Crossfit</span></td><td><span class="c c-yo">Pilates</span></td><td><span class="c c-cf">Crossfit</span></td><td><span class="c c-yo">Yoga</span></td><td><span class="c c-cf">Crossfit</span></td></tr>
+            <tr><th scope="row">10:30</th><td>—</td><td><span class="c c-fun">Funcional</span></td><td>—</td><td><span class="c c-fun">Funcional</span></td><td>—</td><td><span class="c c-sp">Spinning</span></td></tr>
+            <tr><th scope="row">13:00</th><td><span class="c c-cf">HIIT 30'</span></td><td>—</td><td><span class="c c-cf">HIIT 30'</span></td><td>—</td><td><span class="c c-cf">HIIT 30'</span></td><td><span class="c c-fun">Funcional</span></td></tr>
+            <tr><th scope="row">18:00</th><td><span class="c c-sp">Spinning</span></td><td><span class="c c-bx">Boxeo</span></td><td><span class="c c-sp">Spinning</span></td><td><span class="c c-bx">Boxeo</span></td><td><span class="c c-sp">Spinning</span></td><td>—</td></tr>
+            <tr><th scope="row">19:30</th><td><span class="c c-cf">Crossfit</span></td><td><span class="c c-fun">Funcional</span></td><td><span class="c c-cf">Crossfit</span></td><td><span class="c c-fun">Funcional</span></td><td><span class="c c-cf">Crossfit</span></td><td>—</td></tr>
+            <tr><th scope="row">21:00</th><td><span class="c c-bx">Boxeo</span></td><td><span class="c c-yo">Yoga</span></td><td><span class="c c-bx">Boxeo</span></td><td><span class="c c-yo">Yoga</span></td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sched-hint"><span class="swipe">Deslizá la tabla para ver todos los días. </span>Cupos limitados: reservá tu lugar por WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- INSTALACIONES -->
+  <section id="instalaciones" class="alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Instalaciones</span>
+        <h2>+600 m² para <span class="hl">romperla</span></h2>
+        <p>Equipamiento renovado, climatización, vestuarios con duchas y lockers. Todo pensado para que solo te preocupes por entrenar.</p>
+      </div>
+      <div class="gallery reveal">
+        <figure class="big"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=70" alt="Sala de musculación con hileras de mancuernas y máquinas" loading="lazy"><figcaption>Sala de musculación</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=1200&q=70" alt="Rack de mancuernas en la zona de peso libre" loading="lazy"><figcaption>Peso libre</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=70" alt="Mujer haciendo sentadilla con barra en un rack" loading="lazy"><figcaption>Racks</figcaption></figure>
+        <figure class="wide"><img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1200&q=70" alt="Personas entrenando con sogas de batalla en la zona funcional" loading="lazy"><figcaption>Zona funcional</figcaption></figure>
+        <figure class="wide"><img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=1200&q=70" alt="Salón amplio con cintas y máquinas de cardio" loading="lazy"><figcaption>Cardio</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFES -->
+  <section id="profes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Equipo</span>
+        <h2>Profes que <span class="hl">te empujan</span></h2>
+        <p>Titulados, con experiencia y con ganas de verte progresar. Acá nadie entrena solo.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card coach reveal">
+          <div class="avatar" aria-hidden="true">MR</div>
+          <h3>Matías Rojas</h3>
+          <p class="role">Head coach · Musculación</p>
+          <p>Prof. de Educación Física. 10 años armando rutinas de fuerza e hipertrofia.</p>
+          <div class="chips"><span>Fuerza</span><span>Hipertrofia</span><span>Personalizado</span></div>
+        </article>
+        <article class="card coach reveal">
+          <div class="avatar" aria-hidden="true">LA</div>
+          <h3>Lucía Álvarez</h3>
+          <p class="role">Funcional · Crossfit</p>
+          <p>Coach certificada en entrenamiento funcional y HIIT. La energía de las 19:30.</p>
+          <div class="chips"><span>Crossfit</span><span>HIIT</span><span>Movilidad</span></div>
+        </article>
+        <article class="card coach reveal">
+          <div class="avatar" aria-hidden="true">NG</div>
+          <h3>Nicolás Gómez</h3>
+          <p class="role">Boxeo · Spinning</p>
+          <p>Ex boxeador amateur e instructor de ciclismo indoor. Técnica y mucha garra.</p>
+          <div class="chips"><span>Boxeo</span><span>Spinning</span><span>Cardio</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIONES -->
+  <section id="opiniones" class="alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Resultados</span>
+        <h2>Lo dicen <span class="hl">los socios</span></h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card review reveal">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="result">−9 kg en 4 meses</p>
+          <blockquote>“Probé mil gimnasios y siempre abandonaba. Acá los profes te conocen por el nombre y te siguen. Es otra cosa.”</blockquote>
+          <footer><span class="ini" aria-hidden="true">F</span><div><strong>Florencia P.</strong><small>Pase full · Nueva Córdoba</small></div></footer>
+        </article>
+        <article class="card review reveal">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="result">Sentadilla de 60 a 110 kg</p>
+          <blockquote>“Buen equipamiento, nunca esperás para usar un rack. Y abrir a las 6 me salva antes del laburo.”</blockquote>
+          <footer><span class="ini" aria-hidden="true">J</span><div><strong>Juan Cruz M.</strong><small>Pase libre</small></div></footer>
+        </article>
+        <article class="card review reveal">
+          <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="result">Chau dolor de espalda</p>
+          <blockquote>“Arranqué con personalizado después de una lesión. Hoy hago funcional y boxeo tres veces por semana.”</blockquote>
+          <footer><span class="ini" aria-hidden="true">C</span><div><strong>Carla B.</strong><small>Personalizado</small></div></footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="promo" aria-labelledby="promo-title">
+    <div class="container reveal">
+      <span class="eyebrow">Promo de bienvenida</span>
+      <h2 id="promo-title">Primera semana <span class="hl">gratis</span></h2>
+      <p>Vení una semana a entrenar sin pagar nada. Y si te sumás con un amigo, los dos tienen <strong>20% off</strong> el primer mes.</p>
+      <a class="btn btn-accent" data-wa="¡Hola Africa Gym! Quiero aprovechar la primera semana gratis." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero mi semana gratis</a>
+      <p class="fine">Válido para nuevos socios. Traé DNI y ganas.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>Todo lo que <span class="hl">querés saber</span></h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>¿Necesito apto médico?</summary>
+          <p>Sí, te pedimos un apto físico vigente para entrenar. Si todavía no lo tenés, podés hacer tu clase de prueba y traerlo en los primeros 15 días.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ir a cualquier hora?</summary>
+          <p>Con el Pase libre y el Pase full venís cuando quieras dentro del horario del gym (lunes a viernes de 6 a 23 h, sábados de 8 a 20 h y domingos de 9 a 13 h). Las clases grupales siguen la grilla.</p>
+        </details>
+        <details>
+          <summary>¿Hay vestuarios y duchas?</summary>
+          <p>Sí. Vestuarios femenino y masculino con duchas de agua caliente y lockers. Traé tu candado y tu toalla.</p>
+        </details>
+        <details>
+          <summary>¿Cómo me inscribo?</summary>
+          <p>Escribinos por WhatsApp o vení directo a recepción con tu DNI. En 5 minutos quedás inscripto y ese mismo día ya podés entrenar.</p>
+        </details>
+        <details>
+          <summary>¿Puedo congelar el plan?</summary>
+          <p>Sí. Si te vas de viaje o tenés una lesión, congelamos tu plan hasta 30 días por año sin costo. Solo avisanos antes.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contacto</span>
+        <h2>Te esperamos en <span class="hl">Nueva Córdoba</span></h2>
+        <p>Pasá a conocernos o escribinos. Respondemos rápido, palabra.</p>
+      </div>
+      <div class="contact">
+        <div class="info reveal">
+          <div class="info-item"><svg aria-hidden="true"><use href="#i-pin"/></svg><div><strong>Dirección</strong>Balcarce 580, Nueva Córdoba, Córdoba Capital</div></div>
+          <div class="info-item"><svg aria-hidden="true"><use href="#i-clock"/></svg><div style="flex:1"><strong>Horarios</strong>
+            <ul class="hours"><li><span>Lunes a viernes</span><span>6 a 23 h</span></li><li><span>Sábados</span><span>8 a 20 h</span></li><li><span>Domingos</span><span>9 a 13 h</span></li></ul></div></div>
+          <div class="info-item"><svg aria-hidden="true"><use href="#i-wa"/></svg><div><strong>WhatsApp</strong><a data-wa="¡Hola Africa Gym! Quería hacerles una consulta." target="_blank" rel="noopener">Escribinos ahora →</a></div></div>
+          <div class="info-item"><svg aria-hidden="true"><use href="#i-ig"/></svg><div><strong>Instagram</strong><a href="#" target="_blank" rel="noopener">@africa.gym</a></div></div>
+          <a class="btn btn-accent" data-wa="¡Hola Africa Gym! Quiero pedir mi clase de prueba gratis." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedí tu clase de prueba</a>
+        </div>
+        <div class="map reveal">
+          <iframe src="https://www.google.com/maps?q=Balcarce+580%2C+C%C3%B3rdoba%2C+Argentina&output=embed" title="Mapa de ubicación de Africa Gym en Nueva Córdoba, Córdoba" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <a href="#inicio" class="logo"><svg aria-hidden="true"><use href="#i-bolt"/></svg>AFRICA<span>GYM</span></a>
+    <nav class="footer-links" aria-label="Pie de página">
+      <a href="#planes">Planes</a><a href="#clases">Clases</a><a href="#horarios">Horarios</a><a href="#contacto">Contacto</a>
+    </nav>
+    <div>© 2026 Africa Gym · Balcarce 580, Córdoba</div>
+    <div class="credit">Maqueta de diseño · Sitio de muestra · Diseño web: Facundo Social Media</div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="¡Hola Africa Gym! Quiero más info para empezar a entrenar." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+const WHATSAPP = "5493517629300"; // ← reemplazar por el número real
+(function () {
+  // Links de WhatsApp: cada [data-wa] lleva su propio mensaje
+  document.querySelectorAll("[data-wa]").forEach(function (el) {
+    var msg = el.getAttribute("data-wa") || "¡Hola! Quiero más info del gimnasio.";
+    el.setAttribute("href", "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg));
+  });
+
+  // Header más sólido al scrollear
+  var header = document.querySelector(".header");
+  var onScroll = function () { header.classList.toggle("scrolled", window.scrollY > 8); };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Menú móvil
+  var btn = document.querySelector(".menu-btn");
+  var mnav = document.getElementById("mnav");
+  var setMenu = function (open) {
+    mnav.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  };
+  btn.addEventListener("click", function () { setMenu(!mnav.classList.contains("open")); });
+  mnav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { setMenu(false); });
+  });
+
+  // FAQ: una abierta por vez
+  var items = document.querySelectorAll(".faq details");
+  items.forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (d.open) items.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
+  // Animaciones al scrollear (el contenido es visible si esto no corre)
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) return;
+  var els = document.querySelectorAll(".reveal");
+  var vh = window.innerHeight;
+  // Lo que ya está en pantalla no se oculta
+  els.forEach(function (el) { if (el.getBoundingClientRect().top < vh) el.classList.add("in"); });
+  document.documentElement.classList.add("js-anim");
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(function (el) { if (!el.classList.contains("in")) io.observe(el); });
+})();
+</script>
+<script src="../../muestras/pro.js" defer></script>
+<script src="../../muestras/fx3d.js" data-theme="gimnasio" defer></script>
+</body>
+</html>

@@ -77,7 +77,8 @@
   /* ---------- Escena 3D de la portada ---------- */
   function scene() {
     var hero = document.querySelector("section.hero");
-    if (!hero || !window.THREE || reduce) return;
+    // En el celular no va escena 3D: ocupaba mucho alto arriba del título y empujaba el contenido
+    if (!hero || !window.THREE || reduce || mobile) return;
     var cs = getComputedStyle(hero);
     if (cs.position === "static") hero.style.position = "relative";
     hero.style.isolation = "isolate";
@@ -85,21 +86,8 @@
 
     var canvas = document.createElement("canvas");
     canvas.setAttribute("aria-hidden", "true");
-    var host = hero;
-    if (mobile) {
-      // En el celular el texto ocupa todo el ancho: el 3D va en su propio escenario arriba del título
-      host = document.createElement("div");
-      host.className = "fx3d-stage";
-      host.setAttribute("aria-hidden", "true");
-      host.style.cssText = "position:relative;height:min(64vw,270px);margin:-6px 0 4px;pointer-events:none";
-      var box = hero.querySelector(".container, .wrap, .hero-inner, .hero-content, .hero-grid") || hero;
-      box.insertBefore(host, box.firstChild);
-      canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease";
-      host.appendChild(canvas);
-    } else {
-      canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease";
-      hero.insertBefore(canvas, hero.firstChild);
-    }
+    canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease";
+    hero.insertBefore(canvas, hero.firstChild);
 
     var renderer;
     try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !mobile, alpha: true }); }
@@ -209,7 +197,7 @@
     sc.add(dust);
 
     function size() {
-      var w = host.clientWidth, h = host.clientHeight;
+      var w = hero.clientWidth, h = hero.clientHeight;
       renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
       cam.position.z = mobile ? 6.2 : 14;
     }
@@ -218,7 +206,7 @@
     var mx = 0, my = 0, visible = true;
     addEventListener("pointermove", function (e) { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
     addEventListener("deviceorientation", function (e) { if (e.gamma != null) { mx = Math.max(-0.5, Math.min(0.5, e.gamma / 60)); my = Math.max(-0.5, Math.min(0.5, (e.beta - 40) / 60)); } }, { passive: true });
-    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(host);
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(hero);
 
     var clock = new THREE.Clock();
     requestAnimationFrame(function () { canvas.style.opacity = "1"; });
