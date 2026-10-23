@@ -211,7 +211,7 @@
     new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(hero);
 
     var clock = new THREE.Clock();
-    requestAnimationFrame(function () { canvas.style.opacity = OPACIDAD; });
+    setTimeout(function () { canvas.style.opacity = OPACIDAD; }, 60);
     (function loop() {
       requestAnimationFrame(loop);
       if (!visible) return;
