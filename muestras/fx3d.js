@@ -77,8 +77,7 @@
   /* ---------- Escena 3D de la portada ---------- */
   function scene() {
     var hero = document.querySelector("section.hero");
-    // En el celular no va escena 3D: ocupaba mucho alto arriba del título y empujaba el contenido
-    if (!hero || !window.THREE || reduce || mobile) return;
+    if (!hero || !window.THREE || reduce) return;
     var cs = getComputedStyle(hero);
     if (cs.position === "static") hero.style.position = "relative";
     hero.style.isolation = "isolate";
@@ -88,6 +87,8 @@
     canvas.setAttribute("aria-hidden", "true");
     canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease";
     hero.insertBefore(canvas, hero.firstChild);
+    // En el celular el 3D va de fondo y suave, en los bordes: no ocupa lugar ni tapa el texto
+    var OPACIDAD = mobile ? (T.light ? "0.5" : "0.6") : "1";
 
     var renderer;
     try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !mobile, alpha: true }); }
@@ -108,7 +109,7 @@
     };
     var group = new THREE.Group(); sc.add(group);
     var items = [];
-    // x positivo = a la derecha del texto (en el celular se reacomodan en el escenario: ver más abajo)
+    // x positivo = a la derecha del texto (en el celular se reacomodan en los bordes: ver más abajo)
     var add = function (mesh, x, y, z, spin) {
       mesh.position.set(x, y, z); mesh.userData = { y: y, spin: spin || 0.3, ph: Math.random() * 6 };
       group.add(mesh); items.push(mesh); return mesh;
@@ -135,7 +136,6 @@
         bar.position.y = yy; bar.rotation.z = Math.PI / 2; bar.rotation.y = -t; helix.add(bar);
       }
       add(helix, 5.4, 0, -1, 0.35).rotation.z = 0.35;
-      if (mobile) helix.scale.multiplyScalar(0.48);
       var cap = function () { var g = new THREE.Group(); var m1 = M(T.a, { m: 0.2, r: 0.15 }), m2 = M(0xffffff, { m: 0.1, r: 0.2 });
         var c1 = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.6, 32), m1); c1.position.y = 0.3;
         var c2 = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.6, 32), m2); c2.position.y = -0.3;
@@ -182,10 +182,12 @@
     }
 
     if (mobile) {
+      // Posiciones para una portada angosta y alta (cámara en z=14: x llega a ±2,5 aprox.)
+      var LUGARES = [[1.9, 4.3, -1, 0.5], [-2.2, 1.6, -2, 0.38], [2.3, -1.8, -1, 0.36], [-2.0, -4.2, -1, 0.34], [2.1, -5.2, -2, 0.3], [-2.3, 5.0, -2, 0.3]];
       items.forEach(function (m, i) {
-        if (i === 0) { m.position.set(0, 0, 0); m.userData.y = 0; m.userData.orbit = null; m.scale.multiplyScalar(THEME === "gimnasio" ? 0.78 : 1.15); return; }
-        m.scale.multiplyScalar(0.55);
-        m.userData.orbit = { a: (i - 1) / (items.length - 1) * Math.PI * 2, rx: 2.6, ry: 1.2 };
+        var l = LUGARES[i % LUGARES.length];
+        m.position.set(l[0], l[1], l[2]); m.userData.y = l[1];
+        m.scale.multiplyScalar(l[3]);
       });
     }
 
@@ -199,7 +201,7 @@
     function size() {
       var w = hero.clientWidth, h = hero.clientHeight;
       renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
-      cam.position.z = mobile ? 6.2 : 14;
+      cam.position.z = 14;
     }
     size(); addEventListener("resize", size);
 
@@ -209,7 +211,7 @@
     new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(hero);
 
     var clock = new THREE.Clock();
-    requestAnimationFrame(function () { canvas.style.opacity = "1"; });
+    requestAnimationFrame(function () { canvas.style.opacity = OPACIDAD; });
     (function loop() {
       requestAnimationFrame(loop);
       if (!visible) return;
@@ -218,14 +220,7 @@
       items.forEach(function (m, i) {
         m.rotation.y += 0.004 * (m.userData.spin * 2 + 0.3);
         m.rotation.x += 0.0025 * m.userData.spin;
-        var o = m.userData.orbit;
-        if (o) { // celular: los objetos chicos giran alrededor del principal
-          var a = o.a + t * 0.35;
-          m.position.x = Math.cos(a) * o.rx; m.position.z = Math.sin(a) * 1.6 - 0.5;
-          m.position.y = Math.sin(a) * o.ry * 0.5 + Math.sin(t * 0.9 + m.userData.ph) * 0.15;
-          return;
-        }
-        m.position.y = m.userData.y + Math.sin(t * 0.9 + m.userData.ph) * 0.28 + sy * (mobile ? 0.6 : 1.2 + i * 0.35);
+        m.position.y = m.userData.y + Math.sin(t * 0.9 + m.userData.ph) * 0.28 + sy * (mobile ? 0.8 : 1.2 + i * 0.35);
         if (m.userData.tex) m.userData.tex.offset.y = -t * 0.25;
       });
       dust.rotation.y = t * 0.03;
