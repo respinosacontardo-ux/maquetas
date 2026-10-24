@@ -6,6 +6,15 @@
   - El mapa carga de forma diferida para que la página abra más rápido.
 */
 (function () {
+  // Asistente virtual y reserva/cotizador: se carga desde la misma carpeta que este archivo
+  var yo = document.currentScript && document.currentScript.src;
+  if (yo && !document.querySelector('script[src*="asistente.js"]')) {
+    var as = document.createElement("script");
+    as.src = yo.replace(/pro\.js/, "asistente.js");
+    as.defer = true;
+    document.head.appendChild(as);
+  }
+
   function numero() {
     try { if (typeof WHATSAPP !== "undefined") return String(WHATSAPP); } catch (e) {}
     var a = document.querySelector('a[href*="wa.me/"]');
