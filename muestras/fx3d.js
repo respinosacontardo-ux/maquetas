@@ -4,6 +4,7 @@
   - Escena 3D (Three.js) detrás del contenido de la portada (section.hero), con objetos del rubro.
   - Los objetos reaccionan al mouse/inclinación y al scroll.
   - Tarjetas que se inclinan en 3D al pasar el mouse.
+  (El movimiento de las fotos al hacer scroll está en /muestras/parallax.js.)
   Si el navegador no tiene WebGL o la persona prefiere menos movimiento, la página queda como antes.
 */
 (function () {
@@ -40,39 +41,6 @@
         c.style.transform = "";
       });
     });
-  }
-
-  /* ---------- Fotos con profundidad 3D al hacer scroll ---------- */
-  function depth() {
-    if (reduce) return;
-    var tiles = [];
-    document.querySelectorAll("main img, section img").forEach(function (img) {
-      if (img.closest("section.hero, header, nav, footer, .fx3d-stage")) return;
-      if (img.width && img.width < 120) return;
-      // se mueve el recuadro que contiene la foto (si es una tarjeta chica), si no la foto misma
-      var el = img.parentElement && img.parentElement.children.length <= 3 && !/section|container|wrap/i.test(img.parentElement.className + img.parentElement.tagName) ? img.parentElement : img;
-      if (tiles.indexOf(el) === -1) tiles.push(el);
-    });
-    // Galerías armadas con fondos de imagen (sin <img>)
-    document.querySelectorAll("[class*='gallery'] > *, [class*='galeria'] > *").forEach(function (el) {
-      if (!el.closest("section.hero") && tiles.indexOf(el) === -1 && !tiles.some(function (x) { return el.contains(x) || x.contains(el); })) tiles.push(el);
-    });
-    if (!tiles.length) return;
-    tiles.forEach(function (el) { el.style.willChange = "transform"; el.style.transformOrigin = "center center"; });
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var vh = innerHeight;
-      tiles.forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.bottom < -100 || r.top > vh + 100) return;
-        var d = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh)); // -1 arriba … 1 abajo
-        el.style.transform = "perspective(900px) rotateX(" + (d * -14).toFixed(2) + "deg) translateZ(" + ((1 - Math.abs(d)) * 18).toFixed(1) + "px) scale(" + (1 - Math.abs(d) * 0.05).toFixed(3) + ")";
-      });
-    }
-    addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    addEventListener("resize", update);
-    update();
   }
 
   /* ---------- Escena 3D de la portada ---------- */
@@ -252,7 +220,6 @@
 
   function start() {
     tilt();
-    depth();
     if (reduce) return;
     if (window.THREE) return scene();
     var s = document.createElement("script");
