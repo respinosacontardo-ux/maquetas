@@ -1,6 +1,6 @@
 /*
   Efectos 3D compartidos para las muestras de Facundo Social Media.
-  Uso: <script src="/muestras/fx3d.js" data-theme="estetica|kinesiologia|gimnasio|barberia" defer></script>
+  Uso: <script src="/muestras/fx3d.js" data-theme="estetica|kinesiologia|gimnasio|barberia|obras" defer></script>
   - Escena 3D (Three.js) detrás del contenido de la portada (section.hero), con objetos del rubro.
   - Los objetos reaccionan al mouse/inclinación y al scroll.
   - Tarjetas que se inclinan en 3D al pasar el mouse.
@@ -16,7 +16,8 @@
     estetica:     { a: 0xc9938a, b: 0x6b3a4b, c: 0xf3e6dd, light: true },
     kinesiologia: { a: 0x0f9488, b: 0xff7a59, c: 0x5eead4, light: true },
     gimnasio:     { a: 0xc6f432, b: 0xffffff, c: 0x3f4a0c, light: false },
-    barberia:     { a: 0xc9a25b, b: 0xc8642f, c: 0xf2ead9, light: false }
+    barberia:     { a: 0xc9a25b, b: 0xc8642f, c: 0xf2ead9, light: false },
+    obras:        { a: 0x2dd4bf, b: 0x38bdf8, c: 0xe6d3b3, light: false }
   };
   var T = THEMES[THEME] || THEMES.estetica;
 
@@ -159,6 +160,25 @@
       add(new THREE.Mesh(new THREE.IcosahedronGeometry(1.5, 1), M(T.a, { w: true, m: 0, r: 1 })), -5.4, 2.4, -2, 0.25);
       add(new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.32, 24, 64), plate), 5.6, -2.4, -1.5, 0.35);
       add(new THREE.Mesh(new THREE.OctahedronGeometry(0.6), neon), -3.6, -2.8, 0.5, 0.6);
+    } else if (THEME === "obras") {
+      // Edificio de cajas con ventanas de vidrio + anillo de agua (piscina) + casita + cubo de alambre
+      var tower = new THREE.Group(), concrete = M(T.c, { m: 0.15, r: 0.6 }), glass = M(T.b, { m: 0.9, r: 0.08, op: 0.75 });
+      [[1.6, 1.1, 1.6], [1.35, 1.0, 1.35], [1.1, 0.9, 1.1]].forEach(function (d, i) {
+        var y0 = [0, 1.15, 2.2][i];
+        var slab = new THREE.Mesh(new THREE.BoxGeometry(d[0] + 0.12, 0.1, d[2] + 0.12), concrete); slab.position.y = y0 + d[1] / 2 + 0.05; tower.add(slab);
+        var core = new THREE.Mesh(new THREE.BoxGeometry(d[0], d[1], d[2]), glass); core.position.y = y0; tower.add(core);
+      });
+      tower.position.y = -1.1;
+      var towerG = new THREE.Group(); towerG.add(tower);
+      add(towerG, 4.8, 0.6, -0.5, 0.25).rotation.x = 0.15;
+      add(new THREE.Mesh(new THREE.TorusGeometry(1.15, 0.22, 32, 96), M(T.a, { m: 0.3, r: 0.05, op: 0.7 })), -5.4, 2.2, -1.5, 0.3).rotation.x = 1.1;
+      var house = new THREE.Group();
+      var body = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.8, 1.1), M(0xffffff, { m: 0.1, r: 0.45 }));
+      var roof = new THREE.Mesh(new THREE.ConeGeometry(0.95, 0.65, 4), M(T.a, { m: 0.4, r: 0.3 })); roof.position.y = 0.72; roof.rotation.y = Math.PI / 4;
+      house.add(body, roof);
+      add(house, 3.0, -2.6, 1, 0.45);
+      add(new THREE.Mesh(new THREE.BoxGeometry(1.3, 1.3, 1.3), M(T.c, { w: true, m: 0, r: 1 })), -4.2, -2.5, -0.5, 0.4);
+      add(new THREE.Mesh(new THREE.OctahedronGeometry(0.5), M(T.b, { m: 0.7, r: 0.2 })), 6.6, -2.2, -2, 0.6);
     } else {
       // Poste de barbería con franjas + anillos de bronce + tijera estilizada
       var cv = document.createElement("canvas"); cv.width = 128; cv.height = 512; var g2 = cv.getContext("2d");
