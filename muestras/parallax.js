@@ -48,6 +48,8 @@
       if (getComputedStyle(box).position === "static") box.style.position = "relative";
       box.style.overflow = "hidden";
       img.style.willChange = "transform, opacity";
+      // Carga inmediata: con la foto transparente y achicada, la carga diferida del navegador a veces no arranca
+      if (img.loading === "lazy") img.loading = "eager";
       // Aparición: escala 0.7 → 1.2 y opacidad 0 → 1 a lo largo del recorrido
       gsap.fromTo(img, { scale: 0.7, opacity: 0 }, {
         scale: 1.2, opacity: 1, ease: "power2.out",
