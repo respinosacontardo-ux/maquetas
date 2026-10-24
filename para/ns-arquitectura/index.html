@@ -252,6 +252,8 @@ section{padding:84px 0}
 @media (max-width:420px){.btn{font-size:.92rem;padding:14px 18px;gap:8px}.btn-sm{font-size:.84rem;padding:9px 14px}.logo{font-size:1.12rem}.logo small{letter-spacing:.12em}}
 /* Celular: portada compacta, el título arranca arriba sin espacio vacío */
 @media (max-width:700px){.hero{min-height:0!important;align-items:flex-start!important;padding:44px 0 40px!important}}
+/* Celular: con nombres o botones largos, el nombre se achica y el botón nunca lo pisa */
+@media (max-width:480px){.header .container{gap:10px}.header .logo{min-width:0;flex:1 1 auto}.header .logo-text{min-width:0;font-size:.92em;line-height:1.15}.head-actions{flex-shrink:0;gap:8px}.head-actions .btn{padding-left:12px;padding-right:12px;font-size:.76rem;white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -623,8 +625,8 @@ const WHATSAPP = "56984297595"; // ← reemplazar por el número real
   els.forEach(function (el) { if (!el.classList.contains("in")) io.observe(el); });
 })();
 </script>
-<script src="../../muestras/pro.js?v=1792864136" defer></script>
-<script src="../../muestras/fx3d.js?v=1792864136" data-theme="obras" defer></script>
-<script src="../../muestras/parallax.js?v=1792864136" defer></script>
+<script src="../../muestras/pro.js?v=1792864231" defer></script>
+<script src="../../muestras/fx3d.js?v=1792864231" data-theme="obras" defer></script>
+<script src="../../muestras/parallax.js?v=1792864231" defer></script>
 </body>
 </html>
