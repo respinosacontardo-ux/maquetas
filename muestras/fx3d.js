@@ -57,7 +57,7 @@
     canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease";
     hero.insertBefore(canvas, hero.firstChild);
     // En el celular el 3D va de fondo y suave, en los bordes: no ocupa lugar ni tapa el texto
-    var OPACIDAD = mobile ? (T.light ? "0.5" : "0.6") : "1";
+    var OPACIDAD = mobile ? (T.light ? "0.42" : "0.5") : "1";
 
     var renderer;
     try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !mobile, alpha: true }); }
@@ -170,17 +170,20 @@
     }
 
     if (mobile) {
-      // Posiciones para una portada angosta y alta (cámara en z=14: x llega a ±2,5 aprox.)
-      var LUGARES = [[1.9, 4.3, -1, 0.5], [-2.2, 1.6, -2, 0.38], [2.3, -1.8, -1, 0.36], [-2.0, -4.2, -1, 0.34], [2.1, -5.2, -2, 0.3], [-2.3, 5.0, -2, 0.3]];
+      // Portada angosta y alta (cámara en z=14: x llega a ±2,5 aprox.). Solo 3 objetos chicos en los bordes:
+      // uno junto a los botones, otro arriba a la derecha y otro en el borde de la foto; nunca sobre el título ni el texto.
+      // Posición como fracción del ancho/alto visible (se recalcula en size() según la altura real de cada portada)
+      var LUGARES = [[0.78, 0.02, 0, 0.34], [0.8, 0.82, -1, 0.24], [-0.8, -0.8, -1, 0.26]];
       items.forEach(function (m, i) {
-        var l = LUGARES[i % LUGARES.length];
-        m.position.set(l[0], l[1], l[2]); m.userData.y = l[1];
+        var l = LUGARES[i];
+        if (!l) { m.visible = false; return; }
+        m.userData.fx = l[0]; m.userData.fy = l[1]; m.position.z = l[2];
         m.scale.multiplyScalar(l[3]);
       });
     }
 
     // Polvo brillante suave
-    var N = mobile ? 160 : 360, pos = new Float32Array(N * 3);
+    var N = mobile ? 70 : 360, pos = new Float32Array(N * 3);
     for (var p = 0; p < N; p++) { pos[p * 3] = (Math.random() - 0.5) * 22; pos[p * 3 + 1] = (Math.random() - 0.5) * 12; pos[p * 3 + 2] = (Math.random() - 0.5) * 8 - 2; }
     var pg = new THREE.BufferGeometry(); pg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     var dust = new THREE.Points(pg, new THREE.PointsMaterial({ color: T.a, size: mobile ? 0.05 : 0.04, transparent: true, opacity: T.light ? 0.55 : 0.7 }));
@@ -190,6 +193,12 @@
       var w = hero.clientWidth, h = hero.clientHeight;
       renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
       cam.position.z = 14;
+      if (mobile) items.forEach(function (m) {
+        if (m.userData.fx == null) return;
+        var medioAlto = Math.tan(cam.fov * Math.PI / 360) * (cam.position.z - m.position.z);
+        m.position.x = m.userData.fx * medioAlto * cam.aspect;
+        m.userData.y = m.userData.fy * medioAlto;
+      });
     }
     size(); addEventListener("resize", size);
 
