@@ -14,8 +14,10 @@
   window.__fsmAsistente = true;
 
   var CL = document.documentElement.dataset.pais === "CL";
+  // Solo en las muestras y maquetas de un rubro (las que cargan fx3d.js con data-theme); el portafolio queda igual
   var fx = document.querySelector("script[data-theme]");
-  var TEMA = (fx && fx.dataset.theme) || "obras";
+  if (!fx) return;
+  var TEMA = fx.dataset.theme;
 
   // Colores por plantilla: acento, texto sobre el acento, fondo del panel, texto, borde
   var PALETAS = {
