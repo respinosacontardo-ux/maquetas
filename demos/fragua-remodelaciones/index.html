@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="es-CL" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fragua Remodelaciones · Baños, cocinas y ampliaciones en Santiago</title>
+<meta name="description" content="Remodelamos baños, cocinas, departamentos y ampliaciones en Santiago con presupuesto cerrado, plazo por contrato y garantía de 2 años. Cotiza en 60 segundos.">
+<meta property="og:title" content="Fragua Remodelaciones · Santiago">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1400&q=75&auto=format">
+<style>
+/* Sistema visual inspirado en el estilo "White concrete, single ember" (Refero Styles):
+   lienzo blanco, un solo acento naranja para las acciones, Inter comprimido y radios de 12px. */
+:root{
+  --ember:#ff5900; --ember-2:#e64f00;
+  --abyss:#000710; --carbon:#15191e;
+  --ink:#000000; --paper:#ffffff; --fog:#f3f3f7;
+  --mist:#b9bbc6; --steel:#8b8d98; --pewter:#6f737b; --graphite:#60646c;
+  --line:#e4e5ea;
+  --r:12px; --r-tag:6px;
+  --max:1200px;
+  --display:"Archivo", "Inter", system-ui, sans-serif;
+  --sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --gap:clamp(64px, 9vw, 120px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-size:16px;line-height:1.5;letter-spacing:-.01em;color:var(--ink);background:var(--paper);
+  font-feature-settings:"calt" 0,"liga" 0,"ss03","cv01","cv10";-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.sec{padding:var(--gap) 0}
+.fog{background:var(--fog)}
+.eyebrow{font-size:13px;font-weight:500;color:var(--graphite);display:inline-flex;align-items:center;gap:8px;letter-spacing:-.005em}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--ember)}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em;line-height:1.15}
+.display{font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:560;letter-spacing:-.035em;line-height:1.02}
+h2{font-size:clamp(30px,4.4vw,48px);margin:14px 0 16px}
+.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.45;color:var(--graphite);max-width:620px}
+.sec-head{max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
+.sec-head.c{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head.c .lead{margin:0 auto}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:var(--r);
+  font-weight:600;font-size:15px;letter-spacing:-.01em;text-decoration:none;transition:background .2s,transform .2s,border-color .2s}
+.btn-ember{background:var(--ember);color:#fff}
+.btn-ember:hover{background:var(--ember-2)}
+.btn-ember:active{transform:translateY(1px)}
+.btn-line{border:1px solid var(--mist);background:var(--paper)}
+.btn-line:hover{border-color:var(--ink)}
+.ghost{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:15px;text-decoration:none;min-height:44px}
+.ghost svg{color:var(--ember)}
+.ghost:hover span{text-decoration:underline;text-underline-offset:4px}
+
+/* Barra superior + header */
+.announce{background:var(--carbon);color:#fff;font-size:12.5px;font-weight:500;text-align:center;padding:9px 16px}
+.announce a{color:var(--ember);font-weight:600;text-decoration:none;white-space:nowrap}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .25s}
+header.solid{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-variation-settings:"wdth" 120;font-weight:640;font-size:20px;letter-spacing:-.04em}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--ink);display:grid;place-items:center}
+.logo small{font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:0;color:var(--steel);border:1px solid var(--line);border-radius:var(--r-tag);padding:2px 6px;margin-left:2px}
+#nav{display:flex;gap:28px}
+#nav a{font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);opacity:.86}
+#nav a:hover{opacity:1}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-cta .tel{font-size:14px;font-weight:500;text-decoration:none}
+.nav-cta .btn{min-height:40px;padding:8px 16px;font-size:14px}
+#menuBtn{display:none;width:44px;height:44px;border-radius:var(--r);border:1px solid var(--line);place-items:center}
+#menuBtn i{display:block;width:16px;height:1.5px;background:var(--ink);position:relative}
+#menuBtn i::before,#menuBtn i::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--ink);transition:transform .25s}
+#menuBtn i::before{top:-5px}#menuBtn i::after{top:5px}
+header.open #menuBtn i{background:transparent}
+header.open #menuBtn i::before{transform:translateY(5px) rotate(45deg)}
+header.open #menuBtn i::after{transform:translateY(-5px) rotate(-45deg)}
+
+/* Portada */
+.hero{padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,96px);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(38px,4.7vw,70px);margin:18px 0 22px;font-variation-settings:"wdth" 112}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--ember)}
+.hero .lead{margin-bottom:28px}
+.quick{display:flex;gap:8px;max-width:520px;margin-bottom:14px}
+.quick select{flex:1;min-width:0;min-height:52px;border:1px solid var(--mist);border-radius:var(--r);padding:0 40px 0 16px;font:inherit;font-size:15px;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%2360646c' stroke-width='1.6'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center;appearance:none;-webkit-appearance:none}
+.quick select:focus{outline:none;border-color:var(--ink)}
+.quick .btn{min-height:52px}
+.hero-sub{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+.trust{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--pewter)}
+.stars{color:var(--ink);letter-spacing:1px;font-size:12px}
+.hero-visual{position:relative}
+.hero-photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.4;background:var(--fog);position:relative}
+.hero-photo img{width:100%;height:112%;object-fit:cover;object-position:50% 40%}
+.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;box-shadow:0 18px 40px -24px rgba(0,7,16,.35)}
+.float b{display:block;font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:600;font-size:28px;letter-spacing:-.04em;line-height:1}
+.float span{font-size:12.5px;color:var(--graphite)}
+.float b span{font:inherit;color:inherit}
+.f1{left:-28px;bottom:56px}
+.f2{right:-18px;top:36px;display:flex;align-items:center;gap:12px}
+.f2 .dot{width:36px;height:36px;border-radius:10px;background:var(--fog);display:grid;place-items:center;color:var(--ember)}
+.f2 b{font-size:15px;font-family:var(--sans);font-weight:600;letter-spacing:-.01em}
+.f3{right:24px;bottom:-22px;display:flex;align-items:center;gap:10px;padding:10px 14px}
+.f3 .live{width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 4px rgba(22,163,74,.15)}
+.f3 span{color:var(--ink);font-weight:500}
+
+/* Cifras */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.stat{background:var(--fog);padding:28px 24px}
+.stat b{display:block;font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:560;font-size:clamp(34px,4vw,48px);letter-spacing:-.04em;line-height:1}
+.stat>span{display:block;margin-top:8px;font-size:14px;color:var(--graphite)}
+
+/* Servicios */
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.svc{grid-column:span 2;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:border-color .25s}
+.svc:hover{border-color:var(--mist)}
+.svc.big{grid-column:span 3}
+.svc-txt{padding:24px 24px 20px}
+.svc h3{font-size:20px;letter-spacing:-.02em;margin-bottom:6px;display:flex;justify-content:space-between;gap:12px}
+.svc h3 small{font-size:12px;font-weight:500;color:var(--graphite);background:var(--fog);border-radius:var(--r-tag);padding:3px 8px;align-self:center;white-space:nowrap}
+.svc p{font-size:14.5px;color:var(--graphite)}
+.ph{margin-top:auto;overflow:hidden;aspect-ratio:16/10;background:var(--fog)}
+.svc.big .ph{aspect-ratio:16/9}
+.ph img{width:100%;height:114%;object-fit:cover}
+
+/* Ventajas */
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .25s;transform-style:preserve-3d}
+.card:hover{border-color:var(--mist)}
+.ico{width:44px;height:44px;border-radius:10px;background:var(--fog);display:grid;place-items:center;margin-bottom:22px}
+.ico svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:19px;letter-spacing:-.02em;margin-bottom:8px}
+.card p{font-size:15px;color:var(--graphite)}
+
+/* Cómo funciona */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.steps-line{position:absolute;left:0;right:0;top:21px;height:1px;background:var(--mist)}
+.steps-line i{display:block;height:100%;background:var(--ember);transform:scaleX(0);transform-origin:left}
+.step{position:relative}
+.step .n{width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--mist);display:grid;place-items:center;font-weight:600;font-size:14px;margin-bottom:22px;position:relative;z-index:1}
+.step h3{font-size:18px;letter-spacing:-.02em;margin-bottom:8px}
+.step p{font-size:15px;color:var(--graphite)}
+.step small{display:inline-block;margin-top:12px;font-size:12px;font-weight:500;color:var(--graphite);background:var(--fog);border-radius:var(--r-tag);padding:3px 8px}
+
+/* Cotizador */
+.qz-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px);align-items:start}
+.qz-side .lead{margin-bottom:24px}
+.qz-side ul{list-style:none;display:grid;gap:12px}
+.qz-side li{display:flex;gap:10px;font-size:15px;color:var(--graphite)}
+.qz-side li svg{flex:none;margin-top:3px;color:var(--ember)}
+#qz{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,3vw,32px);min-height:470px;display:flex;flex-direction:column}
+.qz-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--graphite);margin-bottom:10px}
+.qz-bar{height:3px;background:var(--fog);border-radius:3px;overflow:hidden;margin-bottom:24px}
+.qz-bar i{display:block;height:100%;background:var(--ember);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+#qz h3{font-size:22px;letter-spacing:-.025em;margin-bottom:6px}
+.qz-hint{font-size:14.5px;color:var(--graphite);margin-bottom:20px}
+.opts{display:grid;gap:10px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{text-align:left;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:3px;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--mist)}
+.opt.sel{border-color:var(--ink);background:var(--fog)}
+.opt b{font-size:15.5px;font-weight:600}
+.opt span{font-size:13.5px;color:var(--graphite)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:500;min-height:40px;transition:all .2s}
+.chip:hover{border-color:var(--mist)}
+.chip.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.field{display:grid;gap:7px;margin-bottom:16px}
+.field label{font-size:13.5px;font-weight:500}
+.inp{width:100%;min-height:48px;border:1px solid var(--mist);border-radius:var(--r);padding:12px 14px;font:inherit;font-size:15px;color:var(--ink);background:#fff}
+.inp:focus{outline:none;border-color:var(--ink)}
+textarea.inp{min-height:92px;resize:vertical}
+.range-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.range-row output{font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:600;font-size:30px;letter-spacing:-.04em}
+input[type=range]{width:100%;accent-color:var(--ember);height:28px}
+.qz-nav{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qz-back{font-size:14px;font-weight:500;color:var(--graphite);min-height:44px;padding:0 4px}
+.qz-back:hover{color:var(--ink)}
+.qz-next[disabled]{opacity:.35;pointer-events:none}
+.err{color:#c2410c;font-size:13.5px;min-height:20px}
+.res-big{background:var(--fog);border-radius:var(--r);padding:22px;margin-bottom:16px}
+.res-big small{font-size:13px;color:var(--graphite)}
+.res-big b{display:block;font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:600;font-size:clamp(28px,4vw,40px);letter-spacing:-.04em;line-height:1.1;margin:4px 0}
+.res-big span{font-size:14px;color:var(--graphite)}
+.res-list{list-style:none;font-size:14px;margin-bottom:14px}
+.res-list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.res-list li span:first-child{color:var(--graphite)}
+.ia-box{border:1px solid var(--line);border-radius:var(--r);padding:16px;font-size:14.5px;margin-bottom:14px}
+.ia-box b{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:6px}
+.ia-box b i{width:6px;height:6px;border-radius:2px;background:var(--ember)}
+.ia-box p{color:var(--graphite)}
+.note{font-size:12.5px;color:var(--pewter);line-height:1.5}
+.res-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+/* Proyectos */
+.proj{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.proj .ph{border-radius:var(--r);aspect-ratio:auto;height:100%;min-height:260px;position:relative}
+.proj .col{display:grid;gap:16px}
+.proj figcaption{position:absolute;left:14px;bottom:14px;background:#fff;border-radius:var(--r-tag);padding:6px 10px;font-size:12.5px;font-weight:500}
+.ref{font-size:12.5px;color:var(--pewter);margin-top:12px}
+
+/* Testimonios */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tst{background:#fff;border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:18px}
+.tst .tag{align-self:flex-start;font-size:11.5px;font-weight:500;color:var(--graphite);border:1px solid var(--line);border-radius:var(--r-tag);padding:3px 8px}
+.tst q{font-size:16.5px;line-height:1.5;quotes:none;letter-spacing:-.015em}
+.who{display:flex;align-items:center;gap:12px;margin-top:auto;font-size:14px}
+.who i{width:38px;height:38px;border-radius:50%;background:var(--fog);display:grid;place-items:center;font-style:normal;font-weight:600;font-size:13px}
+.who span{display:block;color:var(--graphite);font-size:13px}
+
+/* FAQ */
+.faq-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,4vw,64px)}
+#faq details{border-bottom:1px solid var(--line)}
+#faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:17px;letter-spacing:-.015em}
+#faq summary::-webkit-details-marker{display:none}
+#faq summary::after{content:"";flex:none;width:12px;height:12px;margin-top:6px;background:linear-gradient(var(--ink),var(--ink)) center/12px 1.5px no-repeat,linear-gradient(var(--ink),var(--ink)) center/1.5px 12px no-repeat;transition:transform .25s}
+#faq details[open] summary::after{transform:rotate(45deg)}
+#faq p{color:var(--graphite);padding:0 32px 22px 0;font-size:15.5px}
+
+/* Contacto */
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ct-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,32px)}
+.ct-info{display:grid;gap:18px;margin:22px 0}
+.ct-info>div{display:flex;gap:12px;font-size:15px}
+.ct-info svg{flex:none;width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6;margin-top:2px}
+.ct-info small{display:block;color:var(--graphite);font-size:13px}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);height:220px;background:var(--fog)}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#cOk{display:none;background:var(--fog);border-radius:var(--r);padding:16px;font-size:14.5px;margin-top:12px}
+
+/* Footer */
+footer{background:var(--abyss);color:#fff;padding:64px 0 36px}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer .logo{color:#fff}
+footer .logo-mark{background:#fff}
+footer .logo-mark svg path{stroke:var(--abyss)}
+footer p{color:var(--mist);font-size:14px;margin-top:14px;max-width:300px}
+footer h4{font-size:14px;font-weight:600;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer li a,footer li{color:var(--mist);font-size:14px;text-decoration:none}
+footer li a:hover{color:#fff}
+.ft-bottom{border-top:1px solid #1d222b;margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--steel)}
+
+/* Botones flotantes y asistente */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.35);transition:transform .2s}
+.wa-float:hover{transform:scale(1.06)}
+#aiFab{position:fixed;left:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;height:52px;padding:0 18px 0 8px;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;box-shadow:0 10px 26px -10px rgba(0,0,0,.45);transition:opacity .2s}
+#aiFab .av{width:36px;height:36px;border-radius:50%;background:var(--ember);display:grid;place-items:center}
+#chat{position:fixed;left:18px;bottom:18px;z-index:70;width:min(380px,calc(100vw - 36px));height:min(560px,calc(100vh - 110px));background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 70px -20px rgba(0,7,16,.35);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.98);pointer-events:none;transition:opacity .25s,transform .25s}
+#chat.on{opacity:1;transform:none;pointer-events:auto}
+.chat-h{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.chat-h .av{width:36px;height:36px;border-radius:50%;background:var(--ember);display:grid;place-items:center;flex:none}
+.chat-h b{font-size:14.5px;display:block}
+.chat-h span{font-size:12px;color:var(--graphite);display:flex;align-items:center;gap:6px}
+.chat-h span::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a34a}
+#chatX{margin-left:auto;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:20px;color:var(--graphite)}
+#chatX:hover{background:var(--fog)}
+#chatM{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--fog)}
+.msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-wrap}
+.msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.typing{display:flex;gap:4px;padding:14px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--steel);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.msg-acts{display:flex;flex-wrap:wrap;gap:6px}
+.msg-acts button,.msg-acts a{font-size:13px;font-weight:500;border:1px solid var(--mist);background:#fff;border-radius:999px;padding:7px 12px;text-decoration:none;min-height:34px}
+.msg-acts .pri{background:var(--ember);border-color:var(--ember);color:#fff}
+.msg-acts .wa{border-color:#25d366;color:#128c4a}
+#chatF{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+#chatI{flex:1;min-width:0;min-height:44px;border:1px solid var(--mist);border-radius:var(--r);padding:0 14px;font:inherit;font-size:16px}
+#chatI:focus{outline:none;border-color:var(--ink)}
+#chatF button{width:44px;height:44px;border-radius:var(--r);background:var(--ember);display:grid;place-items:center;flex:none}
+.chat-foot{font-size:11px;color:var(--steel);text-align:center;padding:0 12px 10px}
+
+/* Animaciones de entrada (solo con JS y sin "reducir movimiento") */
+.js .rv{opacity:0;transform:translateY(26px)}
+
+/* Responsive */
+@media (max-width:1000px){
+  #nav,.nav-cta .tel{display:none}
+  #menuBtn{display:grid}
+  header.open #nav{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:8px clamp(16px,4vw,32px) 16px}
+  header.open #nav a{padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .hero-grid,.qz-wrap,.faq-wrap{grid-template-columns:1fr}
+  .hero-visual{max-width:560px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .svc,.svc.big{grid-column:span 3}
+  .adv-grid,.tst-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
+  .steps-line{display:none}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .announce{font-size:12px}
+  .nav{height:60px}
+  header.open #nav{top:60px}
+  .nav-cta .btn{display:none}
+  .hero{padding-top:28px}
+  .hero h1{margin:14px 0 16px}
+  .quick{flex-direction:column}
+  .hero-photo{aspect-ratio:4/3.4}
+  .f1{left:10px;bottom:14px;padding:10px 12px}
+  .f1 b{font-size:22px}
+  .f2{right:10px;top:10px;padding:10px 12px}
+  .f2 .dot{width:30px;height:30px}
+  .f3{display:none}
+  .svc,.svc.big{grid-column:span 6}
+  .adv-grid,.tst-grid,.ct-grid,.two,.opts.two{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;row-gap:28px}
+  .proj{grid-template-columns:1fr}
+  .proj .ph{min-height:220px}
+  .stat{padding:22px 18px}
+  .stat b{font-size:30px;white-space:nowrap}
+  .ft{grid-template-columns:1fr}
+  #aiFab span.t{display:none}
+  #aiFab{padding:0 8px}
+  #chat{left:8px;right:8px;bottom:8px;width:auto;height:calc(100dvh - 16px)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="announce">Demo de diseño · Visita técnica sin costo en Santiago · <a href="#cotizador">Cotiza tu remodelación en 60 segundos →</a></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Fragua Remodelaciones, inicio">
+      <span class="logo-mark"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13V3h10M3 8h7" stroke="#fff" stroke-width="2.2" stroke-linecap="square"/></svg></span>
+      Fragua<small>Demo</small>
+    </a>
+    <nav id="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#ventajas">Por qué Fragua</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#faq-sec">Preguntas</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="tel" href="#contacto">Contacto</a>
+      <a class="btn btn-ember" href="#cotizador">Cotizar obra</a>
+      <button id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- Portada -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow hero-in">Remodelaciones y ampliaciones en Santiago</span>
+      <h1 class="display"><span class="ln"><span>Remodela tu casa</span></span><span class="ln"><span>sin sorpresas en</span></span><span class="ln"><span>el <em>presupuesto</em>.</span></span></h1>
+      <p class="lead hero-in">Baños, cocinas, departamentos y segundos pisos con precio cerrado, plazo por contrato y un solo responsable de principio a fin.</p>
+      <form class="quick hero-in" id="quick">
+        <label class="sr" for="quickTipo" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">¿Qué quieres remodelar?</label>
+        <select id="quickTipo" aria-label="¿Qué quieres remodelar?">
+          <option value="">¿Qué quieres remodelar?</option>
+          <option value="bano">Baño</option>
+          <option value="cocina">Cocina</option>
+          <option value="ampliacion">Ampliación o segundo piso</option>
+          <option value="depto">Departamento completo</option>
+          <option value="terraza">Terraza o quincho</option>
+        </select>
+        <button class="btn btn-ember" type="submit">Cotizar gratis</button>
+      </form>
+      <div class="hero-sub hero-in">
+        <a class="ghost" href="#proyectos"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 6l4 3-4 3V6z" fill="currentColor"/></svg><span>Ver proyectos</span></a>
+        <span class="trust"><span class="stars">★★★★★</span> 4,9 de 5 · 180 reseñas de ejemplo</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1400&q=75&auto=format" alt="Casa de hormigón blanco con ventanales y jardín" width="1400" height="1540"></div>
+      <div class="float f1 hero-card"><b><span data-count="240">240</span>+</b><span>obras entregadas</span></div>
+      <div class="float f2 hero-card"><span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>Garantía 2 años</b><span>por escrito</span></div></div>
+      <div class="float f3 hero-card"><i class="live"></i><span>3 obras en curso esta semana</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cifras -->
+<section aria-label="Cifras">
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat"><b><span data-count="12">12</span> años</b><span>remodelando casas y deptos</span></div>
+      <div class="stat"><b><span data-count="240">240</span>+</b><span>obras entregadas en Santiago</span></div>
+      <div class="stat"><b><span data-count="96">96</span>%</b><span>terminadas dentro del plazo</span></div>
+      <div class="stat"><b><span data-count="48">48</span> h</b><span>para tu presupuesto detallado</span></div>
+    </div>
+    <p class="ref">Cifras de ejemplo para esta demo.</p>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo que hacemos, de la demolición a la última luz.</h2>
+      <p class="lead">Un mismo equipo para el diseño, la obra y las terminaciones. Tú no coordinas maestros: coordinamos nosotros.</p>
+    </div>
+    <div class="svc-grid">
+      <a class="svc big rv" href="#cotizador" data-tipo-link="bano">
+        <div class="svc-txt"><h3>Baños <small>2 a 3 semanas</small></h3><p>Impermeabilización garantizada, porcelanato, shower door y grifería. Sin filtraciones al vecino de abajo.</p></div>
+        <div class="ph"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1000&q=72&auto=format" alt="Baño moderno con ducha de vidrio y vanitorio" loading="lazy"></div>
+      </a>
+      <a class="svc big rv" href="#cotizador" data-tipo-link="cocina">
+        <div class="svc-txt"><h3>Cocinas <small>3 a 4 semanas</small></h3><p>Muebles a medida, cubiertas de cuarzo o granito, nueva gasfitería y electricidad certificada.</p></div>
+        <div class="ph"><img src="https://images.unsplash.com/photo-1682888813913-e13f18692019?w=1000&q=72&auto=format" alt="Cocina con isla de mármol y muebles blancos" loading="lazy"></div>
+      </a>
+      <a class="svc rv" href="#cotizador" data-tipo-link="ampliacion">
+        <div class="svc-txt"><h3>Ampliaciones <small>Con permiso</small></h3><p>Segundos pisos y nuevos dormitorios con cálculo estructural y trámite en la DOM.</p></div>
+        <div class="ph"><img src="https://images.unsplash.com/photo-1672627170267-fca17bb54156?w=800&q=72&auto=format" alt="Casa en construcción con estructura de segundo piso" loading="lazy"></div>
+      </a>
+      <a class="svc rv" href="#cotizador" data-tipo-link="depto">
+        <div class="svc-txt"><h3>Departamentos <small>Llave en mano</small></h3><p>Remodelación completa para vivir o arrendar: pisos, pintura, baños, cocina e iluminación.</p></div>
+        <div class="ph"><img src="https://images.unsplash.com/photo-1634586648651-f1fb9ec10d90?w=800&q=72&auto=format" alt="Departamento en remodelación con muros intervenidos" loading="lazy"></div>
+      </a>
+      <a class="svc rv" href="#cotizador" data-tipo-link="terraza">
+        <div class="svc-txt"><h3>Terrazas y quinchos <small>3 a 5 semanas</small></h3><p>Radier, pérgolas, techumbres y parrilla para aprovechar el patio todo el año.</p></div>
+        <div class="ph"><img src="https://images.unsplash.com/photo-1657346088167-b982455bf29a?w=800&q=72&auto=format" alt="Casa moderna de tres pisos con terraza" loading="lazy"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Ventajas -->
+<section class="sec fog" id="ventajas">
+  <div class="wrap">
+    <div class="sec-head c">
+      <span class="eyebrow">Por qué Fragua</span>
+      <h2>Una obra se nota en los detalles.<br>Y en lo que no te preocupa.</h2>
+    </div>
+    <div class="adv-grid">
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Presupuesto cerrado</h3><p>Partida por partida, por escrito. Lo que firmas es lo que pagas: sin "imprevistos" a mitad de obra.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg></div><h3>Plazo por contrato</h3><p>Fecha de entrega firmada. Si nos atrasamos por causa nuestra, te descontamos por cada día.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><h3>Un solo responsable</h3><p>Un jefe de obra dedicado que responde por todo: maestros, materiales, horarios y calidad.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Garantía de 2 años</h3><p>En impermeabilización, instalaciones y terminaciones. Si algo falla, volvemos sin costo.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.9A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg></div><h3>Avance por WhatsApp</h3><p>Fotos y novedades cada día. Sabes cómo va tu obra aunque estés en la oficina.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/></svg></div><h3>Obra limpia y ordenada</h3><p>Protegemos pisos y muebles, respetamos los horarios del edificio y retiramos escombros cada semana.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>De la idea a la entrega, en cuatro pasos claros.</h2>
+    </div>
+    <div class="steps" id="steps">
+      <div class="steps-line" aria-hidden="true"><i></i></div>
+      <div class="step rv"><span class="n">1</span><h3>Cotiza en línea</h3><p>Usa el cotizador y recibe un rango de precio y plazo al instante.</p><small>60 segundos</small></div>
+      <div class="step rv"><span class="n">2</span><h3>Visita técnica</h3><p>Vamos a tu casa, medimos, revisamos instalaciones y vemos materiales contigo.</p><small>Sin costo</small></div>
+      <div class="step rv"><span class="n">3</span><h3>Presupuesto y contrato</h3><p>Te enviamos el detalle por partida, con plazo y forma de pago por avance.</p><small>En 48 horas</small></div>
+      <div class="step rv"><span class="n">4</span><h3>Obra y entrega</h3><p>Ejecutamos con jefe de obra dedicado y te entregamos con garantía escrita.</p><small>Garantía 2 años</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cotizador -->
+<section class="sec fog" id="cotizador">
+  <div class="wrap qz-wrap">
+    <div class="qz-side">
+      <span class="eyebrow">Cotizador</span>
+      <h2>¿Cuánto cuesta tu remodelación?</h2>
+      <p class="lead">Responde 5 preguntas y te mostramos un rango de precio y de plazo para tu proyecto, calculado con valores de mercado en Santiago.</p>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>Rango de precio con IVA, mano de obra y materiales</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>Plazo estimado de obra en semanas</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>Recomendaciones para tu tipo de obra</li>
+      </ul>
+    </div>
+    <div id="qz" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- Proyectos -->
+<section class="sec" id="proyectos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Proyectos</span>
+      <h2>Espacios que se sienten nuevos.</h2>
+      <p class="lead">Cada obra parte con una visita, un plano y una lista de materiales que eliges con nosotros.</p>
+    </div>
+    <div class="proj">
+      <figure class="ph rv"><img src="https://images.unsplash.com/photo-1682888813913-e13f18692019?w=1400&q=74&auto=format" alt="Cocina remodelada con isla central" loading="lazy"><figcaption>Cocina con isla · Ñuñoa</figcaption></figure>
+      <div class="col">
+        <figure class="ph rv"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=72&auto=format" alt="Baño con ducha de vidrio" loading="lazy"><figcaption>Baño principal · Providencia</figcaption></figure>
+        <figure class="ph rv"><img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=900&q=72&auto=format" alt="Maestro trabajando sobre una escalera en una habitación" loading="lazy"><figcaption>Depto en obra · Las Condes</figcaption></figure>
+      </div>
+    </div>
+    <p class="ref">Fotos de referencia para la demo: en la versión final van las obras reales del cliente.</p>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="sec fog" id="testimonios">
+  <div class="wrap">
+    <div class="sec-head c">
+      <span class="eyebrow">Testimonios</span>
+      <h2>Lo que dicen quienes ya remodelaron.</h2>
+    </div>
+    <div class="tst-grid">
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Nos entregaron el baño un día antes de lo firmado y sin una sola sorpresa en la cuenta. El jefe de obra mandaba fotos todas las tardes.</q><div class="who"><i>CM</i><div><b>Carolina M.</b><span>Baño · Ñuñoa</span></div></div></article>
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Teníamos miedo de hacer el segundo piso por los permisos. Ellos hicieron todo el trámite en la municipalidad y nosotros solo elegimos terminaciones.</q><div class="who"><i>RF</i><div><b>Rodrigo F.</b><span>Ampliación · La Reina</span></div></div></article>
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Remodelaron el depto completo para arrendarlo. Quedó impecable, el edificio no tuvo ni un reclamo y lo arrendamos en dos semanas.</q><div class="who"><i>PS</i><div><b>Paula S.</b><span>Departamento · Providencia</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas frecuentes -->
+<section class="sec" id="faq-sec">
+  <div class="wrap faq-wrap">
+    <div>
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que todos preguntan antes de remodelar.</h2>
+      <p class="lead">¿Te queda una duda? El asistente de abajo a la izquierda te responde al tiro.</p>
+    </div>
+    <div id="faq">
+      <details><summary>¿Cuánto cuesta remodelar un baño en Santiago?</summary><p>Un baño de 4 a 6 m² con terminaciones esenciales parte cerca de $4,5 millones, y con porcelanato y grifería de diseño suele quedar entre $6 y $8 millones, IVA incluido. El cotizador te da un rango para tu caso y el valor exacto sale de la visita técnica.</p></details>
+      <details><summary>¿Cuánto demora la obra?</summary><p>Un baño toma de 2 a 3 semanas, una cocina de 3 a 4, un departamento completo de 5 a 8 y una ampliación de 2 a 3 meses. El plazo queda firmado en el contrato.</p></details>
+      <details><summary>¿Necesito permiso municipal?</summary><p>Para remodelaciones interiores sin tocar estructura, por lo general no. Las ampliaciones y segundos pisos sí necesitan permiso de la Dirección de Obras: nosotros hacemos los planos, el cálculo y el trámite.</p></details>
+      <details><summary>¿Cómo se paga?</summary><p>Un 30% al firmar para comprar materiales y el resto por estados de avance: pagas lo que ya está hecho. Aceptamos transferencia y tarjeta de crédito.</p></details>
+      <details><summary>¿Puedo seguir viviendo en la casa durante la obra?</summary><p>Sí, en la mayoría de los casos. Aislamos la zona de trabajo, protegemos pisos y muebles y coordinamos horarios para que la rutina de tu familia se vea lo menos afectada posible.</p></details>
+      <details><summary>¿Qué incluye la garantía?</summary><p>2 años por escrito en impermeabilización, instalaciones eléctricas y sanitarias y terminaciones. Si aparece una falla por nuestro trabajo, volvemos y la reparamos sin costo.</p></details>
+      <details><summary>¿En qué comunas trabajan?</summary><p>Providencia, Ñuñoa, Las Condes, La Reina, Vitacura, Macul, San Miguel y Santiago Centro. Para otras comunas, escríbenos y lo vemos según el proyecto.</p></details>
+      <details><summary>¿La visita técnica tiene costo?</summary><p>No. Vamos a tu casa, medimos, revisamos el estado de las instalaciones y en 48 horas te enviamos el presupuesto detallado, sin compromiso.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="sec fog" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Agenda tu visita técnica sin costo.</h2>
+    </div>
+    <div class="ct-grid">
+      <div class="ct-card rv">
+        <h3 style="font-size:20px;letter-spacing:-.02em">Hablemos de tu proyecto</h3>
+        <div class="ct-info">
+          <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><b>Oficina</b><small id="cDir"></small></div></div>
+          <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horario</b><small id="cHor"></small></div></div>
+          <div><svg viewBox="0 0 24 24"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg><div><b>Email</b><small id="cMail"></small></div></div>
+        </div>
+        <div class="map"><iframe title="Mapa de Providencia, Santiago" loading="lazy" src="https://www.google.com/maps?q=Av.+Italia+1450,+Providencia,+Santiago&output=embed"></iframe></div>
+        <a class="btn btn-line" id="cWa" target="_blank" rel="noopener" style="margin-top:16px;width:100%">Escribir por WhatsApp</a>
+      </div>
+      <form class="ct-card rv" id="contactForm" novalidate>
+        <h3 style="font-size:20px;letter-spacing:-.02em;margin-bottom:18px">Te llamamos nosotros</h3>
+        <div class="two">
+          <div class="field"><label for="fNombre">Nombre</label><input class="inp" id="fNombre" name="nombre" autocomplete="name"></div>
+          <div class="field"><label for="fTel">WhatsApp</label><input class="inp" id="fTel" name="telefono" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678"></div>
+        </div>
+        <div class="field"><label for="fComuna">Comuna</label><select class="inp" id="fComuna" name="comuna"></select></div>
+        <div class="field"><label for="fMsg">¿Qué quieres remodelar?</label><textarea class="inp" id="fMsg" name="mensaje" placeholder="Ej.: baño principal de 5 m², quiero cambiar la tina por ducha."></textarea></div>
+        <p class="err" id="cErr" role="alert"></p>
+        <button class="btn btn-ember" type="submit" style="width:100%">Pedir visita sin costo</button>
+        <p class="note" style="margin-top:12px">Usamos tus datos solo para contactarte por este proyecto.</p>
+        <div id="cOk" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="#"><span class="logo-mark"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13V3h10M3 8h7" stroke-width="2.2" stroke-linecap="square"/></svg></span>Fragua</a>
+        <p>Remodelaciones y ampliaciones en Santiago con presupuesto cerrado y garantía escrita.</p>
+      </div>
+      <div><h4>Servicios</h4><ul><li><a href="#servicios">Baños</a></li><li><a href="#servicios">Cocinas</a></li><li><a href="#servicios">Ampliaciones</a></li><li><a href="#servicios">Departamentos</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="#ventajas">Por qué Fragua</a></li><li><a href="#proceso">Cómo trabajamos</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#faq-sec">Preguntas</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="#cotizador">Cotizador</a></li><li><a href="#contacto">Visita técnica</a></li><li id="fHor"></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© 2026 Fragua Remodelaciones · Marca ficticia: demo de diseño de Facundo Social Media.</span><span>Precios y testimonios de ejemplo.</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFab" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></svg>
+</a>
+<button id="aiFab" type="button" aria-label="Abrir asistente"><span class="av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.9A8 8 0 1 1 21 12z"/></svg></span><span class="t">¿Dudas? Pregúntame</span></button>
+<section id="chat" role="dialog" aria-label="Asistente virtual" aria-modal="false">
+  <div class="chat-h"><span class="av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.9A8 8 0 1 1 21 12z"/></svg></span><div><b>Asistente Fragua</b><span>Responde al instante</span></div><button id="chatX" type="button" aria-label="Cerrar asistente">×</button></div>
+  <div id="chatM"></div>
+  <form id="chatF"><input id="chatI" autocomplete="off" placeholder="Escribe tu pregunta…" aria-label="Tu pregunta"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  <p class="chat-foot">Asistente virtual · las respuestas son orientativas</p>
+</section>
+
+<script src="config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
