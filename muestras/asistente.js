@@ -13,7 +13,9 @@
   if (window.__fsmAsistente) return;
   window.__fsmAsistente = true;
 
-  var CL = document.documentElement.dataset.pais === "CL";
+  // Tuteo en Chile y en España (ES); voseo en Argentina
+  var ES = document.documentElement.dataset.pais === "ES";
+  var CL = document.documentElement.dataset.pais === "CL" || ES;
   // Solo en las muestras y maquetas de un rubro (las que cargan fx3d.js con data-theme); el portafolio queda igual
   var fx = document.querySelector("script[data-theme]");
   if (!fx) return;
@@ -42,6 +44,8 @@
     reserva: "¿Querés reservar o cotizar? Lo armás en 30 segundos acá abajo 👇", tu: "tu", quieres: "Querés", nombre: "¿Cómo te llamás?",
     enviar: "Enviar por WhatsApp", listo: "¡Listo! Revisá tu solicitud y enviala por WhatsApp:", ver: "Ver opciones"
   };
+
+  if (ES) { T.reserva = T.reserva.replace("acá", "aquí"); }
 
   function numero() {
     try { if (typeof WHATSAPP !== "undefined") return String(WHATSAPP); } catch (e) {}
@@ -93,7 +97,7 @@
     if (!sec) return [];
     var items = [].slice.call(sec.querySelectorAll("article, li, .row, tr")).map(function (el) {
       var t = txt(el), n = propio(el.querySelector("h3, h4")) || propio(el.querySelector(".name, strong")) || propio(el.querySelector("td")) || propio(el.querySelector("span"));
-      var p = t.match(/(\$|USD|CLP)\s?[\d.,]+(\s?\/\s?\w+)?/);
+      var p = t.match(/(\$|USD|CLP)\s?[\d.,]+(\s?\/\s?\w+)?|[\d.,]+\s?€(\s?\/\s?\w+)?/);
       return p && n ? (n.length < 50 ? n : n.slice(0, 50)) + ": " + p[0] : null;
     }).filter(Boolean);
     return items.filter(function (x, i) { return items.indexOf(x) === i; }).slice(0, 6);
@@ -387,7 +391,7 @@
       { k: "Servicio", q: CL ? "¿Qué necesitas?" : "¿Qué necesitás?", o: serv },
       { k: "Tamaño aprox.", q: CL ? "¿De qué tamaño es el proyecto?" : "¿De qué tamaño es el proyecto?", rango: [10, 400, 60, "m²"] },
       { k: "Plazo", q: CL ? "¿Para cuándo lo necesitas?" : "¿Para cuándo lo necesitás?", o: ["Lo antes posible", "En 1 a 3 meses", "En más de 3 meses", "Solo estoy cotizando"] },
-      { k: "Ubicación", q: CL ? "¿En qué comuna es la obra?" : "¿En qué barrio o ciudad es la obra?", texto: document.documentElement.dataset.ciudad || "" },
+      { k: "Ubicación", q: CL && !ES ? "¿En qué comuna es la obra?" : "¿En qué barrio o ciudad es la obra?", texto: document.documentElement.dataset.ciudad || "" },
       { k: "Nombre", q: T.nombre, texto: "", nombre: true }
     ];
     if (TEMA === "gimnasio") return [

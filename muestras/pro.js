@@ -52,7 +52,7 @@
         var yaTiene = [].some.call(document.querySelectorAll("a"), function (a) { return /cómo llegar/i.test(a.textContent); });
         if (dir && !yaTiene) links.push(['https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(dir), "📍 Cómo llegar", base + "background:#1a73e8;color:#fff"]);
         if (tel) {
-          links.push(["https://wa.me/" + tel + "?text=" + encodeURIComponent("Hola! Quiero hacer una consulta."), document.documentElement.dataset.pais === "CL" ? "💬 Escríbenos por WhatsApp" : "💬 Escribinos por WhatsApp", base + "background:#25d366;color:#0b2e17"]);
+          links.push(["https://wa.me/" + tel + "?text=" + encodeURIComponent("Hola! Quiero hacer una consulta."), /^(CL|ES)$/.test(document.documentElement.dataset.pais) ? "💬 Escríbenos por WhatsApp" : "💬 Escribinos por WhatsApp", base + "background:#25d366;color:#0b2e17"]);
           links.push(["tel:+" + tel, "📞 Llamar", base + "background:transparent;color:inherit;border:1px solid currentColor;opacity:.85"]);
         }
         bar.style.cssText = "display:flex;flex-wrap:wrap;gap:10px;margin-top:14px";
