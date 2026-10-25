@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Contardo Contador — Contabilidad chilena, simple y en la nube</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Contardo Contador: contabilidad chilena completa en un solo lugar. Libros, balance tributario, remuneraciones, Previred, RCV del SII, conciliación bancaria, IFRS y más. Prueba 7 días gratis.">
+<meta name="theme-color" content="#2f6df6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23ffffff'/%3E%3Cpath d='M92.7 89.4 A44 44 0 1 1 92.7 30.6' stroke='%230f1729' stroke-width='20' fill='none'/%3E%3Cpath d='M74.12 72.71 A19 19 0 1 1 74.12 47.29' stroke='%232f6df6' stroke-width='16' fill='none'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#ffffff; --bg-2:#f4f7fb; --text:#0f1729; --muted:#5a6a80; --border:#e5e9f2;
+    --brand:#2f6df6; --brand-2:#6d5efc; --brand-soft:#eef2ff;
+    --grad:linear-gradient(135deg,#2f6df6,#6d5efc);
+    --card:#ffffff; --shadow:0 8px 30px rgba(16,24,40,.08); --shadow-lg:0 24px 60px rgba(16,24,40,.14);
+    --ok:#12a150;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0a0e15; --bg-2:#0e1420; --text:#e8edf5; --muted:#93a1b3; --border:#20293a;
+      --brand:#5b8dff; --brand-2:#9a86ff; --brand-soft:#14203a; --grad:linear-gradient(135deg,#5b8dff,#9a86ff);
+      --card:#131b28; --shadow:0 8px 30px rgba(0,0,0,.5); --shadow-lg:0 24px 60px rgba(0,0,0,.6); --ok:#4ec97a; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:12px 22px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;transition:transform .15s,box-shadow .2s,border-color .2s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--brand)}
+  .btn.primary{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(47,109,246,.34)}
+  .btn.primary:hover{box-shadow:0 12px 30px rgba(47,109,246,.46);filter:brightness(1.05)}
+  .btn.lg{padding:15px 28px;font-size:16px}
+
+  /* NAV */
+  nav.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
+  nav.top .wrap{display:flex;align-items:center;gap:16px;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px}
+  .logo{width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:var(--text)}
+  .logo svg{width:100%;height:100%;display:block}
+  nav.top .links{display:flex;gap:26px;margin-left:22px;color:var(--muted);font-weight:600;font-size:15px}
+  nav.top .links a:hover{color:var(--text)}
+  nav.top .spacer{flex:1}
+  @media(max-width:720px){nav.top .links{display:none}}
+  /* ===== barra superior + landing en móvil ===== */
+  @media(max-width:600px){
+    nav.top .wrap{gap:10px;height:60px}
+    nav.top .brand{font-size:15px;white-space:nowrap}
+    nav.top .logo{width:32px;height:32px}
+    nav.top a.btn:not(.primary){display:none}      /* en móvil basta con un botón */
+    nav.top a.btn.primary{padding:10px 15px;font-size:14px}
+    .hero{padding:48px 0 28px}
+    .hero .cta{flex-direction:column;align-items:stretch}
+    .hero .cta .btn{justify-content:center}
+    section{padding:46px 0}
+    .stitle{margin-bottom:30px}
+    .band{padding:42px 0}
+    .band .box{padding:36px 22px}
+    .mock .kpis{grid-template-columns:1fr 1fr}
+    .mock .kpi .v{font-size:15px}
+    .aud{font-size:13.5px}
+  }
+  @media(max-width:380px){
+    nav.top .brand{font-size:13.5px}
+    .plan .pp{font-size:32px}
+  }
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:74px 0 40px;
+    background:radial-gradient(1000px 500px at 80% -10%, color-mix(in srgb,var(--brand-2) 16%,transparent), transparent 60%),
+               radial-gradient(800px 500px at -10% 10%, color-mix(in srgb,var(--brand) 13%,transparent), transparent 55%)}
+  .hero .pill{display:inline-flex;align-items:center;gap:8px;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:13px;padding:6px 14px;border-radius:30px;margin-bottom:20px}
+  .hero h1{font-size:clamp(34px,5.4vw,56px);line-height:1.08;letter-spacing:-.02em;margin:0 0 18px;font-weight:800}
+  .hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:620px;margin:0 0 30px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero .note{color:var(--muted);font-size:14px;margin-top:16px}
+
+  /* MOCKUP */
+  .mock{margin-top:52px;border-radius:16px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow-lg);overflow:hidden}
+  .mock .bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid var(--border);background:var(--bg-2)}
+  .mock .bar i{width:11px;height:11px;border-radius:50%;background:#e0655a;display:block}
+  .mock .bar i:nth-child(2){background:#e6b64a}.mock .bar i:nth-child(3){background:#5fca85}
+  .mock .bar .u{margin-left:12px;font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:3px 10px}
+  .mock .body{display:grid;grid-template-columns:180px 1fr;min-height:300px}
+  .mock .side{background:var(--bg-2);border-right:1px solid var(--border);padding:16px 12px;display:flex;flex-direction:column;gap:9px}
+  .mock .side b{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+  .mock .side span{font-size:13px;color:var(--muted);padding:7px 10px;border-radius:8px}
+  .mock .side span.on{background:var(--brand-soft);color:var(--brand);font-weight:700}
+  .mock .main{padding:20px}
+  .mock .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .mock .kpi{border:1px solid var(--border);border-radius:10px;padding:12px}
+  .mock .kpi .k{font-size:11px;color:var(--muted);text-transform:uppercase}
+  .mock .kpi .v{font-size:20px;font-weight:800;margin-top:4px}
+  .mock .rows{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .mock .r{display:grid;grid-template-columns:1fr 90px 90px;gap:10px;padding:10px 12px;border-top:1px solid var(--border);font-size:13px}
+  .mock .r:first-child{border-top:none;background:var(--bg-2);color:var(--muted);font-weight:700;font-size:11px;text-transform:uppercase}
+  .mock .r .n{text-align:right;font-variant-numeric:tabular-nums}
+  @media(max-width:640px){.mock .body{grid-template-columns:1fr}.mock .side{display:none}}
+
+  /* SECTIONS */
+  section{padding:66px 0}
+  .stitle{text-align:center;max-width:640px;margin:0 auto 44px}
+  .stitle h2{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;margin:0 0 12px;font-weight:800}
+  .stitle p{color:var(--muted);font-size:18px;margin:0}
+  .kick{display:inline-block;color:var(--brand);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .feat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;transition:transform .2s,box-shadow .25s,border-color .2s}
+  .feat:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--brand) 40%,var(--border))}
+  .feat .ic{width:44px;height:44px;border-radius:11px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+  .feat h3{margin:0 0 6px;font-size:17px}
+  .feat p{margin:0;color:var(--muted);font-size:14.5px}
+
+  /* COMPARE */
+  .compara{background:var(--bg-2)}
+  .ctable{max-width:840px;margin:0 auto;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+  .crow{display:grid;grid-template-columns:1.5fr 1fr 1fr;align-items:center}
+  .crow>div{padding:15px 18px;border-top:1px solid var(--border)}
+  .crow>div:first-child{font-weight:600}
+  .crow>div:nth-child(3){text-align:center;color:var(--muted)}
+  .crow .us{text-align:center;font-weight:800;background:color-mix(in srgb,var(--brand) 7%,var(--card));border-left:1px solid var(--border);border-right:1px solid var(--border)}
+  .crow.chead>div{border-top:none;font-weight:800;font-size:15px;background:var(--bg-2)}
+  .crow.chead .us{color:#fff;background:var(--grad)}
+  .crow.cprice>div{font-size:19px;font-weight:800;background:var(--bg-2)}
+  .crow.cprice .us{color:var(--brand);font-size:22px}
+  .yes{color:var(--ok);font-weight:800}
+  .no{color:#d0402c;font-weight:800}
+  @media(max-width:640px){.crow{grid-template-columns:1.3fr .85fr .85fr}.crow>div{padding:12px 9px;font-size:12.5px}.crow.chead>div{font-size:12.5px}.crow.cprice .us{font-size:16px}}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq details{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+  .faq details[open]{border-color:color-mix(in srgb,var(--brand) 40%,var(--border))}
+  .faq summary{padding:18px 20px;font-weight:700;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:24px;color:var(--brand);font-weight:400;line-height:1}
+  .faq details[open] summary::after{content:"−"}
+  .faq .a{padding:0 20px 18px;color:var(--muted);font-size:15px;line-height:1.65}
+  .pricenote{text-align:center;color:var(--muted);font-size:15px;margin-top:22px}
+  .pricenote b{color:var(--text)}
+
+  /* AUDIENCIA */
+  .eyebrow{text-align:center;color:var(--muted);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 18px}
+  .audiencia{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:820px){.audiencia{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.audiencia{grid-template-columns:1fr}}
+  .aud{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 16px;font-weight:700;font-size:14.5px;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .aud:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--brand) 45%,var(--border));box-shadow:var(--shadow)}
+  .aud .e{width:40px;height:40px;flex-shrink:0;border-radius:10px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:21px}
+
+  /* TESTIMONIOS */
+  .tcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:var(--shadow);transition:transform .2s;width:330px;flex-shrink:0}
+  .tcard:hover{transform:translateY(-3px)}
+  .marquee{overflow:hidden;padding:8px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+  .track{display:flex;gap:18px;width:max-content;padding:0 18px;animation:scrollx 90s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .tcard p{min-height:96px}
+  .tcard .stars{color:#f5a623;font-size:15px;margin-bottom:10px;letter-spacing:1px}
+  .tcard p{margin:0 0 16px;font-size:15.5px;line-height:1.6}
+  .tcard .who{display:flex;align-items:center;gap:12px}
+  .tcard .av{width:44px;height:44px;flex-shrink:0;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+  .tcard .who b{display:block;font-size:14.5px}
+  .tcard .who span{color:var(--muted);font-size:13px}
+
+  /* SOBRE NOSOTROS */
+  .about{background:var(--bg-2)}
+  .about .inner{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:center;max-width:1000px;margin:0 auto}
+  .about .photo{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg);aspect-ratio:4/5;background:var(--card)}
+  .about .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .about .photo .badge{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:8px 12px;font-size:12.5px;font-weight:700}
+  .about .photo .badge .l{width:22px;height:22px;color:var(--text)}
+  .about .txt h2{font-size:clamp(24px,3.2vw,34px);letter-spacing:-.02em;margin:0 0 6px;font-weight:800}
+  .about .role{color:var(--brand);font-weight:700;font-size:15px;margin:0 0 16px}
+  .about .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+  .about .chip{background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:12.5px;padding:6px 12px;border-radius:20px}
+  .about .txt p{color:var(--muted);font-size:15.5px;line-height:1.72;margin:0 0 14px}
+  .about .sign{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--border)}
+  .about .sign .av{width:46px;height:46px;flex-shrink:0;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .about .sign b{display:block;font-size:15px}
+  .about .sign span{color:var(--muted);font-size:13px}
+  @media(max-width:820px){.about .inner{grid-template-columns:1fr;gap:28px}.about .photo{max-width:320px;margin:0 auto;width:100%}.about .txt{text-align:left}}
+
+  /* PRICING */
+  .pricing{background:var(--bg-2)}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:940px;margin:0 auto}
+  @media(max-width:820px){.plans{grid-template-columns:1fr;max-width:420px}}
+  .plan{position:relative;background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:28px 24px;text-align:center}
+  .plan.pop{border-color:var(--brand);box-shadow:0 10px 30px rgba(47,109,246,.22)}
+  .plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px}
+  .plan .pn{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .plan .pp{font-size:38px;font-weight:800;margin:8px 0 2px}
+  .plan .pp small{font-size:15px;color:var(--muted);font-weight:600}
+  .plan .pd{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .plan .save{color:var(--ok);font-weight:700;font-size:13px}
+  .plan .btn{width:100%;justify-content:center;margin-top:6px}
+  .plan .live{position:absolute;top:13px;left:16px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--ok)}
+  .plan .live .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(18,161,80,.5)}70%{box-shadow:0 0 0 7px rgba(18,161,80,0)}100%{box-shadow:0 0 0 0 rgba(18,161,80,0)}}
+
+  /* CTA band */
+  .band{margin:0 0 0;padding:64px 0}
+  .band .box{background:var(--grad);border-radius:22px;padding:52px 30px;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
+  .band h2{font-size:clamp(26px,3.6vw,36px);margin:0 0 12px;letter-spacing:-.02em}
+  .band p{opacity:.92;font-size:18px;margin:0 0 26px}
+  .band .btn{background:#fff;color:#1b2a4a;border-color:#fff}
+  .band .btn:hover{transform:translateY(-2px)}
+
+  footer{border-top:1px solid var(--border);padding:34px 0;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+
+  /* ===== TEMA CON DEGRADADO EN TODA LA PÁGINA ===== */
+  body{background:linear-gradient(180deg,
+      color-mix(in srgb,var(--brand) 8%,var(--bg)) 0%,
+      var(--bg) 15%,
+      color-mix(in srgb,var(--brand) 5%,var(--bg)) 38%,
+      color-mix(in srgb,var(--brand-2) 8%,var(--bg)) 60%,
+      var(--bg) 82%,
+      color-mix(in srgb,var(--brand-2) 7%,var(--bg)) 100%);
+      background-attachment:fixed}
+  /* secciones translúcidas para que el degradado se vea a través */
+  .compara{background:color-mix(in srgb,var(--brand) 5%, transparent)}
+  .pricing{background:color-mix(in srgb,var(--brand-2) 5%, transparent)}
+
+  /* ===== PRUEBA SOCIAL: +5.700 usuarios ===== */
+  .userproof{display:flex;align-items:center;gap:12px;margin-top:20px}
+  .userproof .avs{display:flex}
+  .userproof .avs span{width:34px;height:34px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;border:2px solid var(--bg);margin-left:-11px;box-shadow:var(--shadow)}
+  .userproof .avs span:first-child{margin-left:0}
+  .userproof .uptext{line-height:1.25}
+  .userproof .uptext b{font-size:16px}
+  .userproof .uptext .stars{color:#f5a623;font-size:12px;letter-spacing:1px}
+  .userproof .uptext span{display:block;color:var(--muted);font-size:13px}
+
+  /* ===== MOCKUP EN 3D ===== */
+  .mock{transform:perspective(1500px) rotateX(7deg) rotateY(-14deg) rotateZ(1.2deg) scale(.92);
+    transform-style:preserve-3d;will-change:transform;
+    transition:transform .6s cubic-bezier(.2,.75,.25,1),box-shadow .6s;
+    box-shadow:-44px 54px 100px rgba(16,24,40,.34), 0 14px 40px rgba(16,24,40,.18)}
+  .mock:hover{transform:perspective(1500px) rotateX(3deg) rotateY(-5deg) rotateZ(0) scale(.97)}
+  @media (prefers-color-scheme:dark){.mock{box-shadow:-34px 46px 100px rgba(0,0,0,.62), 0 12px 34px rgba(0,0,0,.5)}}
+  @media(max-width:640px){.mock{transform:none}.mock:hover{transform:none}}
+
+  /* ===== TARJETAS CON PROFUNDIDAD 3D ===== */
+  .grid{perspective:1300px}
+  .feat{transform-style:preserve-3d}
+  .feat:hover{transform:translateY(-6px) rotateX(3deg) scale(1.02);box-shadow:var(--shadow-lg)}
+  .aud:hover{transform:translateY(-4px) scale(1.03);box-shadow:var(--shadow-lg)}
+  .plan{transition:transform .3s,box-shadow .3s,border-color .2s}
+  .plan:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .plan.pop{transform:translateY(-8px) scale(1.03)}
+  .plan.pop:hover{transform:translateY(-13px) scale(1.03)}
+
+  /* ===== POP-UP DE RESEÑAS ===== */
+  .review-pop{position:fixed;left:20px;bottom:20px;z-index:60;width:322px;max-width:calc(100vw - 40px);
+    background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);
+    padding:16px 16px 15px;transform:translateY(150%) scale(.96);opacity:0;pointer-events:none;
+    transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s}
+  .review-pop.show{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+  .review-pop .rp-x{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;padding:2px 5px;border-radius:6px}
+  .review-pop .rp-x:hover{color:var(--text);background:var(--bg-2)}
+  .review-pop .rp-stars{color:#f5a623;font-size:14px;letter-spacing:1px;margin-bottom:7px}
+  .review-pop .rp-text{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--text);padding-right:12px}
+  .review-pop .rp-who{display:flex;align-items:center;gap:10px}
+  .review-pop .rp-av{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+  .review-pop .rp-who b{display:block;font-size:14px}
+  .review-pop .rp-who span{color:var(--muted);font-size:12.5px}
+  @media(max-width:600px){.review-pop{left:12px;right:12px;bottom:12px;width:auto;padding:14px}}
+
+  /* ===== BOTÓN FLOTANTE DE WHATSAPP ===== */
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:65;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;animation:wapulse 2.6s infinite}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:32px;height:32px}
+  .wa-float .wa-tip{position:absolute;right:70px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;font-weight:700;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s}
+  .wa-float:hover .wa-tip{opacity:1}
+  @keyframes wapulse{0%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}}
+  @media(max-width:600px){.wa-float{width:54px;height:54px;right:14px;bottom:14px}.wa-float .wa-tip{display:none}}
+
+  /* ===== CONTACTO (dropdown) + REDES ===== */
+  .dropdown{position:relative}
+  .dropdown .dd-t{display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:var(--muted)}
+  .dropdown .dd-t .car{width:9px;height:6px;fill:currentColor;transition:transform .2s}
+  .dropdown:hover .dd-t{color:var(--text)}
+  .dropdown:hover .dd-t .car{transform:rotate(180deg)}
+  .dropdown .menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:8px;min-width:212px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;z-index:40}
+  .dropdown:hover .menu,.dropdown:focus-within .menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px)}
+  .dropdown .menu a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--text);font-weight:600;font-size:14.5px}
+  .dropdown .menu a:hover{background:var(--bg-2)}
+  .soc-ic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .soc-ic svg{width:18px;height:18px;fill:#fff}
+  .ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+  .fb{background:#1877f2}
+  .wa{background:#25d366}
+  .fsoc{display:flex;gap:10px}
+  .fsoc a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .fsoc a:hover{transform:translateY(-3px)}
+  .fsoc a svg{width:18px;height:18px;fill:#fff}
+
+  /* ===== SERVICIOS: cursos + consultas ===== */
+  .svc{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1000px;margin:0 auto;perspective:1300px}
+  @media(max-width:760px){.svc{grid-template-columns:1fr}}
+  .svc .card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px 26px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s,border-color .2s;transform-style:preserve-3d}
+  .svc .card:hover{transform:translateY(-6px) rotateX(2deg);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--brand) 40%,var(--border))}
+  .svc .card .ic{width:54px;height:54px;border-radius:14px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:27px;margin-bottom:16px}
+  .svc .card h3{margin:0 0 8px;font-size:20px}
+  .svc .card p{margin:0 0 20px;color:var(--muted);font-size:15px;line-height:1.65}
+
+  /* ===== MEDIOS DE PAGO (Flow) ===== */
+  .paymethods{max-width:760px;margin:28px auto 0;text-align:center}
+  .paymethods .pm-lead{display:block;color:var(--muted);font-size:14px;margin-bottom:14px}
+  .paymethods .pm-lead b{color:var(--text)}
+  .pm-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .pm{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 15px;font-size:13px;font-weight:700;color:var(--text);box-shadow:var(--shadow)}
+
+  /* ===== MENÚ MÓVIL (hamburguesa con todas las secciones) ===== */
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);border-radius:11px;cursor:pointer;padding:0}
+  .hamburger span{display:block;width:20px;height:2px;background:var(--text);margin:0 auto;transition:transform .25s,opacity .2s;border-radius:2px}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{position:fixed;top:60px;left:0;right:0;background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg);z-index:29;display:flex;flex-direction:column;padding:8px 22px 22px;max-height:calc(100vh - 60px);overflow-y:auto;opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .25s,transform .25s}
+  .mobile-menu.open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .mobile-menu a.mm-link{padding:15px 4px;font-weight:700;font-size:16.5px;color:var(--text);border-bottom:1px solid var(--border)}
+  .mobile-menu a.mm-link:active{color:var(--brand)}
+  .mobile-menu .mm-soc{display:flex;align-items:center;gap:12px;padding:16px 4px;border-bottom:1px solid var(--border)}
+  .mobile-menu .mm-soc b{color:var(--muted);font-size:14px;font-weight:700}
+  .mobile-menu .mm-soc a{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .mobile-menu .mm-soc a svg{width:19px;height:19px;fill:#fff}
+  .mobile-menu .mm-cta{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .mobile-menu .mm-cta .btn{width:100%;justify-content:center;padding:14px;font-size:15.5px}
+  @media(max-width:720px){
+    .hamburger{display:flex}
+    nav.top .wrap > a.btn{display:none}   /* los botones pasan al menú móvil */
+  }
+  @media(min-width:721px){ .mobile-menu{display:none} }
+  /* Deja lugar al cartel "Powered by Netlify" de abajo a la derecha */
+  .wa-float{bottom:64px!important}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><span class="logo"><svg class="cc" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 89.4 A44 44 0 1 1 92.7 30.6" stroke="currentColor" stroke-width="20"/><path d="M74.12 72.71 A19 19 0 1 1 74.12 47.29" stroke="#2f6df6" stroke-width="16"/></svg></span> Contardo Contador</a>
+    <div class="links">
+      <a href="#funciones">Funciones</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">Preguntas</a>
+      <div class="dropdown">
+        <span class="dd-t">Contacto <svg class="car" viewBox="0 0 10 6"><path d="M0 0h10L5 6z"/></svg></span>
+        <div class="menu">
+          <a href="https://instagram.com/elcontardocontador" target="_blank" rel="noopener"><span class="soc-ic ig"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></span> Instagram</a>
+          <a href="https://www.facebook.com/elcontardo.contador/" target="_blank" rel="noopener"><span class="soc-ic fb"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15v2.32H7.5V13h2.75v8h3.25z"/></svg></span> Facebook</a>
+          <a href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener"><span class="soc-ic wa"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg></span> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <a class="btn" href="app.html">Ingresar</a>
+    <a class="btn primary" href="app.html">Empezar gratis</a>
+    <button class="hamburger" id="hbtn" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a class="mm-link" href="#funciones">Funciones</a>
+  <a class="mm-link" href="#servicios">Cursos y asesorías</a>
+  <a class="mm-link" href="#compara">Compáranos</a>
+  <a class="mm-link" href="#precios">Precios y pagos</a>
+  <a class="mm-link" href="nosotros.html">Nosotros</a>
+  <a class="mm-link" href="cursos.html">Cursos</a>
+  <a class="mm-link" href="#faq">Preguntas</a>
+  <div class="mm-soc">
+    <b>Contacto:</b>
+    <a class="ig" href="https://instagram.com/elcontardocontador" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+    <a class="fb" href="https://www.facebook.com/elcontardo.contador/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15v2.32H7.5V13h2.75v8h3.25z"/></svg></a>
+    <a class="wa" href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg></a>
+  </div>
+  <div class="mm-cta">
+    <a class="btn" href="app.html">Ingresar</a>
+    <a class="btn primary" href="app.html">Empezar gratis</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill">🇨🇱 Hecho para la contabilidad chilena</span>
+    <h1>Toda tu contabilidad<br><span class="g">en un solo lugar</span></h1>
+    <p class="sub">Software de contabilidad chilena completo: libros, balance tributario, remuneraciones, Previred, RCV del SII, conciliación bancaria e IFRS. Y vamos más allá del software, con <b>cursos</b> y <b>asesorías privadas</b> de un contador experto. Simple, en la nube y desde cualquier dispositivo.</p>
+    <div class="cta">
+      <a class="btn primary lg" href="app.html">Comenzar prueba de 7 días</a>
+      <a class="btn lg" href="#funciones">Ver funciones</a>
+    </div>
+    <div class="note">✓ 7 días gratis · ✓ Sin tarjeta para empezar · ✓ Datos seguros en la nube</div>
+    <div class="userproof">
+      <div class="avs"><span>RE</span><span>MJ</span><span>CP</span><span>JV</span></div>
+      <div class="uptext"><b>+5.700 usuarios</b><span class="stars">★★★★★</span><span>ya confían en Contardo Contador</span></div>
+    </div>
+
+    <div class="mock" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i><span class="u">contardo-contador.cl</span></div>
+      <div class="body">
+        <div class="side">
+          <b>Menú</b>
+          <span class="on">📝 Comprobantes</span>
+          <span>📔 Libro Diario</span>
+          <span>⚖️ Balance Tributario</span>
+          <span>👥 Remuneraciones</span>
+          <span>🏦 Conciliación</span>
+          <span>📄 Formulario 29</span>
+        </div>
+        <div class="main">
+          <div class="kpis">
+            <div class="kpi"><div class="k">Total Activos</div><div class="v">$12.480.000</div></div>
+            <div class="kpi"><div class="k">Ingresos</div><div class="v" style="color:var(--ok)">$8.900.000</div></div>
+            <div class="kpi"><div class="k">Resultado</div><div class="v">$3.240.000</div></div>
+          </div>
+          <div class="rows">
+            <div class="r"><span>Cuenta</span><span class="n">Debe</span><span class="n">Haber</span></div>
+            <div class="r"><span>1102 · Banco</span><span class="n">1.190.000</span><span class="n">—</span></div>
+            <div class="r"><span>5101 · Ventas</span><span class="n">—</span><span class="n">1.000.000</span></div>
+            <div class="r"><span>2108 · IVA Débito</span><span class="n">—</span><span class="n">190.000</span></div>
+            <div class="r"><span>4111 · Arriendos</span><span class="n">400.000</span><span class="n">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="paraquien" style="padding:44px 0 20px">
+  <div class="wrap">
+    <p class="eyebrow">Pensado para</p>
+    <div class="audiencia">
+      <div class="aud"><span class="e">🧑‍💼</span> Contadores con años de experiencia</div>
+      <div class="aud"><span class="e">🌱</span> Contadores recién comenzando</div>
+      <div class="aud"><span class="e">🎓</span> Estudiantes</div>
+      <div class="aud"><span class="e">🏪</span> Empresas MYPES y PYMES</div>
+    </div>
+  </div>
+</section>
+
+<section id="funciones">
+  <div class="wrap">
+    <div class="stitle">
+      <span class="kick">Todo incluido</span>
+      <h2>Un solo software para toda la contabilidad</h2>
+      <p>Reemplaza planillas y sistemas separados. Contardo Contador reúne lo que necesitas para llevar la contabilidad de tus empresas al día.</p>
+    </div>
+    <div class="grid">
+      <div class="feat"><div class="ic">📚</div><h3>Contabilidad completa</h3><p>Comprobantes, Libro Diario y Mayor centralizados al instante, con plan de cuentas chileno editable.</p></div>
+      <div class="feat"><div class="ic">⚖️</div><h3>Balance tributario</h3><p>Balance de 8 columnas automático: sumas, saldos, inventario y resultado, siempre cuadrado.</p></div>
+      <div class="feat"><div class="ic">📈</div><h3>Estados IFRS / NIIF</h3><p>Estado de Situación Financiera y Estado de Resultados según norma, desde los mismos datos.</p></div>
+      <div class="feat"><div class="ic">👥</div><h3>Remuneraciones</h3><p>Liquidaciones de sueldo, cotizaciones previsionales, planilla Previred y Libro de Remuneraciones.</p></div>
+      <div class="feat"><div class="ic">📥</div><h3>Importar RCV del SII</h3><p>Carga tus compras y ventas del Registro de Compras y Ventas y genera los comprobantes solo.</p></div>
+      <div class="feat"><div class="ic">🏦</div><h3>Conciliación bancaria</h3><p>Importa la cartola del banco y concilia los movimientos contra tu contabilidad automáticamente.</p></div>
+      <div class="feat"><div class="ic">📄</div><h3>Formulario 29</h3><p>Propuesta del F29 mensual (IVA débito, crédito, PPM) calculada desde tus comprobantes.</p></div>
+      <div class="feat"><div class="ic">📋</div><h3>Declaraciones Juradas</h3><p>Construye las DJ más comunes (1887 sueldos, 1879 honorarios) y expórtalas.</p></div>
+      <div class="feat"><div class="ic">🏷️</div><h3>Centros de costo</h3><p>Controla gastos e ingresos por área o proyecto, con informes por centro.</p></div>
+      <div class="feat"><div class="ic">🏢</div><h3>Multiempresa</h3><p>Lleva de 1 a 15 empresas desde una sola cuenta (y más por $2.990 c/u), cada una con sus datos.</p></div>
+      <div class="feat"><div class="ic">📊</div><h3>Exporta a Excel y PDF</h3><p>Libros, balances y reportes listos para descargar o imprimir con un clic.</p></div>
+      <div class="feat"><div class="ic">☁️</div><h3>Nube segura</h3><p>Tus datos sincronizados y protegidos; entra desde tu PC o cualquier navegador.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="stitle">
+      <span class="kick">Más que un software</span>
+      <h2>Aprende y recibe asesoría de un experto</h2>
+      <p>Contardo Contador no es solo la plataforma: también te acompañamos con cursos y asesorías personalizadas para que lleves tu contabilidad con confianza.</p>
+    </div>
+    <div class="svc">
+      <div class="card">
+        <div class="ic">🎓</div>
+        <h3>Cursos de contabilidad chilena</h3>
+        <p>Capacítate con contenido práctico creado por un contador: contabilidad desde cero, remuneraciones, tributación, Formulario 29 y el uso profesional del software. Ideal para estudiantes, emprendedores y contadores que quieren avanzar.</p>
+        <a class="btn primary" href="cursos.html">Ver cursos →</a>
+      </div>
+      <div class="card">
+        <div class="ic">🧑‍💼</div>
+        <h3>Consultas y asesorías privadas</h3>
+        <p>¿Tienes dudas puntuales o necesitas apoyo con la contabilidad de tu empresa? Agenda una consulta privada con Richard Espinosa, Contador Público y Auditor con más de 9 años de experiencia, y recibe asesoría personalizada para tu negocio.</p>
+        <a class="btn primary" href="https://wa.me/56957616211?text=Hola,%20quiero%20agendar%20una%20consulta%20privada%20con%20Contardo%20Contador" target="_blank" rel="noopener">Agendar por WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compara" class="compara">
+  <div class="wrap">
+    <div class="stitle">
+      <span class="kick">Compáranos</span>
+      <h2>Las mismas funciones, a una fracción del precio</h2>
+      <p>Todo incluido en un solo plan simple. Sin módulos que se pagan aparte, sin costos ocultos y sin contratos que te amarran.</p>
+    </div>
+    <div class="ctable">
+      <div class="crow chead"><div>Función</div><div class="us">Contardo Contador</div><div>Software tradicional</div></div>
+      <div class="crow"><div>Contabilidad, libros y balance tributario</div><div class="us"><span class="yes">✓</span></div><div><span class="yes">✓</span></div></div>
+      <div class="crow"><div>Remuneraciones + Previred</div><div class="us"><span class="yes">✓</span></div><div>Módulo aparte 💰</div></div>
+      <div class="crow"><div>Conciliación bancaria</div><div class="us"><span class="yes">✓</span></div><div>Módulo aparte 💰</div></div>
+      <div class="crow"><div>Estados IFRS / NIIF</div><div class="us"><span class="yes">✓</span></div><div>Plan superior 💰</div></div>
+      <div class="crow"><div>Multiempresa</div><div class="us"><span class="yes">✓</span></div><div>Limitada por plan</div></div>
+      <div class="crow"><div>Importar RCV del SII y Formulario 29</div><div class="us"><span class="yes">✓</span></div><div><span class="yes">✓</span></div></div>
+      <div class="crow"><div>7 días gratis, sin tarjeta</div><div class="us"><span class="yes">✓</span></div><div><span class="no">✗</span></div></div>
+      <div class="crow"><div>Sin costos ocultos ni permanencia</div><div class="us"><span class="yes">✓</span></div><div><span class="no">✗</span></div></div>
+      <div class="crow cprice"><div>Precio</div><div class="us">$39.990/mes</div><div>Mucho más caro</div></div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:18px">Todas las funciones, un solo precio. <b style="color:var(--text)">Ahorra miles al mes</b> sin resignar nada.</p>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="wrap">
+    <div class="stitle">
+      <span class="kick">Testimonios</span>
+      <h2>Lo que dicen quienes lo usan</h2>
+      <p>Contadores, estudiantes y empresas que llevan su contabilidad con Contardo Contador.</p>
+    </div>
+  </div>
+  <div class="marquee"><div class="track" id="ttrack"></div></div>
+</section>
+
+<section id="precios" class="pricing">
+  <div class="wrap">
+    <div class="stitle">
+      <span class="kick">Precios</span>
+      <h2>Elige tu plan</h2>
+      <p>Empieza con <b>7 días gratis</b>. Sin permanencia — cambias o cancelas cuando quieras.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <span class="live"><span class="dot"></span> Activo</span>
+        <div class="pn">Mensual</div>
+        <div class="pp">$39.990<small> /mes</small></div>
+        <div class="pd">Facturación mensual</div>
+        <a class="btn primary" href="app.html?plan=mensual">Empezar</a>
+      </div>
+      <div class="plan">
+        <span class="live"><span class="dot"></span> Activo</span>
+        <div class="pn">Trimestral</div>
+        <div class="pp">$109.990</div>
+        <div class="pd">cada 3 meses · <span class="save">ahorra ~8%</span></div>
+        <a class="btn primary" href="app.html?plan=trimestral">Empezar</a>
+      </div>
+      <div class="plan pop">
+        <span class="live"><span class="dot"></span> Activo</span>
+        <div class="tag">Recomendado</div>
+        <div class="pn">Anual</div>
+        <div class="pp">$399.990</div>
+        <div class="pd">al año · <span class="save">ahorra ~17%</span></div>
+        <a class="btn primary" href="app.html?plan=anual">Empezar</a>
+      </div>
+    </div>
+    <p class="pricenote">Todos los planes incluyen <b>de 1 a 15 empresas</b>. ¿Necesitas más? Solo <b>$2.990/mes</b> por cada empresa adicional.</p>
+    <div class="paymethods">
+      <span class="pm-lead">Pago 100% seguro procesado por <b>Flow</b>. Aceptamos:</span>
+      <div class="pm-badges">
+        <span class="pm">💳 Webpay</span>
+        <span class="pm">Visa</span>
+        <span class="pm">Mastercard</span>
+        <span class="pm">Redcompra / Débito</span>
+        <span class="pm">American Express</span>
+        <span class="pm">Mach</span>
+        <span class="pm">Chek</span>
+        <span class="pm">Servipag</span>
+        <span class="pm">🏦 Transferencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="pricing">
+  <div class="wrap">
+    <div class="stitle">
+      <span class="kick">Preguntas frecuentes</span>
+      <h2>Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>¿Cuántas empresas puedo tener?</summary><div class="a">Todos los planes incluyen <b>de 1 a 15 empresas</b> en tu cuenta. Si necesitas más, cada empresa adicional cuesta solo <b>$2.990 al mes</b>.</div></details>
+      <details><summary>¿Cómo funciona la prueba gratis?</summary><div class="a">Tienes <b>7 días gratis</b> con todas las funciones y sin ingresar tarjeta. Al terminar, eliges el plan que prefieras para continuar.</div></details>
+      <details><summary>¿Necesito instalar algo?</summary><div class="a">No es obligatorio: puedes usar Contardo Contador directo desde el navegador. También ofrecemos una app de escritorio para Windows si la prefieres.</div></details>
+      <details><summary>¿Puedo cancelar cuando quiera?</summary><div class="a">Sí. No hay permanencia ni contratos: cambias de plan o cancelas cuando quieras, sin penalizaciones.</div></details>
+      <details><summary>¿Está pensado para Chile?</summary><div class="a">Totalmente. Plan de cuentas chileno, balance tributario de 8 columnas, remuneraciones con Previred, importación del RCV del SII y Formulario 29.</div></details>
+      <details><summary>¿Mis datos están seguros?</summary><div class="a">Tus datos se guardan en la nube y cada cuenta accede solo a su propia información. Puedes iniciar sesión desde cualquier equipo y todo se sincroniza.</div></details>
+      <details><summary>¿Qué medios de pago aceptan?</summary><div class="a">El pago es en línea mediante <b>Flow</b>: tarjetas de crédito y débito, Webpay y más.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="box">
+      <h2>Lleva tu contabilidad al día, hoy</h2>
+      <p>Prueba Contardo Contador gratis por 7 días. Sin instalaciones complicadas.</p>
+      <a class="btn lg" href="app.html">Comenzar gratis →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="logo" style="width:28px;height:28px"><svg class="cc" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 89.4 A44 44 0 1 1 92.7 30.6" stroke="currentColor" stroke-width="20"/><path d="M74.12 72.71 A19 19 0 1 1 74.12 47.29" stroke="#2f6df6" stroke-width="16"/></svg></span> Contardo Contador</div>
+    <div>© <span id="y"></span> Contardo Contador SpA · <a href="terminos.html" style="color:var(--muted)">Términos</a> · <a href="privacidad.html" style="color:var(--muted)">Privacidad</a></div>
+    <div class="fsoc">
+      <a class="ig" href="https://instagram.com/elcontardocontador" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+      <a class="fb" href="https://www.facebook.com/elcontardo.contador/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15v2.32H7.5V13h2.75v8h3.25z"/></svg></a>
+      <a class="wa" href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span class="wa-tip">¿Necesitas ayuda? Escríbenos</span>
+  <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
+</a>
+
+<div class="review-pop" id="reviewPop" aria-live="polite">
+  <button class="rp-x" id="rpX" aria-label="Cerrar">×</button>
+  <div class="rp-stars">★★★★★</div>
+  <p class="rp-text" id="rpText"></p>
+  <div class="rp-who"><div class="rp-av" id="rpAv"></div><div><b id="rpName"></b><span id="rpLoc"></span></div></div>
+</div>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+// Menú móvil (hamburguesa)
+(function(){
+  const hb=document.getElementById('hbtn'), mm=document.getElementById('mmenu');
+  if(!hb||!mm) return;
+  const set=(o)=>{ hb.classList.toggle('open',o); mm.classList.toggle('open',o); hb.setAttribute('aria-expanded',o); document.body.style.overflow=o?'hidden':''; };
+  hb.addEventListener('click',()=>set(!hb.classList.contains('open')));
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+})();
+// Testimonios (reemplaza estos ejemplos por testimonios reales de tus clientes)
+const TESTIS=[
+ {q:"Llevo 15 años como contador y por fin tengo todo en un solo lugar. Me ahorra horas cada mes.",n:"Roberto M.",r:"Contador · 15 años"},
+ {q:"Recién armé mi oficina y me dio todo lo que necesitaba a un precio que sí podía pagar.",n:"Camila S.",r:"Contadora independiente"},
+ {q:"Cargo el RCV del SII y los comprobantes se generan solos. Simple y clarísimo.",n:"Daniela P.",r:"Dueña de PYME"},
+ {q:"La conciliación bancaria me cambió la vida; antes la hacía a mano.",n:"Jorge V.",r:"Contador"},
+ {q:"Como estudiante aprendí con la misma herramienta que usan los profesionales.",n:"Fernanda R.",r:"Estudiante de contabilidad"},
+ {q:"El balance de 8 columnas sale cuadrado solo. Impecable.",n:"Patricio L.",r:"Contador"},
+ {q:"Manejo 8 empresas desde una sola cuenta. Ordenadísimo.",n:"Andrea G.",r:"Contadora"},
+ {q:"El Formulario 29 me lo deja casi listo cada mes.",n:"Sebastián C.",r:"Contador"},
+ {q:"Las liquidaciones de sueldo y Previred en minutos.",n:"Marcela T.",r:"Encargada de RR.HH."},
+ {q:"Exporto todo a Excel para mis clientes en un clic.",n:"Rodrigo A.",r:"Contador auditor"},
+ {q:"Los centros de costo me dejan ver dónde se va la plata.",n:"Valentina H.",r:"Dueña de PYME"},
+ {q:"Migré de otro software y pago mucho menos por lo mismo.",n:"Cristián B.",r:"Contador"},
+ {q:"La app de escritorio anda rápida y sin complicaciones.",n:"Paula N.",r:"Contadora"},
+ {q:"Ideal para empezar: intuitiva y sin manuales.",n:"Ignacio F.",r:"Contador junior"},
+ {q:"Mis datos siempre en la nube, entro desde donde sea.",n:"Karla D.",r:"Contadora"},
+ {q:"El soporte para IFRS me sirvió para una empresa grande.",n:"Manuel O.",r:"Contador"},
+ {q:"Llevo la contabilidad de mi almacén yo mismo ahora.",n:"Luis P.",r:"Comerciante"},
+ {q:"Las declaraciones juradas dejaron de ser un dolor de cabeza.",n:"Sofía M.",r:"Contadora"},
+ {q:"Todo integrado: no salto entre cinco programas distintos.",n:"Álvaro R.",r:"Contador"},
+ {q:"Excelente relación precio–funciones. La recomiendo.",n:"Constanza V.",r:"Contadora"}
+];
+const ini=n=>n.split(" ").slice(0,2).map(w=>w[0]||"").join("").toUpperCase();
+const card=t=>`<div class="tcard"><div class="stars">★★★★★</div><p>“${t.q}”</p><div class="who"><div class="av">${ini(t.n)}</div><div><b>${t.n}</b><span>${t.r}</span></div></div></div>`;
+document.getElementById("ttrack").innerHTML = TESTIS.concat(TESTIS).map(card).join("");
+
+// ===== Pop-up de reseñas (ciudades de Chile) =====
+const REVIEWS=[
+ {n:"María José Fuentes",c:"Santiago",q:"Llevo la contabilidad de mi PYME sola y sin enredos. Excelente."},
+ {n:"Cristián Pérez",c:"Valparaíso",q:"El balance de 8 columnas sale cuadrado al instante. Impecable."},
+ {n:"Daniela Rojas",c:"Concepción",q:"Cargo el RCV del SII y los comprobantes se generan solos."},
+ {n:"Jorge Vera",c:"Viña del Mar",q:"La conciliación bancaria me ahorra horas cada mes."},
+ {n:"Fernanda Muñoz",c:"La Serena",q:"Como estudiante aprendí con la misma herramienta de los profesionales."},
+ {n:"Rodrigo Castillo",c:"Antofagasta",q:"Manejo varias empresas desde una sola cuenta. Ordenadísimo."},
+ {n:"Camila Soto",c:"Temuco",q:"Las liquidaciones de sueldo y Previred en minutos."},
+ {n:"Sebastián Díaz",c:"Rancagua",q:"El Formulario 29 me queda casi listo cada mes."},
+ {n:"Valentina Herrera",c:"Puerto Montt",q:"Pago mucho menos que en mi software anterior por lo mismo."},
+ {n:"Andrés Contreras",c:"Talca",q:"Todo integrado; dejé de saltar entre cinco programas."},
+ {n:"Paula Navarro",c:"Iquique",q:"La app anda rápida y sin complicaciones. La recomiendo."},
+ {n:"Matías González",c:"Chillán",q:"Los centros de costo me muestran dónde se va la plata."}
+];
+const rp=document.getElementById('reviewPop');
+const ini2=n=>n.split(" ").slice(0,2).map(w=>w[0]||"").join("").toUpperCase();
+let ri=Math.floor(Math.random()*REVIEWS.length),rClosed=false,rTimer;
+function showReview(){
+  if(rClosed) return;
+  const r=REVIEWS[ri%REVIEWS.length]; ri++;
+  document.getElementById('rpText').textContent="“"+r.q+"”";
+  document.getElementById('rpName').textContent=r.n;
+  document.getElementById('rpLoc').textContent=r.c+", Chile";
+  document.getElementById('rpAv').textContent=ini2(r.n);
+  rp.classList.add('show');
+  rTimer=setTimeout(()=>{ rp.classList.remove('show'); rTimer=setTimeout(showReview,4500); },6000);
+}
+document.getElementById('rpX').addEventListener('click',()=>{ rClosed=true; rp.classList.remove('show'); clearTimeout(rTimer); });
+setTimeout(showReview,3500);
+</script>
+</body>
+</html>

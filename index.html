@@ -1,1 +1,558 @@
-<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>Facundo Social Media</title><meta http-equiv="refresh" content="0;url=https://facundo-social-media.netlify.app/">
+<!doctype html>
+<!--
+  Portfolio de Facundo Social Media · Diseño web y marketing digital
+  Para editar:
+  - Número de WhatsApp: const WHATSAPP al final del archivo.
+  - Trabajos: cada <article class="card"> dentro de #trabajos.
+  - Planes y precios: cada <article class="plan"> dentro de #planes.
+  - Colores: variables en :root.
+-->
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facundo Social Media · Diseño web y marketing digital</title>
+<meta name="description" content="Trabajos y planes de páginas web para negocios de Córdoba: estética, kinesiología, gimnasios, barberías y más. Diseño moderno, pensado para celular y para recibir consultas por WhatsApp.">
+<meta property="og:title" content="Facundo Social Media · Diseño web y marketing digital">
+<meta property="og:description" content="Mirá mis trabajos y elegí el plan para la web de tu negocio.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111827'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='32' fill='%23fbbf24' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1115; --surface:#171a21; --line:#262a33;
+    --text:#f3f4f6; --muted:#9ca3af; --accent:#fbbf24; --accent-ink:#111827;
+    --wa:#25d366; --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{padding:20px 0;position:sticky;top:0;z-index:40;background:rgba(15,17,21,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(38,42,51,.6)}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .logo{font-weight:800;font-size:1.1rem;letter-spacing:-.02em;white-space:nowrap}
+  .logo span{color:var(--accent)}
+  nav{display:flex;gap:6px}
+  nav a{padding:8px 14px;border-radius:999px;font-weight:600;font-size:.92rem;color:var(--muted)}
+  nav a:hover{color:var(--text);background:var(--surface)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-accent{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 24px -10px var(--accent)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-sm{padding:9px 16px;font-size:.88rem}
+  .hero{padding:48px 0 24px}
+  .tag{display:inline-block;font-size:.8rem;font-weight:600;color:var(--accent);border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.08);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+  h1{font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.1;letter-spacing:-.035em;font-weight:800;max-width:18ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lead{color:var(--muted);font-size:1.08rem;max-width:58ch;margin:16px 0 0}
+  section{padding:48px 0}
+  h2{font-size:clamp(1.6rem,4vw,2.3rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:10px}
+  .sub{color:var(--muted);margin-bottom:28px;max-width:60ch}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+  .card:hover{transform:translateY(-4px);border-color:#3a3f4b}
+  .thumb{aspect-ratio:16/9;display:grid;place-items:center;font-size:2.2rem;font-weight:800;letter-spacing:-.03em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+  .t-conta{background:linear-gradient(135deg,#1e3a8a,#0ea5e9)}
+  .cur{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:-10px 0 26px;font-size:.9rem;color:var(--muted)}
+  .cur button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:600 .88rem/1 inherit;font-family:inherit;cursor:pointer}
+  .cur button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .trial{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;background:var(--surface);border:1px dashed rgba(251,191,36,.55);border-radius:22px;padding:22px}
+  .trial > div:first-child{flex:1 1 380px}
+  .trial h3{font-size:1.15rem;margin-bottom:6px}
+  .trial p{color:var(--muted);font-size:.95rem;max-width:62ch}
+  .trial-price{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  .custom{margin-top:18px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;border-radius:22px;padding:24px;border:2px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,#fbbf24,#38bdf8) border-box}
+  .custom-copy{flex:1 1 380px}
+  .custom .tag{margin-bottom:10px}
+  .custom h3{font-size:1.3rem;margin-bottom:6px}
+  .custom p{color:var(--muted);max-width:60ch}
+  .custom-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 18px;margin-top:12px}
+  .custom-list li{padding-left:20px;position:relative;font-size:.94rem}
+  .custom-list li::before{content:"+";position:absolute;left:0;color:var(--accent);font-weight:800}
+  .loc-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:18px}
+  .loc-info{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px}
+  .loc-info dl{display:grid;gap:10px}
+  .loc-info dt{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:800}
+  .loc-info dd{margin-bottom:6px}
+  .loc-map{border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:280px}
+  .loc-map iframe{width:100%;height:100%;min-height:280px;border:0;filter:grayscale(.4) invert(.9) hue-rotate(180deg)}
+  @media (max-width:760px){.loc-grid{grid-template-columns:1fr}}
+  .w3d{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;background:radial-gradient(600px 300px at 90% 10%,rgba(251,191,36,.14),transparent 60%),radial-gradient(500px 300px at 0% 100%,rgba(56,189,248,.12),transparent 60%),var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,48px)}
+  .w3d .tag{margin-bottom:14px}
+  .w3d p{color:var(--muted);max-width:56ch}
+  .w3d-list{list-style:none;display:grid;gap:8px;margin:18px 0}
+  .w3d-list li{padding-left:24px;position:relative}
+  .w3d-list li::before{content:"◆";position:absolute;left:0;color:var(--accent);font-size:.8rem;top:.2em}
+  .w3d-note{font-size:.92rem;border-left:3px solid var(--accent);padding-left:12px;margin:6px 0 22px}
+  .w3d-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .w3d-visual{display:grid;place-items:center;perspective:700px;min-height:220px}
+  .cube{width:120px;height:120px;position:relative;transform-style:preserve-3d;animation:spin3d 12s linear infinite}
+  .cube i{position:absolute;inset:0;border:2px solid rgba(251,191,36,.8);background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(56,189,248,.14));border-radius:14px;box-shadow:0 0 30px rgba(251,191,36,.25) inset}
+  .cube i:nth-child(1){transform:translateZ(60px)}.cube i:nth-child(2){transform:rotateY(180deg) translateZ(60px)}
+  .cube i:nth-child(3){transform:rotateY(90deg) translateZ(60px)}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(60px)}
+  .cube i:nth-child(5){transform:rotateX(90deg) translateZ(60px)}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(60px)}
+  @keyframes spin3d{from{transform:rotateX(-20deg) rotateY(0)}to{transform:rotateX(-20deg) rotateY(360deg)}}
+  @media (max-width:760px){.w3d{grid-template-columns:1fr}.w3d-visual{min-height:170px;order:-1}}
+  @media (prefers-reduced-motion:reduce){.cube{animation:none}}
+  .t-3d{position:relative;overflow:hidden;background:radial-gradient(circle at 70% 40%,#fbbf24 0,#b45309 18%,transparent 40%),radial-gradient(circle at 25% 75%,#38bdf8 0,#0c4a6e 22%,transparent 45%),#07080c;background-size:160% 160%;animation:drift3d 8s ease-in-out infinite alternate}
+  .t-3d span{position:relative;transform:perspective(400px) rotateX(18deg) rotateY(-14deg);display:inline-block}
+  @keyframes drift3d{from{background-position:0% 0%}to{background-position:100% 100%}}
+  @media (prefers-reduced-motion:reduce){.t-3d{animation:none}}
+  .t-fenix{background:linear-gradient(135deg,#7c2d12,#f97316)}
+  .t-este{background:linear-gradient(135deg,#9d6b6b,#e8c9c1)}
+  .t-pisc{background:linear-gradient(135deg,#0b3d5c,#1fb5c9)}
+  .t-kine{background:linear-gradient(135deg,#0f766e,#5eead4)}
+  .t-gym{background:linear-gradient(135deg,#0a0a0a,#3f4a0c 60%,#c6f432)}
+  .t-barber{background:linear-gradient(135deg,#1c1917,#78591f 60%,#c9a25b)}
+  .card-body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .rubro{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .card h3{font-size:1.15rem;letter-spacing:-.02em}
+  .card p{color:var(--muted);font-size:.95rem;flex:1}
+  .card .btn{align-self:flex-start;margin-top:8px}
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;align-items:stretch}
+  .plan{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 22px;display:flex;flex-direction:column}
+  .plan.featured{border:2px solid var(--accent);background:linear-gradient(180deg,rgba(251,191,36,.08),var(--surface) 40%)}
+  .badge{position:absolute;top:-13px;left:22px;background:var(--accent);color:var(--accent-ink);font-size:.75rem;font-weight:800;padding:5px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em}
+  .plan h3{font-size:1.2rem}
+  .plan .for{color:var(--muted);font-size:.9rem;margin:4px 0 16px}
+  .price{font-size:2.1rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .price small{display:block;font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:6px}
+  .plan ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;flex:1}
+  .plan li{position:relative;padding-left:26px;font-size:.94rem}
+  .plan li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:16px;border-radius:50%;background:rgba(251,191,36,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+  .plan .btn{width:100%}
+  .maint{margin-top:18px;background:var(--surface);border:1px dashed #3a3f4b;border-radius:22px;padding:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+  .maint h3{font-size:1.1rem}
+  .maint p{color:var(--muted);font-size:.94rem;max-width:56ch}
+  .maint .price{font-size:1.6rem}
+  .payments{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+  .payments h3{font-size:1.1rem;margin-bottom:14px}
+  .pay-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .pay-list li{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .pay-list strong{display:block;font-size:.95rem;line-height:1.3}
+  .pay-list small{color:var(--muted);font-size:.85rem}
+  .pay-ico{flex:none;width:40px;height:40px;border-radius:12px;background:rgba(251,191,36,.12);display:grid;place-items:center}
+  .pay-ico svg{width:22px;height:22px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .pay{margin-top:16px;color:var(--muted);font-size:.92rem;text-align:center}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:s}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-weight:800;color:var(--accent);font-size:1.4rem;display:block;margin-bottom:8px}
+  .step h3{font-size:1.05rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.95rem}
+  .cta{background:linear-gradient(135deg,#1f2430,#171a21);border:1px solid var(--line);border-radius:28px;padding:40px 24px;text-align:center}
+  .cta p{color:var(--muted);margin:10px auto 24px;max-width:50ch}
+  footer{padding:32px 0 90px;color:var(--muted);font-size:.88rem;text-align:center}
+  .wa-float{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);z-index:50;transition:transform .2s}
+  .wa-float:hover{transform:scale(1.07)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+  @media (max-width:900px){nav{display:none}}
+  @media (max-width:560px){.logo{font-size:1rem}nav{gap:0}nav a{padding:8px 8px;font-size:.85rem}.hero{padding:32px 0 8px}}
+  /* Deja lugar al cartel "Powered by Netlify" de abajo a la derecha */
+  .wa-float{bottom:64px!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="#" class="logo">Facundo <span>Social Media</span></a>
+    <nav><a href="#trabajos">Trabajos</a><a href="#web3d">3D</a><a href="#planes">Planes</a><a href="#contenido">Contenido</a><a href="#contacto">Contacto</a><a href="#marketing">Marketing</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="tag">Diseño web y marketing digital · Córdoba</span>
+      <h1>Trabajos realizados y <em>planes de diseño web</em></h1>
+      <p class="lead">Tal como conversamos por WhatsApp, a continuación encontrás una selección de proyectos y los planes disponibles. Cada sitio está diseñado para verse impecable en el celular y convertir visitas en consultas para tu negocio.</p>
+    </div>
+  </div>
+
+  <section id="trabajos">
+    <div class="wrap">
+      <h2>Trabajos</h2>
+      <p class="sub">Proyectos reales y modelos por rubro. Tocá cualquiera para verlo como lo verían tus clientes.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb t-3d"><span>Web 3D</span></div>
+          <div class="card-body">
+            <span class="rubro">Experiencia 3D · Premium</span>
+            <h3>Web 3D en movimiento</h3>
+            <p>Objetos 3D animados, galería que gira con el scroll y secciones que se apilan como fotos.</p>
+            <a class="btn btn-ghost btn-sm" href="muestras/3d/index.html" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-este">Estética</div>
+          <div class="card-body">
+            <span class="rubro">Estética, uñas y belleza</span>
+            <h3>Lumière Estética &amp; Nails</h3>
+            <p>Servicios, lista de precios, galería de trabajos, promos y turnos por WhatsApp.</p>
+            <a class="btn btn-ghost btn-sm" href="muestras/estetica/index.html" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-kine">Kinesiología</div>
+          <div class="card-body">
+            <span class="rubro">Kinesiología y salud</span>
+            <h3>Movimiento · Kinesiología</h3>
+            <p>Tratamientos, obras sociales, equipo profesional y pedido de turno en un toque.</p>
+            <a class="btn btn-ghost btn-sm" href="muestras/kinesiologia/index.html" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-gym">Gimnasio</div>
+          <div class="card-body">
+            <span class="rubro">Gimnasios y entrenamiento</span>
+            <h3 id="name-gym">Fuerza Gym</h3>
+            <p>Planes y precios, clases, grilla de horarios, instalaciones y clase de prueba por WhatsApp.</p>
+            <a class="btn btn-ghost btn-sm" href="muestras/gimnasio/index.html" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-barber">Barbería</div>
+          <div class="card-body">
+            <span class="rubro">Barberías</span>
+            <h3 id="name-barber">Barbería El Clásico</h3>
+            <p>Servicios, precios, galería de cortes, barberos y reserva de turno por WhatsApp.</p>
+            <a class="btn btn-ghost btn-sm" href="muestras/barberia/index.html" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-pisc">Piscinas</div>
+          <div class="card-body">
+            <span class="rubro">Piscinas · Web con IA</span>
+            <h3>Cuarzo Piscinas</h3>
+            <p>Web premium con cotizador interactivo de piscinas, asistente de chat con IA y contactos por WhatsApp.</p>
+            <a class="btn btn-ghost btn-sm" href="https://respinosacontardo-ux.github.io/maquetas/demos/cuarzo-piscinas/" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-fenix">Fitness</div>
+          <div class="card-body">
+            <span class="rubro">Fitness · Proyecto real</span>
+            <h3>Proyecto Fénix</h3>
+            <p>Web de venta de un programa de entrenamiento: historias en video, antes y después, pago con Mercado Pago.</p>
+            <a class="btn btn-ghost btn-sm" href="https://proyectofenix33.com" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t-conta">Contabilidad</div>
+          <div class="card-body">
+            <span class="rubro">Contabilidad · Proyecto real</span>
+            <h3>Contardo Contador</h3>
+            <p>Web de un software contable con planes, medios de pago, cursos y consultas por WhatsApp.</p>
+            <a class="btn btn-ghost btn-sm" href="muestras/contabilidad/index.html" target="_blank" rel="noopener">Ver web →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="web3d">
+    <div class="wrap">
+      <div class="w3d">
+        <div class="w3d-copy">
+          <span class="tag">Nuevo · Webs 3D profesionales</span>
+          <h2>También creo webs 3D en movimiento</h2>
+          <p>Páginas con objetos 3D que flotan y reaccionan al mouse, galerías que giran con el scroll y secciones que se apilan como fotos. Ideales para negocios que quieren destacarse y que la gente se quede mirando.</p>
+          <ul class="w3d-list">
+            <li>Objetos 3D animados con la identidad de tu marca</li>
+            <li>Efectos que siguen el mouse y el movimiento del celular</li>
+            <li>Rápidas y fluidas también en el teléfono</li>
+            <li>Se pueden sumar a cualquier plan</li>
+          </ul>
+          <p class="w3d-note">Mirá cómo quedan: todas las muestras de arriba ya tienen efectos 3D, y en el ejemplo completo vas a ver todo lo que se puede hacer.</p>
+          <div class="w3d-actions">
+            <a class="btn btn-accent" href="muestras/3d/index.html" target="_blank" rel="noopener">Ver ejemplo 3D completo</a>
+            <a class="btn btn-ghost" href="#trabajos">Ver las muestras</a>
+          </div>
+        </div>
+        <div class="w3d-visual" aria-hidden="true"><div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planes">
+    <div class="wrap">
+      <h2>Planes</h2>
+      <p class="sub">Precio cerrado, sin sorpresas. Todas las webs se ven perfectas en el celular y tienen botón directo a tu WhatsApp.</p>
+      <div class="cur" role="group" aria-label="Moneda de los precios">
+        <span>Ver precios en:</span>
+        <button type="button" data-cur="ARS">🇦🇷 Pesos</button>
+        <button type="button" data-cur="CLP">🇨🇱 Pesos chilenos</button>
+        <button type="button" data-cur="USD">🌎 Dólares</button>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Básico</h3>
+          <p class="for">Para empezar a estar en internet.</p>
+          <div class="price"><span class="money" data-ars="280000" data-usd="180">$280.000</span><small>pago único</small></div>
+          <ul>
+            <li>Página única con todo lo importante</li>
+            <li>Servicios, fotos, horarios y ubicación</li>
+            <li>Botón de WhatsApp con mensaje armado</li>
+            <li>Adaptada a celular</li>
+            <li>1 ronda de cambios</li>
+            <li>Lista en 4 días</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="Hola Facundo! Quiero el plan Básico para mi negocio.">Quiero el Básico</a>
+        </article>
+        <article class="plan featured">
+          <span class="badge">Más elegido</span>
+          <h3>Completo</h3>
+          <p class="for">La web profesional de tu negocio.</p>
+          <div class="price"><span class="money" data-ars="480000" data-usd="310">$480.000</span><small>pago único</small></div>
+          <ul>
+            <li>Todo lo del Básico</li>
+            <li>Hasta 5 secciones: servicios, precios, galería, equipo, opiniones</li>
+            <li>Dominio propio (.com.ar) por 1 año</li>
+            <li>Aparecés en Google Maps</li>
+            <li>Preguntas frecuentes y mapa</li>
+            <li>2 rondas de cambios</li>
+            <li>Lista en 6 días</li>
+          </ul>
+          <a class="btn btn-accent" data-wa="Hola Facundo! Quiero el plan Completo para mi negocio.">Quiero el Completo</a>
+        </article>
+        <article class="plan">
+          <h3>Pro</h3>
+          <p class="for">Para conseguir más clientes desde Google.</p>
+          <div class="price"><span class="money" data-ars="750000" data-usd="480">$750.000</span><small>pago único</small></div>
+          <ul>
+            <li>Todo lo del Completo</li>
+            <li>Reserva de turnos online</li>
+            <li>Textos de venta escritos para tu negocio</li>
+            <li>Optimizada para aparecer en Google en tu zona</li>
+            <li>Conexión con tu Instagram</li>
+            <li>3 rondas de cambios</li>
+            <li>Lista en 9 días</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="Hola Facundo! Quiero el plan Pro para mi negocio.">Quiero el Pro</a>
+        </article>
+      </div>
+      <div class="maint">
+        <div>
+          <h3>Mantenimiento mensual</h3>
+          <p>Hosting, cambios de precios, fotos y promos cuando los necesites, y soporte por WhatsApp. El primer mes va de regalo con cualquier plan.</p>
+        </div>
+        <div class="price"><span class="money" data-ars="30000" data-usd="20">$30.000</span><small>por mes</small></div>
+      </div>
+      <div class="custom">
+        <div class="custom-copy">
+          <span class="tag">Plan 100% personalizado</span>
+          <h3>¿Querés algo a tu medida?</h3>
+          <p>Armamos un plan al gusto de tu negocio: combinamos la página web con el servicio de marketing que necesites. Vos elegís qué sumar y te paso un presupuesto cerrado.</p>
+          <ul class="custom-list">
+            <li>Página web (cualquier plan, con o sin efectos 3D)</li>
+            <li>Publicidad en Instagram y Facebook</li>
+            <li>Gestión de redes y reels con IA</li>
+            <li>Automatización de respuestas por WhatsApp con IA</li>
+            <li>Logo, identidad visual y fotos para la web</li>
+          </ul>
+        </div>
+        <a class="btn btn-accent" data-wa="Hola Facundo! Quiero armar un plan personalizado: web + marketing para mi negocio.">Armar mi plan personalizado</a>
+      </div>
+      <div class="payments">
+        <h3>Medios de pago</h3>
+        <ul class="pay-list">
+          <li><span class="pay-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19M6 15h4"/></svg></span><div><strong>Tarjeta de crédito</strong><small>Cuotas sin interés</small></div></li>
+          <li><span class="pay-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M6 10h5M6 14h8"/></svg></span><div><strong>Tarjeta de débito</strong><small>En un pago</small></div></li>
+          <li><span class="pay-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10l9-5.5L21 10M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></span><div><strong>Transferencia bancaria</strong><small>CBU o alias</small></div></li>
+          <li><span class="pay-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM8 12.5l2.5 2.5L16 9.5"/></svg></span><div><strong>Mercado Pago</strong><small>Link de pago o QR</small></div></li>
+        </ul>
+        <p class="pay">Pagás 50% para empezar y 50% cuando la web está lista.</p>
+        <p class="pay pay-cl" hidden>Desde Chile: transferencia bancaria, tarjeta o Mercado Pago Chile.</p>
+        <p class="pay pay-intl" hidden>Desde otros países: PayPal, Wise o transferencia internacional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="marketing">
+    <div class="wrap">
+      <span class="tag">Servicio extra</span>
+      <h2>Marketing y publicidad paga en redes</h2>
+      <p class="sub">La web es la vidriera; la publicidad trae a la gente. Armo y gestiono campañas en Instagram y Facebook para que te lleguen consultas por WhatsApp de personas de tu zona.</p>
+      <div class="plans">
+        <article class="plan">
+          <h3>Publicidad en redes</h3>
+          <p class="for">Campañas en Instagram y Facebook (Meta Ads).</p>
+          <div class="price">Desde <span class="money" data-ars="150000" data-usd="95">$150.000</span><small>por mes</small></div>
+          <ul>
+            <li>Estrategia según tu rubro y objetivo</li>
+            <li>Anuncios dirigidos a tu zona y a tu cliente ideal</li>
+            <li>Diseño de las piezas y textos de los anuncios</li>
+            <li>Campañas para recibir mensajes por WhatsApp</li>
+            <li>Seguimiento y ajustes durante el mes</li>
+            <li>Reporte mensual con resultados</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="Hola Facundo! Me interesa el servicio de publicidad en redes.">Quiero publicidad</a>
+        </article>
+        <article class="plan featured">
+          <span class="badge">Más completo</span>
+          <h3>Redes + publicidad</h3>
+          <p class="for">Me ocupo de tus redes y de tus anuncios.</p>
+          <div class="price">Desde <span class="money" data-ars="280000" data-usd="180">$280.000</span><small>por mes</small></div>
+          <ul>
+            <li>Todo lo de Publicidad en redes</li>
+            <li>Planificación de contenido mensual</li>
+            <li>12 publicaciones al mes (posteos y reels)</li>
+            <li>Historias destacadas y biografía optimizadas</li>
+            <li>Campañas conectadas con tu web</li>
+            <li>Reunión mensual de resultados</li>
+          </ul>
+          <a class="btn btn-accent" data-wa="Hola Facundo! Me interesa el servicio de redes + publicidad.">Quiero redes + publicidad</a>
+        </article>
+      </div>
+      <p class="pay">El presupuesto de los anuncios se paga aparte, directo a Meta, y lo definimos juntos según tu objetivo. Si contratás una web, tenés 15% off el primer mes de marketing.</p>
+    </div>
+  </section>
+
+  <section id="contenido">
+    <div class="wrap">
+      <span class="tag">Servicio extra · Videos con IA</span>
+      <h2>Generación de contenido para redes</h2>
+      <p class="sub">Reels y videos para Instagram, TikTok y Facebook creados con inteligencia artificial: tu negocio con calidad de producción profesional, sin cámaras ni estudio y a una fracción del costo.</p>
+      <div class="trial">
+        <div>
+          <h3>Pack Prueba · 3 reels</h3>
+          <p>Para que veas cómo queda tu negocio en video antes de contratar un plan. 1 ronda de cambios por reel y entrega en 5 días hábiles. Si después pasás a un plan mensual, te descuento <span class="money" data-ars="23500" data-usd="15">$23.500</span> del primer mes.</p>
+        </div>
+        <div class="trial-price"><div class="price"><span class="money" data-ars="117400" data-usd="75">$117.400</span><small>pago único · <span class="money" data-ars="39100" data-usd="25">$39.100</span> por reel</small></div>
+          <a class="btn btn-accent" data-wa="Hola Facundo! Quiero el Pack Prueba de 3 reels con IA para mi negocio.">Quiero el Pack Prueba</a></div>
+      </div>
+      <div class="plans" style="margin-top:18px">
+        <article class="plan">
+          <h3>Básico</h3>
+          <p class="for">Presencia constante, 1 reel por semana.</p>
+          <div class="price"><span class="money" data-ars="156500" data-usd="100">$156.500</span><small>por mes · <span class="money" data-ars="39100" data-usd="25">$39.100</span> por reel</small></div>
+          <ul>
+            <li>4 reels por mes</li>
+            <li>1 ronda de cambios por reel</li>
+            <li>Listos para publicar en Instagram, TikTok y Facebook</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="Hola Facundo! Quiero el plan Básico de contenido con IA (4 reels por mes).">Quiero el Básico</a>
+        </article>
+        <article class="plan featured">
+          <span class="badge">Más elegido</span>
+          <h3>Crecimiento</h3>
+          <p class="for">Para crecer en redes, 2 reels por semana.</p>
+          <div class="price"><span class="money" data-ars="281700" data-usd="180">$281.700</span><small>por mes · <span class="money" data-ars="35200" data-usd="22.5">$35.200</span> por reel</small></div>
+          <ul>
+            <li>8 reels por mes</li>
+            <li>Guiones e ideas para cada video</li>
+            <li>Calendario de publicación</li>
+            <li>Algunas tomas premium con audio</li>
+            <li>2 rondas de cambios por reel</li>
+          </ul>
+          <a class="btn btn-accent" data-wa="Hola Facundo! Quiero el plan Crecimiento de contenido con IA (8 reels por mes).">Quiero el Crecimiento</a>
+        </article>
+        <article class="plan">
+          <h3>Premium</h3>
+          <p class="for">Contenido de marca al máximo nivel.</p>
+          <div class="price"><span class="money" data-ars="391200" data-usd="250">$391.200</span><small>por mes</small></div>
+          <ul>
+            <li>10 reels por mes</li>
+            <li>1 video publicitario de 30 a 45 segundos</li>
+            <li>Guiones, ideas y calendario</li>
+            <li>Tomas premium en los momentos clave</li>
+            <li>Entrega prioritaria en 48 h</li>
+          </ul>
+          <a class="btn btn-ghost" data-wa="Hola Facundo! Quiero el plan Premium de contenido con IA.">Quiero el Premium</a>
+        </article>
+      </div>
+      <p class="pay">Reel suelto: <span class="money" data-ars="47000" data-usd="30">$47.000</span>. Se paga por adelantado cada mes. Con 3 meses de compromiso tenés 10% de descuento. Los reels del mes no se acumulan y los extras se cobran a <span class="money" data-ars="47000" data-usd="30">$47.000</span>. <span class="only-ar">Precios en pesos al dólar blue venta del 23/10/2026 ($1.565).</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>¿Cómo seguimos?</h2>
+      <p class="sub">Ya hablamos, así que desde acá es simple.</p>
+      <div class="steps">
+        <div class="step"><h3>Elegís tu plan</h3><p>Me escribís por WhatsApp con el plan que querés y me pasás logo, fotos y servicios.</p></div>
+        <div class="step"><h3>Arranco tu web</h3><p>Con el 50% de seña empiezo, y en pocos días te mando el link para que la veas.</p></div>
+        <div class="step"><h3>Ajustamos y publicamos</h3><p>Hacemos los cambios que quieras, pagás el resto y la ponemos online.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <h2>Dónde estoy</h2>
+      <p class="sub">Trabajo en Córdoba Capital, en persona y online. También hago webs para negocios de otras ciudades y de Chile.</p>
+      <div class="loc-grid">
+        <div class="loc-info">
+          <dl>
+            <dt>Zona</dt><dd>Córdoba Capital, Argentina</dd>
+            <dt>Atención</dt><dd>Lunes a sábado · Respuesta por WhatsApp en el día</dd>
+            <dt>Reuniones</dt><dd>Videollamada o en tu negocio, como prefieras</dd>
+          </dl>
+        </div>
+        <div class="loc-map"><iframe title="Mapa: Córdoba Capital" src="https://www.google.com/maps?q=C%C3%B3rdoba+Capital,+Argentina&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2>¿Qué plan te gustó?</h2>
+        <p>Escribime y arrancamos con la web de tu negocio.</p>
+        <a class="btn btn-accent" data-wa="Hola Facundo! Ya vi los trabajos y los planes. Quiero avanzar con mi web.">Escribime por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Facundo Social Media · Diseño web y marketing digital · Córdoba, Argentina</footer>
+
+<a class="wa-float" data-wa="Hola Facundo! Tengo una consulta sobre los planes." aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5 10 9.9 5.2 16 5.2S27 10 27 15.9 22.1 26.4 16 26.4zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.8-1.8-1-2.5-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.6.2 2.2.1.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+
+  /* Moneda según el país del visitante: Argentina en pesos, Chile en pesos chilenos, el resto en dólares.
+     El país lo da Netlify (window.__COUNTRY); si no está, se usa la zona horaria del navegador. */
+  const CLP_POR_USD = 986.58; // dólar observado Chile, 23/10/2026 (mindicador.cl)
+  const fmt = n => n.toLocaleString("es-AR", Number.isInteger(n) ? {} : {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  function detectarMoneda(){
+    try { const m = localStorage.getItem("moneda"); if (m) return m; } catch(e){}
+    const c = (window.__COUNTRY || "").toUpperCase();
+    if (c === "AR") return "ARS";
+    if (c === "CL") return "CLP";
+    if (c) return "USD";
+    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "");
+    if (tz.startsWith("America/Argentina") || tz === "America/Buenos_Aires" || tz === "America/Cordoba") return "ARS";
+    if (tz === "America/Santiago" || tz === "Pacific/Easter" || tz === "America/Punta_Arenas") return "CLP";
+    return "USD";
+  }
+  function mostrarMoneda(cur){
+    document.querySelectorAll(".money").forEach(el => {
+      const usd = +el.dataset.usd;
+      el.textContent = cur === "ARS" ? "$" + fmt(+el.dataset.ars)
+        : cur === "CLP" ? "$" + fmt(Math.round(usd * CLP_POR_USD / 1000) * 1000) + " CLP"
+        : "USD " + fmt(usd);
+    });
+    document.querySelectorAll(".only-ar").forEach(el => el.hidden = cur !== "ARS");
+    document.querySelectorAll(".pay-cl").forEach(el => el.hidden = cur !== "CLP");
+    document.querySelectorAll(".pay-intl").forEach(el => el.hidden = cur !== "USD");
+    document.querySelectorAll(".cur button").forEach(b => b.classList.toggle("on", b.dataset.cur === cur));
+  }
+  document.querySelectorAll(".cur button").forEach(b => b.addEventListener("click", () => {
+    try { localStorage.setItem("moneda", b.dataset.cur); } catch(e){}
+    mostrarMoneda(b.dataset.cur);
+  }));
+  mostrarMoneda(detectarMoneda());
+  const WHATSAPP = "5493516069281"; // ← reemplazar por tu número real (549 + código de área sin 0 + número sin 15)
+  document.querySelectorAll("[data-wa]").forEach(a => {
+    a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(a.dataset.wa)}`;
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+</script>
+<script src="muestras/pro.js?v=1792896722" defer></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sobre nosotros — Contardo Contador</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Conoce a Richard Espinosa, fundador de Contardo Contador SpA: Contador Público y Auditor de la Universidad de Talca, MBA, con más de 9 años de experiencia.">
+<meta name="theme-color" content="#2f6df6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='26' fill='%23ffffff'/%3E%3Cpath d='M92.7 89.4 A44 44 0 1 1 92.7 30.6' stroke='%230f1729' stroke-width='20' fill='none'/%3E%3Cpath d='M74.12 72.71 A19 19 0 1 1 74.12 47.29' stroke='%232f6df6' stroke-width='16' fill='none'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#ffffff; --bg-2:#f4f7fb; --text:#0f1729; --muted:#5a6a80; --border:#e5e9f2;
+    --brand:#2f6df6; --brand-2:#6d5efc; --brand-soft:#eef2ff;
+    --grad:linear-gradient(135deg,#2f6df6,#6d5efc);
+    --card:#ffffff; --shadow:0 8px 30px rgba(16,24,40,.08); --shadow-lg:0 24px 60px rgba(16,24,40,.14);
+    --ok:#12a150;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0a0e15; --bg-2:#0e1420; --text:#e8edf5; --muted:#93a1b3; --border:#20293a;
+      --brand:#5b8dff; --brand-2:#9a86ff; --brand-soft:#14203a; --grad:linear-gradient(135deg,#5b8dff,#9a86ff);
+      --card:#131b28; --shadow:0 8px 30px rgba(0,0,0,.5); --shadow-lg:0 24px 60px rgba(0,0,0,.6); --ok:#4ec97a; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:12px 22px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;transition:transform .15s,box-shadow .2s,border-color .2s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--brand)}
+  .btn.primary{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(47,109,246,.34)}
+  .btn.primary:hover{box-shadow:0 12px 30px rgba(47,109,246,.46);filter:brightness(1.05)}
+  .btn.lg{padding:15px 28px;font-size:16px}
+
+  /* NAV */
+  nav.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
+  nav.top .wrap{display:flex;align-items:center;gap:16px;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px}
+  .logo{width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:var(--text)}
+  .logo svg{width:100%;height:100%;display:block}
+  nav.top .links{display:flex;gap:26px;margin-left:22px;color:var(--muted);font-weight:600;font-size:15px}
+  nav.top .links a:hover{color:var(--text)}
+  nav.top .links a.on{color:var(--brand)}
+  nav.top .spacer{flex:1}
+  @media(max-width:720px){nav.top .links{display:none}}
+  @media(max-width:600px){
+    nav.top .wrap{gap:10px;height:60px}
+    nav.top .brand{font-size:15px;white-space:nowrap}
+    nav.top .logo{width:32px;height:32px}
+    nav.top a.btn:not(.primary){display:none}
+    nav.top a.btn.primary{padding:10px 15px;font-size:14px}
+  }
+  @media(max-width:380px){nav.top .brand{font-size:13.5px}}
+
+  /* PAGE HEAD */
+  .phead{position:relative;overflow:hidden;padding:60px 0 26px;text-align:center;
+    background:radial-gradient(1000px 500px at 80% -10%, color-mix(in srgb,var(--brand-2) 16%,transparent), transparent 60%),
+               radial-gradient(800px 500px at -10% 10%, color-mix(in srgb,var(--brand) 13%,transparent), transparent 55%)}
+  .phead .kick{display:inline-block;color:var(--brand);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .phead h1{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.02em;margin:0 0 12px;font-weight:800}
+  .phead p{color:var(--muted);font-size:clamp(16px,2vw,19px);max-width:600px;margin:0 auto}
+
+  /* ABOUT */
+  section{padding:48px 0 66px}
+  .about .inner{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:center;max-width:1000px;margin:0 auto}
+  .about .photo{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg);aspect-ratio:4/5;background:var(--card)}
+  .about .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .about .photo .badge{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:8px 12px;font-size:12.5px;font-weight:700}
+  .about .photo .badge .l{width:22px;height:22px;color:var(--text)}
+  .about .txt h2{font-size:clamp(24px,3.2vw,32px);letter-spacing:-.02em;margin:0 0 6px;font-weight:800}
+  .about .role{color:var(--brand);font-weight:700;font-size:15px;margin:0 0 16px}
+  .about .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+  .about .chip{background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:12.5px;padding:6px 12px;border-radius:20px}
+  .about .txt p{color:var(--muted);font-size:15.5px;line-height:1.72;margin:0 0 14px}
+  .about .sign{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--border)}
+  .about .sign .av{width:46px;height:46px;flex-shrink:0;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .about .sign b{display:block;font-size:15px}
+  .about .sign span{color:var(--muted);font-size:13px}
+  @media(max-width:820px){.about .inner{grid-template-columns:1fr;gap:28px}.about .photo{max-width:320px;margin:0 auto;width:100%}}
+
+  /* CTA band */
+  .band{padding:20px 0 70px}
+  .band .box{background:var(--grad);border-radius:22px;padding:48px 30px;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
+  .band h2{font-size:clamp(24px,3.4vw,34px);margin:0 0 12px;letter-spacing:-.02em}
+  .band p{opacity:.92;font-size:17px;margin:0 0 24px}
+  .band .btn{background:#fff;color:#1b2a4a;border-color:#fff}
+
+  footer{border-top:1px solid var(--border);padding:34px 0;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:65;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;animation:wapulse 2.6s infinite}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:32px;height:32px}
+  .wa-float .wa-tip{position:absolute;right:70px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;font-weight:700;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s}
+  .wa-float:hover .wa-tip{opacity:1}
+  @keyframes wapulse{0%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,0)}}
+  @media(max-width:600px){.wa-float{width:54px;height:54px;right:14px;bottom:14px}.wa-float .wa-tip{display:none}}
+
+  .dropdown{position:relative}
+  .dropdown .dd-t{display:inline-flex;align-items:center;gap:5px;cursor:pointer;color:var(--muted)}
+  .dropdown .dd-t .car{width:9px;height:6px;fill:currentColor;transition:transform .2s}
+  .dropdown:hover .dd-t{color:var(--text)}
+  .dropdown:hover .dd-t .car{transform:rotate(180deg)}
+  .dropdown .menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:8px;min-width:212px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;z-index:40}
+  .dropdown:hover .menu,.dropdown:focus-within .menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px)}
+  .dropdown .menu a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--text);font-weight:600;font-size:14.5px}
+  .dropdown .menu a:hover{background:var(--bg-2)}
+  .soc-ic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .soc-ic svg{width:18px;height:18px;fill:#fff}
+  .ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+  .fb{background:#1877f2}
+  .wa{background:#25d366}
+  .fsoc{display:flex;gap:10px}
+  .fsoc a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .fsoc a:hover{transform:translateY(-3px)}
+  .fsoc a svg{width:18px;height:18px;fill:#fff}
+
+  /* ===== MENÚ MÓVIL (hamburguesa con todas las secciones) ===== */
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);border-radius:11px;cursor:pointer;padding:0}
+  .hamburger span{display:block;width:20px;height:2px;background:var(--text);margin:0 auto;transition:transform .25s,opacity .2s;border-radius:2px}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{position:fixed;top:60px;left:0;right:0;background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--border);box-shadow:var(--shadow-lg);z-index:29;display:flex;flex-direction:column;padding:8px 22px 22px;max-height:calc(100vh - 60px);overflow-y:auto;opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .25s,transform .25s}
+  .mobile-menu.open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .mobile-menu a.mm-link{padding:15px 4px;font-weight:700;font-size:16.5px;color:var(--text);border-bottom:1px solid var(--border)}
+  .mobile-menu a.mm-link:active{color:var(--brand)}
+  .mobile-menu .mm-soc{display:flex;align-items:center;gap:12px;padding:16px 4px;border-bottom:1px solid var(--border)}
+  .mobile-menu .mm-soc b{color:var(--muted);font-size:14px;font-weight:700}
+  .mobile-menu .mm-soc a{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .mobile-menu .mm-soc a svg{width:19px;height:19px;fill:#fff}
+  .mobile-menu .mm-cta{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .mobile-menu .mm-cta .btn{width:100%;justify-content:center;padding:14px;font-size:15.5px}
+  @media(max-width:720px){
+    .hamburger{display:flex}
+    nav.top .wrap > a.btn{display:none}
+  }
+  @media(min-width:721px){ .mobile-menu{display:none} }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="logo"><svg class="cc" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 89.4 A44 44 0 1 1 92.7 30.6" stroke="currentColor" stroke-width="20"/><path d="M74.12 72.71 A19 19 0 1 1 74.12 47.29" stroke="#2f6df6" stroke-width="16"/></svg></span> Contardo Contador</a>
+    <div class="links">
+      <a href="index.html#funciones">Funciones</a>
+      <a href="nosotros.html" class="on">Nosotros</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="index.html#precios">Precios</a>
+      <a href="index.html#faq">Preguntas</a>
+      <div class="dropdown">
+        <span class="dd-t">Contacto <svg class="car" viewBox="0 0 10 6"><path d="M0 0h10L5 6z"/></svg></span>
+        <div class="menu">
+          <a href="https://instagram.com/elcontardocontador" target="_blank" rel="noopener"><span class="soc-ic ig"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></span> Instagram</a>
+          <a href="https://www.facebook.com/elcontardo.contador/" target="_blank" rel="noopener"><span class="soc-ic fb"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15v2.32H7.5V13h2.75v8h3.25z"/></svg></span> Facebook</a>
+          <a href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener"><span class="soc-ic wa"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg></span> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <a class="btn" href="app.html">Ingresar</a>
+    <a class="btn primary" href="app.html">Empezar gratis</a>
+    <button class="hamburger" id="hbtn" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a class="mm-link" href="index.html#funciones">Funciones</a>
+  <a class="mm-link" href="index.html#servicios">Cursos y asesorías</a>
+  <a class="mm-link" href="index.html#compara">Compáranos</a>
+  <a class="mm-link" href="index.html#precios">Precios y pagos</a>
+  <a class="mm-link" href="nosotros.html">Nosotros</a>
+  <a class="mm-link" href="cursos.html">Cursos</a>
+  <a class="mm-link" href="index.html#faq">Preguntas</a>
+  <div class="mm-soc">
+    <b>Contacto:</b>
+    <a class="ig" href="https://instagram.com/elcontardocontador" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+    <a class="fb" href="https://www.facebook.com/elcontardo.contador/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15v2.32H7.5V13h2.75v8h3.25z"/></svg></a>
+    <a class="wa" href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg></a>
+  </div>
+  <div class="mm-cta">
+    <a class="btn" href="app.html">Ingresar</a>
+    <a class="btn primary" href="app.html">Empezar gratis</a>
+  </div>
+</div>
+
+<header class="phead">
+  <div class="wrap">
+    <span class="kick">Sobre nosotros</span>
+    <h1>Detrás de Contardo Contador</h1>
+    <p>Un software creado por un contador, para contadores y empresas.</p>
+  </div>
+</header>
+
+<section class="about">
+  <div class="wrap">
+    <div class="inner">
+      <div class="photo">
+        <img src="assets/fundador.jpg" alt="Richard Espinosa, fundador de Contardo Contador">
+        <span class="badge"><span class="l"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 89.4 A44 44 0 1 1 92.7 30.6" stroke="currentColor" stroke-width="20"/><path d="M74.12 72.71 A19 19 0 1 1 74.12 47.29" stroke="#2f6df6" stroke-width="16"/></svg></span> Richard Espinosa · Fundador</span>
+      </div>
+      <div class="txt">
+        <h2>Experiencia real detrás de cada función</h2>
+        <p class="role">Contador Público y Auditor · MBA Universidad de Talca</p>
+        <div class="chips">
+          <span class="chip">Contador Público y Auditor</span>
+          <span class="chip">Magíster en Administración de Empresas (MBA)</span>
+          <span class="chip">Universidad de Talca</span>
+          <span class="chip">+9 años de experiencia</span>
+        </div>
+        <p>Contardo Contador nace de la experiencia de <b>Richard Espinosa</b>, <b>Contador Público y Auditor de la Universidad de Talca</b> y Magíster en Administración de Empresas (MBA) de la misma casa de estudios, con más de <b>9 años de trayectoria profesional</b>.</p>
+        <p>A lo largo de su carrera se ha especializado en la elaboración de <b>estados financieros</b>, proyección de flujos de caja, planificación y control de los procesos contables —cobranza, tesorería, proveedores y remuneraciones—, negociación con bancos, informes de control de gestión de gastos y seguimiento de nuevas inversiones, además de la dirección y coordinación del área de administración de personas.</p>
+        <p>Su enfoque combina una <b>visión amplia del negocio</b>, alta capacidad de análisis y orientación al cumplimiento de objetivos, con la habilidad de formar y liderar equipos de trabajo y traducir la misión y los valores de cada compañía en resultados concretos.</p>
+        <p>Hoy asesora a empresas en formato de franquicia del rubro restaurant en el desarrollo de sistemas de control de gestión, planificación, control de procesos administrativos, motivación laboral, evaluación de proyectos y renegociación de créditos, entre otras materias.</p>
+        <p>Toda esa experiencia está hoy integrada en <b>Contardo Contador</b>: una herramienta pensada para que llevar la contabilidad sea simple, ordenada y profesional.</p>
+        <div class="sign">
+          <div class="av">RE</div>
+          <div><b>Richard Espinosa</b><span>Fundador de Contardo Contador SpA · Contador Público y Auditor · MBA U. de Talca</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="box">
+      <h2>Lleva tu contabilidad al día, hoy</h2>
+      <p>Prueba Contardo Contador gratis por 7 días. Sin instalaciones complicadas.</p>
+      <a class="btn lg" href="app.html">Comenzar gratis →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="logo" style="width:28px;height:28px"><svg class="cc" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M92.7 89.4 A44 44 0 1 1 92.7 30.6" stroke="currentColor" stroke-width="20"/><path d="M74.12 72.71 A19 19 0 1 1 74.12 47.29" stroke="#2f6df6" stroke-width="16"/></svg></span> Contardo Contador</div>
+    <div>© <span id="y"></span> Contardo Contador SpA · <a href="terminos.html" style="color:var(--muted)">Términos</a> · <a href="privacidad.html" style="color:var(--muted)">Privacidad</a></div>
+    <div class="fsoc">
+      <a class="ig" href="https://instagram.com/elcontardocontador" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16a4.5 4.5 0 0 1 0-8.5zm0 2A2.5 2.5 0 1 0 12 14a2.5 2.5 0 0 0 0-4.5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+      <a class="fb" href="https://www.facebook.com/elcontardo.contador/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.03 1.46-4.03 4.15v2.32H7.5V13h2.75v8h3.25z"/></svg></a>
+      <a class="wa" href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/56957616211?text=Hola,%20tengo%20una%20consulta%20sobre%20Contardo%20Contador" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span class="wa-tip">¿Necesitas ayuda? Escríbenos</span>
+  <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.4 31.5l8-2.1c2.2 1.2 4.8 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.8-.7-6.8-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.9 20.9 3.2 18.5 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.8 16 28.8zm7.4-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 3.9 1.7 4.2c.2.3 2.9 4.4 7 6.2 1 .4 1.7.7 2.3.9 1 .3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.8-.5z"/></svg>
+</a>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+(function(){var hb=document.getElementById('hbtn'),mm=document.getElementById('mmenu');if(!hb||!mm)return;var set=function(o){hb.classList.toggle('open',o);mm.classList.toggle('open',o);hb.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';};hb.addEventListener('click',function(){set(!hb.classList.contains('open'));});mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});})();
+</script>
+</body>
+</html>

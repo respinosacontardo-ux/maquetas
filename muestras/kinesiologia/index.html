@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  SITIO DE MUESTRA · KINESIOLOGÍA — Diseño web: Facundo Social Media
+  ------------------------------------------------------------
+  CÓMO ADAPTARLO A UN CLIENTE NUEVO:
+  1. NOMBRE: buscá "Movimiento" y "Martina Ferreyra" y reemplazá
+     (aparece en <title>, meta, header, equipo y footer).
+  2. COLORES: editá las variables en :root (--primary, --accent, --ink...).
+  3. WHATSAPP: cambiá la constante WHATSAPP al final del archivo (en <script>).
+     Cada botón con data-wa="..." lleva su propio mensaje pre-armado.
+  4. TRATAMIENTOS: sección id="tratamientos" (una <article class="card"> por servicio).
+  5. OBRAS SOCIALES: sección id="obras-sociales" (una <li> por obra social).
+  6. DIRECCIÓN / HORARIOS / MAPA: sección id="contacto" (cambiá el q= del iframe).
+  7. FOTOS: URLs de Unsplash en el hero (.hero-img) y en .about-img.
+  ============================================================
+-->
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Movimiento · Kinesiología & Rehabilitación en Córdoba</title>
+<meta name="description" content="Kinesiología y rehabilitación en Cerro de las Rosas, Córdoba. Lesiones deportivas, dolor de espalda, post-operatorio y RPG. Pedí tu turno por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Movimiento · Kinesiología & Rehabilitación">
+<meta property="og:description" content="Volvé a moverte sin dolor. Atención personalizada en Cerro de las Rosas, Córdoba. Pedí tu turno por WhatsApp.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1597764690523-15bea4c581c9?auto=format&fit=crop&w=1200&q=70">
+<meta name="theme-color" content="#0f9488">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f9488'/%3E%3Cpath d='M14 42c6-14 12-20 18-20s8 8 12 8 6-4 6-4' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='44' cy='18' r='5' fill='%23ff7a59'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0f9488;        /* verde agua principal */
+  --primary-dark:#0b7469;
+  --primary-soft:#e6f6f4;
+  --accent:#ff7a59;         /* coral cálido */
+  --accent-soft:#fff1ec;
+  --sand:#f7f2ea;
+  --ink:#0f2a43;            /* azul marino para textos */
+  --muted:#526479;
+  --line:#e3eaef;
+  --bg:#ffffff;
+  --bg-alt:#f5f9fa;
+  --wa:#25d366;
+  --radius:20px;
+  --shadow:0 10px 30px -12px rgba(15,42,67,.18);
+  --shadow-lg:0 24px 50px -20px rgba(15,42,67,.28);
+  --font-head:"Plus Jakarta Sans",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-head);line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,8vw,3.7rem);font-weight:800}
+h2{font-size:clamp(1.75rem,5.5vw,2.6rem);font-weight:800}
+h3{font-size:1.12rem;font-weight:700}
+p{margin:0 0 1em}
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+section{padding:76px 0}
+.alt{background:var(--bg-alt)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-dark);margin-bottom:12px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+.section-head{max-width:640px;margin-bottom:40px}
+.section-head p{color:var(--muted);font-size:1.05rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .eyebrow{justify-content:center}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:1rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,color .2s;font-family:var(--font-body)}
+.btn svg{width:20px;height:20px;flex-shrink:0}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 24px -10px rgba(15,148,136,.7)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#063b1d;box-shadow:0 10px 24px -10px rgba(37,211,102,.8)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(37,211,102,.9)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary-dark)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.header.scrolled{border-color:var(--line);box-shadow:0 6px 20px -14px rgba(15,42,67,.3)}
+.header .container{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-head);font-weight:800;font-size:1.2rem;color:var(--ink)}
+.logo-mark{width:36px;height:36px;border-radius:11px;background:var(--primary);display:grid;place-items:center;flex-shrink:0}
+.logo-mark svg{width:24px;height:24px}
+.logo small{display:block;font-family:var(--font-body);font-weight:500;font-size:.68rem;color:var(--muted);letter-spacing:.04em;margin-top:-2px}
+.nav{display:none}
+.nav a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted);padding:8px 4px;transition:color .2s}
+.nav a:hover{color:var(--primary-dark)}
+.header-cta{display:flex;align-items:center;gap:8px}
+.header .btn{padding:10px 16px;font-size:.9rem}
+.menu-btn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.menu-btn svg{width:22px;height:22px}
+.mobile-nav{display:none;border-top:1px solid var(--line);background:#fff;padding:8px 20px 20px}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:14px 4px;text-decoration:none;font-weight:600;border-bottom:1px solid var(--line)}
+.mobile-nav a:last-child{border:0}
+@media (max-width:420px){.header .logo small{display:none}.header .logo{font-size:1.08rem}.header .btn{padding:9px 14px}.header .container{gap:10px}}
+@media (min-width:960px){
+  .nav{display:flex;gap:26px}
+  .menu-btn,.mobile-nav{display:none!important}
+}
+
+/* Hero */
+.hero{padding:40px 0 64px;background:radial-gradient(1200px 500px at 85% -10%,var(--primary-soft),transparent 60%),radial-gradient(700px 400px at -10% 100%,var(--accent-soft),transparent 60%)}
+.hero .container{display:grid;gap:40px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:6px 14px 6px 8px;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--muted);margin-bottom:20px;box-shadow:var(--shadow)}
+.hero-badge span{width:22px;height:22px;border-radius:50%;background:var(--primary-soft);display:grid;place-items:center}
+.hero-badge span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.hero h1 em{font-style:normal;color:var(--primary);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.18em;background:var(--accent);opacity:.35;border-radius:4px;z-index:-1}
+.hero-sub{font-size:1.12rem;color:var(--muted);max-width:540px;margin-bottom:28px}
+.hero-ctas{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.88rem;font-weight:500}
+.chip svg{width:16px;height:16px;color:var(--primary)}
+.hero-visual{position:relative}
+.hero-img{aspect-ratio:4/4.4;border-radius:28px;background:var(--primary-soft) center/cover no-repeat;background-image:url("https://images.unsplash.com/photo-1597764690523-15bea4c581c9?auto=format&fit=crop&w=1200&q=70");box-shadow:var(--shadow-lg)}
+.float-card{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;font-size:.85rem}
+.float-card strong{display:block;font-family:var(--font-head);font-size:1.1rem}
+.float-card .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.float-card .ic svg{width:22px;height:22px}
+.fc-1{left:-6px;bottom:24px}
+.fc-1 .ic{background:var(--accent-soft);color:var(--accent)}
+.fc-2{right:-6px;top:22px}
+.fc-2 .ic{background:var(--primary-soft);color:var(--primary)}
+@media (min-width:600px){.hero-ctas{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:960px){
+  .hero{padding:72px 0 96px}
+  .hero .container{grid-template-columns:1.1fr .9fr;gap:64px}
+  .fc-1{left:-36px}.fc-2{right:-28px}
+}
+
+/* Cards tratamientos */
+.grid{display:grid;gap:16px}
+@media (min-width:600px){.grid-2{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:960px){.grid-4{grid-template-columns:repeat(4,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:600px) and (max-width:959px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.card p{color:var(--muted);font-size:.95rem;margin:0}
+.icon{width:52px;height:52px;border-radius:16px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center;margin-bottom:18px;transition:background .25s,color .25s}
+.icon svg{width:28px;height:28px}
+.card:hover .icon{background:var(--primary);color:#fff}
+
+/* ¿Qué te pasa? */
+.problems{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;list-style:none;padding:0;margin:0}
+@media (min-width:768px){.problems{grid-template-columns:repeat(3,1fr)}}
+.problem{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;font-weight:600;font-size:.98rem;transition:all .2s;min-height:64px}
+.problem .arr{width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex-shrink:0;transition:all .2s}
+.problem .arr svg{width:16px;height:16px}
+.problem:hover{border-color:var(--accent);transform:translateY(-2px)}
+.problem:hover .arr{background:var(--accent);color:#fff}
+.problems-note{margin-top:20px;color:var(--muted);font-size:.95rem}
+
+/* About + steps */
+.about{display:grid;gap:40px;align-items:center}
+.about-img{aspect-ratio:4/3;border-radius:28px;background:var(--sand) center/cover no-repeat;background-image:url("https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=1200&q=70");box-shadow:var(--shadow-lg)}
+@media (min-width:960px){.about{grid-template-columns:.9fr 1.1fr;gap:64px}.about-img{aspect-ratio:4/5}}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
+.step{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;counter-increment:s}
+.step::before{content:"0" counter(s);font-family:var(--font-head);font-weight:800;font-size:1rem;width:46px;height:46px;border-radius:14px;background:var(--ink);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.step:nth-child(even)::before{background:var(--primary)}
+.step h3{margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* Equipo */
+.member{text-align:center;padding:32px 24px}
+.avatar{width:96px;height:96px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-family:var(--font-head);font-weight:800;font-size:1.8rem;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary-dark));box-shadow:0 0 0 6px var(--primary-soft)}
+.avatar.b{background:linear-gradient(135deg,var(--accent),#e85d3c);box-shadow:0 0 0 6px var(--accent-soft)}
+.avatar.c{background:linear-gradient(135deg,#2b4f73,var(--ink));box-shadow:0 0 0 6px #e7edf4}
+.member .role{color:var(--primary-dark);font-weight:600;font-size:.92rem;margin-bottom:6px}
+.member .mp{display:inline-block;font-size:.8rem;color:var(--muted);background:var(--bg-alt);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+
+/* Obras sociales */
+.os-box{background:var(--ink);color:#fff;border-radius:28px;padding:40px 24px;position:relative;overflow:hidden}
+.os-box::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:var(--primary);opacity:.25;right:-120px;top:-140px}
+.os-box .eyebrow{color:#7fe0d5}
+.os-box h2{color:#fff}
+.os-box p{color:#c4d2e0}
+.os-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:24px 0;position:relative;z-index:1}
+.os-list li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 16px;font-family:var(--font-head);font-weight:700;font-size:.95rem;letter-spacing:.01em;transition:background .2s}
+.os-list li:hover{background:rgba(255,255,255,.16)}
+.os-list li.part{background:var(--accent);border-color:var(--accent);color:#2b0f05}
+.os-box .btn{position:relative;z-index:1}
+@media (min-width:960px){.os-box{padding:56px}}
+
+/* Opiniones */
+.review{display:flex;flex-direction:column;gap:14px}
+.stars{display:flex;gap:2px;color:#f5a524}
+.stars svg{width:18px;height:18px}
+.review blockquote{margin:0;font-size:1rem;color:var(--ink)}
+.review footer{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:8px}
+.review .ini{width:42px;height:42px;border-radius:50%;background:var(--primary-soft);color:var(--primary-dark);display:grid;place-items:center;font-weight:700}
+.review footer small{display:block;color:var(--muted);font-size:.85rem}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .2s,box-shadow .2s}
+.faq details[open]{border-color:var(--primary);box-shadow:var(--shadow)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:1.02rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;font-weight:400;color:var(--primary);line-height:1;transition:transform .25s;flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 20px 18px;margin:0;color:var(--muted)}
+
+/* Contacto */
+.contact{display:grid;gap:24px}
+@media (min-width:960px){.contact{grid-template-columns:1fr 1.2fr}}
+.info-list{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:18px}
+.info-list li{display:flex;gap:14px}
+.info-list .icon{width:44px;height:44px;border-radius:14px;margin:0;flex-shrink:0}
+.info-list .icon svg{width:22px;height:22px}
+.info-list strong{display:block;font-family:var(--font-head)}
+.info-list span{color:var(--muted);font-size:.95rem}
+.map{border-radius:24px;overflow:hidden;border:1px solid var(--line);min-height:320px;background:var(--primary-soft);box-shadow:var(--shadow)}
+.map iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+.contact-ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Footer */
+.footer{background:var(--ink);color:#c4d2e0;padding:40px 0 100px;font-size:.92rem}
+.footer .container{display:flex;flex-direction:column;gap:14px}
+.footer .logo{color:#fff}
+.footer .logo small{color:#93a7bb}
+.footer a{color:#fff}
+.credit{font-size:.8rem;color:#8ea2b6;border-top:1px solid rgba(255,255,255,.1);padding-top:14px}
+@media (min-width:768px){.footer .container{flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap}.credit{width:100%}}
+
+/* WhatsApp flotante */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.35);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px;color:#fff}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);animation:pulse 2.4s infinite;z-index:-1}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.grid .reveal:nth-child(2),.steps .reveal:nth-child(2){transition-delay:.08s}
+.grid .reveal:nth-child(3),.steps .reveal:nth-child(3){transition-delay:.16s}
+.grid .reveal:nth-child(4),.steps .reveal:nth-child(4){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .wa-float::before{animation:none}
+  *{transition-duration:.01ms!important}
+}
+.no-js .reveal{opacity:1;transform:none}
+  /* Deja lugar al cartel "Powered by Netlify" de abajo a la derecha */
+  .wa-float{bottom:64px!important}
+</style>
+</head>
+<body class="no-js">
+
+<!-- SVG sprite: íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6-1.57a11.3 11.3 0 0 0 5.43 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol>
+</svg>
+
+<header class="header" id="top">
+  <div class="container">
+    <a href="#top" class="logo" aria-label="Movimiento, inicio">
+      <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 16c2.5-5.5 5-8 7.5-8s3 3 5 3 3-1.5 3-1.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="17" cy="5.5" r="2" fill="#ff7a59"/></svg></span>
+      <span>Movimiento<small>KINESIOLOGÍA & REHABILITACIÓN</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#como-trabajamos">Cómo trabajamos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#obras-sociales">Obras sociales</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary" data-wa="Hola! Quiero pedir un turno de kinesiología." target="_blank" rel="noopener"><span>Pedir turno</span></a>
+      <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mnav" aria-label="Menú móvil">
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#como-trabajamos">Cómo trabajamos</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#obras-sociales">Obras sociales</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="reveal">
+      <div class="hero-badge"><span></span>Turnos disponibles esta semana · Cerro de las Rosas</div>
+      <h1 id="hero-title">Volvé a moverte <em>sin dolor</em></h1>
+      <p class="hero-sub">Kinesiología y rehabilitación con atención personalizada. Evaluamos tu caso, armamos un plan a tu medida y te acompañamos sesión a sesión para que vuelvas a hacer lo que te gusta.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wa" data-wa="Hola! Quiero pedir un turno de kinesiología. ¿Qué disponibilidad tienen?" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedí tu turno por WhatsApp</a>
+        <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+      </div>
+      <ul class="chips">
+        <li class="chip"><svg aria-hidden="true"><use href="#i-check"/></svg>+10 años de experiencia</li>
+        <li class="chip"><svg aria-hidden="true"><use href="#i-check"/></svg>Atención personalizada</li>
+        <li class="chip"><svg aria-hidden="true"><use href="#i-check"/></svg>Obras sociales y particulares</li>
+      </ul>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-img" role="img" aria-label="Kinesióloga colocando una férula de muñeca a una paciente"></div>
+      <div class="float-card fc-1"><span class="ic"><svg aria-hidden="true"><use href="#i-star"/></svg></span><div><strong>4,9 / 5</strong>+300 pacientes</div></div>
+      <div class="float-card fc-2"><span class="ic"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><strong>1 a 1</strong>Sesiones sin apuro</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos" aria-labelledby="t-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tratamientos</span>
+      <h2 id="t-title">Te ayudamos a recuperarte</h2>
+      <p>Abordajes actualizados y basados en evidencia, combinando terapia manual, ejercicio y fisioterapia según lo que necesites.</p>
+    </div>
+    <div class="grid grid-4">
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l-2 6 4 3-2 9M16 3l2 6-4 3 2 9"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+        <h3>Rehabilitación traumatológica</h3>
+        <p>Fracturas, esguinces y lesiones de ligamentos. Recuperá fuerza y movilidad paso a paso.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="4" r="2"/><path d="M6 20l4-6 3 2 2 5M9 9l3-2 4 3 3-1M10 14l-1-5"/></svg></div>
+        <h3>Lesiones deportivas</h3>
+        <p>Desgarros, tendinopatías y sobrecargas. Volvé a entrenar con un retorno progresivo y seguro.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M9 5h6M8.5 9h7M9 13h6M9.5 17h5"/></svg></div>
+        <h3>Dolor de espalda y cervicales</h3>
+        <p>Lumbalgias, ciáticas, hernias y tortícolis. Aliviá el dolor y aprendé a cuidarte.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M9 6V4h6v2M12 10v6M9 13h6"/></svg></div>
+        <h3>Post-operatorio</h3>
+        <p>Rodilla, hombro, cadera y columna. Acompañamos tu recuperación en coordinación con tu médico.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M12 6v8M8 9h8M9 21l3-7 3 7"/></svg></div>
+        <h3>RPG / reeducación postural</h3>
+        <p>Trabajo global de cadenas musculares para mejorar tu postura y prevenir dolores.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v8M12 11c-2 0-3-2-5-2-2 0-4 3-4 7 0 2 1 4 3 4s3-2 4-3 2-3 2-6zM12 11c2 0 3-2 5-2 2 0 4 3 4 7 0 2-1 4-3 4s-3-2-4-3-2-3-2-6z"/></svg></div>
+        <h3>Kinesiología respiratoria</h3>
+        <p>Para adultos y niños: mejorá tu capacidad respiratoria y la eliminación de secreciones.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div>
+        <h3>Drenaje linfático</h3>
+        <p>Técnica manual suave para reducir edemas, retención de líquidos y en post-quirúrgicos.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L5 13h6l-1 9 8-11h-6z"/></svg></div>
+        <h3>Fisioterapia</h3>
+        <p>Magnetoterapia, ultrasonido, TENS y láser como complemento para aliviar el dolor y la inflamación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ¿QUÉ TE PASA? -->
+<section class="alt" aria-labelledby="q-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">¿Qué te pasa?</span>
+      <h2 id="q-title">Contanos y te orientamos</h2>
+      <p>Tocá la opción que más se parece a lo tuyo y escribinos directo por WhatsApp. Te respondemos a la brevedad.</p>
+    </div>
+    <ul class="problems reveal">
+      <li><a class="problem" data-wa="Hola! Tengo dolor lumbar y quiero pedir un turno de kinesiología." target="_blank" rel="noopener">Dolor lumbar<span class="arr"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="problem" data-wa="Hola! Tuve un esguince y quiero pedir un turno de kinesiología." target="_blank" rel="noopener">Esguince<span class="arr"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="problem" data-wa="Hola! Tengo tendinitis y quiero pedir un turno de kinesiología." target="_blank" rel="noopener">Tendinitis<span class="arr"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="problem" data-wa="Hola! Tengo una contractura y quiero pedir un turno de kinesiología." target="_blank" rel="noopener">Contractura<span class="arr"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="problem" data-wa="Hola! Tengo dolor de rodilla y quiero pedir un turno de kinesiología." target="_blank" rel="noopener">Dolor de rodilla<span class="arr"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="problem" data-wa="Hola! Tengo dolor de hombro y quiero pedir un turno de kinesiología." target="_blank" rel="noopener">Dolor de hombro<span class="arr"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+    </ul>
+    <p class="problems-note reveal">¿Es otra cosa? <a href="#contacto">Escribinos igual</a>, lo vemos juntos.</p>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJAMOS -->
+<section id="como-trabajamos" aria-labelledby="c-title">
+  <div class="container about">
+    <div class="about-img reveal" role="img" aria-label="Paciente realizando ejercicios de elongación sobre una colchoneta"></div>
+    <div>
+      <div class="section-head reveal" style="margin-bottom:28px">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2 id="c-title">Un plan pensado para vos</h2>
+        <p>Nada de sesiones en serie. Cada paciente tiene objetivos distintos y los trabajamos con tiempo y dedicación.</p>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><div><h3>Evaluación inicial</h3><p>Escuchamos tu historia, evaluamos movilidad, fuerza y dolor para entender qué te pasa.</p></div></li>
+        <li class="step reveal"><div><h3>Plan personalizado</h3><p>Definimos objetivos claros y el tratamiento más adecuado para tu caso y tus tiempos.</p></div></li>
+        <li class="step reveal"><div><h3>Sesiones con seguimiento</h3><p>Medimos tu evolución y ajustamos el plan. Te llevás ejercicios para hacer en casa.</p></div></li>
+        <li class="step reveal"><div><h3>Alta y prevención</h3><p>Te damos herramientas para mantener los resultados y evitar que el dolor vuelva.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo" class="alt" aria-labelledby="e-title">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Equipo</span>
+      <h2 id="e-title">Profesionales que te acompañan</h2>
+      <p>Un equipo matriculado, en formación constante y con mucha vocación por el trato humano.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card member reveal">
+        <div class="avatar" aria-hidden="true">MF</div>
+        <h3>Lic. Martina Ferreyra</h3>
+        <p class="role">Directora · Traumatología y deporte</p>
+        <span class="mp">M.P. 0000</span>
+        <p>Especialista en rehabilitación deportiva y post-quirúrgica de rodilla y hombro.</p>
+      </article>
+      <article class="card member reveal">
+        <div class="avatar b" aria-hidden="true">JS</div>
+        <h3>Lic. Juan Sosa</h3>
+        <p class="role">RPG y columna</p>
+        <span class="mp">M.P. 0000</span>
+        <p>Formado en Reeducación Postural Global y terapia manual para dolor de espalda.</p>
+      </article>
+      <article class="card member reveal">
+        <div class="avatar c" aria-hidden="true">LP</div>
+        <h3>Lic. Lucía Paz</h3>
+        <p class="role">Respiratoria y drenaje linfático</p>
+        <span class="mp">M.P. 0000</span>
+        <p>Atiende adultos y niños en kinesiología respiratoria y tratamientos linfáticos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OBRAS SOCIALES -->
+<section id="obras-sociales" aria-labelledby="o-title">
+  <div class="container">
+    <div class="os-box reveal">
+      <span class="eyebrow">Obras sociales</span>
+      <h2 id="o-title">Atendemos con tu cobertura</h2>
+      <p>Trabajamos con las principales obras sociales y prepagas de Córdoba, y también de forma particular.</p>
+      <ul class="os-list">
+        <li>APROSS</li><li>OSDE</li><li>Swiss Medical</li><li>Sancor Salud</li><li>Galeno</li><li>PAMI</li><li>Medifé</li><li class="part">Particulares</li>
+      </ul>
+      <p style="position:relative;z-index:1"><strong style="color:#fff">¿No ves la tuya?</strong> Consultá por tu obra social, sumamos convenios todo el tiempo.</p>
+      <a class="btn btn-wa" data-wa="Hola! Quería consultar si atienden con mi obra social: " target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Consultar mi obra social</a>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIONES -->
+<section class="alt" aria-labelledby="r-title">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Opiniones</span>
+      <h2 id="r-title">Lo que dicen nuestros pacientes</h2>
+    </div>
+    <div class="grid grid-3">
+      <article class="card review reveal">
+        <div class="stars" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Llegué con un dolor lumbar que no me dejaba ni manejar. Me explicaron todo, me dieron ejercicios y hoy hago vida normal. Súper recomendables.”</blockquote>
+        <footer><span class="ini" aria-hidden="true">C</span><div><strong>Carolina M.</strong><small>Dolor lumbar</small></div></footer>
+      </article>
+      <article class="card review reveal">
+        <div class="stars" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Después de la operación de ligamentos cruzados volví a jugar al fútbol. El seguimiento fue impecable y siempre con buena onda.”</blockquote>
+        <footer><span class="ini" aria-hidden="true">N</span><div><strong>Nicolás R.</strong><small>Post-operatorio de rodilla</small></div></footer>
+      </article>
+      <article class="card review reveal">
+        <div class="stars" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Tenía el hombro dolorido hace meses. La atención es personalizada de verdad, nada de estar enchufada a un aparato y sola. ¡Gracias!”</blockquote>
+        <footer><span class="ini" aria-hidden="true">S</span><div><strong>Silvia G.</strong><small>Tendinitis de hombro</small></div></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section aria-labelledby="f-title">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 id="f-title">Sacate las dudas</h2>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>¿Necesito orden médica?</summary>
+        <p>Si te atendés por obra social, en general sí: necesitás la orden con diagnóstico y cantidad de sesiones. Si venís de forma particular, podés pedir turno directamente y en la evaluación vemos si conviene consultar con un médico.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto dura una sesión?</summary>
+        <p>Entre 45 y 60 minutos, según el tratamiento. La primera consulta incluye la evaluación, así que puede ser un poco más larga.</p>
+      </details>
+      <details>
+        <summary>¿Cuántas sesiones voy a necesitar?</summary>
+        <p>Depende de cada caso. Después de la evaluación te damos una estimación y la vamos revisando según tu evolución. Muchos pacientes notan cambios en las primeras sesiones.</p>
+      </details>
+      <details>
+        <summary>¿Qué ropa tengo que llevar?</summary>
+        <p>Ropa cómoda que te permita moverte y que deje accesible la zona a tratar (por ejemplo, short si es rodilla o musculosa si es hombro). Si tenés estudios previos, traelos.</p>
+      </details>
+      <details>
+        <summary>¿Atienden a domicilio?</summary>
+        <p>Sí, para pacientes con movilidad reducida o en post-operatorios inmediatos, dentro de Córdoba Capital. Escribinos y coordinamos.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="alt" aria-labelledby="ct-title">
+  <div class="container contact">
+    <div class="reveal">
+      <div class="section-head" style="margin-bottom:28px">
+        <span class="eyebrow">Contacto</span>
+        <h2 id="ct-title">Pedí tu turno hoy</h2>
+        <p>Escribinos por WhatsApp y coordinamos el horario que mejor te quede.</p>
+      </div>
+      <ul class="info-list">
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><div><strong>Dirección</strong><span>Av. Rafael Núñez 4000, Cerro de las Rosas, Córdoba Capital</span></div></li>
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><strong>Horarios</strong><span>Lunes a viernes de 8 a 21 h · Sábados de 9 a 13 h</span></div></li>
+        <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></span><div><strong>Instagram</strong><span><a href="#" rel="noopener">@movimiento.kinesio</a></span></div></li>
+      </ul>
+      <div class="contact-ctas">
+        <a class="btn btn-wa" data-wa="Hola! Quiero pedir un turno de kinesiología. ¿Qué días y horarios tienen disponibles?" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribinos por WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Cerro+de+las+Rosas,+C%C3%B3rdoba" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="map reveal">
+      <iframe src="https://www.google.com/maps?q=Cerro+de+las+Rosas,+C%C3%B3rdoba&output=embed" title="Mapa de ubicación en Cerro de las Rosas, Córdoba" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 16c2.5-5.5 5-8 7.5-8s3 3 5 3 3-1.5 3-1.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="17" cy="5.5" r="2" fill="#ff7a59"/></svg></span><span>Movimiento<small>KINESIOLOGÍA & REHABILITACIÓN</small></span></a>
+    <div>Lic. Martina Ferreyra · M.P. 0000<br>Av. Rafael Núñez 4000, Córdoba</div>
+    <div>© 2026 Movimiento Kinesiología. Todos los derechos reservados.</div>
+    <div class="credit">Sitio de muestra · Diseño web: Facundo Social Media</div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="Hola! Quiero pedir un turno de kinesiología." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+const WHATSAPP = "5493516069281"; // ← reemplazar por el número real
+(function () {
+  document.body.classList.remove("no-js");
+
+  // Links de WhatsApp: cada [data-wa] lleva su propio mensaje
+  document.querySelectorAll("[data-wa]").forEach(function (el) {
+    var msg = el.getAttribute("data-wa") || "Hola! Quiero pedir un turno de kinesiología.";
+    el.setAttribute("href", "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg));
+  });
+
+  // Header con sombra al scrollear
+  var header = document.querySelector(".header");
+  var onScroll = function () { header.classList.toggle("scrolled", window.scrollY > 8); };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Menú móvil
+  var btn = document.querySelector(".menu-btn");
+  var mnav = document.getElementById("mnav");
+  btn.addEventListener("click", function () {
+    var open = mnav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+  mnav.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      mnav.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // FAQ: una abierta por vez
+  var items = document.querySelectorAll(".faq details");
+  items.forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (d.open) items.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
+  // Animaciones al scrollear
+  var els = document.querySelectorAll(".reveal");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script src="../pro.js?v=1792896722" defer></script>
+<script src="../fx3d.js?v=1792896722" data-theme="kinesiologia" defer></script>
+<script src="../parallax.js?v=1792896722" defer></script>
+</body>
+</html>
