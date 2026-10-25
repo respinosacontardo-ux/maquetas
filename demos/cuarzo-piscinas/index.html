@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cuarzo Piscinas · Piscinas de diseño en Santiago oriente</title>
+<meta name="description" content="Diseño y construcción de piscinas de hormigón, borde infinito y spa en Las Condes, Vitacura, Lo Barnechea y Chicureo. Proyecto 3D, presupuesto cerrado y garantía de 10 años. Cotiza en 60 segundos.">
+<meta property="og:title" content="Cuarzo Piscinas · Piscinas de diseño en Santiago oriente">
+<meta property="og:description" content="Cotiza tu piscina en 60 segundos y agenda una visita técnica sin costo.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=1200&q=80&auto=format">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#061826">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23061826'/%3E%3Cpath d='M8 23c3-2.5 5-2.5 8 0s5 2.5 8 0 5-2.5 8 0' fill='none' stroke='%238ef0ea' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=1800&q=78&auto=format">
+<style>
+:root{
+  --ink:#061826; --ink-2:#0a2134; --ink-3:#0f2c44; --line:rgba(158,214,225,.14);
+  --aqua:#3fd0d4; --aqua-2:#8ef0ea; --aqua-ink:#03262a;
+  --sand:#e8d9bf; --text:#eaf4f7; --muted:#9db4c1;
+  --radius:22px; --shadow:0 40px 90px -40px rgba(0,0,0,.7);
+  --display:"Fraunces",Georgia,serif; --body:"Manrope",system-ui,-apple-system,sans-serif;
+  --pad:clamp(18px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--text);font:400 clamp(15.5px,1.05vw,17px)/1.65 var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em;line-height:1.05;margin:0}
+h2{font-size:clamp(34px,5vw,64px)}
+h2 em,h1 em{font-style:italic;color:var(--aqua-2);font-weight:300}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:700 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--aqua)}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor}
+.lead{color:var(--muted);font-size:clamp(16px,1.25vw,19px);max-width:56ch}
+section{position:relative;padding:clamp(80px,11vw,150px) 0}
+.sec-head{display:grid;gap:18px;margin-bottom:clamp(40px,6vw,70px);max-width:760px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:700 15px/1 var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .25s,background .25s,box-shadow .25s}
+.btn-pri{background:var(--aqua);color:var(--aqua-ink);box-shadow:0 18px 40px -16px rgba(63,208,212,.7)}
+.btn-pri:hover{transform:translateY(-2px);background:var(--aqua-2)}
+.btn-sec{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(10px)}
+.btn-sec:hover{background:rgba(255,255,255,.12)}
+.btn svg{width:18px;height:18px}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Header */
+.hdr{position:fixed;inset:0 0 auto;z-index:90;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(6,24,38,.78);backdrop-filter:blur(16px) saturate(1.3);border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;height:76px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font:500 22px/1 var(--display);letter-spacing:-.01em;white-space:nowrap}
+.logo svg{width:34px;height:34px}
+.logo small{display:block;font:700 9.5px/1 var(--body);letter-spacing:.24em;color:var(--aqua);margin-top:4px;text-transform:uppercase}
+.nav{display:flex;gap:28px;margin-left:auto}
+.nav a{text-decoration:none;font-weight:600;font-size:14.5px;color:rgba(234,244,247,.82);transition:color .2s}
+.nav a:hover{color:#fff}
+.hdr .btn{min-height:44px;padding:0 20px;font-size:14px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;cursor:pointer}
+@media (max-width:980px){.nav,.hdr .btn{display:none}.menu-btn{display:grid;place-items:center}
+  .hdr.open{background:rgba(6,24,38,.97)}
+  .hdr.open .nav{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;background:rgba(6,24,38,.97);padding:8px var(--pad) 22px;border-bottom:1px solid var(--line)}
+  .hdr.open .nav a{padding:14px 0;font-size:18px;border-bottom:1px solid var(--line)}}
+
+/* Hero */
+.hero{min-height:100svh;padding:0;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:-6% 0 0;z-index:-3}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;transform:scale(1.08)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(180deg,rgba(6,24,38,.55) 0%,rgba(6,24,38,.15) 30%,rgba(6,24,38,.55) 62%,var(--ink) 100%),
+  linear-gradient(90deg,rgba(6,24,38,.85) 0%,rgba(6,24,38,.2) 60%,rgba(6,24,38,0) 100%)}
+.caustics{position:absolute;inset:-10%;width:120%;height:120%;z-index:-1;mix-blend-mode:screen;opacity:.09;pointer-events:none}
+@media (max-width:900px){.caustics{display:none}}
+.hero .wrap{width:100%;padding-top:120px;padding-bottom:clamp(40px,7vh,80px);display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(46px,7.4vw,112px);line-height:.95;margin:22px 0 24px}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:inline-block}
+.hero .lead{color:rgba(234,244,247,.86)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-cards{display:grid;gap:14px;justify-items:end}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-radius:20px;padding:18px 22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.stat{display:flex;align-items:center;gap:16px;min-width:270px}
+.stat b{font:400 40px/1 var(--display);color:#fff;letter-spacing:-.02em;white-space:nowrap}
+.stat span{font-size:13.5px;line-height:1.35;color:rgba(234,244,247,.8)}
+.stat .ic{width:44px;height:44px;border-radius:14px;background:rgba(63,208,212,.16);display:grid;place-items:center;flex:none}
+.stat .ic svg{width:22px;height:22px;color:var(--aqua-2)}
+.stars{color:#ffd27a;letter-spacing:2px;font-size:13px}
+.scroll-cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:24px;height:38px;border:1.5px solid rgba(255,255,255,.4);border-radius:14px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:3px;height:7px;border-radius:3px;background:#fff;transform:translateX(-50%);animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+@media (max-width:900px){
+  .hero{min-height:auto;align-items:stretch}
+  .hero .wrap{grid-template-columns:1fr;padding-top:104px;gap:26px}
+  .hero h1{margin:16px 0 16px}
+  .hero-cards{grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);overflow-x:auto;justify-items:stretch;scroll-snap-type:x mandatory;margin:0 calc(var(--pad)*-1);padding:4px var(--pad) 8px;scrollbar-width:none}
+  .hero-cards::-webkit-scrollbar{display:none}
+  .stat{min-width:0;scroll-snap-align:start}.stat b{font-size:32px}
+  .scroll-cue{display:none}
+}
+
+/* Marquee comunas */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:20px 0;background:var(--ink-2)}
+.marquee-track{display:flex;gap:56px;width:max-content;animation:mq 38s linear infinite}
+.marquee span{font:300 clamp(22px,2.6vw,34px)/1 var(--display);font-style:italic;color:rgba(234,244,247,.5);white-space:nowrap;display:flex;align-items:center;gap:56px}
+.marquee span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--aqua);opacity:.8}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Ventajas */
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;background:linear-gradient(160deg,var(--ink-3),var(--ink-2));border:1px solid var(--line);border-radius:var(--radius);padding:32px 30px 34px;transition:border-color .3s,transform .3s;transform-style:preserve-3d;will-change:transform;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(63,208,212,.14),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:rgba(63,208,212,.4)}.card:hover::after{opacity:1}
+.card .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(63,208,212,.12);border:1px solid rgba(63,208,212,.25);margin-bottom:24px}
+.card .ic svg{width:26px;height:26px;color:var(--aqua-2)}
+.card h3{font-size:25px;margin-bottom:10px}
+.card p{margin:0;color:var(--muted);font-size:15.5px}
+@media (max-width:900px){.adv-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.adv-grid{grid-template-columns:1fr}.card{padding:26px 22px}}
+
+/* Proyectos (bento) */
+.alt{background:var(--ink-2)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,17vw,230px);gap:14px}
+.ph{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;background:var(--ink-3)}
+.ph img{width:100%;height:118%;object-fit:cover;position:absolute;top:-9%;left:0}
+.ph figcaption{position:absolute;left:14px;bottom:14px;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(6,24,38,.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+.b1{grid-column:span 7;grid-row:span 2}.b2{grid-column:span 5}.b3{grid-column:span 5}.b4{grid-column:span 4}.b5{grid-column:span 4}.b6{grid-column:span 4}
+@media (max-width:760px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.b1{grid-column:span 2;grid-row:span 2}.b2,.b3,.b4,.b5{grid-column:span 1}.b6{grid-column:span 2}}
+
+/* Cómo funciona */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.steps-line{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line)}
+.steps-line i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--aqua),var(--aqua-2))}
+.step{position:relative}
+.step .n{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--ink);border:1.5px solid var(--aqua);font:500 22px/1 var(--display);color:var(--aqua-2);margin-bottom:26px;position:relative;z-index:1}
+.step h3{font-size:26px;margin-bottom:10px}
+.step p{color:var(--muted);margin:0;font-size:15.5px}
+.step .tag{display:inline-block;margin-top:14px;font-size:12.5px;font-weight:700;color:var(--sand);letter-spacing:.04em}
+@media (max-width:900px){.steps{grid-template-columns:1fr;gap:34px;padding-left:76px}.steps-line{left:27px;right:auto;top:0;bottom:0;width:2px;height:auto}.steps-line i{transform-origin:top;transform:scaleY(0)}.step .n{position:absolute;left:-76px;top:-6px;margin:0}}
+
+/* Cotizador */
+.quote{overflow:hidden}
+.quote-bg{position:absolute;inset:0;opacity:.13;background:url("https://images.unsplash.com/photo-1562016600-ece13e8ba570?w=1600&q=60&auto=format") center/cover;mask-image:linear-gradient(180deg,transparent,#000 25%,#000 75%,transparent)}
+.quote .wrap{position:relative;display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,70px);align-items:start}
+.quote-side{position:sticky;top:110px}
+.quote-side ul{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.quote-side li{display:flex;gap:12px;align-items:flex-start;color:rgba(234,244,247,.88)}
+.quote-side li svg{width:22px;height:22px;color:var(--aqua);flex:none;margin-top:2px}
+.ai-badge{display:inline-flex;align-items:center;gap:8px;margin-top:26px;padding:9px 14px;border-radius:999px;background:rgba(63,208,212,.1);border:1px solid rgba(63,208,212,.3);font-size:13px;font-weight:600;color:var(--aqua-2)}
+.qz{background:linear-gradient(170deg,rgba(15,44,68,.92),rgba(10,33,52,.96));border:1px solid rgba(158,214,225,.2);border-radius:28px;padding:clamp(22px,3.4vw,38px);box-shadow:var(--shadow);backdrop-filter:blur(14px);min-height:560px;display:flex;flex-direction:column}
+.qz-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:12px}
+.qz-bar{height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:28px}
+.qz-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--aqua),var(--aqua-2));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.qz-step{display:none;flex:1;flex-direction:column}
+.qz-step.on{display:flex;animation:qin .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes qin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.qz h3{font-size:clamp(26px,2.6vw,34px);margin-bottom:8px}
+.qz .hint{color:var(--muted);font-size:14.5px;margin:0 0 22px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{position:relative;text-align:left;background:rgba(255,255,255,.035);border:1.5px solid var(--line);color:var(--text);border-radius:18px;padding:18px;cursor:pointer;font:inherit;transition:border-color .2s,background .2s,transform .2s}
+.opt:hover{border-color:rgba(63,208,212,.5);transform:translateY(-2px)}
+.opt.sel{border-color:var(--aqua);background:rgba(63,208,212,.1)}
+.opt.sel::after{content:"✓";position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--aqua);color:var(--aqua-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
+.opt b{display:block;font-size:16px;margin-bottom:4px;padding-right:26px}
+.opt span{font-size:13.5px;color:var(--muted);line-height:1.45;display:block}
+.opt small{display:block;margin-top:8px;font-weight:700;color:var(--sand);font-size:12.5px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1.5px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);border-radius:999px;padding:11px 16px;font:600 14px/1.2 var(--body);cursor:pointer;transition:.2s;min-height:44px}
+.chip.sel{background:var(--aqua);border-color:var(--aqua);color:var(--aqua-ink)}
+.dims{display:grid;grid-template-columns:1fr 200px;gap:26px;align-items:center}
+.rng{display:grid;gap:6px;margin-bottom:18px}
+.rng label{display:flex;justify-content:space-between;font-weight:600;font-size:14.5px}
+.rng label output{font:500 20px/1 var(--display);color:var(--aqua-2)}
+input[type=range]{width:100%;accent-color:var(--aqua);height:28px}
+.pool-view{aspect-ratio:1;border-radius:20px;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 20px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 20px),rgba(0,0,0,.18);border:1px solid var(--line);display:grid;place-items:center;position:relative}
+.pool-view .pool{border-radius:10px;background:linear-gradient(135deg,#5fe3e4,#1f8fb0);box-shadow:inset 0 0 0 3px rgba(232,217,191,.85),0 10px 30px -8px rgba(63,208,212,.6);transition:width .25s,height .25s}
+.pool-view .meta{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:12.5px;color:var(--muted)}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.facts span{padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:13px;font-weight:600}
+.field{display:grid;gap:7px;margin-bottom:14px}
+.field label{font-weight:600;font-size:14px}
+.inp{width:100%;min-height:50px;border-radius:14px;border:1.5px solid var(--line);background:rgba(0,0,0,.2);color:var(--text);padding:12px 16px;font:500 16px var(--body);outline:none;transition:border-color .2s}
+.inp:focus{border-color:var(--aqua)}
+select.inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239db4c1' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+select.inp option{background:var(--ink-2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.drop{border:1.5px dashed rgba(158,214,225,.35);border-radius:18px;padding:18px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:border-color .2s,background .2s}
+.drop:hover{border-color:var(--aqua);background:rgba(63,208,212,.05)}
+.drop .ic{width:46px;height:46px;border-radius:14px;background:rgba(63,208,212,.12);display:grid;place-items:center;flex:none}
+.drop .ic svg{width:22px;height:22px;color:var(--aqua-2)}
+.drop b{display:block;font-size:15px}.drop span{font-size:13px;color:var(--muted)}
+.drop img{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none}
+.ai-out{margin-top:12px;padding:14px 16px;border-radius:16px;background:rgba(63,208,212,.08);border:1px solid rgba(63,208,212,.25);font-size:14.5px;display:none}
+.ai-out.on{display:block}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin:4px 0 6px}
+.check input{width:18px;height:18px;accent-color:var(--aqua);margin-top:2px;flex:none}
+.qz-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:26px}
+.back{background:none;border:0;color:var(--muted);font:600 14.5px var(--body);cursor:pointer;min-height:44px;padding:0 4px}
+.back:hover{color:#fff}
+.btn[disabled]{opacity:.35;cursor:not-allowed;transform:none!important}
+.err{color:#ff9b9b;font-size:13px;min-height:18px}
+.res-price{font:400 clamp(36px,4.4vw,54px)/1 var(--display);letter-spacing:-.02em;margin:6px 0 4px}
+.res-price small{font:600 14px var(--body);color:var(--muted);display:block;margin-top:10px;letter-spacing:0}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+.res-grid div{padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.res-grid b{display:block;font:500 22px/1.1 var(--display);color:var(--aqua-2)}
+.res-grid span{font-size:12.5px;color:var(--muted)}
+.res-list{list-style:none;padding:0;margin:0 0 6px;font-size:14px;display:grid;gap:6px}
+.res-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.res-list li span:last-child{color:var(--muted);white-space:nowrap}
+.disclaimer{font-size:12.5px;color:var(--muted);margin:14px 0 0;line-height:1.5}
+.spin{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite;display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (max-width:980px){.quote .wrap{grid-template-columns:1fr}.quote-side{position:static}}
+@media (max-width:560px){.opts{grid-template-columns:1fr}.dims{grid-template-columns:1fr}.pool-view{width:100%;max-width:220px;margin:0 auto}.ph figcaption{left:10px;bottom:10px;padding:6px 11px;font-size:11.5px}.two{grid-template-columns:1fr}.res-grid{grid-template-columns:repeat(3,1fr);gap:8px}.res-grid div{padding:11px 10px}.res-grid b{font-size:18px}.qz{min-height:0;border-radius:22px}.opt{padding:15px}}
+
+/* Testimonios */
+.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.t-card{padding:30px;border-radius:var(--radius);background:linear-gradient(165deg,var(--ink-3),var(--ink));border:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
+.t-card blockquote{margin:0;font:300 21px/1.4 var(--display);font-style:italic}
+.t-who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.t-av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:var(--aqua-ink);background:linear-gradient(135deg,var(--aqua-2),var(--sand))}
+.t-who b{display:block;font-size:15px}.t-who span{font-size:13px;color:var(--muted)}
+.ejemplo{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);border:1px solid rgba(232,217,191,.35);border-radius:999px;padding:5px 10px}
+@media (max-width:900px){.testi{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,80px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;align-items:center;padding:24px 0;font:400 clamp(19px,1.8vw,23px)/1.3 var(--display)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);flex:none;position:relative;transition:transform .3s,background .3s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--aqua-2);transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+.faq details[open] summary i{background:rgba(63,208,212,.15)}
+.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq p{margin:0 0 24px;color:var(--muted);max-width:62ch}
+@media (max-width:900px){.faq-wrap{grid-template-columns:1fr}}
+
+/* Contacto */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.c-card{border-radius:var(--radius);border:1px solid var(--line);background:var(--ink-3);padding:clamp(24px,3.4vw,40px)}
+.c-info{display:grid;gap:18px;margin:26px 0}
+.c-info div{display:flex;gap:14px;align-items:flex-start}
+.c-info svg{width:22px;height:22px;color:var(--aqua);flex:none;margin-top:3px}
+.c-info b{display:block;font-size:15px}.c-info span{color:var(--muted);font-size:14.5px}
+.map{border-radius:18px;overflow:hidden;border:1px solid var(--line);height:240px;filter:grayscale(.3) invert(.9) hue-rotate(180deg) contrast(.9)}
+.map iframe{width:100%;height:100%;border:0}
+.ok-msg{display:none;padding:16px;border-radius:16px;background:rgba(63,208,212,.1);border:1px solid rgba(63,208,212,.3);margin-top:12px}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+
+/* Footer */
+footer.site{padding:50px 0 120px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+.demo-note{font-size:12.5px;opacity:.75}
+
+/* Flotantes */
+.wa-fab{position:fixed;right:18px;bottom:18px;z-index:95;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 16px 34px -10px rgba(0,0,0,.6);transition:transform .2s}
+.wa-fab:hover{transform:scale(1.07)}.wa-fab svg{width:30px;height:30px;color:#fff}
+.ai-fab{position:fixed;left:18px;bottom:18px;z-index:95;display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(10,33,52,.85);backdrop-filter:blur(14px);color:#fff;font:700 14px var(--body);cursor:pointer;box-shadow:0 16px 34px -10px rgba(0,0,0,.6);transition:transform .25s,opacity .25s}
+.ai-fab:hover{transform:translateY(-2px)}
+.ai-fab .orb{width:38px;height:38px;border-radius:50%;background:conic-gradient(from 0deg,var(--aqua),var(--sand),var(--aqua-2),var(--aqua));animation:rot 6s linear infinite;position:relative}
+.ai-fab .orb::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--ink-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238ef0ea'%3E%3Cpath d='M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z'/%3E%3C/svg%3E") center/16px no-repeat}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* Chat */
+.chat{position:fixed;left:18px;bottom:18px;z-index:120;width:390px;max-width:calc(100vw - 36px);height:600px;max-height:calc(100svh - 36px);display:flex;flex-direction:column;border-radius:26px;overflow:hidden;background:rgba(8,28,44,.97);border:1px solid rgba(158,214,225,.22);box-shadow:0 40px 100px -30px rgba(0,0,0,.8);backdrop-filter:blur(20px);opacity:0;transform:translateY(20px) scale(.97);transform-origin:bottom left;pointer-events:none;transition:opacity .3s,transform .3s}
+.chat.on{opacity:1;transform:none;pointer-events:auto}
+.chat-h{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(63,208,212,.1),transparent)}
+.chat-h .orb{width:40px;height:40px;border-radius:50%;background:conic-gradient(from 0deg,var(--aqua),var(--sand),var(--aqua-2),var(--aqua));animation:rot 6s linear infinite;flex:none}
+.chat-h b{display:block;font-size:15px}.chat-h small{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.chat-h small::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e}
+.chat-x{margin-left:auto;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.06);color:#fff;font-size:22px;cursor:pointer}
+.chat-m{flex:1;overflow-y:auto;padding:18px 14px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.msg{max-width:86%;padding:11px 14px;border-radius:18px;font-size:14.5px;line-height:1.5;white-space:pre-line;animation:qin .3s both}
+.msg.bot{background:rgba(255,255,255,.06);border:1px solid var(--line);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.me{background:var(--aqua);color:var(--aqua-ink);border-bottom-right-radius:6px;align-self:flex-end;font-weight:600}
+.msg-acts{display:flex;flex-wrap:wrap;gap:7px;align-self:flex-start}
+.msg-acts button,.msg-acts a{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;padding:8px 13px;font:600 13px/1.2 var(--body);cursor:pointer;text-decoration:none}
+.msg-acts .wa{background:#25d366;border-color:#25d366;color:#08311a}
+.msg-acts .pri{background:var(--aqua);border-color:var(--aqua);color:var(--aqua-ink)}
+.typing{display:flex;gap:4px;padding:14px}.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:ty 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes ty{50%{transform:translateY(-3px);opacity:.4}}
+.chat-f{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-f input{flex:1;min-width:0;min-height:46px;border-radius:999px;border:1.5px solid var(--line);background:rgba(0,0,0,.25);color:#fff;padding:0 16px;font:500 16px var(--body);outline:none}
+.chat-f input:focus{border-color:var(--aqua)}
+.chat-f button{width:46px;height:46px;border-radius:50%;border:0;background:var(--aqua);color:var(--aqua-ink);cursor:pointer;flex:none;display:grid;place-items:center}
+.chat-f button svg{width:18px;height:18px}
+.chat-note{font-size:11px;color:var(--muted);text-align:center;padding:0 12px 10px}
+@media (max-width:600px){.ai-fab{left:12px;bottom:14px;padding:6px 14px 6px 6px;font-size:13px}.ai-fab .orb{width:34px;height:34px}.wa-fab{right:12px;bottom:14px;width:54px;height:54px}
+  .chat{left:8px;right:8px;bottom:8px;width:auto;max-width:none;height:min(82svh,640px);border-radius:22px}}
+
+/* Animaciones de entrada (las controla GSAP; sin JS quedan visibles) */
+.js .rv{opacity:0;transform:translateY(34px)}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.marquee-track,.ai-fab .orb,.chat-h .orb{animation:none}.caustics{display:none}}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.1-1.3A9.9 9.9 0 1 0 12.04 2zm0 18.1c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1 1 6.9 3.8zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Cuarzo Piscinas, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ef0ea"/><stop offset="1" stop-color="#2aa9c4"/></linearGradient></defs><path d="M20 2 36 11v18L20 38 4 29V11z" fill="none" stroke="url(#lg)" stroke-width="2"/><path d="M8 23c3-2.5 5-2.5 8 0s5 2.5 8 0 5-2.5 8 0" fill="none" stroke="#8ef0ea" stroke-width="2" stroke-linecap="round"/><path d="M11 17c2.5-2 4.2-2 6.5 0s4 2 6.5 0" fill="none" stroke="#e8d9bf" stroke-width="1.6" stroke-linecap="round" opacity=".8"/></svg>
+      <span>Cuarzo<small>Piscinas de diseño</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#ventajas">Por qué Cuarzo</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-pri" href="#cotizador">Cotizar mi piscina</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="h-title">
+    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=1800&q=78&auto=format" alt="Piscina de borde infinito al atardecer junto a una terraza de madera" fetchpriority="high"></div>
+    <svg class="caustics" aria-hidden="true" preserveAspectRatio="none">
+      <filter id="cst"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".035 .06" numOctaves="2" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 .55  0 0 0 0 .95  0 0 0 0 .92  0 0 0 9 -4.6"/></filter>
+      <rect width="100%" height="100%" filter="url(#cst)"/>
+    </svg>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow hero-in">Santiago oriente · desde 2011</span>
+        <h1 id="h-title"><span class="ln"><span>Tu piscina</span></span><span class="ln"><span>de <em>diseño</em>, lista</span></span><span class="ln"><span>para este verano.</span></span></h1>
+        <p class="lead hero-in">Diseñamos y construimos piscinas de hormigón, borde infinito y spa en Las Condes, Vitacura, Lo Barnechea y Chicureo. Proyecto 3D, presupuesto cerrado y garantía de 10 años.</p>
+        <div class="hero-ctas hero-in">
+          <a class="btn btn-pri" href="#cotizador">Cotiza en 60 segundos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-sec" href="#proyectos">Ver proyectos</a>
+        </div>
+      </div>
+      <div class="hero-cards" aria-label="Cuarzo Piscinas en números">
+        <div class="glass stat hero-card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M2 15c2-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0 3.5 1.5 5 0M2 19c2-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0 3.5 1.5 5 0M7 12V4a2 2 0 0 1 4 0M13 12V4a2 2 0 0 1 4 0M7 7h6"/></svg></div><div><b data-count="240" data-prefix="+">+240</b><span>piscinas entregadas en Santiago oriente</span></div></div>
+        <div class="glass stat hero-card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2 3 6.6 7 .7-5.3 4.8 1.6 7L12 17.5 5.7 21l1.6-7L2 9.3l7-.7z"/></svg></div><div><b>4,9</b><span><span class="stars">★★★★★</span><br>186 reseñas en Google</span></div></div>
+        <div class="glass stat hero-card"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><div><b data-count="10">10 años</b><span>de garantía estructural por escrito</span></div></div>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <div class="marquee" aria-label="Comunas donde trabajamos">
+    <div class="marquee-track">
+      <span>Las Condes</span><span>Vitacura</span><span>Lo Barnechea</span><span>La Dehesa</span><span>Chicureo</span><span>Colina</span><span>La Reina</span><span>Providencia</span>
+      <span aria-hidden="true">Las Condes</span><span aria-hidden="true">Vitacura</span><span aria-hidden="true">Lo Barnechea</span><span aria-hidden="true">La Dehesa</span><span aria-hidden="true">Chicureo</span><span aria-hidden="true">Colina</span><span aria-hidden="true">La Reina</span><span aria-hidden="true">Providencia</span>
+    </div>
+  </div>
+
+  <section id="ventajas" aria-labelledby="v-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow rv">Por qué Cuarzo</span>
+        <h2 id="v-title" class="rv">Una obra sin sorpresas, <em>de principio a fin.</em></h2>
+        <p class="lead rv">Construir una piscina no debería ser un dolor de cabeza. Te mostramos exactamente qué vas a tener, cuánto cuesta y cuándo te bañas.</p>
+      </div>
+      <div class="adv-grid">
+        <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="m12 2 9 5v10l-9 5-9-5V7z"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="m3 7 9 5 9-5M12 12v10"/></svg></div><h3>Proyecto 3D antes de excavar</h3><p>Recorres tu piscina en 3D con tu casa, tu jardín y la luz real de la tarde. Cambias lo que quieras antes de mover una pala.</p></article>
+        <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 2h9l5 5v15H6z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M15 2v5h5M9 13h7M9 17h5"/></svg></div><h3>Presupuesto cerrado</h3><p>Un precio fijo por escrito, con cada partida detallada. Si algo cambia es porque tú lo pediste, nunca por "imprevistos".</p></article>
+        <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/></svg></div><h3>Garantía de 10 años</h3><p>Hormigón armado proyectado con fierro calculado por ingeniero. Garantía estructural de 10 años y 2 años en equipos.</p></article>
+        <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 7v5l3 2"/></svg></div><h3>Plazos por contrato</h3><p>De 6 a 8 semanas para una piscina de hormigón. La fecha de entrega queda en el contrato, con multa si nos atrasamos.</p></article>
+        <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.3 6.3 4.9 4.9M19.1 19.1l-1.4-1.4M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>Agua temperada todo el año</h3><p>Bombas de calor de alta eficiencia y cubiertas automáticas: te bañas de septiembre a abril sin disparar la cuenta de la luz.</p></article>
+        <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-4.4-9-9.5C1.6 7.6 4.4 4 8 4c2 0 3.2 1 4 2.2C12.8 5 14 4 16 4c3.6 0 6.4 3.6 5 7.5C19 16.6 12 21 12 21z"/></svg></div><h3>Primera temporada acompañada</h3><p>Incluimos la mantención del primer verano: químicos, limpieza semanal y una capacitación para que la cuides tú.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" class="alt" aria-labelledby="p-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow rv">Proyectos</span>
+        <h2 id="p-title" class="rv">Piscinas que se <em>convierten</em> en el centro de la casa.</h2>
+      </div>
+      <div class="bento">
+        <figure class="ph b1 rv"><img src="https://images.unsplash.com/photo-1673147056688-4df20283643b?w=1400&q=75&auto=format" alt="Piscina de hormigón con quincho moderno y cerros de fondo" loading="eager"><figcaption>Chicureo · 12 × 4 m</figcaption></figure>
+        <figure class="ph b2 rv"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=75&auto=format" alt="Casa moderna blanca con piscina de líneas rectas" loading="lazy"><figcaption>Vitacura · borde infinito</figcaption></figure>
+        <figure class="ph b3 rv"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=75&auto=format" alt="Piscina frente a una casa de hormigón blanco" loading="lazy"><figcaption>Lo Barnechea · 10 × 4 m</figcaption></figure>
+        <figure class="ph b4 rv"><img src="https://images.unsplash.com/photo-1728049006363-f8e583040180?w=800&q=75&auto=format" alt="Vista aérea de una piscina rodeada de jardín" loading="lazy"><figcaption>La Dehesa · con spa</figcaption></figure>
+        <figure class="ph b5 rv"><img src="https://images.unsplash.com/photo-1706808849780-7a04fbac83ef?w=800&q=75&auto=format" alt="Casa moderna con piscina y reposeras" loading="lazy"><figcaption>Las Condes · familiar</figcaption></figure>
+        <figure class="ph b6 rv"><img src="https://images.unsplash.com/photo-1711110065992-6d6aff9ae35c?w=800&q=75&auto=format" alt="Vista aérea de una piscina rectangular junto a la terraza" loading="lazy"><figcaption>Colina · piscina + terraza</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" aria-labelledby="c-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow rv">Cómo trabajamos</span>
+        <h2 id="c-title" class="rv">De la idea al primer chapuzón <em>en 4 pasos.</em></h2>
+      </div>
+      <div class="steps" id="steps">
+        <div class="steps-line" aria-hidden="true"><i></i></div>
+        <div class="step rv"><div class="n">1</div><h3>Visita sin costo</h3><p>Vamos a tu casa, medimos el terreno, revisamos accesos y conversamos de cómo te imaginas tu piscina.</p><span class="tag">Esta semana</span></div>
+        <div class="step rv"><div class="n">2</div><h3>Diseño 3D y presupuesto</h3><p>En 5 días hábiles te presentamos el proyecto en 3D con el presupuesto cerrado y la fecha de entrega.</p><span class="tag">5 días hábiles</span></div>
+        <div class="step rv"><div class="n">3</div><h3>Construcción</h3><p>Excavación, fierro, hormigón proyectado y terminaciones. Te mandamos fotos del avance cada semana por WhatsApp.</p><span class="tag">6 a 8 semanas</span></div>
+        <div class="step rv"><div class="n">4</div><h3>Entrega y verano</h3><p>Llenado, puesta en marcha y capacitación. Durante la primera temporada nosotros nos encargamos de la mantención.</p><span class="tag">Te bañas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotizador" class="quote alt" aria-labelledby="q-title">
+    <div class="quote-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="quote-side">
+        <span class="eyebrow rv">Cotizador inteligente</span>
+        <h2 id="q-title" class="rv">¿Cuánto cuesta <em>tu</em> piscina?</h2>
+        <p class="lead rv">Elige tipo, medidas y terminaciones. Si quieres, sube una foto de tu patio y nuestra IA te recomienda el tamaño y la ubicación ideal.</p>
+        <ul class="rv">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Rango de precio con el desglose de cada partida</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Litros, plazo de obra y costo de mantención</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Te lo enviamos y agendamos la visita técnica sin costo</li>
+        </ul>
+        <span class="ai-badge rv"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z"/></svg>Con inteligencia artificial</span>
+      </div>
+      <div class="qz rv" id="qz" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="testimonios" aria-labelledby="t-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow rv">Clientes</span>
+        <h2 id="t-title" class="rv">Lo que dicen <em>quienes ya se bañan.</em></h2>
+      </div>
+      <div class="testi">
+        <article class="t-card rv"><span class="ejemplo">Testimonio de ejemplo</span><blockquote>"Nos entregaron en la fecha exacta del contrato. El 3D era idéntico a lo que quedó; mis hijos no salen del agua."</blockquote><div class="t-who"><span class="t-av">CM</span><div><b>Carolina M.</b><span>Chicureo · piscina 10 × 4 m</span></div></div></article>
+        <article class="t-card rv"><span class="ejemplo">Testimonio de ejemplo</span><blockquote>"El presupuesto fue el precio final, sin un peso extra. Y la climatización nos permite usarla desde septiembre."</blockquote><div class="t-who"><span class="t-av">RV</span><div><b>Rodrigo V.</b><span>Lo Barnechea · borde infinito</span></div></div></article>
+        <article class="t-card rv"><span class="ejemplo">Testimonio de ejemplo</span><blockquote>"Teníamos un patio en pendiente que nadie quería tocar. Lo resolvieron con un borde infinito que es lo más lindo de la casa."</blockquote><div class="t-who"><span class="t-av">JP</span><div><b>Javiera P.</b><span>Vitacura · piscina + spa</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="alt" aria-labelledby="f-title">
+    <div class="wrap faq-wrap">
+      <div class="sec-head">
+        <span class="eyebrow rv">Preguntas frecuentes</span>
+        <h2 id="f-title" class="rv">Todo lo que <em>nos preguntan.</em></h2>
+        <p class="lead rv">¿Te queda otra duda? Pregúntale a nuestro asistente o escríbenos por WhatsApp.</p>
+      </div>
+      <div class="faq rv">
+        <details><summary>¿Cuánto cuesta una piscina de hormigón?<i aria-hidden="true"></i></summary><p>Una piscina de hormigón de 8 × 4 m con terminación premium parte en torno a los $22 millones con IVA, incluyendo excavación, equipos y sala de máquinas. El valor depende de las medidas, el terreno y las terminaciones: usa el cotizador para un rango personalizado.</p></details>
+        <details><summary>¿Cuánto demora la construcción?<i aria-hidden="true"></i></summary><p>Entre 6 y 8 semanas una de hormigón, 2 a 3 semanas una de fibra de vidrio y 8 a 11 semanas un borde infinito. La fecha queda en el contrato.</p></details>
+        <details><summary>¿Necesito permiso municipal?<i aria-hidden="true"></i></summary><p>En la mayoría de las comunas la piscina se declara como obra menor en la DOM. Nosotros preparamos los planos y hacemos el trámite por ti en Las Condes, Vitacura, Lo Barnechea y Colina.</p></details>
+        <details><summary>¿Cómo se paga?<i aria-hidden="true"></i></summary><p>30% al firmar, 40% al terminar la estructura y 30% contra entrega. Aceptamos transferencia, tarjeta de crédito hasta 12 cuotas y crédito con nuestros bancos asociados.</p></details>
+        <details><summary>¿Hormigón o fibra de vidrio?<i aria-hidden="true"></i></summary><p>La fibra es más rápida y económica, pero viene en medidas fijas (hasta 10 × 4,5 m). El hormigón es a medida, admite cualquier forma, borde infinito o spa, y dura más de 30 años.</p></details>
+        <details><summary>¿Cuánto cuesta mantenerla?<i aria-hidden="true"></i></summary><p>Una piscina de 8 × 4 m cuesta entre $120.000 y $170.000 al mes en mantención profesional durante la temporada (químicos, limpieza semanal y revisión de equipos). La climatización con bomba de calor suma entre $40.000 y $90.000 al mes de electricidad.</p></details>
+        <details><summary>¿Qué garantía tienen?<i aria-hidden="true"></i></summary><p>10 años de garantía estructural sobre el hormigón, 2 años en bombas, filtros y climatización, y 1 año en terminaciones. Todo por escrito en el contrato.</p></details>
+        <details><summary>¿En qué comunas trabajan?<i aria-hidden="true"></i></summary><p>Las Condes, Vitacura, Lo Barnechea, La Dehesa, Chicureo, Colina, La Reina y Providencia. Para otras comunas, escríbenos y lo vemos.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" aria-labelledby="ct-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow rv">Contacto</span>
+        <h2 id="ct-title" class="rv">Agenda tu visita <em>sin costo.</em></h2>
+      </div>
+      <div class="contact">
+        <div class="c-card rv">
+          <form id="contactForm" novalidate>
+            <div class="two">
+              <div class="field"><label for="cNombre">Nombre</label><input class="inp" id="cNombre" name="nombre" autocomplete="name" required></div>
+              <div class="field"><label for="cTel">WhatsApp</label><input class="inp" id="cTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9" required></div>
+            </div>
+            <div class="field"><label for="cComuna">Comuna</label><select class="inp" id="cComuna" name="comuna"><option>Las Condes</option><option>Vitacura</option><option>Lo Barnechea</option><option>La Dehesa</option><option>Chicureo</option><option>Colina</option><option>La Reina</option><option>Providencia</option><option>Otra</option></select></div>
+            <div class="field"><label for="cMsg">¿Qué tienes en mente?</label><textarea class="inp" id="cMsg" name="mensaje" rows="3" placeholder="Ej: piscina de 8 × 4 con climatización para la próxima temporada"></textarea></div>
+            <p class="err" id="cErr" role="alert"></p>
+            <button class="btn btn-pri" type="submit" style="width:100%">Quiero mi visita sin costo</button>
+            <div class="ok-msg" id="cOk">¡Gracias! Recibimos tus datos y te escribimos por WhatsApp para coordinar la visita.</div>
+          </form>
+        </div>
+        <div class="c-card rv">
+          <div class="c-info">
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><div><b>Showroom</b><span id="cDir"></span></div></div>
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 7v5l3 2"/></svg><div><b>Horario</b><span id="cHor"></span></div></div>
+            <div><svg aria-hidden="true"><use href="#i-wa"/></svg><div><b>WhatsApp</b><span><a id="cWa" href="#" target="_blank" rel="noopener">Escríbenos ahora</a> · respondemos en minutos</span></div></div>
+          </div>
+          <div class="map"><iframe title="Mapa del showroom" loading="lazy" src="https://www.google.com/maps?q=Av.+La+Dehesa+1201,+Lo+Barnechea,+Chile&output=embed"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Cuarzo Piscinas · Santiago oriente, Chile</span>
+    <span class="demo-note">Sitio de demostración: marca, testimonios y precios de ejemplo. Diseño por Facundo Social Media.</span>
+  </div>
+</footer>
+
+<a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+<button class="ai-fab" id="aiFab" type="button" aria-label="Abrir asistente virtual"><span class="orb" aria-hidden="true"></span>Pregúntale a la IA</button>
+
+<div class="chat" id="chat" role="dialog" aria-label="Asistente virtual de Cuarzo Piscinas">
+  <div class="chat-h"><span class="orb" aria-hidden="true"></span><div><b>Asistente Cuarzo</b><small>En línea · responde al instante</small></div><button class="chat-x" id="chatX" type="button" aria-label="Cerrar">×</button></div>
+  <div class="chat-m" id="chatM" aria-live="polite"></div>
+  <form class="chat-f" id="chatF"><input id="chatI" type="text" placeholder="Escribe tu pregunta…" aria-label="Escribe tu pregunta" autocomplete="off"><button type="submit" aria-label="Enviar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5 5.5 12zM5.5 12H13"/></svg></button></form>
+  <div class="chat-note">Asistente con IA · puede equivocarse: confirma con el equipo.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="config.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
