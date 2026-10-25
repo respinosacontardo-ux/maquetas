@@ -82,7 +82,8 @@ header .btn{min-height:42px;padding:0 18px;font-size:14px}
 .hero-stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
 .hero-stats b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
 .hero-stats span{font-size:13px;color:var(--muted)}
-.flags{display:inline-flex;gap:6px;margin-left:4px}
+.hero-stats .flags{display:flex;align-items:center;gap:8px;line-height:1.2}
+.flags img{width:30px;height:20px;border-radius:4px;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
 .stack{position:relative;height:clamp(380px,42vw,540px);perspective:1400px}
 .mock{position:absolute;width:72%;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 80px -30px rgba(0,0,0,.8);will-change:transform}
 .mock .bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#1f2430;border-bottom:1px solid var(--line)}
@@ -250,7 +251,7 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
         <div class="hero-stats hero-in">
           <div><b>4 a 9 días</b><span>para tener tu web lista</span></div>
           <div><b>100%</b><span>pensada para el celular</span></div>
-          <div><b>🌎</b><span>clientes en Argentina, Chile, España, México y más</span></div>
+          <div><b class="flags">🌎<img src="https://flagcdn.com/ar.svg" alt="Argentina" width="30" height="20" loading="lazy"><img src="https://flagcdn.com/cl.svg" alt="Chile" width="30" height="20" loading="lazy"><img src="https://flagcdn.com/es.svg" alt="España" width="30" height="20" loading="lazy"><img src="https://flagcdn.com/mx.svg" alt="México" width="30" height="20" loading="lazy"></b><span>clientes en Argentina, Chile, España, México y más</span></div>
         </div>
       </div>
       <div class="stack" id="stack" aria-hidden="true">
@@ -660,6 +661,6 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
   else document.documentElement.classList.remove("js");
   setTimeout(() => { if (!window.ScrollTrigger) document.documentElement.classList.remove("js"); }, 4000);
 </script>
-<script src="muestras/pro.js?v=1792901123" defer></script>
+<script src="muestras/pro.js?v=1792901460" defer></script>
 </body>
 </html>
