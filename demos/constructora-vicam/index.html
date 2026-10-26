@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="es-CL" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constructora Vicam · Remodelaciones, obras civiles y accesibilidad universal</title>
+<meta name="description" content="Remodelación de casas, oficinas, locales y cafeterías, obras civiles y adaptaciones a la Ley de Accesibilidad Universal en Santiago, Pucón y California. Cotiza en 60 segundos.">
+<meta property="og:title" content="Constructora Vicam">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1682888813913-e13f18692019?w=1400&q=75&auto=format">
+<style>
+/* Sistema visual inspirado en el estilo "Curated gallery on warm concrete" (Refero Styles):
+   lienzo gris hormigón, tarjetas como cuadros enmarcados, esquinas rectas, líneas de 1px,
+   títulos en Inter 200 y un único color: el rojo de la V de Vicam. */
+:root{
+  --concrete:#eaeaea; --bone:#f0f0f0; --hair:#d8d8d8; --ink:#000; --paper:#fff;
+  --grey:#5c5c5c; --grey-2:#8a8a8a; --red:#d7182a; --red-2:#b21222;
+  --pad:45px; --max:1280px;
+  --sans:"Inter", "Söhne", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --gap:clamp(80px, 10vw, 140px);
+}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.6;color:var(--ink);background:var(--concrete);
+  border-top:1px solid var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+b,strong{font-weight:400}
+:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.sec{padding:var(--gap) 0}
+.label{font-size:14px;font-weight:300;letter-spacing:0;color:var(--ink);display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--ink);padding-top:12px}
+.label span:last-child{color:var(--grey)}
+h1,h2,h3{font-weight:200;letter-spacing:-.03em;color:var(--ink)}
+h2{font-size:clamp(38px,5.4vw,72px);line-height:1;margin:28px 0 22px}
+h3{font-weight:300;letter-spacing:-.02em;line-height:1.2}
+.lead{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--grey);max-width:620px}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head h2{margin-bottom:0}
+.red{color:var(--red)}
+
+/* Botones: rectángulos negros, el rojo solo al pasar */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;font-weight:400;font-size:15px;letter-spacing:-.01em;text-decoration:none;transition:background .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn-blue{background:var(--ink);color:#fff}
+.btn-blue:hover{background:var(--red)}
+.btn-line{border:1px solid var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.arrow{width:16px;height:16px;flex:none}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(234,234,234,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .25s}
+header.solid{border-bottom-color:var(--hair)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:80px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:300;font-size:22px;letter-spacing:-.03em}
+.logo-mark{width:40px;height:40px;background:var(--paper);border:1px solid var(--hair);display:grid;place-items:center;border-radius:50%}
+.logo small{font-size:12px;color:var(--grey);letter-spacing:0;margin-left:4px}
+#nav{display:flex;gap:34px}
+#nav a{font-size:15px;text-decoration:none;position:relative}
+#nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+#nav a:hover::after{transform:scaleX(1)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-cta .btn{min-height:44px;padding:10px 20px}
+#menuBtn{display:none;width:46px;height:46px;place-items:center}
+#menuBtn i{display:block;width:22px;height:1.5px;background:var(--ink);position:relative}
+#menuBtn i::before{content:"";position:absolute;left:0;width:22px;height:1.5px;background:var(--ink);top:-7px;transition:transform .25s}
+#menuBtn i{transform:translateY(3.5px)}
+header.open #menuBtn i{background:transparent}
+header.open #menuBtn i::before{transform:translateY(7px) rotate(45deg)}
+header.open #menuBtn i::after{content:"";position:absolute;left:0;width:22px;height:1.5px;background:var(--ink);transform:rotate(-45deg)}
+
+/* Portada */
+.hero{padding:clamp(40px,6vw,80px) 0 0;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border:1px solid var(--hair);background:var(--bone)}
+.hero-txt{padding:clamp(28px,4vw,var(--pad));display:flex;flex-direction:column;border-right:1px solid var(--hair)}
+.hero h1{font-size:clamp(46px,6.4vw,96px);line-height:.96;letter-spacing:-.045em;margin:clamp(28px,5vw,72px) 0 28px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{margin-bottom:32px}
+.quick{display:flex;gap:0;max-width:540px;border:1px solid var(--ink);margin-top:auto}
+.quick select{flex:1;min-width:0;min-height:54px;border:0;padding:0 40px 0 18px;font:inherit;font-size:15px;color:var(--ink);background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23000' stroke-width='1.2'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center;appearance:none;-webkit-appearance:none}
+.quick select:focus{outline:none}
+.quick .btn{min-height:54px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;font-size:14px;color:var(--grey)}
+.hero-meta span::before{content:"— ";color:var(--red)}
+.hero-visual{position:relative;display:grid;grid-template-rows:1fr auto}
+.hero-photo{position:relative;overflow:hidden;min-height:420px;background:var(--hair)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:115%;object-fit:cover}
+.hero-cap{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--hair)}
+.hero-cap>div{padding:20px 24px}
+.hero-cap>div+div{border-left:1px solid var(--hair)}
+.hero-cap small{display:block;font-size:13px;color:var(--grey)}
+.hero-cap b{font-size:19px;font-weight:300;letter-spacing:-.02em}
+.tag-red{position:absolute;left:0;top:0;background:var(--red);color:#fff;font-size:13px;font-weight:400;padding:10px 16px;z-index:2}
+
+/* Franja de datos */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--hair);border-top:0;background:var(--bone)}
+.fact{padding:28px var(--pad) 30px 28px}
+.fact+.fact{border-left:1px solid var(--hair)}
+.fact b{display:block;font-size:clamp(28px,3vw,40px);font-weight:200;letter-spacing:-.04em;line-height:1.05}
+.fact span{display:block;margin-top:8px;font-size:14px;color:var(--grey)}
+
+/* Servicios: retícula de cuadros */
+.lattice{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.cell{background:var(--bone);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:var(--pad);display:flex;flex-direction:column;min-height:300px;text-decoration:none;transition:background .3s}
+.cell:hover{background:#f6f6f6}
+.cell .cat{font-size:14px;color:var(--grey);display:flex;justify-content:space-between}
+.cell h3{font-size:clamp(28px,2.8vw,38px);font-weight:200;letter-spacing:-.035em;line-height:1;margin:auto 0 14px;padding-top:40px}
+.cell p{font-size:15px;color:var(--grey)}
+.cell .go{margin-top:20px;font-size:14px;display:flex;justify-content:space-between;align-items:center}
+.cell .go i{font-style:normal;transition:transform .3s}
+.cell:hover .go i{transform:translateX(6px);color:var(--red)}
+.cell.fill{background:var(--red);color:#fff}
+.cell.fill .cat,.cell.fill p,.cell.fill h3{color:#fff}
+.cell.fill:hover{background:var(--red-2)}
+
+/* Proyectos: cuadros enmarcados */
+.prints{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.print{background:var(--bone);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:var(--pad);display:flex;flex-direction:column;gap:22px}
+.print .cat{font-size:14px;color:var(--grey);display:flex;justify-content:space-between;gap:12px}
+.print h3{font-size:clamp(28px,2.8vw,38px);font-weight:200;letter-spacing:-.035em;line-height:1}
+.print p{font-size:15px;color:var(--grey);max-width:460px}
+.print .ph{aspect-ratio:4/3;overflow:hidden;background:var(--hair)}
+.print .ph img{width:100%;height:114%;object-fit:cover;filter:saturate(.92)}
+.print .yr{font-size:14px;text-align:right;line-height:2.37;margin-top:auto}
+.ref{font-size:13px;color:var(--grey);margin-top:16px}
+
+/* Accesibilidad */
+.acc{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--hair)}
+.acc-a{background:var(--red);color:#fff;padding:clamp(32px,5vw,64px) var(--pad)}
+.acc-a h2{color:#fff}
+.acc-a .lead{color:rgba(255,255,255,.85)}
+.acc-a .label{border-color:#fff;color:#fff}
+.acc-a .label span:last-child{color:rgba(255,255,255,.8)}
+.acc-a .btn{background:#fff;color:var(--ink);margin-top:32px}
+.acc-a .btn:hover{background:var(--ink);color:#fff}
+.acc-b{background:var(--bone)}
+.acc-b>div{padding:28px var(--pad);border-bottom:1px solid var(--hair);display:grid;grid-template-columns:44px 1fr;gap:14px}
+.acc-b>div:last-child{border-bottom:0}
+.acc-b em{font-style:normal;font-size:14px;color:var(--red)}
+.acc-b b{display:block;font-size:20px;font-weight:300;letter-spacing:-.02em}
+.acc-b span{font-size:15px;color:var(--grey)}
+
+/* Ventajas */
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.card{background:var(--bone);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:var(--pad);transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s;transform-style:preserve-3d;position:relative}
+.card:hover{background:#f6f6f6;z-index:2}
+.card .n{font-size:14px;color:var(--red)}
+.card h3{font-size:24px;font-weight:300;margin:36px 0 10px}
+.card p{font-size:15px;color:var(--grey)}
+
+/* Cómo funciona */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--hair)}
+.steps-line{position:absolute;left:0;right:0;top:0;height:1px;background:var(--hair)}
+.steps-line i{display:block;height:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
+.step{padding:28px 28px 0;border-right:1px solid var(--hair)}
+.step .n{font-size:56px;font-weight:200;letter-spacing:-.05em;line-height:1;display:block;margin-bottom:28px}
+.step h3{font-size:21px;margin-bottom:10px}
+.step p{font-size:15px;color:var(--grey)}
+.step small{display:inline-block;margin-top:16px;font-size:13px;border:1px solid var(--ink);padding:3px 10px}
+
+/* Cotizador */
+.qz-wrap{display:grid;grid-template-columns:.85fr 1.15fr;border:1px solid var(--hair)}
+.qz-side{padding:var(--pad);border-right:1px solid var(--hair);background:var(--concrete)}
+.qz-side h2{font-size:clamp(36px,4.4vw,60px)}
+.qz-side .lead{margin-bottom:28px}
+.qz-side ul{list-style:none;border-top:1px solid var(--hair)}
+.qz-side li{padding:14px 0;border-bottom:1px solid var(--hair);font-size:15px;color:var(--grey);display:flex;gap:12px}
+.qz-side li::before{content:"—";color:var(--red)}
+#qz{background:var(--bone);padding:var(--pad);min-height:540px;display:flex;flex-direction:column}
+.qz-top{display:flex;justify-content:space-between;font-size:14px;color:var(--grey);margin-bottom:12px}
+.qz-bar{height:1px;background:var(--hair);margin-bottom:30px}
+.qz-bar i{display:block;height:1px;background:var(--red);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+#qz h3{font-size:clamp(26px,2.6vw,34px);font-weight:200;letter-spacing:-.035em;margin-bottom:8px}
+.qz-hint{font-size:15px;color:var(--grey);margin-bottom:22px}
+.opt-area{font-size:13px;color:var(--red);margin:18px 0 8px}
+.opt-area:first-of-type{margin-top:0}
+.opts{display:grid;gap:0;border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{text-align:left;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:16px 18px;display:grid;gap:4px;background:var(--bone);transition:background .2s}
+.opt:hover{background:#f8f8f8}
+.opt.sel{background:var(--ink);color:#fff}
+.opt.sel span{color:#cfcfcf}
+.opt b{font-size:16px;font-weight:400;letter-spacing:-.015em}
+.opt span{font-size:13.5px;color:var(--grey);line-height:1.45}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--hair);padding:10px 15px;font-size:14px;min-height:42px;background:var(--bone);transition:all .2s}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.field{display:grid;gap:7px;margin-bottom:18px}
+.field label{font-size:14px;font-weight:400}
+.inp{width:100%;min-height:52px;border:0;border-bottom:1px solid var(--ink);padding:12px 2px;font:inherit;font-size:16px;font-weight:300;color:var(--ink);background:transparent}
+.inp:focus{outline:none;border-bottom-color:var(--red)}
+select.inp{border:1px solid var(--hair);padding:12px 14px;background:var(--bone)}
+textarea.inp{min-height:100px;resize:vertical;border:1px solid var(--hair);padding:12px 14px}
+.range-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;font-size:15px}
+.range-row output{font-size:44px;font-weight:200;letter-spacing:-.05em}
+input[type=range]{width:100%;accent-color:var(--red);height:30px}
+.qz-nav{margin-top:auto;padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qz-back{font-size:15px;color:var(--grey);min-height:44px;padding:0 4px}
+.qz-back:hover{color:var(--ink)}
+.qz-next[disabled]{opacity:.3;pointer-events:none}
+.err{color:var(--red);font-size:14px;min-height:20px}
+.res-big{background:var(--ink);color:#fff;padding:24px 26px;margin-bottom:16px}
+.res-big small{font-size:13px;color:#bdbdbd}
+.res-big b{display:block;font-weight:200;font-size:clamp(32px,4vw,46px);letter-spacing:-.045em;line-height:1.1;margin:6px 0}
+.res-big span{font-size:14px;color:#ff6b78}
+.res-list{list-style:none;font-size:14.5px;margin-bottom:16px;border-top:1px solid var(--hair)}
+.res-list li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--hair)}
+.res-list li span:first-child{color:var(--grey)}
+.ia-box{border:1px solid var(--hair);padding:18px 20px;font-size:14.5px;margin-bottom:14px}
+.ia-box b{display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:6px}
+.ia-box b i{width:8px;height:8px;background:var(--red)}
+.ia-box p{color:var(--grey)}
+.note{font-size:13px;color:var(--grey-2);line-height:1.5}
+.res-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* Testimonios */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.tst{background:var(--bone);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:var(--pad);display:flex;flex-direction:column;gap:24px}
+.tst .tag{align-self:flex-start;font-size:12.5px;border:1px solid var(--red);color:var(--red);padding:2px 9px}
+.tst q{font-size:20px;line-height:1.4;font-weight:200;letter-spacing:-.025em;quotes:none}
+.who{margin-top:auto;font-size:14.5px;border-top:1px solid var(--hair);padding-top:14px}
+.who span{display:block;color:var(--grey);font-size:13px}
+
+/* FAQ */
+.faq-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,4vw,72px)}
+#faq{border-top:1px solid var(--ink)}
+#faq details{border-bottom:1px solid var(--hair)}
+#faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:24px 0;font-weight:300;font-size:20px;letter-spacing:-.02em}
+#faq summary::-webkit-details-marker{display:none}
+#faq summary::after{content:"+";flex:none;font-size:26px;font-weight:200;line-height:1;transition:transform .25s,color .25s}
+#faq details[open] summary::after{transform:rotate(45deg);color:var(--red)}
+#faq p{color:var(--grey);padding:0 40px 26px 0;font-size:16px}
+
+/* Contacto */
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--hair)}
+.ct-card{background:var(--bone);padding:var(--pad)}
+.ct-card+.ct-card{border-left:1px solid var(--hair)}
+.ct-card.dark{background:var(--ink);color:#fff}
+.ct-card.dark h3{color:#fff}
+.ct-card h3{font-size:32px;font-weight:200;letter-spacing:-.035em}
+.ct-info{margin:28px 0 32px;border-top:1px solid #333}
+.ct-info>div{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid #333;font-size:15px}
+.ct-info b{color:#9a9a9a;font-weight:300;font-size:14px}
+.ct-info a{color:#fff}
+.ct-card.dark .btn-blue{background:var(--red)}
+.ct-card.dark .btn-blue:hover{background:#fff;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#cOk{display:none;border:1px solid var(--hair);padding:16px;font-size:15px;margin-top:12px}
+
+/* Footer */
+footer{background:var(--concrete);padding:64px 0 0;border-top:1px solid var(--hair)}
+.ft-big{font-size:clamp(64px,15vw,220px);font-weight:200;letter-spacing:-.07em;line-height:.85;margin-bottom:56px}
+.ft-big em{font-style:normal;color:var(--red)}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:48px}
+footer p{color:var(--grey);font-size:14.5px;max-width:320px}
+footer h4{font-size:14px;font-weight:400;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px}
+footer li a,footer li{color:var(--grey);font-size:14.5px;text-decoration:none}
+footer li a:hover{color:var(--ink)}
+.ft-bottom{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:18px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--grey)}
+
+/* Botones flotantes y asistente */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.35);transition:transform .2s}
+.wa-float:hover{transform:scale(1.06)}
+#aiFab{position:fixed;left:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;height:54px;padding:0 20px 0 8px;background:var(--ink);color:#fff;font-size:15px;font-weight:400;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);transition:opacity .2s}
+#aiFab .av{width:38px;height:38px;background:var(--red);display:grid;place-items:center}
+#chat{position:fixed;left:18px;bottom:18px;z-index:70;width:min(390px,calc(100vw - 36px));height:min(580px,calc(100vh - 110px));background:var(--bone);border:1px solid var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.35);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
+#chat.on{opacity:1;transform:none;pointer-events:auto}
+.chat-h{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--ink);color:#fff}
+.chat-h .av{width:38px;height:38px;background:#fff;display:grid;place-items:center;flex:none;border-radius:50%}
+.chat-h b{font-size:15px;display:block;font-weight:400}
+.chat-h span{font-size:12.5px;color:#bdbdbd;display:flex;align-items:center;gap:6px}
+.chat-h span::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e}
+#chatX{margin-left:auto;width:40px;height:40px;display:grid;place-items:center;font-size:24px;font-weight:200;color:#fff}
+#chatM{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--concrete)}
+.msg{max-width:86%;padding:11px 15px;font-size:14.5px;line-height:1.45;white-space:pre-wrap}
+.msg.bot{background:var(--bone);border:1px solid var(--hair);align-self:flex-start}
+.msg.me{background:var(--ink);color:#fff;align-self:flex-end}
+.typing{display:flex;gap:4px;padding:14px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--grey-2);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.msg-acts{display:flex;flex-wrap:wrap;gap:6px}
+.msg-acts button,.msg-acts a{font-size:13px;border:1px solid var(--ink);background:var(--bone);padding:7px 12px;text-decoration:none;min-height:36px}
+.msg-acts .pri{background:var(--ink);color:#fff}
+.msg-acts .wa{border-color:#25d366;color:#128c4a}
+#chatF{display:flex;gap:0;padding:12px;border-top:1px solid var(--hair)}
+#chatI{flex:1;min-width:0;min-height:46px;border:1px solid var(--ink);border-right:0;padding:0 14px;font:inherit;font-size:16px;background:#fff}
+#chatI:focus{outline:none}
+#chatF button{width:46px;height:46px;background:var(--ink);display:grid;place-items:center;flex:none}
+.chat-foot{font-size:11.5px;color:var(--grey-2);text-align:center;padding:0 12px 10px}
+
+.js .rv{opacity:0;transform:translateY(28px)}
+
+@media (max-width:1000px){
+  :root{--pad:30px}
+  #nav{display:none}
+  #menuBtn{display:grid}
+  header.open #nav{display:flex;flex-direction:column;gap:0;position:absolute;top:80px;left:0;right:0;background:var(--concrete);border-bottom:1px solid var(--hair);padding:8px clamp(16px,4vw,40px) 16px}
+  header.open #nav a{padding:14px 0;border-bottom:1px solid var(--hair);font-size:17px}
+  .hero-grid,.qz-wrap,.faq-wrap,.acc,.sec-head{grid-template-columns:1fr}
+  .hero-txt{border-right:0;border-bottom:1px solid var(--hair)}
+  .qz-side{border-right:0;border-bottom:1px solid var(--hair)}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--hair)}
+  .lattice,.adv-grid,.tst-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  :root{--pad:22px}
+  .nav{height:64px}
+  header.open #nav{top:64px}
+  .logo{font-size:19px}
+  .logo small{display:none}
+  .nav-cta .btn{padding:9px 14px;min-height:42px;font-size:14px}
+  .hero{padding-top:20px}
+  .hero-txt .label span:last-child{display:none}
+  .hero h1{font-size:clamp(40px,12vw,54px);margin:22px 0 18px}
+  .hero .lead{font-size:16.5px;margin-bottom:22px}
+  .quick{flex-direction:column}
+  .quick select{border-bottom:1px solid var(--ink)}
+  .hero-photo{min-height:300px}
+  .hero-cap b{font-size:16px}
+  .hero-cap>div{padding:14px 16px}
+  .fact{padding:20px 18px}
+  .lattice,.adv-grid,.tst-grid,.prints,.ct-grid,.two,.opts.two{grid-template-columns:1fr}
+  .ct-card+.ct-card{border-left:0;border-top:1px solid var(--hair)}
+  .cell{min-height:auto}
+  .cell h3{padding-top:28px}
+  .steps{grid-template-columns:1fr;row-gap:28px}
+  .step{padding:22px 22px 0}
+  .ct-info>div{grid-template-columns:96px 1fr}
+  .ft{grid-template-columns:1fr}
+  #aiFab span.t{display:none}
+  #aiFab{padding:0 8px}
+  #chat{left:8px;right:8px;bottom:8px;width:auto;height:calc(100dvh - 16px)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Constructora Vicam, inicio">
+      <span class="logo-mark"><svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M2 2l9 16 9-16" stroke="#d7182a" stroke-width="4" stroke-linejoin="round"/></svg></span>
+      Vicam<small>Constructora</small>
+    </a>
+    <nav id="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#accesibilidad">Accesibilidad</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#faq-sec">Preguntas</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-blue" href="#cotizador">Cotizar <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <button id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- Portada -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-txt">
+        <div class="label hero-in"><span>Remodelaciones · Obras civiles · Accesibilidad universal</span><span>Santiago · Pucón · California</span></div>
+        <h1><span class="ln"><span>Remodelamos</span></span><span class="ln"><span>espacios con</span></span><span class="ln"><span>oficio de <em>obra</em></span></span><span class="ln"><span>y ojo de diseño.</span></span></h1>
+        <p class="lead hero-in">Casas, oficinas, locales y cafeterías. Trabajamos junto a estudios de arquitectura para que lo que se dibuja sea exactamente lo que se construye.</p>
+        <form class="quick hero-in" id="quick">
+          <select id="quickTipo" aria-label="¿Qué proyecto tienes?">
+            <option value="">¿Qué proyecto tienes?</option>
+            <option value="bano">Baño</option>
+            <option value="cocina">Cocina</option>
+            <option value="integral">Casa o departamento completo</option>
+            <option value="comercial">Oficina, local o cafetería</option>
+            <option value="acceso">Accesibilidad universal</option>
+            <option value="civil">Obra civil o ampliación</option>
+          </select>
+          <button class="btn btn-blue" type="submit">Cotizar <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        </form>
+        <div class="hero-meta hero-in"><span>Cristóbal y Rubén Montt</span><span>Llave en mano</span><span>Ley 20.422</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"><span class="tag-red hero-card">Proyecto destacado</span><img src="https://images.unsplash.com/photo-1682888813913-e13f18692019?w=1400&q=75&auto=format" alt="Cocina remodelada con isla de mármol y muebles blancos" width="1400" height="1000"></div>
+        <div class="hero-cap hero-card">
+          <div><small>Cocina Tauro</small><b>Con Estudio Lenga</b></div>
+          <div><small>Cafetería Chiamo</small><b>Las Condes, 2026</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="facts rv">
+      <div class="fact"><b>3 sedes</b><span>Santiago, Pucón y California</span></div>
+      <div class="fact"><b>Diseño + obra</b><span>en equipo con estudios de arquitectura</span></div>
+      <div class="fact"><b>Ley 20.422</b><span>especialistas en accesibilidad universal</span></div>
+      <div class="fact"><b>Llave en mano</b><span>de la demolición a la última terminación</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label"><span>01 — Servicios</span><span>Qué hacemos</span></div><h2>Del baño al local completo.</h2></div>
+      <p class="lead">Un solo equipo para remodelar, habilitar y construir. Te ahorras coordinar maestros, plazos y proveedores: lo hacemos nosotros.</p>
+    </div>
+    <div class="lattice">
+      <a class="cell rv" href="#cotizador" data-tipo-link="bano"><span class="cat"><span>Remodelación</span><span>3–4 sem.</span></span><h3>Baños</h3><p>Duchas en obra con desagüe lineal, cambio de tina por ducha y revestimientos de diseño.</p><span class="go">Cotizar <i>→</i></span></a>
+      <a class="cell rv" href="#cotizador" data-tipo-link="cocina"><span class="cat"><span>Remodelación</span><span>4–6 sem.</span></span><h3>Cocinas</h3><p>Muebles a medida, mesones y revestimientos, en conjunto con tu diseñador.</p><span class="go">Cotizar <i>→</i></span></a>
+      <a class="cell rv" href="#cotizador" data-tipo-link="integral"><span class="cat"><span>Remodelación</span><span>8–14 sem.</span></span><h3>Casas y departamentos</h3><p>Redistribución de espacios: un walking closet puede convertirse en dos baños.</p><span class="go">Cotizar <i>→</i></span></a>
+      <a class="cell rv" href="#cotizador" data-tipo-link="comercial"><span class="cat"><span>Comercial</span><span>6–10 sem.</span></span><h3>Oficinas, locales y cafeterías</h3><p>Habilitación llave en mano, con muebles curvos y detalles que hacen la marca.</p><span class="go">Cotizar <i>→</i></span></a>
+      <a class="cell fill rv" href="#accesibilidad"><span class="cat"><span>Normativa</span><span>Ley 20.422</span></span><h3>Accesibilidad universal</h3><p>Rampas, baños accesibles y circulaciones para que tu espacio cumpla la ley.</p><span class="go">Ver más <i>→</i></span></a>
+      <a class="cell rv" href="#cotizador" data-tipo-link="civil"><span class="cat"><span>Obras civiles</span><span>10–18 sem.</span></span><h3>Obras civiles y ampliaciones</h3><p>Ampliaciones, radieres, muros, estructuras y obra gruesa con cálculo y permisos.</p><span class="go">Cotizar <i>→</i></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Proyectos -->
+<section class="sec" id="proyectos" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label"><span>02 — Proyectos</span><span>Selección</span></div><h2>Obras que hablan solas.</h2></div>
+      <p class="lead">Algunos de los proyectos que hemos construido, muchos de ellos junto a estudios de diseño.</p>
+    </div>
+    <div class="prints">
+      <article class="print rv"><span class="cat"><span>Comercial · Las Condes</span><span>Habilitación completa</span></span><h3>Cafetería Chiamo</h3><div class="ph"><img src="https://images.unsplash.com/photo-1634586648651-f1fb9ec10d90?w=1000&q=72&auto=format" alt="Espacio interior en obra de habilitación" loading="lazy"></div><p>Muebles con formas curvas que, terminados, se ven simples: por dentro combinan distintos materiales y técnicas para lograr una superficie firme y continua.</p><span class="yr">2026</span></article>
+      <article class="print rv"><span class="cat"><span>Residencial · Con Estudio Lenga</span><span>Cocina y baños</span></span><h3>Proyecto Tauro</h3><div class="ph"><img src="https://images.unsplash.com/photo-1682888813913-e13f18692019?w=1000&q=72&auto=format" alt="Cocina remodelada con isla" loading="lazy"></div><p>Una cocina con un cambio brutal y un enorme walking closet convertido en dos baños de excelente tamaño, con ducha en obra y mezclador separado.</p><span class="yr">2025</span></article>
+      <article class="print rv"><span class="cat"><span>Residencial · Lo Barnechea</span><span>Baño secundario</span></span><h3>Baño Huinganal</h3><div class="ph"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1000&q=72&auto=format" alt="Baño moderno con ducha de vidrio" loading="lazy"></div><p>Cambio de tina por ducha en obra con desagüe lineal de 80 cm: piso continuo, sin cortes y fácil de mantener.</p><span class="yr">2024</span></article>
+      <article class="print rv"><span class="cat"><span>Obra · Pucón</span><span>Terminaciones</span></span><h3>Obras en el sur</h3><div class="ph"><img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=1000&q=72&auto=format" alt="Maestro trabajando en una obra interior" loading="lazy"></div><p>Revestimientos de cielo, tabiquería y terminaciones con el mismo estándar que en Santiago, coordinando proveedores para avanzar rápido.</p><span class="yr">2026</span></article>
+    </div>
+    <p class="ref">Nombres y descripciones de proyectos reales de Vicam; las fotos son de referencia y en la versión final van las de sus obras.</p>
+  </div>
+</section>
+
+<!-- Accesibilidad universal -->
+<section class="sec" id="accesibilidad" style="padding-top:0">
+  <div class="wrap">
+    <div class="acc rv">
+      <div class="acc-a">
+        <div class="label"><span>03 — Accesibilidad universal</span><span>Ley 20.422</span></div>
+        <h2>Espacios que cualquiera puede recorrer.</h2>
+        <p class="lead">Si tu local, oficina o edificio recibe público, la ley exige que sea accesible. Diagnosticamos, proyectamos y construimos las adaptaciones para que cumpla.</p>
+        <a class="btn" id="tramWa" target="_blank" rel="noopener">Consultar mi caso <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="acc-b">
+        <div><em>01</em><div><b>Rampas y accesos</b><span>Pendientes, descansos y pasamanos según norma.</span></div></div>
+        <div><em>02</em><div><b>Baños accesibles</b><span>Dimensiones, barras de apoyo y artefactos adecuados.</span></div></div>
+        <div><em>03</em><div><b>Circulaciones y puertas</b><span>Anchos mínimos y rutas accesibles en todo el recorrido.</span></div></div>
+        <div><em>04</em><div><b>Señalética y pavimentos</b><span>Pavimento podotáctil y señalización para orientarse.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ventajas -->
+<section class="sec" id="ventajas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label"><span>04 — Por qué Vicam</span><span>Cómo somos</span></div><h2>Detalle de taller, escala de constructora.</h2></div>
+      <p class="lead">Lo que nos piden los estudios de diseño es lo mismo que te importa a ti: que lo construido se vea como lo imaginaste.</p>
+    </div>
+    <div class="adv-grid">
+      <article class="card rv"><span class="n">01</span><h3>Los dueños en obra</h3><p>Cristóbal y Rubén siguen cada proyecto personalmente. Hablas con quien decide, no con un intermediario.</p></article>
+      <article class="card rv"><span class="n">02</span><h3>Socios de los diseñadores</h3><p>Trabajamos con estudios de arquitectura e interiorismo y entendemos sus planos, materiales y tolerancias.</p></article>
+      <article class="card rv"><span class="n">03</span><h3>Lo difícil, resuelto</h3><p>Muebles curvos, duchas en obra, desagües lineales: los detalles que se ven simples son los que más oficio requieren.</p></article>
+      <article class="card rv"><span class="n">04</span><h3>Comercial a tiempo</h3><p>Sabemos que un local cerrado no vende: planificamos para abrir en la fecha comprometida.</p></article>
+      <article class="card rv"><span class="n">05</span><h3>Normativa al día</h3><p>Accesibilidad universal, permisos y recepciones: la obra queda en regla, no solo bonita.</p></article>
+      <article class="card rv"><span class="n">06</span><h3>Avance que se muestra</h3><p>Compartimos el proceso de cada obra, con fotos y videos de avance, para que veas cómo se construye.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Proceso -->
+<section class="sec" id="proceso" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label"><span>05 — Proceso</span><span>Cuatro pasos</span></div><h2>De la idea a la entrega.</h2></div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="steps-line" aria-hidden="true"><i></i></div>
+      <div class="step rv"><span class="n">01</span><h3>Conversemos</h3><p>Nos cuentas tu proyecto por WhatsApp o usas el cotizador para tener un rango al instante.</p><small>60 segundos</small></div>
+      <div class="step rv"><span class="n">02</span><h3>Visita y diagnóstico</h3><p>Vamos al lugar, medimos, revisamos instalaciones y, si hay diseñador, coordinamos con él.</p><small>Sin costo</small></div>
+      <div class="step rv"><span class="n">03</span><h3>Presupuesto detallado</h3><p>Partida por partida, con plazos y forma de pago, para decidir con toda la información.</p><small>Por escrito</small></div>
+      <div class="step rv"><span class="n">04</span><h3>Obra y entrega</h3><p>Construimos con nuestro equipo y entregamos el espacio terminado, limpio y listo para usar.</p><small>Llave en mano</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cotizador -->
+<section class="sec" id="cotizador" style="padding-top:0">
+  <div class="wrap">
+    <div class="qz-wrap">
+      <div class="qz-side">
+        <div class="label"><span>06 — Cotizador</span><span>Estimación</span></div>
+        <h2>¿Cuánto cuesta tu proyecto?</h2>
+        <p class="lead">Responde 5 preguntas y te mostramos un rango de precio y plazo, calculado con valores de mercado en Santiago.</p>
+        <ul>
+          <li>Rango con IVA, mano de obra y materiales</li>
+          <li>Plazo estimado en semanas</li>
+          <li>Diseño, instalaciones y permisos como extras</li>
+          <li>Recomendaciones para tu tipo de obra</li>
+        </ul>
+      </div>
+      <div id="qz" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="sec" id="testimonios" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label"><span>07 — Testimonios</span><span>Clientes</span></div><h2>Lo que dicen de nosotros.</h2></div>
+    </div>
+    <div class="tst-grid">
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Teníamos fecha de apertura y la cumplieron. Los muebles curvos quedaron exactamente como en los renders del estudio.</q><div class="who"><b>Dueña de cafetería</b><span>Local comercial · Las Condes</span></div></article>
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Convertir el walking closet en dos baños parecía imposible. Lo resolvieron sin tocar el resto de la casa y con una ducha en obra preciosa.</q><div class="who"><b>Familia del proyecto</b><span>Remodelación · Santiago</span></div></article>
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Como estudio de diseño, lo que más valoramos es que entienden los planos y proponen soluciones en vez de problemas.</q><div class="who"><b>Estudio de interiorismo</b><span>Socio de proyectos</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas frecuentes -->
+<section class="sec" id="faq-sec" style="padding-top:0">
+  <div class="wrap faq-wrap">
+    <div>
+      <div class="label"><span>08 — Preguntas</span><span>Frecuentes</span></div>
+      <h2>Antes de empezar.</h2>
+      <p class="lead">¿Te queda una duda? El asistente de abajo a la izquierda te responde al tiro.</p>
+    </div>
+    <div id="faq">
+      <details><summary>¿Cuánto cuesta remodelar un baño?</summary><p>Como referencia, un baño de 4 a 6 m² con terminaciones estándar parte cerca de $5 millones, y con ducha en obra, desagüe lineal y revestimientos premium suele quedar entre $7 y $9 millones, IVA incluido. El cotizador te da un rango para tu caso y el valor exacto sale de la visita.</p></details>
+      <details><summary>¿Trabajan con mi arquitecto o diseñador?</summary><p>Sí, es una de las cosas que mejor hacemos. Construimos proyectos de estudios de diseño e interiorismo, como el proyecto Tauro con Estudio Lenga, respetando planos, materiales y detalles.</p></details>
+      <details><summary>¿Hacen locales comerciales y cafeterías?</summary><p>Sí. Habilitamos oficinas, locales y cafeterías llave en mano, como la cafetería Chiamo en Las Condes: tabiques, cielos, instalaciones, muebles a medida y terminaciones.</p></details>
+      <details><summary>¿Qué es la Ley de Accesibilidad Universal?</summary><p>La Ley 20.422 exige que los espacios de uso público tengan rutas accesibles para todas las personas: rampas, baños accesibles y puertas y pasillos de ancho mínimo, entre otros. Diagnosticamos tu espacio y construimos las adaptaciones para que cumpla.</p></details>
+      <details><summary>¿Cuánto demora una obra?</summary><p>Un baño toma de 3 a 4 semanas, una cocina de 4 a 6, un local de 6 a 10 y una remodelación completa de 2 a 3 meses. El plazo queda definido en el presupuesto.</p></details>
+      <details><summary>¿Trabajan fuera de Santiago?</summary><p>Sí. Además de Santiago, tenemos obras en Pucón y también trabajamos en California. Escríbenos con la ubicación de tu proyecto y lo coordinamos.</p></details>
+      <details><summary>¿Hacen obras civiles?</summary><p>Sí: ampliaciones, radieres, muros, estructuras y obra gruesa, con cálculo estructural y los permisos municipales que correspondan.</p></details>
+      <details><summary>¿La visita tiene costo?</summary><p>No. Vamos al lugar, medimos y revisamos lo necesario para enviarte un presupuesto detallado por escrito, sin compromiso.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="sec" id="contacto" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="label"><span>09 — Contacto</span><span>Hablemos</span></div><h2>Cuéntanos tu proyecto.</h2></div>
+    </div>
+    <div class="ct-grid">
+      <div class="ct-card dark rv">
+        <h3>Cristóbal y Rubén te responden directo.</h3>
+        <div class="ct-info">
+          <div><b>WhatsApp</b><span id="cTel"></span></div>
+          <div><b>Dónde</b><span id="cZona"></span></div>
+          <div><b>Horario</b><span id="cHor"></span></div>
+          <div><b>Instagram</b><span><a class="ig-link" target="_blank" rel="noopener">@constructoravicam</a></span></div>
+        </div>
+        <a class="btn btn-blue" id="cWa" target="_blank" rel="noopener" style="width:100%">Escribir por WhatsApp</a>
+      </div>
+      <form class="ct-card rv" id="contactForm" novalidate>
+        <h3 style="margin-bottom:22px">O déjanos tus datos.</h3>
+        <div class="two">
+          <div class="field"><label for="fNombre">Nombre</label><input class="inp" id="fNombre" name="nombre" autocomplete="name"></div>
+          <div class="field"><label for="fTel">WhatsApp</label><input class="inp" id="fTel" name="telefono" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678"></div>
+        </div>
+        <div class="field"><label for="fComuna">Comuna</label><select class="inp" id="fComuna" name="comuna"></select></div>
+        <div class="field"><label for="fMsg">Tu proyecto</label><textarea class="inp" id="fMsg" name="mensaje" placeholder="Ej.: quiero cambiar la tina por una ducha en obra en el baño principal."></textarea></div>
+        <p class="err" id="cErr" role="alert"></p>
+        <button class="btn btn-blue" type="submit" style="width:100%">Pedir visita sin costo</button>
+        <p class="note" style="margin-top:12px">Usamos tus datos solo para contactarte por este proyecto.</p>
+        <div id="cOk" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="ft-big">Vicam<em>.</em></p>
+    <div class="ft">
+      <div><p>Remodelación de casas y oficinas, obras civiles y accesibilidad universal. Santiago, Pucón y California.</p></div>
+      <div><h4>Servicios</h4><ul><li><a href="#servicios">Remodelaciones</a></li><li><a href="#servicios">Locales y oficinas</a></li><li><a href="#accesibilidad">Accesibilidad</a></li><li><a href="#servicios">Obras civiles</a></li></ul></div>
+      <div><h4>Estudio</h4><ul><li><a href="#proyectos">Proyectos</a></li><li><a href="#ventajas">Por qué Vicam</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#faq-sec">Preguntas</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="#cotizador">Cotizador</a></li><li><a href="#contacto">Visita</a></li><li><a class="ig-link" target="_blank" rel="noopener">Instagram</a></li><li id="fHor"></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© 2026 Constructora Vicam.</span><span>Propuesta de diseño por Facundo Social Media · precios, fotos y testimonios de ejemplo.</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFab" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></svg>
+</a>
+<button id="aiFab" type="button" aria-label="Abrir asistente"><span class="av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.9A8 8 0 1 1 21 12z"/></svg></span><span class="t">¿Dudas? Pregúntame</span></button>
+<section id="chat" role="dialog" aria-label="Asistente virtual" aria-modal="false">
+  <div class="chat-h"><span class="av"><svg width="18" height="16" viewBox="0 0 22 20" fill="none"><path d="M2 2l9 16 9-16" stroke="#d7182a" stroke-width="4" stroke-linejoin="round"/></svg></span><div><b>Asistente Vicam</b><span>Responde al instante</span></div><button id="chatX" type="button" aria-label="Cerrar asistente">×</button></div>
+  <div id="chatM"></div>
+  <form id="chatF"><input id="chatI" autocomplete="off" placeholder="Escribe tu pregunta…" aria-label="Tu pregunta"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  <p class="chat-foot">Asistente virtual · las respuestas son orientativas</p>
+</section>
+
+<script src="config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
