@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="es-CL" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iturralde Ingeniería & Construcción · Mantención, emergencias 24/7 e inspección técnica</title>
+<meta name="description" content="Mantención preventiva y emergencias 24/7 para edificios, condominios, empresas y hogares en Santiago. Inspección técnica de entrega de viviendas, techumbres, filtraciones, verticales sanitarias y obras. Más de 12 años de experiencia.">
+<meta property="og:title" content="Iturralde Ingeniería & Construcción">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1672627170267-fca17bb54156?w=1800&q=72&auto=format">
+<style>
+/* Sistema visual inspirado en el estilo "Darkroom gallery wall" (Refero Styles):
+   fotografía oscura a sangre, tipografía monumental en peso 300, líneas finas, píldoras oscuras
+   y un solo acento cálido, aquí el dorado del logo de Iturralde. Párrafos editoriales en serif. */
+:root{
+  --ink:#000; --paper:#fff; --char:#1c1c1c; --midnight:#070707; --iron:#262626; --mist:#e5e4e4;
+  --smoke:#8d8d8d; --pewter:#666; --gold:#c6a15b; --gold-2:#b08a45; --pill:#494949;
+  --max:1280px;
+  --sans:"Montserrat", "Proxima Nova", system-ui, sans-serif;
+  --serif:"Lora", Georgia, serif;
+  --gap:clamp(80px, 10vw, 140px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-size:15px;font-weight:400;line-height:1.55;letter-spacing:.01em;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.sec{padding:var(--gap) 0}
+.dark{background:var(--char);color:#fff}
+.mist{background:#f4f3f3}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.kicker::before{content:"";width:28px;height:1px;background:var(--gold)}
+h1,h2,h3{font-weight:300;letter-spacing:-.025em}
+h2{font-size:clamp(38px,5.6vw,80px);line-height:1;margin:22px 0 22px}
+h3{line-height:1.2;letter-spacing:-.02em}
+.serif{font-family:var(--serif);font-size:clamp(16px,1.4vw,18px);line-height:1.5;letter-spacing:.011em;color:var(--pewter);max-width:620px}
+.dark .serif{color:#bdbdbd}
+.lead{font-family:var(--serif);font-size:clamp(16px,1.4vw,18px);line-height:1.5;color:var(--pewter);max-width:620px}
+.dark .lead{color:#bdbdbd}
+.sec-head{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,72px);align-items:end;margin-bottom:clamp(44px,6vw,80px)}
+.sec-head h2{margin-bottom:0}
+.gold{color:var(--gold)}
+
+/* Botones: píldoras oscuras y enlaces texto + flecha */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 28px;border-radius:999px;font-weight:500;font-size:14px;letter-spacing:.04em;text-decoration:none;transition:background .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn-blue{background:var(--char);color:#fff}
+.btn-blue:hover{background:var(--gold);color:var(--ink)}
+.dark .btn-blue,.on-photo .btn-blue{background:var(--gold);color:var(--ink)}
+.dark .btn-blue:hover,.on-photo .btn-blue:hover{background:#fff}
+.btn-line{border:1px solid currentColor;background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.link{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:14px;letter-spacing:.04em;text-decoration:none;min-height:44px;border-bottom:1px solid currentColor}
+.link:hover{color:var(--gold)}
+.arrow{width:16px;height:16px;flex:none}
+
+/* Header sobre la foto */
+header{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;transition:background .3s,color .3s,border-color .3s;border-bottom:1px solid rgba(255,255,255,.14)}
+header.solid{background:rgba(255,255,255,.94);color:var(--ink);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--mist)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:84px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;line-height:1}
+.logo-mark{width:44px;height:44px;border-radius:50%;background:var(--midnight);border:1px solid rgba(198,161,91,.6);display:grid;place-items:center;flex:none}
+.logo b{display:block;font-weight:500;font-size:16px;letter-spacing:.22em}
+.logo small{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-top:5px}
+#nav{display:flex;gap:32px}
+#nav a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;opacity:.88}
+#nav a:hover{opacity:1;color:var(--gold)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{min-height:44px;padding:10px 20px;font-size:13px}
+header:not(.solid) .nav-cta .btn-blue{background:#fff;color:var(--ink)}
+#menuBtn{display:none;width:46px;height:46px;place-items:center}
+#menuBtn i{display:block;width:22px;height:1.5px;background:currentColor;position:relative}
+#menuBtn i::before,#menuBtn i::after{content:"";position:absolute;left:0;width:22px;height:1.5px;background:currentColor;transition:transform .25s}
+#menuBtn i::before{top:-7px}#menuBtn i::after{top:7px}
+header.open #menuBtn i{background:transparent}
+header.open #menuBtn i::before{transform:translateY(7px) rotate(45deg)}
+header.open #menuBtn i::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* Portada a sangre */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--midnight)}
+.hero-photo{position:absolute;inset:0}
+.hero-photo img{width:100%;height:115%;object-fit:cover;object-position:50% 40%;filter:brightness(.62) contrast(1.05)}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,7,7,.55) 0%,rgba(7,7,7,.1) 35%,rgba(7,7,7,.85) 100%)}
+.hero .wrap{position:relative;width:100%;padding-top:130px;padding-bottom:clamp(36px,5vw,64px)}
+.hero h1{font-size:clamp(46px,8vw,128px);line-height:.92;letter-spacing:-.035em;margin:22px 0 26px;max-width:1100px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold)}
+.hero-row{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+.hero .lead{color:#d8d8d8;margin-bottom:26px}
+.quick{display:flex;gap:6px;max-width:560px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.quick select{flex:1;min-width:0;min-height:50px;border:0;border-radius:999px;padding:0 40px 0 20px;font:inherit;font-size:14px;color:#fff;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23fff' stroke-width='1.4'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 18px center;appearance:none;-webkit-appearance:none}
+.quick select option,.quick select optgroup{color:var(--ink)}
+.quick select:focus{outline:none}
+.hero-cards{display:grid;gap:10px;min-width:250px}
+.hc{border:1px solid rgba(255,255,255,.22);background:rgba(7,7,7,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:14px;padding:16px 18px}
+.hc b{display:block;font-weight:300;font-size:34px;letter-spacing:-.03em;line-height:1}
+.hc span{font-size:12.5px;color:#cfcfcf;letter-spacing:.02em}
+.hc b span{font:inherit;color:inherit;letter-spacing:inherit}
+.hc.live{display:flex;align-items:center;gap:10px}
+.hc.live i{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+.hc.live span{color:#fff;font-weight:500}
+
+/* Cifras */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--mist)}
+.stat{padding:clamp(28px,4vw,48px) clamp(16px,2vw,28px)}
+.stat+.stat{border-left:1px solid var(--mist)}
+.stat b{display:block;font-weight:300;font-size:clamp(40px,5vw,72px);letter-spacing:-.04em;line-height:1}
+.stat b small{font-size:.4em;letter-spacing:0;color:var(--gold);font-weight:500}
+.stat span{display:block;margin-top:10px;font-size:13.5px;color:var(--pewter)}
+
+/* Tres líneas de servicio */
+.lines{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.line{display:flex;flex-direction:column}
+.line .ph{aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:var(--mist);position:relative}
+.line .ph img{width:100%;height:114%;object-fit:cover;filter:saturate(.85)}
+.line .ph .n{position:absolute;left:18px;top:16px;color:#fff;font-size:12px;font-weight:600;letter-spacing:.18em}
+.line h3{font-size:clamp(26px,2.6vw,34px);font-weight:300;margin:24px 0 10px}
+.line p{font-family:var(--serif);color:var(--pewter);font-size:16px}
+.line ul{list-style:none;margin:18px 0 22px;border-top:1px solid var(--mist)}
+.line li{padding:11px 0;border-bottom:1px solid var(--mist);font-size:14px;display:flex;justify-content:space-between;gap:10px}
+.line li::after{content:"→";color:var(--smoke)}
+.line .link{margin-top:auto;align-self:flex-start}
+
+/* Inspección de entrega */
+.insp{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:18px;overflow:hidden;background:var(--midnight);color:#fff}
+.insp-ph{position:relative;min-height:520px}
+.insp-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+.insp-ph .warn{position:absolute;left:24px;bottom:24px;right:24px;background:rgba(7,7,7,.75);border:1px solid rgba(198,161,91,.5);border-radius:14px;padding:18px 20px;font-family:var(--serif);font-size:17px;line-height:1.45;backdrop-filter:blur(6px)}
+.insp-ph .warn b{display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.insp-txt{padding:clamp(32px,5vw,64px)}
+.insp-txt h2{font-size:clamp(34px,4.4vw,60px)}
+.checks{list-style:none;margin:26px 0 32px;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.checks li{padding:13px 0;border-bottom:1px solid #333;font-size:14px;display:flex;gap:10px;align-items:baseline}
+.checks li::before{content:"✓";color:var(--gold)}
+
+/* Edificios y comunidades */
+.bld{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+.bld-list{border-top:1px solid #3a3a3a}
+.bld-list>div{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:20px 0;border-bottom:1px solid #3a3a3a}
+.bld-list em{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.16em;color:var(--gold);padding-top:4px}
+.bld-list b{display:block;font-weight:400;font-size:18px;letter-spacing:-.01em}
+.bld-list span{font-family:var(--serif);font-size:15px;color:#a9a9a9}
+.bld .btn{margin-top:30px}
+
+/* Ventajas */
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--mist)}
+.card{padding:36px 28px 36px 0;border-bottom:1px solid var(--mist);transition:transform .35s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.card:nth-child(3n+2),.card:nth-child(3n+3){padding-left:28px;border-left:1px solid var(--mist)}
+.card .n{font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--gold)}
+.card h3{font-size:24px;font-weight:300;margin:26px 0 10px}
+.card p{font-family:var(--serif);font-size:15.5px;color:var(--pewter)}
+
+/* Proceso */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.steps-line{position:absolute;left:0;right:0;top:0;height:1px;background:#3a3a3a}
+.steps-line i{display:block;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:left}
+.step{padding-top:28px}
+.step .n{font-weight:300;font-size:64px;letter-spacing:-.04em;line-height:1;display:block;margin-bottom:22px;color:var(--gold)}
+.step h3{font-size:21px;font-weight:400;margin-bottom:10px}
+.step p{font-family:var(--serif);font-size:15px;color:#a9a9a9}
+.step small{display:inline-block;margin-top:16px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border:1px solid #555;border-radius:999px;padding:5px 12px;color:#ddd}
+
+/* Cotizador */
+.qz-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,72px);align-items:start}
+.qz-side ul{list-style:none;border-top:1px solid var(--mist);margin-top:28px}
+.qz-side li{padding:13px 0;border-bottom:1px solid var(--mist);font-size:14px;display:flex;gap:10px}
+.qz-side li::before{content:"✓";color:var(--gold)}
+#qz{background:#fff;border:1px solid var(--mist);border-radius:18px;padding:clamp(22px,3vw,40px);min-height:540px;display:flex;flex-direction:column;box-shadow:0 30px 70px -40px rgba(0,0,0,.25)}
+.qz-top{display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke);margin-bottom:12px}
+.qz-bar{height:2px;background:var(--mist);margin-bottom:30px;border-radius:2px}
+.qz-bar i{display:block;height:2px;background:var(--gold);border-radius:2px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+#qz h3{font-size:clamp(26px,2.6vw,34px);font-weight:300;letter-spacing:-.025em;margin-bottom:8px}
+.qz-hint{font-family:var(--serif);font-size:16px;color:var(--pewter);margin-bottom:22px}
+.opt-area{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);margin:18px 0 8px}
+.opt-area:first-of-type{margin-top:0}
+.opts{display:grid;gap:8px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{text-align:left;border:1px solid var(--mist);border-radius:12px;padding:14px 16px;display:grid;gap:4px;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{border-color:var(--char);background:var(--char);color:#fff}
+.opt.sel span{color:#bdbdbd}
+.opt b{font-size:14.5px;font-weight:500}
+.opt span{font-size:13px;color:var(--pewter);line-height:1.45}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--mist);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:500;min-height:42px;transition:all .2s}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--char);border-color:var(--char);color:#fff}
+.field{display:grid;gap:7px;margin-bottom:18px}
+.field label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.inp{width:100%;min-height:50px;border:1px solid var(--mist);border-radius:12px;padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);background:#fff}
+.inp:focus{outline:none;border-color:var(--gold)}
+textarea.inp{min-height:100px;resize:vertical}
+.range-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.range-row output{font-size:42px;font-weight:300;letter-spacing:-.04em;text-transform:none}
+input[type=range]{width:100%;accent-color:var(--gold);height:30px}
+.qz-nav{margin-top:auto;padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qz-back{font-size:13px;font-weight:500;letter-spacing:.06em;color:var(--smoke);min-height:44px;padding:0 4px}
+.qz-back:hover{color:var(--ink)}
+.qz-next[disabled]{opacity:.3;pointer-events:none}
+.err{color:#b42318;font-size:14px;min-height:20px}
+.res-big{background:var(--midnight);color:#fff;border-radius:14px;padding:24px 26px;margin-bottom:16px}
+.res-big small{font-size:12px;letter-spacing:.06em;color:#a9a9a9}
+.res-big b{display:block;font-weight:300;font-size:clamp(32px,4vw,46px);letter-spacing:-.035em;line-height:1.1;margin:6px 0}
+.res-big span{font-size:13.5px;color:var(--gold)}
+.res-list{list-style:none;font-size:14px;margin-bottom:16px;border-top:1px solid var(--mist)}
+.res-list li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--mist)}
+.res-list li span:first-child{color:var(--pewter)}
+.ia-box{background:#f7f5f0;border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.ia-box b{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.ia-box b i{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.ia-box p{font-family:var(--serif);font-size:15px;color:var(--pewter)}
+.note{font-size:12.5px;color:var(--smoke);line-height:1.5}
+.res-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* Testimonios */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.tst{border-top:1px solid var(--ink);padding-top:24px;display:flex;flex-direction:column;gap:22px}
+.tst .tag{align-self:flex-start;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
+.tst q{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.45;quotes:none}
+.who{margin-top:auto;font-size:13.5px;font-weight:500}
+.who span{display:block;color:var(--smoke);font-weight:400;font-size:13px}
+
+/* FAQ */
+.faq-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,4vw,80px)}
+#faq{border-top:1px solid var(--ink)}
+#faq details{border-bottom:1px solid var(--mist)}
+#faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:24px 0;font-weight:400;font-size:18px;letter-spacing:-.01em}
+#faq summary::-webkit-details-marker{display:none}
+#faq summary::after{content:"+";flex:none;font-size:24px;font-weight:300;line-height:1;color:var(--gold);transition:transform .25s}
+#faq details[open] summary::after{transform:rotate(45deg)}
+#faq p{font-family:var(--serif);color:var(--pewter);padding:0 40px 26px 0;font-size:16.5px}
+
+/* Contacto */
+.ct{position:relative;overflow:hidden;color:#fff;background:var(--midnight)}
+.ct-bg{position:absolute;inset:0}
+.ct-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35)}
+.ct .wrap{position:relative}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start}
+.ct h2{color:#fff}
+.ct-info{margin:30px 0 32px;border-top:1px solid rgba(255,255,255,.2)}
+.ct-info>div{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.2);font-size:15px}
+.ct-info b{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.ct-info a{color:#fff}
+#contactForm{background:#fff;color:var(--ink);border-radius:18px;padding:clamp(24px,3vw,40px)}
+#contactForm h3{font-size:28px;font-weight:300;margin-bottom:22px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#cOk{display:none;background:#f7f5f0;border-radius:12px;padding:16px;font-size:14.5px;margin-top:12px}
+
+/* Footer */
+footer{background:var(--midnight);color:#fff;padding:72px 0 32px}
+.ft-big{font-size:clamp(56px,13vw,190px);font-weight:300;letter-spacing:-.05em;line-height:.85;margin-bottom:56px}
+.ft-big em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold);font-size:.55em;letter-spacing:-.02em}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer p{font-family:var(--serif);color:#9a9a9a;font-size:15px;max-width:320px}
+footer h4{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:9px}
+footer li a,footer li{color:#bdbdbd;font-size:14px;text-decoration:none}
+footer li a:hover{color:#fff}
+.ft-bottom{border-top:1px solid #222;margin-top:56px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#777}
+
+/* Botones flotantes y asistente */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.4);transition:transform .2s}
+.wa-float:hover{transform:scale(1.06)}
+#aiFab{position:fixed;left:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;height:54px;padding:0 20px 0 8px;border-radius:999px;background:var(--char);color:#fff;font-size:13.5px;font-weight:500;letter-spacing:.03em;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);border:1px solid #333;transition:opacity .2s}
+#aiFab .av{width:38px;height:38px;border-radius:50%;background:var(--gold);display:grid;place-items:center}
+#chat{position:fixed;left:18px;bottom:18px;z-index:70;width:min(390px,calc(100vw - 36px));height:min(580px,calc(100vh - 110px));background:#fff;border-radius:20px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.98);pointer-events:none;transition:opacity .25s,transform .25s}
+#chat.on{opacity:1;transform:none;pointer-events:auto}
+.chat-h{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--midnight);color:#fff}
+.chat-h .av{width:38px;height:38px;border-radius:50%;background:var(--midnight);border:1px solid var(--gold);display:grid;place-items:center;flex:none}
+.chat-h b{font-size:14px;font-weight:500;display:block;letter-spacing:.03em}
+.chat-h span{font-size:12px;color:#a9a9a9;display:flex;align-items:center;gap:6px}
+.chat-h span::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e}
+#chatX{margin-left:auto;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:300;color:#fff}
+#chatM{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f4f3f3}
+.msg{max-width:86%;padding:11px 15px;border-radius:16px;font-size:14px;line-height:1.5;white-space:pre-wrap}
+.msg.bot{background:#fff;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--char);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.typing{display:flex;gap:4px;padding:14px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--smoke);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.msg-acts{display:flex;flex-wrap:wrap;gap:6px}
+.msg-acts button,.msg-acts a{font-size:12.5px;font-weight:500;border:1px solid var(--mist);background:#fff;border-radius:999px;padding:7px 13px;text-decoration:none;min-height:36px}
+.msg-acts .pri{background:var(--char);border-color:var(--char);color:#fff}
+.msg-acts .wa{border-color:#25d366;color:#128c4a}
+#chatF{display:flex;gap:8px;padding:12px;border-top:1px solid var(--mist)}
+#chatI{flex:1;min-width:0;min-height:46px;border:1px solid var(--mist);border-radius:999px;padding:0 18px;font:inherit;font-size:16px}
+#chatI:focus{outline:none;border-color:var(--gold)}
+#chatF button{width:46px;height:46px;border-radius:50%;background:var(--char);display:grid;place-items:center;flex:none}
+.chat-foot{font-size:11px;color:var(--smoke);text-align:center;padding:0 12px 10px}
+
+.js .rv{opacity:0;transform:translateY(28px)}
+
+@media (max-width:1000px){
+  #nav{display:none}
+  #menuBtn{display:grid}
+  header.open{background:#fff;color:var(--ink)}
+  header.open #nav{display:flex;flex-direction:column;gap:0;position:absolute;top:84px;left:0;right:0;background:#fff;border-bottom:1px solid var(--mist);padding:8px clamp(16px,4vw,40px) 16px}
+  header.open #nav a{padding:14px 0;border-bottom:1px solid var(--mist);font-size:14px}
+  .hero-row,.sec-head,.qz-wrap,.faq-wrap,.insp,.bld,.ct-grid{grid-template-columns:1fr}
+  .hero-cards{grid-template-columns:repeat(3,1fr);min-width:0}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--mist)}
+  .lines{grid-template-columns:1fr 1fr}
+  .lines .line:last-child{grid-column:span 2}
+  .lines .line:last-child .ph{aspect-ratio:16/9}
+  .insp-ph{min-height:360px}
+  .adv-grid,.tst-grid{grid-template-columns:1fr 1fr}
+  .card:nth-child(n){padding:32px 24px 32px 0;border-left:0}
+  .card:nth-child(2n){padding-left:24px;border-left:1px solid var(--mist)}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .nav{height:68px}
+  header.open #nav{top:68px}
+  .logo b{font-size:14px;letter-spacing:.18em}
+  .logo-mark{width:38px;height:38px}
+  .nav-cta .btn{display:none}
+  .hero .wrap{padding-top:96px}
+  .hero h1{font-size:clamp(31px,8.8vw,40px);margin:16px 0 18px}
+  .hero .lead{font-size:15.5px;margin-bottom:20px}
+  .quick{flex-direction:column;border-radius:18px}
+  .quick .btn{width:100%}
+  .hero-cards{grid-template-columns:1fr 1fr}
+  .hero-cards .hc.live{grid-column:span 2}
+  .hc{padding:12px 14px}
+  .hc b{font-size:26px}
+  .stat b{font-size:40px}
+  .lines,.adv-grid,.tst-grid,.two,.opts.two,.checks{grid-template-columns:1fr}
+  .lines .line:last-child{grid-column:auto}
+  .lines .line .ph,.lines .line:last-child .ph{aspect-ratio:4/3}
+  .card:nth-child(n){padding:28px 0;border-left:0}
+  .steps{grid-template-columns:1fr;row-gap:28px}
+  .insp-ph{min-height:300px}
+  .ct-info>div{grid-template-columns:100px 1fr}
+  .ft{grid-template-columns:1fr}
+  #aiFab span.t{display:none}
+  #aiFab{padding:0 8px}
+  #chat{left:8px;right:8px;bottom:8px;width:auto;height:calc(100dvh - 16px)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Iturralde Ingeniería & Construcción, inicio">
+      <span class="logo-mark"><svg width="22" height="20" viewBox="0 0 22 20" fill="none"><path d="M2 18L11 3l9 15" stroke="#c6a15b" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 18v-6h8v6M11 3v4" stroke="#c6a15b" stroke-width="1.6"/></svg></span>
+      <span><b>ITURRALDE</b><small>Ingeniería & Construcción</small></span>
+    </a>
+    <nav id="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#inspeccion">Inspección</a>
+      <a href="#edificios">Edificios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#faq-sec">Preguntas</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-blue" href="#cotizador">Cotizar</a>
+      <button id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- Portada -->
+<section class="hero on-photo">
+  <div class="hero-photo"><img src="https://images.unsplash.com/photo-1672627170267-fca17bb54156?w=1800&q=72&auto=format" alt="Casa en construcción con estructura de segundo piso" width="1800" height="1200"></div>
+  <div class="wrap">
+    <span class="kicker hero-in">Ingeniería · Construcción · Mantención</span>
+    <h1><span class="ln"><span>Mantenemos en pie</span></span><span class="ln"><span>lo que más <em>importa.</em></span></span></h1>
+    <div class="hero-row">
+      <div>
+        <p class="lead hero-in">Mantención preventiva y emergencias 24/7 para edificios, condominios, empresas y hogares. Proyectos grandes y soluciones rápidas, con más de 12 años de experiencia.</p>
+        <form class="quick hero-in" id="quick">
+          <select id="quickTipo" aria-label="¿Qué necesitas resolver?">
+            <option value="">¿Qué necesitas resolver?</option>
+            <optgroup label="Mantención y emergencias">
+              <option value="techo">Techumbre, canaletas o filtraciones</option>
+              <option value="imper">Impermeabilizar una terraza</option>
+              <option value="verticales">Verticales sanitarias (edificio)</option>
+              <option value="palomas">Tratamiento antipalomas</option>
+            </optgroup>
+            <optgroup label="Inspección técnica">
+              <option value="inspeccion">Inspección de entrega de vivienda</option>
+            </optgroup>
+            <optgroup label="Obras y remodelaciones">
+              <option value="remodela">Remodelación, pisos y revestimientos</option>
+              <option value="ampliacion">Ampliación, quincho o terraza</option>
+              <option value="cierres">Muros, cierres, portones y rejas</option>
+            </optgroup>
+          </select>
+          <button class="btn btn-blue" type="submit">Cotizar <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        </form>
+      </div>
+      <div class="hero-cards">
+        <div class="hc hero-card"><b><span data-count="12">12</span>+</b><span>años de experiencia</span></div>
+        <div class="hc hero-card"><b>24/7</b><span>atención de emergencias</span></div>
+        <div class="hc live hero-card"><i></i><span>Respondemos por WhatsApp</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cifras -->
+<section aria-label="Cifras">
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat"><b><span data-count="12">12</span><small>+ AÑOS</small></b><span>de experiencia en terreno (antes Mantención MYM)</span></div>
+      <div class="stat"><b>24/7</b><span>emergencias: filtraciones, rebalses y goteras</span></div>
+      <div class="stat"><b><span data-count="4">4</span><small> TIPOS</small></b><span>de cliente: edificios, comunidades, empresas y hogares</span></div>
+      <div class="stat"><b>100<small>%</small></b><span>de las inspecciones con informe técnico y fotos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">Servicios</span><h2>Problemas reales, soluciones de ingeniería.</h2></div>
+      <p class="serif">Transformamos problemas en soluciones: desde una canaleta tapada en plena lluvia hasta la ampliación completa de tu casa, con el mismo estándar técnico.</p>
+    </div>
+    <div class="lines">
+      <article class="line rv">
+        <div class="ph"><span class="n">01</span><img src="https://images.unsplash.com/photo-1657346088167-b982455bf29a?w=900&q=72&auto=format" alt="Casa moderna con terrazas y techumbres" loading="lazy"></div>
+        <h3>Mantención y emergencias</h3>
+        <p>Preventiva y correctiva, para que tu propiedad no te dé sorpresas cuando llueve.</p>
+        <ul><li>Techumbres y canaletas</li><li>Filtraciones e impermeabilización</li><li>Ductos de aguas lluvias</li><li>Verticales sanitarias</li><li>Tratamiento antipalomas</li></ul>
+        <a class="link" href="#cotizador" data-tipo-link="techo">Cotizar una mantención <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </article>
+      <article class="line rv">
+        <div class="ph"><span class="n">02</span><img src="https://images.unsplash.com/photo-1634586648651-f1fb9ec10d90?w=900&q=72&auto=format" alt="Departamento en obra con muros intervenidos" loading="lazy"></div>
+        <h3>Inspección técnica</h3>
+        <p>Antes de firmar la entrega de tu casa o departamento, revisamos cada detalle por ti.</p>
+        <ul><li>Terminaciones</li><li>Puertas y ventanas</li><li>Instalaciones eléctricas y sanitarias</li><li>Niveles, sellos y acabados</li><li>Informe con fotografías</li></ul>
+        <a class="link" href="#cotizador" data-tipo-link="inspeccion">Cotizar una inspección <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </article>
+      <article class="line rv">
+        <div class="ph"><span class="n">03</span><img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=900&q=72&auto=format" alt="Maestro trabajando en una obra interior" loading="lazy"></div>
+        <h3>Obras y remodelaciones</h3>
+        <p>Espacios comunes transformados en lugares que dan ganas de presumirle al vecino.</p>
+        <ul><li>Ampliaciones</li><li>Quinchos y terrazas</li><li>Pisos y revestimientos</li><li>Muros y cierres</li><li>Portones, rejas y cobertizos</li></ul>
+        <a class="link" href="#cotizador" data-tipo-link="ampliacion">Cotizar una obra <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Inspección de entrega -->
+<section class="sec" id="inspeccion" style="padding-top:0">
+  <div class="wrap">
+    <div class="insp rv">
+      <div class="insp-ph"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200&q=72&auto=format" alt="Casa nueva con ventanales" loading="lazy">
+        <div class="warn"><b>Antes de firmar</b>Muchas fallas aparecen cuando ya recibiste la propiedad. Lo que queda por escrito antes de la entrega es lo que la inmobiliaria tiene que reparar.</div>
+      </div>
+      <div class="insp-txt">
+        <span class="kicker">Inspección técnica de entrega</span>
+        <h2>¿Te entregan tu casa? No firmes sin revisar.</h2>
+        <p class="serif">Un ingeniero recorre la propiedad contigo, detecta las fallas y te entrega un informe técnico con fotografías para exigir las reparaciones.</p>
+        <ul class="checks">
+          <li>Terminaciones</li><li>Puertas y ventanas</li>
+          <li>Instalaciones eléctricas</li><li>Instalaciones sanitarias</li>
+          <li>Filtraciones y humedad</li><li>Niveles, sellos y acabados</li>
+        </ul>
+        <a class="btn btn-blue" href="#cotizador" data-tipo-link="inspeccion">Agendar inspección <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Edificios y comunidades -->
+<section class="sec dark" id="edificios">
+  <div class="wrap bld">
+    <div class="rv">
+      <span class="kicker">Edificios, condominios y empresas</span>
+      <h2>Tu edificio, en manos de un solo equipo.</h2>
+      <p class="serif">Trabajamos con administraciones y comunidades en planes de mantención preventiva y correctiva, con respuesta rápida cuando surge una emergencia.</p>
+      <a class="btn btn-blue" id="tramWa" target="_blank" rel="noopener">Pedir un plan de mantención <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+    <div class="bld-list rv">
+      <div><em>01</em><div><b>Verticales sanitarias</b><span>Limpieza profesional: adiós a obstrucciones, malos olores y rebalses.</span></div></div>
+      <div><em>02</em><div><b>Techumbres y aguas lluvias</b><span>Canaletas, bajadas y ductos limpios antes de cada temporada.</span></div></div>
+      <div><em>03</em><div><b>Control antipalomas</b><span>Limpieza, mallas y prevención para techos, cornisas y fachadas.</span></div></div>
+      <div><em>04</em><div><b>Emergencias 24/7</b><span>Filtraciones, rebalses o goteras atendidos cuando pasan, no al otro día.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Ventajas -->
+<section class="sec" id="ventajas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">Por qué Iturralde</span><h2>Altos estándares técnicos, trato cercano.</h2></div>
+      <p class="serif">Más de 12 años trabajando con edificios, comunidades, empresas y particulares. Antes nos conocían como Mantención MYM.</p>
+    </div>
+    <div class="adv-grid">
+      <article class="card rv"><span class="n">01</span><h3>Mirada de ingeniería</h3><p>Buscamos la causa del problema, no solo el síntoma. Así la filtración no vuelve con la próxima lluvia.</p></article>
+      <article class="card rv"><span class="n">02</span><h3>Respuesta rápida</h3><p>Emergencias 24/7. Tu casa no espera, y nosotros tampoco.</p></article>
+      <article class="card rv"><span class="n">03</span><h3>Trabajo seguro y certificado</h3><p>Equipos especializados, trabajo en altura con protección y personal capacitado.</p></article>
+      <article class="card rv"><span class="n">04</span><h3>Informes con fotos</h3><p>Documentamos cada trabajo e inspección para que sepas exactamente qué se hizo y por qué.</p></article>
+      <article class="card rv"><span class="n">05</span><h3>Grandes y chicos</h3><p>Proyectos grandes y soluciones puntuales con el mismo compromiso y atención personalizada.</p></article>
+      <article class="card rv"><span class="n">06</span><h3>Cerca de la comunidad</h3><p>Estuvimos con las familias y vecinos de Las Condes afectados por las lluvias y el aluvión. Somos parte de la comunidad.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Proceso -->
+<section class="sec dark" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">Proceso</span><h2>Simple, claro y a tiempo.</h2></div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="steps-line" aria-hidden="true"><i></i></div>
+      <div class="step rv"><span class="n">01</span><h3>Nos cuentas el problema</h3><p>Por WhatsApp con una foto, o con el cotizador de esta página para tener un rango al instante.</p><small>Al tiro</small></div>
+      <div class="step rv"><span class="n">02</span><h3>Visita técnica</h3><p>Vamos a la propiedad, diagnosticamos la causa y medimos lo necesario.</p><small>Sin costo</small></div>
+      <div class="step rv"><span class="n">03</span><h3>Presupuesto claro</h3><p>Te enviamos el detalle del trabajo, plazos y forma de pago por escrito.</p><small>Sin compromiso</small></div>
+      <div class="step rv"><span class="n">04</span><h3>Solución e informe</h3><p>Ejecutamos el trabajo y te dejamos registro con fotos de lo realizado.</p><small>Con respaldo</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cotizador -->
+<section class="sec mist" id="cotizador">
+  <div class="wrap qz-wrap">
+    <div class="qz-side">
+      <span class="kicker">Cotizador</span>
+      <h2>¿Cuánto cuesta resolverlo?</h2>
+      <p class="serif">Responde 5 preguntas y te mostramos un rango de precio y plazo, calculado con valores de mercado en Santiago.</p>
+      <ul>
+        <li>Rango con IVA incluido</li>
+        <li>Plazo estimado del trabajo</li>
+        <li>Opción de urgencia 24/7 o plan preventivo</li>
+        <li>Recomendaciones para tu caso</li>
+      </ul>
+    </div>
+    <div id="qz" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="sec" id="testimonios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">Testimonios</span><h2>Lo que dicen nuestros clientes.</h2></div>
+    </div>
+    <div class="tst-grid">
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Teníamos rebalses en el primer piso cada pocas semanas. Limpiaron las verticales y desde entonces no hemos tenido ni un reclamo de los vecinos.</q><div class="who">Administradora de edificio<span>Las Condes</span></div></article>
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>En la inspección encontraron problemas de sellos y una ventana que filtraba. Con el informe, la inmobiliaria lo arregló todo antes de que firmáramos.</q><div class="who">Familia que recibió su departamento<span>Ñuñoa</span></div></article>
+      <article class="tst rv"><span class="tag">Testimonio de ejemplo</span><q>Llamamos un domingo con una gotera en plena lluvia. Vinieron el mismo día y después nos cambiaron las canaletas completas.</q><div class="who">Dueño de casa<span>La Reina</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas frecuentes -->
+<section class="sec mist" id="faq-sec">
+  <div class="wrap faq-wrap">
+    <div>
+      <span class="kicker">Preguntas frecuentes</span>
+      <h2>Antes de llamarnos.</h2>
+      <p class="serif">¿Te queda una duda? El asistente de abajo a la izquierda te responde al tiro.</p>
+    </div>
+    <div id="faq">
+      <details><summary>¿Atienden emergencias fuera de horario?</summary><p>Sí, atendemos emergencias 24/7: filtraciones, rebalses, canaletas tapadas o techumbres dañadas. Escríbenos por WhatsApp con una foto y la dirección y coordinamos lo antes posible.</p></details>
+      <details><summary>¿Qué revisan en la inspección de entrega?</summary><p>Terminaciones, puertas y ventanas, instalaciones eléctricas y sanitarias, filtraciones y humedad, niveles, sellos y acabados. Te entregamos un informe técnico con fotografías para presentar a la inmobiliaria antes de firmar.</p></details>
+      <details><summary>¿Trabajan con edificios y condominios?</summary><p>Sí. Trabajamos con administraciones y comunidades en mantención preventiva y correctiva, limpieza de verticales sanitarias, techumbres, aguas lluvias, control antipalomas y emergencias.</p></details>
+      <details><summary>¿Cada cuánto conviene limpiar las verticales sanitarias?</summary><p>Como referencia, cada 6 a 12 meses según el tamaño del edificio y el uso. La limpieza preventiva evita rebalses en los pisos bajos y malos olores.</p></details>
+      <details><summary>¿Cuándo conviene limpiar canaletas y revisar el techo?</summary><p>Antes de la temporada de lluvias, idealmente en otoño. Una canaleta tapada rebalsa hacia muros y cielos y termina en una filtración más cara de reparar.</p></details>
+      <details><summary>¿También hacen obras y remodelaciones?</summary><p>Sí: ampliaciones, quinchos y terrazas, remodelaciones, pisos y revestimientos, muros y cierres, portones, rejas y cobertizos.</p></details>
+      <details><summary>¿La visita tiene costo?</summary><p>No. Vamos a la propiedad, diagnosticamos el problema y te enviamos el presupuesto por escrito, sin compromiso.</p></details>
+      <details><summary>¿En qué comunas trabajan?</summary><p>En Santiago y la Región Metropolitana. Escríbenos con tu comuna y coordinamos la visita.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="sec ct on-photo" id="contacto">
+  <div class="ct-bg"><img src="https://images.unsplash.com/photo-1672627170267-fca17bb54156?w=1600&q=60&auto=format" alt="" loading="lazy"></div>
+  <div class="wrap ct-grid">
+    <div class="rv">
+      <span class="kicker">Contacto</span>
+      <h2>Cuéntanos qué necesitas resolver.</h2>
+      <div class="ct-info">
+        <div><b>WhatsApp</b><span id="cTel"></span></div>
+        <div><b>Zona</b><span id="cZona"></span></div>
+        <div><b>Horario</b><span id="cHor"></span></div>
+        <div><b>Instagram</b><span><a class="ig-link" target="_blank" rel="noopener">@iturralde_ingconstruccion</a></span></div>
+      </div>
+      <a class="btn btn-blue" id="cWa" target="_blank" rel="noopener">Escribir por WhatsApp <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+    <form class="rv" id="contactForm" novalidate>
+      <h3>Te contactamos nosotros</h3>
+      <div class="two">
+        <div class="field"><label for="fNombre">Nombre</label><input class="inp" id="fNombre" name="nombre" autocomplete="name"></div>
+        <div class="field"><label for="fTel">WhatsApp</label><input class="inp" id="fTel" name="telefono" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678"></div>
+      </div>
+      <div class="field"><label for="fComuna">Comuna</label><select class="inp" id="fComuna" name="comuna"></select></div>
+      <div class="field"><label for="fMsg">¿Qué necesitas?</label><textarea class="inp" id="fMsg" name="mensaje" placeholder="Ej.: tengo una filtración en la terraza del departamento y quiero impermeabilizarla."></textarea></div>
+      <p class="err" id="cErr" role="alert"></p>
+      <button class="btn btn-blue" type="submit" style="width:100%">Pedir visita sin costo</button>
+      <p class="note" style="margin-top:12px">Usamos tus datos solo para contactarte por este trabajo.</p>
+      <div id="cOk" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="ft-big">Iturralde <em>ingeniería & construcción</em></p>
+    <div class="ft">
+      <div><p>Ingeniería, construcción y mantención para edificios, comunidades, empresas y hogares en Santiago. Proyectos grandes y soluciones rápidas.</p></div>
+      <div><h4>Servicios</h4><ul><li><a href="#servicios">Mantención</a></li><li><a href="#inspeccion">Inspección de entrega</a></li><li><a href="#edificios">Edificios</a></li><li><a href="#servicios">Obras</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="#ventajas">Por qué Iturralde</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#faq-sec">Preguntas</a></li><li><a href="#cotizador">Cotizador</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="#contacto">Visita técnica</a></li><li><a class="ig-link" target="_blank" rel="noopener">Instagram</a></li><li id="fHor"></li></ul></div>
+    </div>
+    <div class="ft-bottom"><span>© 2026 Iturralde Ingeniería & Construcción · Ex Mantención MYM.</span><span>Propuesta de diseño por Facundo Social Media · precios, fotos y testimonios de ejemplo.</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFab" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></svg>
+</a>
+<button id="aiFab" type="button" aria-label="Abrir asistente"><span class="av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.9A8 8 0 1 1 21 12z"/></svg></span><span class="t">¿Dudas? Pregúntame</span></button>
+<section id="chat" role="dialog" aria-label="Asistente virtual" aria-modal="false">
+  <div class="chat-h"><span class="av"><svg width="18" height="16" viewBox="0 0 22 20" fill="none"><path d="M2 18L11 3l9 15" stroke="#c6a15b" stroke-width="1.8" stroke-linejoin="round"/></svg></span><div><b>Asistente Iturralde</b><span>Responde al instante</span></div><button id="chatX" type="button" aria-label="Cerrar asistente">×</button></div>
+  <div id="chatM"></div>
+  <form id="chatF"><input id="chatI" autocomplete="off" placeholder="Escribe tu pregunta…" aria-label="Tu pregunta"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  <p class="chat-foot">Asistente virtual · las respuestas son orientativas</p>
+</section>
+
+<script src="config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
