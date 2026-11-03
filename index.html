@@ -341,6 +341,7 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
         <span>Ver precios en:</span>
         <button type="button" data-cur="ARS">🇦🇷 Pesos argentinos</button>
         <button type="button" data-cur="CLP">🇨🇱 Pesos chilenos</button>
+        <button type="button" data-cur="EUR">🇪🇺 Euros</button>
         <button type="button" data-cur="USD">🌎 Dólares</button>
       </div>
       <div class="plans">
@@ -583,19 +584,23 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
 </a>
 
 <script>
-  /* Moneda según el país del visitante: Argentina en pesos, Chile en pesos chilenos, el resto en dólares.
+  /* Moneda según el país del visitante: Argentina en pesos, Chile en pesos chilenos, Europa en euros, el resto en dólares.
      Si hay país (window.__COUNTRY) se usa; si no, la zona horaria del navegador. */
   const CLP_POR_USD = 986.58; // dólar observado Chile, 23/10/2026 (mindicador.cl)
+  const EUR_POR_USD = 0.8916; // tipo de referencia BCE, 02/11/2026 (frankfurter.app)
+  const EUROPA = ["ES","PT","FR","IT","DE","NL","BE","IE","AT","FI","GR","LU","SK","SI","EE","LV","LT","MT","CY","HR"];
   const fmt = n => n.toLocaleString("es-AR", Number.isInteger(n) ? {} : {minimumFractionDigits: 2, maximumFractionDigits: 2});
   function detectarMoneda(){
     try { const m = localStorage.getItem("moneda"); if (m) return m; } catch(e){}
     const c = (window.__COUNTRY || "").toUpperCase();
     if (c === "AR") return "ARS";
     if (c === "CL") return "CLP";
+    if (EUROPA.includes(c)) return "EUR";
     if (c) return "USD";
     const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "");
     if (tz.startsWith("America/Argentina") || tz === "America/Buenos_Aires" || tz === "America/Cordoba") return "ARS";
     if (tz === "America/Santiago" || tz === "Pacific/Easter" || tz === "America/Punta_Arenas") return "CLP";
+    if (tz.startsWith("Europe/") || tz === "Atlantic/Canary") return "EUR";
     return "USD";
   }
   function mostrarMoneda(cur){
@@ -603,11 +608,12 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
       const usd = +el.dataset.usd;
       el.textContent = cur === "ARS" ? "$" + fmt(+el.dataset.ars)
         : cur === "CLP" ? "$" + fmt(Math.round(usd * CLP_POR_USD / 1000) * 1000) + " CLP"
+        : cur === "EUR" ? fmt(Math.round(usd * EUR_POR_USD)) + " €"
         : "USD " + fmt(usd);
     });
     document.querySelectorAll(".only-ar").forEach(el => el.hidden = cur !== "ARS");
     document.querySelectorAll(".pay-cl").forEach(el => el.hidden = cur !== "CLP");
-    document.querySelectorAll(".pay-intl").forEach(el => el.hidden = cur !== "USD");
+    document.querySelectorAll(".pay-intl").forEach(el => el.hidden = cur !== "USD" && cur !== "EUR");
     document.querySelectorAll(".cur button").forEach(b => b.classList.toggle("on", b.dataset.cur === cur));
   }
   document.querySelectorAll(".cur button").forEach(b => b.addEventListener("click", () => {
@@ -657,6 +663,6 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
   else document.documentElement.classList.remove("js");
   setTimeout(() => { if (!window.ScrollTrigger) document.documentElement.classList.remove("js"); }, 4000);
 </script>
-<script src="muestras/pro.js?v=1793716790" defer></script>
+<script src="muestras/pro.js?v=1793718447" defer></script>
 </body>
 </html>
