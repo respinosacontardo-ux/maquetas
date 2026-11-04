@@ -222,7 +222,7 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
 /* Animaciones de entrada: las maneja GSAP; sin JS todo queda visible */
 .js .rv{opacity:0;transform:translateY(30px)}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.marquee-track,.chip-ai .orb{animation:none}}
-.price .antes{display:block;font-size:.5em;font-weight:500;opacity:.55;text-decoration:line-through;margin-bottom:2px}.price .off{color:#16a34a;font-weight:800;letter-spacing:.02em}</style>
+</style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -348,7 +348,7 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
         <article class="plan rv">
           <h3>Básico</h3>
           <p class="for">Para empezar a estar en internet.</p>
-          <div class="price"><s class="money antes" data-ars="280000" data-usd="180">$280.000</s><span class="money" data-ars="210000" data-usd="135">$210.000</span><small>pago único · <b class="off">25 % OFF</b></small></div>
+          <div class="price"><span class="money" data-ars="280000" data-usd="180">$280.000</span><small>pago único</small></div>
           <ul>
             <li>Página única con todo lo importante</li>
             <li>Servicios, fotos, horarios y ubicación</li>
@@ -363,7 +363,7 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
           <span class="badge">Más elegido</span>
           <h3>Completo</h3>
           <p class="for">La web profesional de tu negocio.</p>
-          <div class="price"><s class="money antes" data-ars="480000" data-usd="310">$480.000</s><span class="money" data-ars="360000" data-usd="232">$360.000</span><small>pago único · <b class="off">25 % OFF</b></small></div>
+          <div class="price"><span class="money" data-ars="480000" data-usd="310">$480.000</span><small>pago único</small></div>
           <ul>
             <li>Todo lo del Básico</li>
             <li>Hasta 5 secciones: servicios, precios, galería, equipo, opiniones</li>
@@ -378,7 +378,7 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
         <article class="plan rv">
           <h3>Pro</h3>
           <p class="for">Para conseguir más clientes desde Google.</p>
-          <div class="price"><s class="money antes" data-ars="750000" data-usd="480">$750.000</s><span class="money" data-ars="562500" data-usd="360">$562.500</span><small>pago único · <b class="off">25 % OFF</b></small></div>
+          <div class="price"><span class="money" data-ars="750000" data-usd="480">$750.000</span><small>pago único</small></div>
           <ul>
             <li>Todo lo del Completo</li>
             <li>Reserva de turnos online</li>
@@ -663,6 +663,6 @@ footer{padding:40px var(--pad) 110px;text-align:center;color:var(--muted);font-s
   else document.documentElement.classList.remove("js");
   setTimeout(() => { if (!window.ScrollTrigger) document.documentElement.classList.remove("js"); }, 4000);
 </script>
-<script src="muestras/pro.js?v=1793798799" defer></script>
+<script src="muestras/pro.js?v=1793810237" defer></script>
 </body>
 </html>
