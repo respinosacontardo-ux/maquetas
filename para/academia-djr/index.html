@@ -21,6 +21,7 @@
 -->
 <html lang="es-AR">
 <head>
+<link rel="icon" href="logo.jpg">
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -282,7 +283,7 @@ section{padding:80px 0}
   @media (max-width:420px){.btn{font-size:.84rem;letter-spacing:.015em;padding:14px 16px;gap:8px}}
 /* Celular: portada compacta, el título arranca arriba sin espacio vacío */
 @media (max-width:700px){.hero{min-height:0!important;align-items:flex-start!important;padding:44px 0 40px!important}}
-</style>
+.logo{display:inline-grid!important;grid-template-columns:auto auto;column-gap:10px;align-items:center}.logo .marca-logo{grid-row:1/span 2;width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 2px 10px rgba(0,0,0,.18);display:block}:root{--accent:#b3a2a3!important;}</style>
 </head>
 <body>
 <div style="position:relative;z-index:9999;background:#111827;color:#f3f4f6;font:500 13.5px/1.45 system-ui,sans-serif;padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid #262a33">
@@ -304,7 +305,7 @@ section{padding:80px 0}
 
 <header class="header">
   <div class="container">
-    <a href="#inicio" class="logo" aria-label="Academia DJR, ir al inicio"><svg aria-hidden="true"><use href="#i-bolt"/></svg>ACADEMIA<span>DJR</span></a>
+    <a href="#inicio" class="logo" aria-label="Academia DJR, ir al inicio"><img class="marca-logo" src="logo.jpg" alt=""><svg aria-hidden="true"><use href="#i-bolt"/></svg>ACADEMIA<span>DJR</span></a>
     <nav class="nav" aria-label="Principal">
       <a href="#planes">Planes</a>
       <a href="#clases">Clases</a>
@@ -649,7 +650,7 @@ section{padding:80px 0}
           <div class="info-item"><svg aria-hidden="true"><use href="#i-clock"/></svg><div style="flex:1"><strong>Horarios</strong>
             <ul class="hours"><li><span>Lunes a viernes</span><span>6 a 23 h</span></li><li><span>Sábados</span><span>8 a 20 h</span></li><li><span>Domingos</span><span>9 a 13 h</span></li></ul></div></div>
           <div class="info-item"><svg aria-hidden="true"><use href="#i-wa"/></svg><div><strong>WhatsApp</strong><a data-wa="¡Hola Academia DJR! Quería hacerles una consulta." target="_blank" rel="noopener">Escribinos ahora →</a></div></div>
-          <div class="info-item"><svg aria-hidden="true"><use href="#i-ig"/></svg><div><strong>Instagram</strong><a href="#" target="_blank" rel="noopener">Instagram</a></div></div>
+          <div class="info-item"><svg aria-hidden="true"><use href="#i-ig"/></svg><div><strong>Instagram</strong><a href="#" target="_blank" rel="noopener">@academiagym_djr</a></div></div>
           <a class="btn btn-accent" data-wa="¡Hola Academia DJR! Quiero pedir mi clase de prueba gratis." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedí tu clase de prueba</a>
         </div>
         <div class="map reveal">
@@ -663,7 +664,7 @@ section{padding:80px 0}
 
 <footer class="footer">
   <div class="container">
-    <a href="#inicio" class="logo"><svg aria-hidden="true"><use href="#i-bolt"/></svg>ACADEMIA<span>DJR</span></a>
+    <a href="#inicio" class="logo"><img class="marca-logo" src="logo.jpg" alt=""><svg aria-hidden="true"><use href="#i-bolt"/></svg>ACADEMIA<span>DJR</span></a>
     <nav class="footer-links" aria-label="Pie de página">
       <a href="#planes">Planes</a><a href="#clases">Clases</a><a href="#horarios">Horarios</a><a href="#contacto">Contacto</a>
     </nav>
@@ -726,8 +727,8 @@ const WHATSAPP = "5492984180679"; // ← reemplazar por el número real
   els.forEach(function (el) { if (!el.classList.contains("in")) io.observe(el); });
 })();
 </script>
-<script src="../../muestras/pro.js?v=1793835382" defer></script>
-<script src="../../muestras/fx3d.js?v=1793835382" data-theme="gimnasio" defer></script>
-<script src="../../muestras/parallax.js?v=1793835382" defer></script>
+<script src="../../muestras/pro.js?v=1793851673" defer></script>
+<script src="../../muestras/fx3d.js?v=1793851673" data-theme="gimnasio" defer></script>
+<script src="../../muestras/parallax.js?v=1793851673" defer></script>
 </body>
 </html>

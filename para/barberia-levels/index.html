@@ -25,6 +25,7 @@
 -->
 <html lang="es-AR">
 <head>
+<link rel="icon" href="logo.jpg">
 <meta name="robots" content="noindex,nofollow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -282,7 +283,7 @@ section{padding:88px 0;position:relative}
   .wa-float{bottom:64px!important}
 /* Celular: portada compacta, el título arranca arriba sin espacio vacío */
 @media (max-width:700px){.hero{min-height:0!important;align-items:flex-start!important;padding:44px 0 40px!important}}
-</style>
+.logo{display:inline-grid!important;grid-template-columns:auto auto;column-gap:10px;align-items:center}.logo .marca-logo{grid-row:1/span 2;width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 2px 10px rgba(0,0,0,.18);display:block}:root{--brass:#a69a81!important;--ember:#a69a81!important;}</style>
 </head>
 <body>
 <div style="position:relative;z-index:9999;background:#111827;color:#f3f4f6;font:500 13.5px/1.45 system-ui,sans-serif;padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid #262a33">
@@ -303,7 +304,7 @@ section{padding:88px 0;position:relative}
 <!-- ============ HEADER ============ -->
 <header class="header" id="top">
   <div class="container">
-    <a href="#top" class="logo" aria-label="BARBERÍA LEVEL’S, inicio">
+    <a href="#top" class="logo" aria-label="BARBERÍA LEVEL’S, inicio"><img class="marca-logo" src="logo.jpg" alt="">
       <span class="logo-mark" aria-hidden="true">B</span>
       <span class="logo-txt">BARBERÍA LEVEL’S<small>BARBERÍA · GENERAL ROCA</small></span>
     </a>
@@ -621,7 +622,7 @@ section{padding:88px 0;position:relative}
 
 <footer class="footer">
   <div class="container">
-    <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true">B</span><span class="logo-txt">BARBERÍA LEVEL’S<small>BARBERÍA · GENERAL ROCA</small></span></a>
+    <a href="#top" class="logo"><img class="marca-logo" src="logo.jpg" alt=""><span class="logo-mark" aria-hidden="true">B</span><span class="logo-txt">BARBERÍA LEVEL’S<small>BARBERÍA · GENERAL ROCA</small></span></a>
     <p>Gral. José de San Martín 119 · General Roca</p>
     <p>© 2026 BARBERÍA LEVEL’S. Todos los derechos reservados.</p>
     <p class="credit">Maqueta de diseño · Sitio de muestra · Diseño web: Facundo Social Media</p>
@@ -695,8 +696,8 @@ if (reduce || !("IntersectionObserver" in window)) {
   window.addEventListener("load", function () { setTimeout(function () { if (!document.querySelector(".reveal.visible")) showAll(); }, 2500); });
 }
 </script>
-<script src="../../muestras/pro.js?v=1793835382" defer></script>
-<script src="../../muestras/fx3d.js?v=1793835382" data-theme="barberia" defer></script>
-<script src="../../muestras/parallax.js?v=1793835382" defer></script>
+<script src="../../muestras/pro.js?v=1793851673" defer></script>
+<script src="../../muestras/fx3d.js?v=1793851673" data-theme="barberia" defer></script>
+<script src="../../muestras/parallax.js?v=1793851673" defer></script>
 </body>
 </html>
