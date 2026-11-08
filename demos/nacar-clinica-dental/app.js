@@ -224,8 +224,9 @@
     for (var k in T) {
       var t = T[k], claves = { control: ["limpieza", "control", "sarro"], blanqueamiento: ["blanque"], alineadores: ["ortodoncia", "alineador", "invisible", "bracket"], implante: ["implante"], carillas: ["carilla", "diseno de sonrisa"], urgencia: ["urgencia"] }[k];
       if (claves.some(function (c) { return n.indexOf(c) > -1; }) && /(cuanto|precio|sale|cuesta|valor|costo)/.test(n))
-        return t.nombre + ": entre " + rango(t) + " como valor orientativo (" + t.sesiones + "). El precio final te lo damos por escrito después del diagnóstico. Si querés, probá el planificador de esta página.";
+        return t.nombre + ": de " + rango(t) + " como valor orientativo (" + t.sesiones + "). El precio final te lo damos por escrito después del diagnóstico. Si querés, probá el planificador de esta página.";
     }
+    if (/(me duele|dolor|se me rompio|se me partio|hinchad)/.test(n)) return "Uf, lamentamos que estés con dolor. Te atendemos hoy mismo: escribinos por WhatsApp y te damos el primer turno libre de urgencia (" + N.urgencias.toLowerCase() + ").";
     if (/(donde|direccion|ubicad|llego|queda)/.test(n)) return "Estamos en " + N.direccion + ", " + N.ciudad + ", a media cuadra de Plaza España.";
     if (/(horario|abren|atienden.*(sabado|domingo)|hora)/.test(n)) return N.horario + ". " + N.urgencias + ".";
     var mejor = null, puntos = 0;
