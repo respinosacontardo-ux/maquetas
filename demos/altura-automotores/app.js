@@ -31,7 +31,7 @@
   var FILTROS = [["todos", "Todos"], ["0km", "0 km"], ["usados", "Usados"], ["pickup", "Pickups"], ["40", "Hasta $40 M"]], filtro = "todos";
   function tarjeta(a) {
     var foto = a.foto ? '<img src="' + img(a.foto) + '" alt="' + esc(nombre(a)) + " " + a.anio + '" loading="lazy">'
-      : "<div><b>Pickup 4x4<br>0 km</b><span>Es la camioneta que viste arriba en 3D · Elegí tu color</span></div>";
+      : "";
     return '<article class="car rv' + (a.foto ? "" : " feat") + '"><div class="ph">' + foto + '<span class="t">' + esc(a.tag) + "</span></div>" +
       '<div class="bd"><h3><small>' + esc(a.marca) + " · " + a.anio + "</small>" + esc(a.modelo) + "</h3>" +
       '<div class="meta"><span>' + km(a.km) + "</span><span>" + esc(a.motor) + "</span><span>" + esc(a.caja) + "</span></div>" +

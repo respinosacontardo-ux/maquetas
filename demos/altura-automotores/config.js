@@ -28,8 +28,7 @@ window.CONFIG = {
 
   // Stock de ejemplo (precios en pesos, valores de referencia para la demo)
   stock: [
-    { id: "pk",  marca: "Pickup 4x4", modelo: "Doble cabina V6 Off-Road", anio: 2026, km: 0,     precio: 94500000, cero: true,  pickup: true,  motor: "V6 biturbo · 400 CV", caja: "Automática 10 vel.", foto: "",                                 tag: "La de la portada" },
-    { id: "rg0", marca: "Ford",       modelo: "Ranger XLT 3.0 V6 4x4",    anio: 2026, km: 0,     precio: 68900000, cero: true,  pickup: true,  motor: "V6 3.0 · 250 CV",     caja: "Automática 10 vel.", foto: "photo-1700943937372-12c2611b5af8", tag: "0 km · Entrega inmediata" },
+    { id: "rg0", marca: "Ford",       modelo: "Ranger Raptor 3.0 V6",     anio: 2026, km: 0,     precio: 95500000, cero: true,  pickup: true,  motor: "V6 3.0 biturbo",      caja: "Automática 10 vel.", foto: "photo-1700943937372-12c2611b5af8", tag: "0 km · La de la portada" },
     { id: "hgr", marca: "Toyota",     modelo: "Hilux GR-Sport 4x4",       anio: 2026, km: 0,     precio: 72500000, cero: true,  pickup: true,  motor: "2.8 TD · 224 CV",     caja: "Automática 6 vel.",  foto: "photo-1758393605683-e28bb39d8917", tag: "0 km" },
     { id: "208", marca: "Peugeot",    modelo: "208 Allure 1.6",           anio: 2026, km: 0,     precio: 29900000, cero: true,  pickup: false, motor: "1.6 · 115 CV",        caja: "Automática 6 vel.",  foto: "photo-1650370794692-cc384a8a7d42", tag: "0 km · Tasa 0 %" },
     { id: "am",  marca: "Volkswagen", modelo: "Amarok V6 Highline",       anio: 2022, km: 45000, precio: 48000000, cero: false, pickup: true,  motor: "V6 3.0 TDI · 258 CV", caja: "Automática 8 vel.",  foto: "photo-1748156344878-90351f495fae", tag: "Usado seleccionado" },

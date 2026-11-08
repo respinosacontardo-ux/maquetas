@@ -59,8 +59,17 @@ h2 .soft{color:var(--drift)}
 /* Portada 3D */
 .h3d{height:360vh;position:relative}
 .h3d .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--bg)}
-.h3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.6s var(--ease)}
-.h3d.ready canvas{opacity:1}
+.shots{position:absolute;inset:0;perspective:1400px;opacity:0;transition:opacity 1.4s var(--ease)}
+.h3d.ready .shots{opacity:1}
+.shot{position:absolute;inset:0;overflow:hidden}
+.shot .in{position:absolute;inset:-7%;transform-origin:50% 55%;will-change:transform}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.06)}
+.t0 .blur{filter:blur(28px) brightness(.45) saturate(1.2);transform:scale(1.1)}
+@media (min-width:761px){.t0 img:not(.blur){left:auto;right:0;width:60%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);mask-image:linear-gradient(90deg,transparent 0,#000 30%)}}
+.t2 img{opacity:0;transition:opacity .9s var(--ease)}.t2 img.on{opacity:1}
+.vig{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(16,9,4,.92) 0%,rgba(16,9,4,.7) 34%,rgba(16,9,4,0) 64%),linear-gradient(0deg,rgba(16,9,4,.85) 0%,rgba(16,9,4,0) 32%),linear-gradient(180deg,rgba(16,9,4,.55) 0%,rgba(16,9,4,0) 18%)}
+.vig2{position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(16,9,4,.92) 0%,rgba(16,9,4,.7) 34%,rgba(16,9,4,0) 60%)}
+.sweep{position:absolute;top:-10%;bottom:-10%;left:0;width:22%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,237,215,.16),transparent);mix-blend-mode:screen}
 .loader{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);transition:opacity .6s}
 .h3d.ready .loader{opacity:0}
 .ch{position:absolute;left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));top:50%;transform:translateY(-50%);max-width:440px;z-index:2}
@@ -95,7 +104,7 @@ h2 .soft{color:var(--drift)}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 .chap{position:absolute;left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));bottom:26px;z-index:2;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--dim);display:flex;gap:14px}
 .chap b{color:var(--cream);font-weight:500}
-.no3d canvas{display:none}
+
 .reduced .h3d{height:auto}.reduced .h3d .sticky{height:auto;min-height:100vh;position:relative}
 .reduced .ch1,.reduced .ch2,.reduced .lbl,.reduced .cue{display:none}
 
@@ -297,7 +306,10 @@ h2 .soft{color:var(--drift)}
   .ch2 .lead{display:none}
   .swatches{margin-top:18px}.sw{width:40px;height:40px}
   .side{display:none}
-  .is-m #lb3{display:none}
+  .vig{background:linear-gradient(180deg,rgba(16,9,4,.92) 0%,rgba(16,9,4,.7) 38%,rgba(16,9,4,0) 62%),linear-gradient(0deg,rgba(16,9,4,.7) 0%,rgba(16,9,4,0) 22%)}
+  #lb3{display:none}
+  .t1 .in img,.t2 .in img{top:auto;bottom:16%;height:auto;aspect-ratio:3/2;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+  .vig2{background:linear-gradient(180deg,rgba(16,9,4,.85) 0%,rgba(16,9,4,.5) 45%,rgba(16,9,4,0) 65%)}
   .chap{bottom:84px}
   .lbl{font-size:10px;flex-direction:row-reverse}.lbl::before{width:14px}.lbl i{margin-left:0;margin-right:-5.5px}
   .lbl span{padding:5px 8px;white-space:normal;max-width:140px;text-align:right;line-height:1.25}
@@ -310,12 +322,6 @@ h2 .soft{color:var(--drift)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-} }
-</script>
 </head>
 <body class="no-js">
 <script>document.body.classList.remove("no-js");if(matchMedia("(prefers-reduced-motion: reduce)").matches)document.body.classList.add("reduced");</script>
@@ -338,12 +344,12 @@ h2 .soft{color:var(--drift)}
 <main id="top">
   <section class="hero h3d" id="h3d">
     <div class="sticky">
-      <canvas id="carCanvas" aria-hidden="true"></canvas>
       <p class="loader" aria-hidden="true">Abriendo el showroom…</p>
       <div class="ch ch0">
         <p class="micro rv">Concesionaria multimarca · Córdoba <b>●</b> 0 km y usados</p>
         <h1 class="rv">Tu 0 km o tu usado,<br><em>sin vueltas</em> y con tu usado como parte de pago.</h1>
         <p class="lead rv">Pickups, SUV y autos de todas las marcas. Financiación en pesos, 0 km con tasa 0 % y entrega en todo el país.</p>
+        <p class="micro rv" style="margin-top:22px">En portada · <b>●</b> Ford Ranger Raptor 0 km</p>
         <div class="hero-cta rv">
           <a class="btn btn-p" data-wa="Hola Altura! Vi el stock en la web y quiero hacer una consulta."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4 0 .1 0 .7-.3 1.3z"/></svg>Consultar por WhatsApp</a>
           <a class="btn btn-g" href="#stock">Ver stock ›</a>
@@ -351,25 +357,25 @@ h2 .soft{color:var(--drift)}
       </div>
       <div class="ch ch1">
         <p class="micro">01 · Destacada del mes</p>
-        <h2>Pickup 4x4 V6<br><span class="soft">0 km · Entrega inmediata</span></h2>
-        <p class="lead">Doble cabina, suspensión de largo recorrido y cubiertas todo terreno. Patentada y lista para salir a la ruta en una semana.</p>
+        <h2>Ford Ranger<br><span class="soft">0 km en stock.</span></h2>
+        <p class="lead">La pickup que se banca la ruta, el ripio y la montaña. Te la entregamos patentada y lista para salir en una semana.</p>
         <div class="specs">
-          <div><b>400</b><span>CV · V6 biturbo</span></div>
+          <div><b>V6</b><span>3.0 biturbo · Raptor</span></div>
           <div><b>4x4</b><span>con reductora</span></div>
-          <div><b>33″</b><span>todo terreno</span></div>
+          <div><b>10</b><span>marchas automática</span></div>
         </div>
       </div>
       <div class="ch ch2">
         <p class="micro">02 · A tu medida</p>
         <h2>Elegí el color.<br><span class="soft">Nosotros lo buscamos.</span></h2>
-        <p class="lead">Si el color que querés no está en el salón, lo pedimos a fábrica y te lo entregamos con el mismo precio.</p>
+        <p class="lead">Tocá un color y mirá la Ranger real. Si el que querés no está en el salón, lo pedimos a fábrica al mismo precio.</p>
         <div class="swatches" id="swatches"></div>
         <p class="swname" id="swName"></p>
         <a class="btn btn-o" href="#cuota">Calcular mi cuota</a>
       </div>
-      <span class="lbl" id="lb1"><i></i><span>Motor V6 biturbo · 400 CV</span></span>
-      <span class="lbl dn" id="lb2"><i></i><span>Cubiertas todo terreno 33″</span></span>
-      <span class="lbl up" id="lb3"><i></i><span>Barra antivuelco y caja con tapa rígida</span></span>
+      <span class="lbl" id="lb1"><i></i><span>Motor V6 3.0 biturbo</span></span>
+      <span class="lbl dn" id="lb2"><i></i><span>Tracción 4x4 con reductora</span></span>
+      <span class="lbl up" id="lb3"><i></i><span>Caja de carga con barra deportiva</span></span>
       <p class="side" aria-hidden="true">Altura · Showroom Córdoba</p>
       <div class="cue" aria-hidden="true"><span></span>Deslizá</div>
       <div class="chap" aria-hidden="true"><b id="chapNum">00</b><span>/ 02</span></div>
@@ -509,7 +515,7 @@ h2 .soft{color:var(--drift)}
   <div class="wrap">
     <span>© 2026 Altura Automotores · Concesionaria multimarca · Córdoba, Argentina</span>
     <span><span class="tag-demo">Web demo</span> · Marca, stock y precios de ejemplo · Diseño: Facundo Social Media</span>
-    <span>Las marcas y modelos nombrados pertenecen a sus fabricantes · Camioneta 3D genérica · Fotos: Unsplash</span>
+    <span>Las marcas y modelos nombrados pertenecen a sus fabricantes · Fotos: Unsplash</span>
   </div>
 </footer>
 
@@ -523,10 +529,10 @@ h2 .soft{color:var(--drift)}
   <form class="chat-f" id="chatF"><input id="chatI" placeholder="Escribí tu pregunta…" autocomplete="off" aria-label="Tu pregunta"><button aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
 </div>
 
-<script src="config.js?v=3"></script>
+<script src="config.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="app.js?v=2"></script>
-<script type="module" src="truck3d.js?v=4"></script>
+<script src="app.js?v=3"></script>
+<script src="photo3d.js?v=4"></script>
 </body>
 </html>
