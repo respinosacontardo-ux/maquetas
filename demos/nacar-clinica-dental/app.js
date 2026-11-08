@@ -262,8 +262,8 @@
       var fin = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0);
       var fmt = function (v) { return v.toLocaleString("es-AR", { minimumFractionDigits: dec, maximumFractionDigits: dec }); };
       if (directo || !window.gsap) { el.textContent = fmt(fin); return; }
-      var o = { v: 0 };
-      gsap.to(o, { v: fin, duration: 1.8, ease: "power2.out", delay: .5, onUpdate: function () { el.textContent = fmt(o.v); } });
+      var o = { v: 0 }; el.textContent = fmt(0);
+      gsap.to(o, { v: fin, duration: 1.8, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 90%" }, onUpdate: function () { el.textContent = fmt(o.v); } });
     });
   }
 
@@ -271,11 +271,32 @@
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(".hero .rv", { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", stagger: .1, delay: .1 });
-  gsap.from(".float", { opacity: 0, y: 24, scale: .96, duration: .9, ease: "power3.out", stagger: .14, delay: .7 });
   contar(false);
 
+  // Entradas en 3D: las tarjetas suben desde atrás, inclinadas, y se enderezan
+  var TARJ = ".card,.tcard,.mini,.step,.q,.cbox,.tool,.plan-side,.stage";
   $$(".rv").filter(function (e) { return !e.closest(".hero"); }).forEach(function (el) {
-    gsap.to(el, { opacity: 1, y: 0, duration: .95, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" }, delay: (Array.prototype.indexOf.call(el.parentNode.children, el) % 4) * .07 });
+    var i = Array.prototype.indexOf.call(el.parentNode.children, el) % 4;
+    if (el.matches(TARJ)) {
+      gsap.fromTo(el, { opacity: 0, y: 90, z: -140, rotateX: 24, transformPerspective: 1100, transformOrigin: "50% 100%" },
+        { opacity: 1, y: 0, z: 0, rotateX: 0, duration: 1.15, ease: "power3.out", delay: i * .08, clearProps: "transform",
+          scrollTrigger: { trigger: el, start: "top 92%" } });
+    } else {
+      gsap.to(el, { opacity: 1, y: 0, duration: .95, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" }, delay: i * .07 });
+    }
+  });
+
+  // Foto del consultorio: se recuesta en 3D y se endereza al bajar
+  if ($(".after .ph")) {
+    gsap.fromTo(".after .ph", { rotateX: 32, scale: .86, y: 40 }, { rotateX: 0, scale: 1, y: 0, ease: "none",
+      scrollTrigger: { trigger: ".after .stage", start: "top 98%", end: "top 30%", scrub: true } });
+    gsap.from(".float", { opacity: 0, y: 30, scale: .9, duration: .9, ease: "power3.out", stagger: .14, scrollTrigger: { trigger: ".after .stage", start: "top 55%" } });
+  }
+
+  // Títulos de sección: leve giro en 3D ligado al scroll
+  $$(".sec .head h2").forEach(function (h) {
+    gsap.fromTo(h, { rotateX: -35, transformPerspective: 800, transformOrigin: "50% 100%" }, { rotateX: 0, ease: "none",
+      scrollTrigger: { trigger: h, start: "top 100%", end: "top 60%", scrub: true } });
   });
 
   $$("[data-par]").forEach(function (img) {

@@ -258,6 +258,53 @@ h2 .soft{color:var(--steel)}
   .ai-fab span{display:none}
   .ai-fab{padding:0 8px}
 }
+
+/* Portada 3D (scroll) */
+.h3d{height:340vh;padding:0;text-align:left;overflow:visible;background:radial-gradient(120% 70% at 75% 30%,#eef4fd 0,#fff 55%)}
+.h3d .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.h3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s var(--ease)}
+.h3d.ready canvas{opacity:1}
+.h3d .glow{position:absolute;width:min(46vw,640px);aspect-ratio:1;left:0;top:0;margin:calc(min(46vw,640px) / -2) 0 0 calc(min(46vw,640px) / -2);border-radius:50%;background:radial-gradient(circle at 50% 45%,#d9e6f8 0,#d3e2f6 30%,rgba(211,226,246,.55) 50%,rgba(211,226,246,.15) 62%,transparent 71%);pointer-events:none;z-index:0}
+.h3d canvas{z-index:1}
+.ch{position:absolute;left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));top:50%;transform:translateY(-50%);max-width:560px;z-index:2}
+.ch2{left:auto;right:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));max-width:470px}
+.h3d .ch0 h1{font-size:clamp(46px,7vw,88px);margin:0;text-align:left}
+.h3d .lead{text-align:left;margin-left:0}
+.h3d .ch0 .lead{margin:22px 0 0;max-width:500px}
+.h3d .hero-cta{justify-content:flex-start}
+.ch1,.ch2{opacity:0;visibility:hidden}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cta);margin-bottom:14px}
+.ch .lead{margin-top:18px}
+.ticks{list-style:none;margin:24px 0 28px;display:grid;gap:14px}
+.ticks li{padding-left:34px;position:relative;color:var(--slate);font-size:16px;line-height:1.35}
+.ticks li b{display:block;color:var(--ink);font-weight:600}
+.ticks li::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:var(--cta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/13px no-repeat}
+.lbl{position:absolute;left:0;top:0;z-index:3;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none;margin-top:-14px}
+.lbl::before{content:"";width:60px;height:1px;background:linear-gradient(90deg,var(--cta),rgba(0,113,227,.2))}
+.lbl i{order:0;width:10px;height:10px;border-radius:50%;background:var(--cta);box-shadow:0 0 0 5px rgba(0,113,227,.18);margin-left:-5px;order:-1}
+.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;color:var(--steel);letter-spacing:.02em}
+.cue span{width:22px;height:34px;border:1.5px solid var(--hair);border-radius:12px;position:relative}
+.cue span::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--cta);animation:cue 1.6s var(--ease) infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(-3px)}40%{opacity:1}100%{opacity:0;transform:translateY(9px)}}
+.after{padding:30px 0 0;overflow:hidden}
+.after .stage{margin-top:0;perspective:1400px}
+.after .ph{transform-origin:50% 0}
+.no3d canvas{display:none}
+.reduced .h3d{height:auto}.reduced .h3d .sticky{height:auto;min-height:100vh;position:relative}
+.reduced .ch1,.reduced .ch2,.reduced .lbl,.reduced .cue{display:none}
+@media (max-width:760px){
+  .h3d{height:300vh}
+  .ch,.ch2{left:var(--pad);right:var(--pad);top:84px;transform:none;max-width:none}
+  .h3d .ch0 h1{font-size:clamp(40px,11vw,54px)}
+  .h3d .ch0 .lead{font-size:16px;margin-top:14px}
+  .h3d .hero-cta{margin-top:20px;gap:6px}
+  .ch h2{font-size:34px}
+  .ch .lead{font-size:16px}
+  .ticks{margin:16px 0 18px;gap:10px}.ticks li{font-size:14px}
+  .ch2 .btn{display:none}
+  .cue{bottom:16px}
+  .lbl{font-size:12px}.lbl::before{width:28px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -280,16 +327,42 @@ h2 .soft{color:var(--steel)}
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <p class="kicker rv"><b>Nácar Clínica Dental</b> · Nueva Córdoba</p>
-      <h1 class="rv">Tu sonrisa,<br><span class="grad">sin miedo ni vueltas.</span></h1>
-      <p class="lead rv">Implantes, ortodoncia invisible, blanqueamiento y urgencias el mismo día. Te explicamos todo antes de empezar, con presupuesto por escrito.</p>
-      <div class="hero-cta rv">
-        <a class="btn btn-p" data-wa="Hola Nácar! Quiero pedir un turno."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4 0 .1 0 .7-.3 1.3z"/></svg>Pedir turno por WhatsApp</a>
-        <a class="btn btn-g" href="#planificador">Planificá tu sonrisa ›</a>
+  <section class="hero h3d" id="h3d">
+    <div class="sticky">
+      <canvas id="toothCanvas" aria-hidden="true"></canvas>
+      <div class="glow" aria-hidden="true"></div>
+      <div class="ch ch0">
+        <p class="kicker rv"><b>Nácar Clínica Dental</b> · Nueva Córdoba</p>
+        <h1 class="rv">Tu sonrisa,<br><span class="grad">sin miedo ni vueltas.</span></h1>
+        <p class="lead rv">Implantes, ortodoncia invisible, blanqueamiento y urgencias el mismo día. Te explicamos todo antes de empezar, con presupuesto por escrito.</p>
+        <div class="hero-cta rv">
+          <a class="btn btn-p" data-wa="Hola Nácar! Quiero pedir un turno."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4 0 .1 0 .7-.3 1.3z"/></svg>Pedir turno por WhatsApp</a>
+          <a class="btn btn-g" href="#planificador">Planificá tu sonrisa ›</a>
+        </div>
       </div>
+      <div class="ch ch1">
+        <p class="eyebrow">Implantes de titanio</p>
+        <h2>Un diente nuevo,<br><span class="soft">que se siente tuyo.</span></h2>
+        <p class="lead">Reemplazamos la raíz por un implante de titanio y encima va una corona de porcelana hecha a medida. Nadie nota la diferencia, ni vos.</p>
+      </div>
+      <div class="ch ch2">
+        <p class="eyebrow">Planificación digital</p>
+        <h2>Lo ves en 3D<br><span class="soft">antes de empezar.</span></h2>
+        <ul class="ticks">
+          <li><b>Escáner intraoral 3D</b>sin pastas ni moldes incómodos</li>
+          <li><b>Cirugía guiada</b>por computadora, más precisa y rápida</li>
+          <li><b>Corona definitiva</b>de porcelana, del color de tus dientes</li>
+        </ul>
+        <a class="btn btn-p" href="#tratamientos">Ver tratamientos</a>
+      </div>
+      <span class="lbl" id="lb1"><i></i>Corona de porcelana</span>
+      <span class="lbl" id="lb2"><i></i>Pilar de titanio</span>
+      <span class="lbl" id="lb3"><i></i>Implante de titanio</span>
+      <div class="cue" aria-hidden="true"><span></span>Deslizá para descubrir</div>
     </div>
+  </section>
+
+  <section class="after">
     <div class="stage rv">
       <div class="ph"><img data-par="18" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1800&q=80&auto=format&fit=crop" alt="Consultorio de Nácar Clínica Dental con sillón y equipamiento moderno" fetchpriority="high"></div>
       <div class="float f1"><span class="stars">★★★★★</span><b><span data-count="4.9" data-dec="1">4,9</span> / 5</b>en Google</div>
@@ -452,9 +525,11 @@ h2 .soft{color:var(--steel)}
   <form class="chat-f" id="chatF"><input id="chatI" placeholder="Escribí tu pregunta…" autocomplete="off" aria-label="Tu pregunta"><button aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
 </div>
 
-<script src="config.js"></script>
+<script src="config.js?v=3d1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="app.js?v=3d1"></script>
+<script src="tooth3d.js?v=3d1"></script>
 </body>
 </html>
