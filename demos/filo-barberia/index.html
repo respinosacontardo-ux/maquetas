@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filo Barbería · Güemes, Córdoba</title>
+<meta name="description" content="Barbería de autor en Güemes, Córdoba: cortes, fades, barba y afeitado clásico a navaja con toalla caliente. Reservá tu turno por WhatsApp y no esperás.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Estilo: "cine sobre terciopelo negro" (referencia Refero): lienzo negro plano, tipografía blanca,
+   titulares serif ultraliviana en itálica, etiquetas condensadas tipo créditos, firmas manuscritas entre corchetes,
+   esquinas rectas, líneas finas como única estructura y un solo rojo como puntuación. */
+:root{
+  --bg:#000; --s2:#101010; --s3:#171717; --line:rgba(255,255,255,.16); --line2:rgba(255,255,255,.34);
+  --fg:#fff; --mute:rgba(255,255,255,.66); --dim:rgba(255,255,255,.44); --red:#ff2936; --ok:#3ddc84;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:Inter,"Helvetica Neue",Arial,sans-serif;
+  --cond:"Bebas Neue",Impact,sans-serif; --hand:Caveat,cursive;
+  --pad:clamp(20px,5vw,48px); --max:1240px; --ease:cubic-bezier(.22,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--fg);text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+::selection{background:var(--red);color:#fff}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.sec{padding:clamp(80px,11vw,140px) 0;border-top:1px solid var(--line)}
+.cond{font-family:var(--cond);font-size:15px;letter-spacing:.06em;line-height:.9;color:var(--mute);text-transform:uppercase}
+.sign{font-family:var(--hand);font-size:20px;color:var(--mute);line-height:1}
+.sign::before{content:"[ "}.sign::after{content:" ]"}
+h1,h2,h3{font-weight:300}
+h2{font-family:var(--serif);font-style:italic;font-size:clamp(42px,6.4vw,84px);line-height:.98;letter-spacing:-.01em}
+h2 .up{font-style:normal}
+h2 .soft{color:var(--dim)}
+.lead{font-size:16px;color:var(--mute);max-width:520px;line-height:1.6}
+.red{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--fg);transition:background .3s var(--ease),color .3s var(--ease)}
+.btn-p{background:var(--fg);color:#000}.btn-p:hover{background:transparent;color:var(--fg)}
+.btn-o{color:var(--fg)}.btn-o:hover{background:var(--fg);color:#000}
+.btn-g{border:0;padding:0 4px;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.btn svg{width:18px;height:18px}
+.tag-demo{display:inline-block;font-family:var(--cond);font-size:13px;letter-spacing:.08em;color:var(--red)}
+
+/* Header */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;height:64px;display:flex;align-items:center;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(0,0,0,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;width:100%}
+.logo{font-family:var(--serif);font-style:italic;font-size:30px;line-height:1;letter-spacing:-.01em}
+.logo i{color:var(--red);font-style:normal}
+.nav{display:flex;gap:28px;margin-left:auto}
+.nav a{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);transition:color .2s}
+.nav a:hover{color:var(--fg)}
+.hdr .btn{min-height:38px;padding:0 18px;font-size:12px}
+.burger{display:none;margin-left:auto;font-size:14px;letter-spacing:.08em;text-transform:uppercase;min-height:44px;padding:0 4px}
+
+/* Portada 3D */
+.h3d{height:340vh;position:relative}
+.h3d .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.h3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.4s var(--ease);z-index:1}
+.h3d.ready canvas{opacity:1}
+.h3d .spot{position:absolute;left:0;top:0;width:min(56vw,760px);aspect-ratio:1;margin:calc(min(56vw,760px) / -2) 0 0 calc(min(56vw,760px) / -2);border-radius:50%;background:radial-gradient(circle,#1b1b1b 0,#0e0e0e 35%,rgba(0,0,0,0) 68%);pointer-events:none}
+.ch{position:absolute;left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));top:50%;transform:translateY(-50%);max-width:560px;z-index:2}
+.ch2{left:auto;right:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));max-width:460px}
+.ch1,.ch2{opacity:0;visibility:hidden}
+.mark{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(120px,19vw,250px);line-height:.78;letter-spacing:-.03em;margin:18px 0 10px -.04em}
+.mark i{font-style:normal;color:var(--red)}
+.ch0 .cond{font-size:17px}
+.ch0 .lead{margin-top:22px}
+.hero-cta{display:flex;gap:22px;align-items:center;margin-top:30px;flex-wrap:wrap}
+.ch0 .sign{margin-top:28px}
+.eyebrow{font-family:var(--cond);font-size:17px;letter-spacing:.08em;color:var(--mute);margin-bottom:16px}
+.eyebrow b{color:var(--red);font-weight:400}
+.ch .lead{margin-top:20px}
+.ticks{list-style:none;margin:26px 0 30px;border-top:1px solid var(--line)}
+.ticks li{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--mute)}
+.ticks li span{font-family:var(--cond);font-size:18px;color:var(--fg);width:24px;flex:none;line-height:1.2}
+.lbl{position:absolute;left:0;top:0;z-index:3;display:flex;align-items:center;gap:10px;font-family:var(--cond);font-size:16px;letter-spacing:.06em;white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none;margin-top:-9px}
+.lbl::before{content:"";width:56px;height:1px;background:var(--line2)}
+.lbl i{order:-1;width:9px;height:9px;border-radius:50%;background:var(--red);margin-left:-4.5px}
+.lbl i{position:relative}
+.lbl.up i::after,.lbl.dn i::after{content:"";position:absolute;left:4px;width:1px;height:50px;background:var(--line2)}
+.lbl.up i::after{top:9px}.lbl.dn i::after{bottom:9px}
+.cue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px}
+.cue span{width:1px;height:44px;background:linear-gradient(var(--fg),transparent);animation:cue 1.8s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.counter{position:absolute;right:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));top:92px;z-index:2;font-family:var(--cond);font-size:15px;letter-spacing:.08em;color:var(--dim)}
+.counter b{color:var(--fg);font-weight:400}
+.no3d canvas{display:none}
+.reduced .h3d{height:auto}.reduced .h3d .sticky{height:auto;min-height:100vh;position:relative}
+.reduced .ch1,.reduced .ch2,.reduced .lbl,.reduced .cue{display:none}
+
+/* Foto + ticker */
+.after{padding:20px 0 0;overflow:hidden}
+.stage{position:relative;perspective:1600px}
+.stage .ph{overflow:hidden;aspect-ratio:16/7.6;transform-origin:50% 0;background:var(--s2)}
+.stage .ph img{width:100%;height:120%;object-fit:cover;filter:grayscale(.25) contrast(1.08) brightness(.82);will-change:transform}
+.float{position:absolute;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line2);padding:14px 18px;font-size:13px;color:var(--mute);line-height:1.3}
+.float b{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:36px;color:var(--fg);line-height:1}
+.float .stars{color:var(--fg);letter-spacing:2px;font-size:11px}
+.f1{left:calc(var(--pad) + 24px);top:24px}.f2{right:calc(var(--pad) + 24px);top:40%}.f3{left:12%;bottom:24px;display:flex;align-items:center;gap:12px}
+.f3 .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 5px rgba(255,41,54,.2);animation:pulse 1.8s infinite}
+.f3 b{font-family:var(--sans);font-style:normal;font-size:14px;font-weight:500}
+@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(255,41,54,0)}}
+.marq{border-top:1px solid var(--line);overflow:hidden;margin-top:60px;padding:22px 0;white-space:nowrap}
+.marq-in{display:inline-flex;gap:40px;animation:mq 42s linear infinite;font-family:var(--cond);font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:.01em}
+.marq-in span:nth-child(odd){color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
+.marq-in span::after{content:"✦";font-size:.4em;vertical-align:middle;margin-left:40px;color:var(--fg);-webkit-text-stroke:0}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Cabeceras de sección */
+.head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:56px}
+.head .cond{margin-bottom:18px}
+.head .sign{text-align:right;max-width:260px}
+
+/* Ventajas */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 30px 38px;transition:background .4s var(--ease)}
+.card:hover{background:var(--s2)}
+.card .n{font-family:var(--cond);font-size:15px;color:var(--dim);letter-spacing:.06em;display:flex;justify-content:space-between;align-items:center;margin-bottom:46px}
+.card .n svg{width:28px;height:28px;color:var(--fg)}
+.card h3{font-family:var(--serif);font-style:italic;font-size:32px;line-height:1;margin-bottom:12px}
+.card p{color:var(--mute);font-size:15px}
+
+/* Servicios */
+.serv{display:grid;grid-template-columns:1.2fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.tcard{position:relative;overflow:hidden;min-height:440px;background:var(--s2);display:flex;flex-direction:column;justify-content:flex-end;padding:30px}
+.tcard img{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;z-index:0;filter:grayscale(.35) contrast(1.05);will-change:transform;transition:filter .6s var(--ease)}
+.tcard:hover img{filter:grayscale(0) contrast(1.05)}
+.tcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 25%,rgba(0,0,0,.85));z-index:1}
+.tcard>*:not(img){position:relative;z-index:2}
+.tcard .cond{color:var(--fg);margin-bottom:auto;align-self:flex-start;border:1px solid var(--line2);padding:7px 10px 5px;background:rgba(0,0,0,.4)}
+.tcard h3{font-family:var(--serif);font-style:italic;font-size:clamp(32px,3.4vw,46px);line-height:1;margin-bottom:8px}
+.tcard p{color:var(--mute);font-size:15px;max-width:420px}
+.tstack{display:grid;gap:1px;background:var(--line)}
+.tstack .tcard{min-height:219px}
+.precios{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;column-gap:60px}
+.pr{display:flex;align-items:baseline;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.pr b{font-weight:400;font-size:16px}
+.pr small{color:var(--dim);font-size:13px;margin-left:6px}
+.pr i{flex:1;border-bottom:1px dotted var(--line2);transform:translateY(-4px)}
+.pr span{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1}
+.pnote{grid-column:1/-1;margin-top:18px;font-size:12px;color:var(--dim)}
+
+/* Cómo funciona */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.line{position:absolute;left:0;right:0;top:0;height:1px;background:var(--line)}
+.line i{display:block;height:100%;width:0;background:var(--fg)}
+.step{position:relative;padding-top:34px}
+.num{font-family:var(--serif);font-style:italic;font-size:64px;line-height:1;color:var(--dim);margin-bottom:18px;transition:color .5s}
+.step.on .num{color:var(--fg)}
+.step::before{content:"";position:absolute;top:-4px;left:0;width:9px;height:9px;border-radius:50%;background:var(--s3);border:1px solid var(--line2);transition:background .4s,border-color .4s}
+.step.on::before{background:var(--red);border-color:var(--red)}
+.step h3{font-size:18px;font-weight:500;margin-bottom:8px}
+.step p{color:var(--mute);font-size:15px}
+
+/* Herramienta */
+.plan{display:grid;grid-template-columns:.85fr 1.15fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.plan-side{position:relative;overflow:hidden;min-height:560px;background:var(--s2)}
+.plan-side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.3) brightness(.75)}
+.plan-side .ov{position:absolute;inset:auto 0 0 0;padding:28px;background:linear-gradient(transparent,rgba(0,0,0,.92) 40%);font-size:14px;color:var(--mute)}
+.plan-side .ov b{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:30px;line-height:1.05;color:var(--fg);margin-bottom:8px}
+.tool{background:var(--bg);padding:clamp(24px,3.6vw,44px);display:flex;flex-direction:column;min-height:560px}
+.prog{height:1px;background:var(--line);margin-bottom:14px}
+.prog i{display:block;height:100%;width:20%;background:var(--red);transition:width .5s var(--ease)}
+.pstep{font-family:var(--cond);font-size:15px;letter-spacing:.08em;color:var(--dim);margin-bottom:22px}
+.tool h3{font-family:var(--serif);font-style:italic;font-size:clamp(32px,3.2vw,42px);line-height:1;margin-bottom:8px}
+.tool .sub{color:var(--mute);font-size:15px;margin-bottom:26px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{text-align:left;border:1px solid var(--line);padding:16px;display:flex;gap:14px;align-items:center;min-height:64px;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--line2)}
+.opt.sel{border-color:var(--fg);background:var(--s2)}
+.opt svg{width:30px;height:30px;flex:none;color:var(--fg)}
+.opt b{display:block;font-size:15px;font-weight:500}
+.opt span{font-size:13px;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);padding:10px 16px;font-size:14px;min-height:44px;transition:border-color .2s,background .2s}
+.chip:hover{border-color:var(--line2)}
+.chip.sel{border-color:var(--fg);background:var(--fg);color:#000}
+.qlabel{font-family:var(--cond);font-size:16px;letter-spacing:.06em;color:var(--mute);margin:4px 0 12px}
+.fld{display:block;margin-bottom:16px}
+.fld span{display:block;font-family:var(--cond);font-size:15px;letter-spacing:.06em;color:var(--mute);margin-bottom:6px}
+.fld input,.fld textarea{width:100%;font:inherit;font-size:16px;padding:13px 0;border:0;border-bottom:1px solid var(--line2);background:transparent;color:var(--fg);outline:none;border-radius:0;transition:border-color .2s}
+.fld input:focus,.fld textarea:focus{border-color:var(--fg)}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--dim)}
+.tool-nav{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:28px;gap:12px;flex-wrap:wrap}
+.tool-nav .btn[disabled]{opacity:.3;pointer-events:none}
+.res{display:grid;gap:14px}
+.res-top{border:1px solid var(--line2);padding:22px;background:var(--s2)}
+.res-top small{font-family:var(--cond);font-size:14px;letter-spacing:.08em;color:var(--dim)}
+.res-top b{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:36px;line-height:1.02;margin:6px 0}
+.res-row{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding:11px 0;border-bottom:1px solid var(--line)}
+.res-row span{color:var(--mute)}
+.res-row b{font-weight:500;text-align:right}
+.note{font-size:12.5px;color:var(--dim);line-height:1.5}
+.err{color:var(--red);font-size:13px;min-height:18px}
+
+/* Barberos */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.bb{background:var(--bg);padding:32px 30px;transition:background .4s}
+.bb:hover{background:var(--s2)}
+.bb .ini{font-family:var(--cond);font-size:110px;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.5);margin-bottom:30px}
+.bb h3{font-family:var(--serif);font-style:italic;font-size:36px;line-height:1}
+.bb p{color:var(--mute);font-size:15px;margin-top:8px}
+.bb .cond{margin-top:22px;display:block}
+
+/* Testimonios */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.q{background:var(--bg);padding:34px 30px;display:flex;flex-direction:column;gap:22px}
+.q p{font-family:var(--serif);font-style:italic;font-size:25px;line-height:1.2}
+.q .who{margin-top:auto;font-size:14px}
+.q .who span{color:var(--dim);display:block;font-size:13px;margin-top:2px}
+.q .stars{font-size:11px;letter-spacing:3px}
+
+/* FAQ */
+.faq{max-width:900px;border-top:1px solid var(--line)}
+.fq{border-bottom:1px solid var(--line)}
+.fq button{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.3vw,28px);line-height:1.15;min-height:44px}
+.fq button i{flex:none;width:22px;height:22px;position:relative}
+.fq button i::before,.fq button i::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:1px;background:var(--fg);transform:translate(-50%,-50%)}
+.fq button i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .35s var(--ease)}
+.fq.open button i::after{transform:translate(-50%,-50%) rotate(0)}
+.fa{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.fa>div{overflow:hidden}
+.fa p{color:var(--mute);padding:0 50px 26px 0;font-size:16px}
+.fq.open .fa{grid-template-rows:1fr}
+
+/* Contacto */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.cbox{background:var(--bg);padding:clamp(26px,3.6vw,44px)}
+.cbox h2{font-size:clamp(38px,4.4vw,56px);margin:12px 0 4px}
+.info{display:grid;margin:26px 0;border-top:1px solid var(--line)}
+.info div{display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line);font-size:15px}
+.info svg{width:20px;height:20px;flex:none;margin-top:2px}
+.info span{color:var(--dim);display:block;font-size:13px}
+.map{height:240px;background:var(--s2);overflow:hidden}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
+.ok-msg{display:none;border:1px solid var(--ok);color:var(--ok);padding:14px 16px;font-size:14px;margin-top:14px}
+
+/* CTA final + footer */
+.final{text-align:center}
+.final h2{font-size:clamp(54px,9vw,128px);max-width:1000px;margin:0 auto}
+.final .lead{margin:22px auto 0}
+.final .hero-cta{justify-content:center}
+.foot{border-top:1px solid var(--line);padding:40px 0 110px;font-size:12px;color:var(--dim)}
+.foot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* Botones flotantes */
+.wa-fab{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center}
+.wa-fab svg{width:28px;height:28px;color:#fff}
+.ai-fab{position:fixed;left:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:12px;height:52px;padding:0 20px 0 8px;background:var(--fg);color:#000;font-size:13px;font-weight:500;letter-spacing:.02em;transition:opacity .3s}
+.ai-fab .orb{width:36px;height:36px;border-radius:50%;background:#000;position:relative;overflow:hidden}
+.ai-fab .orb::after{content:"";position:absolute;inset:-30%;background:repeating-linear-gradient(45deg,#fff 0 6px,var(--red) 6px 12px,#fff 12px 18px,#1d3fd6 18px 24px);animation:pole 2.2s linear infinite;opacity:.9}
+@keyframes pole{to{transform:translateY(-24px)}}
+
+/* Chat */
+.chat{position:fixed;left:20px;bottom:20px;z-index:70;width:min(390px,calc(100vw - 40px));height:min(580px,calc(100dvh - 40px));background:var(--s2);border:1px solid var(--line2);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.chat.on{opacity:1;transform:none;pointer-events:auto}
+.chat-h{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.chat-h .orb{width:34px;height:34px;border-radius:50%;background:repeating-linear-gradient(45deg,#fff 0 5px,var(--red) 5px 10px,#fff 10px 15px,#1d3fd6 15px 20px)}
+.chat-h b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;display:block;line-height:1}
+.chat-h span{font-size:12px;color:var(--ok)}
+.chat-h button{margin-left:auto;width:44px;height:44px;font-size:24px;color:var(--mute)}
+.chat-m{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.msg{max-width:86%;padding:11px 15px;font-size:14.5px;line-height:1.45;white-space:pre-line}
+.msg.b{background:var(--s3);border:1px solid var(--line);align-self:flex-start}
+.msg.u{background:var(--fg);color:#000;align-self:flex-end}
+.msg.t{color:var(--dim);border:0;background:none;font-size:13px}
+.msg a.wa{display:inline-flex;margin-top:8px;font-weight:600;color:#3ddc84}
+.chat-c{display:flex;gap:8px;flex-wrap:wrap;padding:10px 14px 0;background:var(--s2)}
+.chat-c button{font-size:12.5px;padding:8px 12px;border:1px solid var(--line2);color:var(--fg);min-height:36px}
+.chat-f{display:flex;gap:8px;padding:12px 14px 14px;background:var(--s2)}
+.chat-f input{flex:1;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line2);background:var(--bg);color:var(--fg);outline:none;border-radius:0}
+.chat-f input:focus{border-color:var(--fg)}
+.chat-f button{width:48px;height:48px;background:var(--fg);color:#000;display:grid;place-items:center}
+.chat-f svg{width:18px;height:18px}
+
+.rv{opacity:0;transform:translateY(28px)}
+.no-js .rv,.reduced .rv{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav{display:none}
+  .burger{display:block}
+  .hdr .btn{display:none}
+  .hdr.open .nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:#000;border-bottom:1px solid var(--line);padding:6px var(--pad) 16px}
+  .hdr.open .nav a{padding:14px 0;font-size:15px;border-bottom:1px solid var(--line)}
+  .grid3,.quotes,.team{grid-template-columns:1fr 1fr}
+  .serv,.plan,.contact{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:44px}
+  .precios{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .h3d{height:300vh}
+  .ch,.ch2{left:var(--pad);right:var(--pad);top:88px;transform:none;max-width:none}
+  .mark{font-size:clamp(110px,36vw,150px);margin-top:12px}
+  .ch0 .lead{margin-top:12px;font-size:15px}
+  .hero-cta{margin-top:20px;gap:14px}
+  .ch0 .sign{display:none}
+  .ch h2{font-size:42px}
+  .ch .lead{font-size:15px}
+  .ticks{margin:16px 0 0}.ticks li{padding:9px 0;font-size:14px}
+  .ch2 .btn{display:none}
+  .counter{display:none}
+  .lbl{font-size:12px;gap:6px}.lbl::before{width:12px}
+  .head{grid-template-columns:1fr;margin-bottom:40px}.head .sign{text-align:left}
+  .grid3,.quotes,.team{grid-template-columns:1fr}
+  .stage .ph{aspect-ratio:4/5}
+  .f1{left:16px;top:16px}.f2{right:16px;top:auto;bottom:90px}.f3{left:16px;right:16px;bottom:16px}
+  .float{padding:10px 13px}.float b{font-size:28px}
+  .tcard{min-height:380px}
+  .steps{grid-template-columns:1fr}
+  .opts{grid-template-columns:1fr}
+  .plan-side{min-height:320px}
+  .tool{min-height:0}
+  .ai-fab span{display:none}.ai-fab{padding:0 8px;height:52px}
+  .fa p{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove("no-js");if(matchMedia("(prefers-reduced-motion: reduce)").matches)document.body.classList.add("reduced");</script>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Filo Barbería, inicio">Filo<i>.</i></a>
+    <nav class="nav" id="nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#tucorte">Tu corte</a>
+      <a href="#barberos">Barberos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-p" data-wa="Hola Filo! Quiero reservar un turno.">Reservar</a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">+ Menú</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero h3d" id="h3d">
+    <div class="sticky">
+      <div class="spot" aria-hidden="true"></div>
+      <canvas id="razorCanvas" aria-hidden="true"></canvas>
+      <div class="ch ch0">
+        <p class="cond rv">Barbería de autor · Güemes, Córdoba</p>
+        <h1 class="mark rv" aria-label="Filo Barbería">Filo<i>.</i></h1>
+        <p class="lead rv">Cortes, fades, barba y afeitado clásico a navaja. Reservás en un minuto, llegás y te sentás: acá no se espera.</p>
+        <div class="hero-cta rv">
+          <a class="btn btn-p" data-wa="Hola Filo! Quiero reservar un turno."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4 0 .1 0 .7-.3 1.3z"/></svg>Reservar turno</a>
+          <a class="btn btn-g" href="#tucorte">Encontrá tu corte ›</a>
+        </div>
+        <p class="sign rv">con tijera y navaja desde 2014</p>
+      </div>
+      <div class="ch ch1">
+        <p class="eyebrow">Capítulo <b>01</b> · Afeitado clásico</p>
+        <h2>Navaja, toalla<br>caliente <span class="soft">y pulso firme.</span></h2>
+        <p class="lead">El afeitado de antes, hecho como corresponde: piel preparada con vapor, espuma a brocha y una pasada de navaja que deja todo al ras, sin irritar.</p>
+      </div>
+      <div class="ch ch2">
+        <p class="eyebrow">Capítulo <b>02</b> · El ritual Filo</p>
+        <h2>Ochenta minutos<br><span class="soft">que son tuyos.</span></h2>
+        <ul class="ticks">
+          <li><span>01</span>Lavado con masaje capilar</li>
+          <li><span>02</span>Corte a tijera o máquina, a tu medida</li>
+          <li><span>03</span>Barba con toalla caliente y navaja</li>
+          <li><span>04</span>Bálsamo, peinado y una bebida de la casa</li>
+        </ul>
+        <a class="btn btn-o" href="#servicios">Ver servicios</a>
+      </div>
+      <span class="lbl" id="lb1"><i></i>Hoja de acero templado</span>
+      <span class="lbl up" id="lb2"><i></i>Perno de bronce</span>
+      <span class="lbl dn" id="lb3"><i></i>Cachas de asta negra</span>
+      <div class="cue" aria-hidden="true"><span></span></div>
+      <div class="counter" aria-hidden="true"><b id="chapNum">00</b> / 02</div>
+    </div>
+  </section>
+
+  <section class="after">
+    <div class="wrap">
+      <div class="stage rv">
+        <div class="ph"><img data-par="16" src="https://images.unsplash.com/photo-1773904215697-e6c21fc27ac2?w=1900&q=80&auto=format&fit=crop" alt="Salón de Filo Barbería con sillones de cuero y luz cálida" loading="lazy"></div>
+        <div class="float f1"><span class="stars">★★★★★</span><b><span data-count="4.9" data-dec="1">4,9</span></b>en Google</div>
+        <div class="float f2"><b>+<span data-count="3800">3.800</span></b>cortes este año</div>
+        <div class="float f3"><i class="dot"></i><div><b>Hoy quedan turnos</b>Reservá y no esperás</div></div>
+      </div>
+    </div>
+    <div class="marq" aria-hidden="true"><div class="marq-in">
+      <span>Corte</span><span>Fade</span><span>Barba</span><span>Navaja</span><span>Toalla caliente</span><span>Color</span><span>Diseños</span><span>Niños</span>
+      <span>Corte</span><span>Fade</span><span>Barba</span><span>Navaja</span><span>Toalla caliente</span><span>Color</span><span>Diseños</span><span>Niños</span>
+    </div></div>
+  </section>
+
+  <section class="sec" id="porque">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">Por qué Filo</p><h2 class="rv">No es un corte más.<br><span class="soft">Es tu rato de la semana.</span></h2></div>
+        <p class="sign rv">el detalle está en todo</p>
+      </div>
+      <div class="grid3">
+        <article class="card rv"><div class="n">01<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Sin espera</h3><p>Reservás por WhatsApp o desde esta web y te sentás a la hora que elegiste. Puntuales de verdad.</p></article>
+        <article class="card rv"><div class="n">02<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div><h3>Barberos de autor</h3><p>Cada uno con su especialidad: fades, clásicos, rulos o color. Te asignamos el que mejor va con lo que buscás.</p></article>
+        <article class="card rv"><div class="n">03<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><path d="M3 19c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><path d="M8 3c0 2 2 2 2 4M13 3c0 2 2 2 2 4"/></svg></div><h3>Toalla caliente</h3><p>En cada servicio de barba: vapor, toalla caliente y navaja para un afeitado al ras y sin irritación.</p></article>
+        <article class="card rv"><div class="n">04<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="10" height="13" rx="1"/><path d="M9 8V5h6v3M7 13h10"/></svg></div><h3>Productos premium</h3><p>Pomadas, aceites y bálsamos de primera. Te decimos cuál usar en casa para que el peinado te dure.</p></article>
+        <article class="card rv"><div class="n">05<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h12v6a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17M9 3v2M13 3v2"/></svg></div><h3>Café o cerveza</h3><p>Mientras esperás tu turno o al terminar, la primera bebida va por cuenta de la casa.</p></article>
+        <article class="card rv"><div class="n">06<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13"/><path d="M2 10h20M6 15h4"/></svg></div><h3>Pagás como quieras</h3><p>Efectivo, transferencia, QR o tarjeta. También tenemos gift cards para regalar.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">Servicios</p><h2 class="rv">Del fade al afeitado,<br><span class="soft">todo a mano.</span></h2></div>
+        <p class="sign rv">precios claros, sin vueltas</p>
+      </div>
+      <div class="serv">
+        <article class="tcard rv"><img data-par="10" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1400&q=80&auto=format&fit=crop" alt="Barbero perfilando con navaja el corte de un cliente" loading="lazy"><span class="cond">Corte y fade</span><h3>Degradé que se ve bien de todos los ángulos.</h3><p>Fades bajos, medios o al ras, con terminación a navaja y diseño si te animás.</p></article>
+        <div class="tstack">
+          <article class="tcard rv"><img data-par="8" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80&auto=format&fit=crop" alt="Cliente sentado en el sillón de la barbería" loading="lazy"><span class="cond">Barba</span><h3>Barba con toalla caliente.</h3></article>
+          <article class="tcard rv"><img data-par="8" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=80&auto=format&fit=crop" alt="Tijeras, peine y productos de barbería sobre una mesa" loading="lazy"><span class="cond">Productos</span><h3>Tu peinado, también en casa.</h3></article>
+        </div>
+      </div>
+      <div class="precios" id="precios"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="como">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">Cómo funciona</p><h2 class="rv">Cuatro pasos<br><span class="soft">y salís impecable.</span></h2></div>
+      </div>
+      <div class="steps" id="steps">
+        <div class="line"><i id="lineFill"></i></div>
+        <div class="step rv"><div class="num">01</div><h3>Elegí tu corte</h3><p>Con el buscador de esta página o mandándonos una foto de lo que te gusta.</p></div>
+        <div class="step rv"><div class="num">02</div><h3>Reservá</h3><p>Por WhatsApp en un minuto. Te confirmamos barbero, día y hora.</p></div>
+        <div class="step rv"><div class="num">03</div><h3>Llegá y sentate</h3><p>Sin esperas. Café o cerveza de la casa mientras charlamos qué hacer.</p></div>
+        <div class="step rv"><div class="num">04</div><h3>Salí impecable</h3><p>Te peinamos con producto y te contamos cómo mantenerlo hasta la próxima.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="tucorte">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">Encontrá tu corte</p><h2 class="rv">Contanos cómo sos<br><span class="soft">y te decimos qué te queda.</span></h2></div>
+        <p class="sign rv">menos de un minuto</p>
+      </div>
+      <div class="plan">
+        <div class="plan-side rv">
+          <img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?w=1200&q=80&auto=format&fit=crop" alt="Barbero trabajando con tijera y peine" loading="lazy">
+          <div class="ov"><b>Tu corte ideal, en 5 pasos.</b>Según la forma de tu cara, tu pelo y tu estilo te recomendamos un corte, el barbero indicado, cuánto dura y cuánto sale. Y te reservamos el turno.</div>
+        </div>
+        <div class="tool rv" id="tool" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="barberos">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">El equipo</p><h2 class="rv">Tres barberos,<br><span class="soft">tres estilos.</span></h2></div>
+        <p class="sign rv">nombres de ejemplo</p>
+      </div>
+      <div class="team">
+        <article class="bb rv"><div class="ini">N</div><h3>Nico</h3><p>Fades, diseños y cortes modernos. Si traés una foto, la clava.</p><span class="cond">10 años de oficio</span></article>
+        <article class="bb rv"><div class="ini">T</div><h3>Tomás</h3><p>Clásicos, barba y navaja. El que querés para el ritual completo.</p><span class="cond">14 años de oficio</span></article>
+        <article class="bb rv"><div class="ini">L</div><h3>Leo</h3><p>Rulos, texturas y color. Sabe cortar el pelo que nadie se anima.</p><span class="cond">8 años de oficio</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="opiniones">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">Opiniones</p><h2 class="rv">Lo que dicen<br><span class="soft">en el sillón.</span></h2></div>
+      </div>
+      <div class="quotes">
+        <figure class="q rv"><span class="stars">★★★★★</span><p>"Primera vez que salgo de una barbería y el fade me dura prolijo tres semanas. Nico es un relojero."</p><figcaption class="who"><b>Martín A.</b><span>Fade + diseño · <span class="tag-demo">Testimonio de ejemplo</span></span></figcaption></figure>
+        <figure class="q rv"><span class="stars">★★★★★</span><p>"El ritual con toalla caliente es otra cosa. Me fui como nuevo y con una cerveza encima."</p><figcaption class="who"><b>Federico L.</b><span>Ritual Filo · <span class="tag-demo">Testimonio de ejemplo</span></span></figcaption></figure>
+        <figure class="q rv"><span class="stars">★★★★★</span><p>"Tengo rulos y siempre me los arruinaban. Leo me explicó cómo cuidarlos y ahora no voy a otro lado."</p><figcaption class="who"><b>Joaquín R.</b><span>Corte rulos · <span class="tag-demo">Testimonio de ejemplo</span></span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="preguntas">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="cond rv">Preguntas frecuentes</p><h2 class="rv">Lo que más<br><span class="soft">nos preguntan.</span></h2></div>
+      </div>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="contact">
+        <div class="cbox rv">
+          <p class="cond">Contacto</p>
+          <h2>Te esperamos<br><span class="soft">en Güemes.</span></h2>
+          <div class="info">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b id="cDir"></b><span>A dos cuadras del Paseo de las Artes</span></div></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b id="cHor"></b><span id="cExt"></span></div></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><b>WhatsApp</b><span>Respondemos en minutos y te confirmamos el turno</span></div></div>
+          </div>
+          <div class="map"><iframe title="Mapa de Filo Barbería" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-64.1972%2C-31.4278%2C-64.1832%2C-31.4198&amp;layer=mapnik&amp;marker=-31.4238%2C-64.1902"></iframe></div>
+        </div>
+        <div class="cbox rv">
+          <p class="cond">Escribinos</p>
+          <h2>Dejanos tu consulta.</h2>
+          <form id="form" novalidate style="margin-top:26px">
+            <label class="fld"><span>Nombre</span><input name="nombre" autocomplete="name" required></label>
+            <label class="fld"><span>WhatsApp</span><input name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="351 555 1234" required></label>
+            <label class="fld"><span>¿Qué querés hacerte?</span><textarea name="consulta" rows="3" placeholder="Ej.: fade + barba el sábado a la tarde, gift card, corte para mi hijo…"></textarea></label>
+            <p class="err" id="formErr"></p>
+            <button class="btn btn-p" type="submit" style="width:100%">Enviar consulta</button>
+            <p class="ok-msg" id="formOk">¡Listo! Te abrimos WhatsApp con tu consulta para que nos llegue al instante.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec final">
+    <div class="wrap">
+      <p class="sign rv">la silla te está esperando</p>
+      <h2 class="rv">Tu próximo corte,<br><span class="soft">sin esperar.</span></h2>
+      <p class="lead rv">Reservá por WhatsApp y elegí barbero, día y hora. Te confirmamos en minutos.</p>
+      <div class="hero-cta rv"><a class="btn btn-p" data-wa="Hola Filo! Quiero reservar un turno.">Reservar turno</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Filo Barbería · Güemes, Córdoba, Argentina</span>
+    <span><span class="tag-demo">Web demo</span> · Marca y datos de ejemplo · Diseño: Facundo Social Media</span>
+  </div>
+</footer>
+
+<a class="wa-fab" data-wa="Hola Filo! Tengo una consulta." aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.1.5.2.5.4 0 .1 0 .7-.3 1.3z"/></svg></a>
+<button class="ai-fab" id="aiFab" aria-label="Abrir el asistente"><i class="orb"></i><span>¿Dudas? Preguntale a Filo IA</span></button>
+
+<div class="chat" id="chat" role="dialog" aria-label="Asistente de Filo">
+  <div class="chat-h"><i class="orb"></i><div><b>Filo IA</b><span>● En línea · responde al instante</span></div><button id="chatX" aria-label="Cerrar asistente">×</button></div>
+  <div class="chat-m" id="chatM"></div>
+  <div class="chat-c" id="chatC"></div>
+  <form class="chat-f" id="chatF"><input id="chatI" placeholder="Escribí tu pregunta…" autocomplete="off" aria-label="Tu pregunta"><button aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+</div>
+
+<script src="config.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="app.js?v=2"></script>
+<script src="razor3d.js?v=7"></script>
+</body>
+</html>
