@@ -7,7 +7,7 @@ window.CONFIG = {
     nombre: "KASSE Reformas Integrales",
     corto: "Kasse",
     instagram: "kasse_reformas",
-    whatsapp: "5493516069281",          // BOCETO: WhatsApp de Facundo Social Media. Cambiar por el de Kasse.
+    whatsapp: "34614041897",            // WhatsApp de Kasse (lo pasó por Instagram el 14-11-2026)
     zona: "Provincia de Tarragona",
     pueblos: "Tarragona, Salou, La Pineda, Albiol y alrededores",
     horario: "Lunes a viernes de 8:00 a 18:00 · Sábados con cita previa", // EJEMPLO: confirmar con Kasse
