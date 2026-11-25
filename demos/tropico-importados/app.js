@@ -1,6 +1,6 @@
-/* Trópico Importados (maqueta, tienda de lentes de sol): colección con visor 3D (despiece y grabado de iniciales),
-   compra por forma, probador con selfie, guía "Tu lente ideal" que pide WhatsApp, calidad, guía de talle,
-   asistente con IA, contactos y animaciones. Estructura tomada de las mejores webs europeas de óptica premium. */
+/* Trópico Importados (maqueta, tienda de lentes de sol): colección con fotos reales (3 vistas por modelo, cada par con estuche),
+   compra por forma, probador con selfie, guía "Tu lente ideal" que pide WhatsApp, calidad,
+   asistente con IA, contactos y animaciones. */
 (function () {
   var C = window.CONFIG, N = C.negocio, P = C.pagos, PROD = C.productos;
   var COL = window.SOLENNE_COLORES || { armazon: {}, cristal: {} };
@@ -20,8 +20,9 @@
   function nomCol(v) { return nomA(v) + " / " + nomC(v); }
   function imgDe(id, v, vista) { var o = window.SOLENNE_IMG && window.SOLENNE_IMG[id] && window.SOLENNE_IMG[id][v[0] + "|" + v[1]]; return o && o[vista]; }
   function esMetal(p) { return p.armazon === "oro" || p.armazon === "plata"; }
-  function talle(p) { var w = p.medidas[0]; return w <= 50 ? "S" : w <= 55 ? "M" : "L"; }
-  var TXT_TALLE = { S: "Para caras finas", M: "Ideal para la mayoría de las caras", L: "Para caras anchas" };
+  function img(n) { return "img/" + n + ".jpg"; }
+  var COLOR_TXT = { oro: "Dorado", plata: "Plateado", negro: "Negro", carey: "Carey", bordo: "Chocolate", hueso: "Hueso", cristal: "Transparente" };
+  function colorDe(p) { return (COLOR_TXT[p.armazon] || nomA(p.variantes[0])) + " · cristal " + nomC(p.variantes[0]).toLowerCase(); }
   var FORMAS = { cateye: "Cat-eye", cuadrado: "Cuadrado", redondo: "Redondo", aviador: "Aviador", rectangular: "Rectangular", hexagonal: "Hexagonal" };
   var CHK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5l3 3 7-7"/></svg>';
 
@@ -33,7 +34,7 @@
   $("#cHor").textContent = N.horario;
   $("#cExt").textContent = N.extra;
   $("#cEnv").textContent = "A todo el país · gratis desde " + ars(P.envioGratisDesde);
-  var TOP = ["Envío gratis desde " + ars(P.envioGratisDesde), P.cambiosDias + " días para cambios", "Grabado de iniciales gratis", P.cuotasSinInteres + " cuotas sin interés"];
+  var TOP = ["Envío gratis desde " + ars(P.envioGratisDesde), P.cambiosDias + " días para cambios", "Cada par con su estuche", P.cuotasSinInteres + " cuotas sin interés"];
   $("#topbar").innerHTML = TOP.map(function (t, i) { return (i ? "<i" + (i > 1 ? ' class="x"' : "") + "></i>" : "") + '<span' + (i > 1 ? ' class="x"' : "") + ">" + esc(t) + "</span>"; }).join("");
 
   var hdr = $("#hdr"), burger = $("#burger");
@@ -57,14 +58,15 @@
     sticker: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 9 9h-6a3 3 0 0 1-3-3z"/>'
   };
   function ico(k, w) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"' + (w ? ' width="' + w + '"' : "") + ">" + IC[k] + "</svg>"; }
-  var TRUST = [["camion", "Envío gratis", "Desde " + ars(P.envioGratisDesde) + " a todo el país"], ["vuelta", P.cambiosDias + " días para cambios", "Sin usar y con su estuche"], ["escudo", "Garantía de " + P.garantiaMeses + " meses", "En bisagras y armazón"], ["sol", "UV400 · categoría 3", "Polarizados en modelos marcados"], ["tarjeta", P.cuotasSinInteres + " cuotas sin interés", Math.round(P.descTransferencia * 100) + " % off por transferencia"]];
+  var TRUST = [["camion", "Envío gratis", "Desde " + ars(P.envioGratisDesde) + " a todo el país"], ["vuelta", P.cambiosDias + " días para cambios", "Sin usar y con su estuche"], ["escudo", "Garantía de " + P.garantiaMeses + " meses", "En bisagras y armazón"], ["estuche", "Estuche incluido", "Con cada par, sin costo extra"], ["tarjeta", P.cuotasSinInteres + " cuotas sin interés", Math.round(P.descTransferencia * 100) + " % off por transferencia"]];
   $("#trust").innerHTML = TRUST.map(function (t) { return '<div class="it">' + ico(t[0]) + "<div><b>" + esc(t[1]) + "</b><span>" + esc(t[2]) + "</span></div></div>"; }).join("");
 
   /* ---------- Comprá por forma ---------- */
   var forma = null;
   function pintarFormas() {
     $("#shapes").innerHTML = Object.keys(FORMAS).map(function (k) {
-      var ps = PROD.filter(function (p) { return p.forma === k; }), p = ps[0], src = p && imgDe(p.id, p.variantes[0], "frente");
+      var ps = PROD.filter(function (p) { return p.forma === k; }), p = ps[0], src = p && img(p.fotos[1]);
+      if (!ps.length) return "";
       return '<button type="button" class="shape rv' + (forma === k ? " on" : "") + '" data-forma="' + k + '"><div class="im">' + (src ? '<img src="' + src + '" alt="">' : "") + "</div><b>" + FORMAS[k] + "</b><span>" + ps.length + (ps.length === 1 ? " modelo" : " modelos") + "</span></button>";
     }).join("");
     $$("#shapes .shape").forEach(function (b) {
@@ -74,26 +76,20 @@
   }
 
   /* ---------- Colección ---------- */
-  var FILTROS = [["todo", "Todos"], ["acetato", "Acetato"], ["metal", "Metal"], ["polarizado", "Polarizados"], ["90", "Hasta $90 mil"]], filtro = "todo";
+  var FILTROS = [["todo", "Todos"], ["acetato", "Acetato"], ["metal", "Metal"], ["90", "Hasta $90 mil"]], filtro = "todo";
   var elegida = {}; PROD.forEach(function (p) { elegida[p.id] = 0; });
   function badges(p) {
     var b = [];
-    if (p.edicion) b.push('<span class="lim">Edición de ' + p.edicion + "</span>");
-    if (p.tag && !/metal|espejado|oversize/i.test(p.tag)) b.push("<span>" + esc(p.tag) + "</span>");
-    if (p.polarizado) b.push("<span>Polarizado</span>");
-    b.push("<span>Probador</span>");
+    if (p.tag) b.push("<span>" + esc(p.tag) + "</span>");
     return '<div class="badges">' + b.join("") + "</div>";
   }
   function tarjeta(p) {
-    var v = p.variantes[elegida[p.id]], src = imgDe(p.id, v, "tres"), alt = imgDe(p.id, v, "frente");
-    return '<article class="prod rv" data-id="' + p.id + '" tabindex="0" role="button" aria-label="Ver ' + esc(p.nombre) + ' en 3D">' +
-      '<div class="ph">' + (src ? '<img class="main" src="' + src + '" alt="Lentes ' + esc(p.nombre) + ", " + esc(nomCol(v)) + '">' : '<span class="ld">Armando el 3D…</span>') +
-      (alt ? '<img class="alt" src="' + alt + '" alt="">' : "") + badges(p) +
-      '<span class="v3d"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1.5l5.5 3v7L8 14.5l-5.5-3v-7z M2.5 4.5L8 7.5l5.5-3 M8 7.5v7"/></svg>Ver en 3D</span></div>' +
-      '<div class="bd"><div><h3>' + esc(p.nombre) + '</h3><p class="meta">' + esc(nomCol(v)) + '</p></div><div class="price">' + ars(p.precio) + "<small>" + P.cuotasSinInteres + " × " + cuota(p.precio) + "</small></div></div>" +
-      '<div class="meta2"><div class="sws">' + p.variantes.map(function (x, i) {
-        return '<button type="button" class="sw' + (i === elegida[p.id] ? " on" : "") + '" data-sw="' + i + '" aria-label="' + esc(nomCol(x)) + '"><i style="background:' + ((COL.armazon[x[0]] || [0, "#999"])[1]) + '"></i></button>';
-      }).join("") + "</div><span>" + p.variantes.length + " colores · Talle " + talle(p) + " · " + FORMAS[p.forma] + "</span></div></article>";
+    return '<article class="prod rv" data-id="' + p.id + '" tabindex="0" role="button" aria-label="Ver fotos de los ' + esc(p.nombre) + '">' +
+      '<div class="ph"><img class="main" src="' + img(p.fotos[0]) + '" alt="Lentes ' + esc(p.nombre) + ", " + esc(colorDe(p)) + ', con su estuche" loading="lazy">' +
+      '<img class="alt" src="' + img(p.fotos[1]) + '" alt="" loading="lazy">' + badges(p) +
+      '<span class="v3d"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1.5" y="3.5" width="13" height="10" rx="2"/><circle cx="8" cy="8.5" r="2.6"/><path d="M5.5 3.5l1-2h3l1 2"/></svg>Ver 3 fotos</span></div>' +
+      '<div class="bd"><div><h3>' + esc(p.nombre) + '</h3><p class="meta">' + esc(colorDe(p)) + '</p></div><div class="price">' + ars(p.precio) + "<small>" + P.cuotasSinInteres + " × " + cuota(p.precio) + "</small></div></div>" +
+      '<div class="meta2"><span>' + FORMAS[p.forma] + " · " + (esMetal(p) ? "Metal" : "Acetato") + '</span><span class="est">' + ico("estuche", 15) + "Incluye estuche</span></div></article>";
   }
   var arranco = false;
   function lista() {
@@ -101,7 +97,6 @@
       if (forma && p.forma !== forma) return false;
       if (filtro === "acetato") return !esMetal(p);
       if (filtro === "metal") return esMetal(p);
-      if (filtro === "polarizado") return p.polarizado;
       if (filtro === "90") return p.precio <= 90000;
       return true;
     });
@@ -111,8 +106,6 @@
     g.innerHTML = l.length ? l.map(tarjeta).join("") : '<p class="lead">No hay modelos con esa combinación. Probá con otro filtro.</p>';
     $$(".prod", g).forEach(function (el) {
       el.addEventListener("click", function (e) {
-        var sw = e.target.closest("[data-sw]");
-        if (sw) { e.stopPropagation(); elegida[el.dataset.id] = +sw.dataset.sw; actualizarTarjeta(el.dataset.id); return; }
         abrirVisor(el.dataset.id);
       });
       el.addEventListener("keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && e.target === el) { e.preventDefault(); abrirVisor(el.dataset.id); } });
@@ -122,19 +115,6 @@
       else $$(".prod", g).forEach(function (c) { c.style.opacity = 1; c.style.transform = "none"; });
     }
   }
-  function actualizarTarjeta(id) {
-    var el = $('.prod[data-id="' + id + '"]'); if (!el) return;
-    var p = porId(id), v = p.variantes[elegida[id]], ph = $(".ph", el);
-    var src = imgDe(id, v, "tres"), alt = imgDe(id, v, "frente");
-    if (src) {
-      var im = $("img.main", ph);
-      if (!im) { im = document.createElement("img"); im.className = "main"; var ld = $(".ld", ph); if (ld) ld.remove(); ph.insertBefore(im, ph.firstChild); }
-      im.src = src; im.alt = "Lentes " + p.nombre + ", " + nomCol(v);
-    }
-    if (alt) { var a = $("img.alt", ph); if (!a) { a = document.createElement("img"); a.className = "alt"; a.alt = ""; ph.insertBefore(a, $(".badges", ph)); } a.src = alt; }
-    $(".meta", el).textContent = nomCol(v);
-    $$(".sw", el).forEach(function (s, i) { s.classList.toggle("on", i === elegida[id]); });
-  }
   function pintarFiltros() {
     $("#filters").innerHTML = FILTROS.map(function (f) { return '<button type="button" class="fbtn' + (f[0] === filtro ? " on" : "") + '" data-f="' + f[0] + '">' + f[1] + "</button>"; }).join("") +
       (forma ? '<button type="button" class="chip-x" id="fx">' + FORMAS[forma] + " ✕</button>" : "");
@@ -142,103 +122,68 @@
     var fx = $("#fx"); if (fx) fx.onclick = function () { forma = null; pintarFormas(); pintarFiltros(); pintarGrid(); };
   }
   pintarFormas(); pintarFiltros(); pintarGrid();
-  document.addEventListener("solenne:imagen", function (e) {
-    var d = e.detail, p = porId(d.id);
-    if (p && p.variantes[elegida[d.id]][0] + "|" + p.variantes[elegida[d.id]][1] === d.k) actualizarTarjeta(d.id);
-    if (p && p.variantes[0][0] + "|" + p.variantes[0][1] === d.k) { pintarFormas(); if (d.id === "riviera") craftImg(); }
-    pintarTryChips(); if (!tImg) cargarTry(tModel); else dibujar();
-  });
-  document.addEventListener("solenne:imagenes", function () {
-    if (!(window.SOLENNE_3D && window.SOLENNE_3D.ok)) $$(".prod .ld").forEach(function (l) { l.textContent = "Vista 3D no disponible en este navegador"; });
-    if (paso === 5) pintarTool();
-  });
+  document.addEventListener("solenne:imagen", function () { pintarTryChips(); if (!tImg) cargarTry(tModel); else dibujar(); });
+  document.addEventListener("solenne:imagenes", function () { if (paso === 5) pintarTool(); });
 
-  /* ---------- Visor 3D ---------- */
-  var viewer = $("#viewer"), vid = null, vvar = 0, ultimoFoco = null;
+  /* ---------- Visor de fotos ---------- */
+  var viewer = $("#viewer"), vid = null, vfoto = 0, ultimoFoco = null;
   var CRISTAL_TXT = {
-    humo: "Gris humo: no cambia los colores. El más neutro para todos los días.",
+    humo: "Gris: no cambia los colores. El más neutro para todos los días.",
     marron: "Marrón: sube el contraste y descansa la vista con sol fuerte.",
-    degrade: "Degradé: oscuro arriba, más claro abajo. Ideal para ciudad y manejar.",
-    verde: "Verde G15: el clásico. Colores naturales y buen contraste.",
-    espejado: "Espejado azul: refleja parte de la luz. Para playa, nieve y sol intenso.",
-    rosa: "Rosa: más claro, de moda. Para días nublados y tardes."
+    degrade: "Degradé: más oscuro arriba y más claro abajo. Ideal para ciudad y para manejar.",
+    verde: "Verde: el clásico. Colores naturales y buen contraste.",
+    espejado: "Espejado: refleja parte de la luz. Para playa y sol intenso.",
+    rosa: "Rosado: más claro y de moda. Para la ciudad y las tardes."
   };
-  function abrirVisor(id, opts) {
-    opts = opts || {};
-    var p = porId(id); vid = id; vvar = opts.variante != null ? opts.variante : elegida[id]; ultimoFoco = document.activeElement;
-    $("#vTag").textContent = FORMAS[p.forma] + " · " + (esMetal(p) ? "Metal" : "Acetato") + (p.polarizado ? " · Polarizado" : "");
+  var VISTAS = ["Con su estuche", "De frente", "Detalle"];
+  function verFoto(i) {
+    var p = porId(vid), n = p.fotos.length; vfoto = (i + n) % n;
+    var im = $("#vImg"); im.classList.remove("in"); void im.offsetWidth;
+    im.src = img(p.fotos[vfoto]); im.alt = "Lentes " + p.nombre + ": " + VISTAS[vfoto].toLowerCase(); im.classList.add("in");
+    $("#vCount").textContent = (vfoto + 1) + " / " + n + " · " + VISTAS[vfoto];
+    $$("#vThumbs button").forEach(function (b, k) { b.classList.toggle("on", k === vfoto); b.setAttribute("aria-current", k === vfoto); });
+  }
+  function abrirVisor(id) {
+    var p = porId(id); vid = id; ultimoFoco = document.activeElement;
+    $("#vTag").textContent = FORMAS[p.forma] + " · " + (esMetal(p) ? "Metal" : "Acetato");
     $("#vName").textContent = p.nombre;
     $("#vPrice").innerHTML = ars(p.precio) + "<small>" + P.cuotasSinInteres + " cuotas sin interés de " + cuota(p.precio) + " · " + ars(p.precio * (1 - P.descTransferencia)) + " por transferencia</small>";
     $("#vDet").textContent = p.detalle;
-    var lim = $("#vLim"); lim.hidden = !p.edicion; if (p.edicion) lim.textContent = "Edición limitada de " + p.edicion + " unidades numeradas. Cuando se terminan, no se repite.";
-    var t = talle(p);
-    $("#vFit").innerHTML = '<span class="pill">Talle ' + t + "</span><span>" + TXT_TALLE[t] + '</span><a href="#talle" id="vFitLink" style="border-bottom:1px solid var(--graphite)">Guía de talle</a>';
-    $("#vFitLink").onclick = function () { cerrarVisor(); };
-    $("#m1").textContent = p.medidas[0]; $("#m2").textContent = p.medidas[1]; $("#m3").textContent = p.medidas[2];
-    $("#vGrav").value = "";
-    pintarCombos(p); pintarAcc(p);
+    $("#vColor").textContent = colorDe(p);
+    $("#vThumbs").innerHTML = p.fotos.map(function (f, k) { return '<button type="button" aria-label="' + VISTAS[k] + '"><img src="' + img(f) + '" alt=""></button>'; }).join("");
+    $$("#vThumbs button").forEach(function (b, k) { b.onclick = function () { verFoto(k); }; });
+    verFoto(0);
+    pintarAcc(p);
     $("#vTrio").innerHTML = ["Envío gratis desde " + ars(P.envioGratisDesde), P.cambiosDias + " días para cambios", "Garantía " + P.garantiaMeses + " meses"].map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("");
-    var adv = $("#vAdv"); adv.href = wa("Hola Trópico! Estoy mirando los " + p.nombre + " y quiero que un asesor me ayude a elegir."); adv.target = "_blank"; adv.rel = "noopener";
+    var adv = $("#vAdv"); adv.href = wa("Hola Trópico! Estoy mirando los " + p.nombre + " y quiero que me ayuden a elegir."); adv.target = "_blank"; adv.rel = "noopener";
     var otros = PROD.filter(function (x) { return x.id !== id && x.forma !== p.forma; }).slice(0, 2);
-    $("#vPair").innerHTML = otros.map(function (x) { var s = imgDe(x.id, x.variantes[0], "tres"); return '<button type="button" data-otro="' + x.id + '">' + (s ? '<img src="' + s + '" alt="">' : "") + "<b style='font-weight:500'>" + esc(x.nombre) + "</b><span style='color:var(--iron)'>" + ars(x.precio) + "</span></button>"; }).join("");
+    $("#vPair").innerHTML = otros.map(function (x) { return '<button type="button" data-otro="' + x.id + '"><img src="' + img(x.fotos[0]) + '" alt=""><b style="font-weight:500">' + esc(x.nombre) + "</b><span style='color:var(--iron)'>" + ars(x.precio) + "</span></button>"; }).join("");
     $$("#vPair [data-otro]").forEach(function (b) { b.onclick = function () { abrirVisor(b.dataset.otro); $(".vinfo").scrollTop = 0; }; });
+    var a = $("#vWa"); a.href = wa("Hola Trópico! Quiero los " + p.nombre + " (" + colorDe(p) + ", " + ars(p.precio) + "). ¿Tienen stock?"); a.target = "_blank"; a.rel = "noopener";
     viewer.classList.add("on"); viewer.setAttribute("aria-hidden", "false"); document.body.classList.add("lock");
-    $("#vHint").style.opacity = 1; $("#vSpin").classList.add("on");
-    $("#vFold").textContent = "Plegar patillas"; $("#vFold").classList.remove("on");
-    $("#vExplode").textContent = "Desarmar"; $("#vExplode").classList.remove("on");
-    $$("[data-v]").forEach(function (b) { b.classList.remove("on"); });
-    var V = V3();
-    if (V) { var v = p.variantes[vvar]; V.abrir({ forma: p.forma, armazon: v[0], cristal: v[1], medidas: p.medidas }); if (opts.despiece) setTimeout(function () { $("#vExplode").click(); }, 500); }
-    else { var s = imgDe(id, p.variantes[vvar], "tres"); $(".vstage").style.background = s ? "var(--fog) url(" + s + ") center/contain no-repeat" : "var(--fog)"; }
-    actualizarWAVisor();
     setTimeout(function () { $("#vClose").focus(); }, 60);
   }
-  function pintarCombos(p) {
-    $("#vCombos").innerHTML = p.variantes.map(function (v, i) {
-      return '<button type="button" class="combo' + (i === vvar ? " on" : "") + '" data-c="' + i + '"><span class="dd"><i style="background:' + (COL.armazon[v[0]] || [0, "#999"])[1] + '"></i><i style="background:' + (COL.cristal[v[1]] || [0, "#333"])[1] + '"></i></span>' + esc(nomCol(v)) + "</button>";
-    }).join("");
-    $$("#vCombos .combo").forEach(function (b) {
-      b.onclick = function () {
-        vvar = +b.dataset.c; elegida[vid] = vvar; actualizarTarjeta(vid);
-        var v = p.variantes[vvar], V = V3(); if (V) V.colores(v[0], v[1]);
-        $$("#vCombos .combo").forEach(function (x) { x.classList.toggle("on", x === b); });
-        pintarAcc(p); actualizarWAVisor();
-      };
-    });
-  }
   function pintarAcc(p) {
-    var v = p.variantes[vvar];
     $("#vAcc").innerHTML =
-      "<details><summary>El cristal</summary><div class='in'><p>" + esc(CRISTAL_TXT[v[1]] || "") + "</p><p>Policarbonato liviano, UV400 (filtra el 100 % de los rayos UVA y UVB), categoría 3: deja pasar entre 8 y 18 % de la luz." + (p.polarizado ? " Polarizado: corta el reflejo del agua, la nieve y el asfalto." : "") + "</p></div></details>" +
-      "<details><summary>Materiales y terminación</summary><div class='in'><p>" + (esMetal(p) ? "Frente de metal con baño " + (v[0] === "oro" ? "dorado" : "plateado") + ", plaquetas de silicona regulables y punteras de acetato." : "Acetato de celulosa pulido, bisagra metálica de 5 barriles y perno metálico en la patilla.") + "</p></div></details>" +
-      "<details><summary>Qué trae la caja</summary><div class='in'><p>Caja Trópico, estuche rígido, funda de microfibra, gamuza, tarjeta de garantía y sticker.</p></div></details>" +
+      "<details open><summary>Qué incluye</summary><div class='in'><p>Los lentes con su estuche. Los revisamos uno por uno antes de despacharlos.</p></div></details>" +
+      "<details><summary>El cristal</summary><div class='in'><p>" + esc(CRISTAL_TXT[p.cristal] || "") + "</p><p>Con filtro UV400: bloquea los rayos UVA y UVB.</p></div></details>" +
+      "<details><summary>Materiales</summary><div class='in'><p>" + (esMetal(p) ? "Frente de metal " + (p.armazon === "oro" ? "dorado" : "plateado") + " con plaquetas regulables." : "Acetato pulido con bisagras metálicas.") + "</p></div></details>" +
       "<details><summary>Envíos, cambios y garantía</summary><div class='in'><p>Despacho en 24 h hábiles con seguimiento. Envío gratis desde " + ars(P.envioGratisDesde) + ". " + P.cambiosDias + " días para cambiarlos sin usar y " + P.garantiaMeses + " meses de garantía.</p></div></details>";
-  }
-  function actualizarWAVisor() {
-    var p = porId(vid), v = p.variantes[vvar], g = $("#vGrav").value.trim().toUpperCase();
-    var a = $("#vWa"); a.href = wa("Hola Trópico! Quiero los " + p.nombre + " (" + nomCol(v) + ", talle " + talle(p) + ", " + ars(p.precio) + ")" + (g ? " con grabado \"" + g + "\" en la patilla" : "") + ". ¿Tienen stock?");
-    a.target = "_blank"; a.rel = "noopener";
   }
   function cerrarVisor() {
     viewer.classList.remove("on"); viewer.setAttribute("aria-hidden", "true"); document.body.classList.remove("lock");
-    var V = V3(); if (V) V.cerrar();
     if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
   }
   $("#vClose").onclick = cerrarVisor;
-  $$("[data-v]").forEach(function (b) { b.onclick = function () { var V = V3(); if (!V) return; V.vista(b.dataset.v); $$("[data-v]").forEach(function (x) { x.classList.toggle("on", x === b); }); $("#vSpin").classList.remove("on"); }; });
-  $("#vFold").onclick = function () { var V = V3(); if (!V) return; var pl = V.plegar(); this.textContent = pl ? "Abrir patillas" : "Plegar patillas"; this.classList.toggle("on", pl); $("#vExplode").classList.remove("on"); $("#vExplode").textContent = "Desarmar"; };
-  $("#vExplode").onclick = function () { var V = V3(); if (!V) return; var ex = V.despiece(); this.textContent = ex ? "Armar" : "Desarmar"; this.classList.toggle("on", ex); $("#vFold").classList.remove("on"); $("#vFold").textContent = "Plegar patillas"; $("#vSpin").classList.remove("on"); };
-  $("#vSpin").onclick = function () { var V = V3(); if (!V) return; this.classList.toggle("on", V.girar()); };
-  function grabar() {
-    var t = $("#vGrav").value.replace(/[^a-zA-ZñÑ]/g, "").toUpperCase().slice(0, 3); $("#vGrav").value = t;
-    var V = V3(); if (V) { V.grabar(t); if (t) { V.vista("grabado"); $$("[data-v]").forEach(function (x) { x.classList.remove("on"); }); $("#vSpin").classList.remove("on"); $("#vExplode").classList.remove("on"); $("#vExplode").textContent = "Desarmar"; $("#vFold").classList.remove("on"); $("#vFold").textContent = "Plegar patillas"; } }
-    actualizarWAVisor();
-  }
-  $("#vGravBtn").onclick = grabar;
-  $("#vGrav").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); grabar(); } });
-  document.addEventListener("solenne:manual", function () { $("#vHint").style.opacity = 0; $("#vSpin").classList.remove("on"); });
-  $("#vTry").onclick = function () { tModel = vid; tVar = vvar; cerrarVisor(); pintarTryChips(); cargarTry(tModel); location.hash = "#probador"; };
-  $("#spot1").onclick = function () { abrirVisor("tulum", { variante: 0 }); };
+  $("#vPrev").onclick = function () { verFoto(vfoto - 1); };
+  $("#vNext").onclick = function () { verFoto(vfoto + 1); };
+  (function () {
+    var st = $(".vstage"), x0 = null;
+    st.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    st.addEventListener("touchend", function (e) { if (x0 == null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) verFoto(vfoto + (dx < 0 ? 1 : -1)); x0 = null; });
+  })();
+  $("#vTry").onclick = function () { tModel = vid; tVar = 0; cerrarVisor(); pintarTryChips(); cargarTry(tModel); location.hash = "#probador"; };
+  var hl = $("#heroLens"); if (hl) hl.onclick = function () { abrirVisor(hl.dataset.id); };
 
   /* ---------- Probador con selfie ---------- */
   var cv = $("#tCanvas"), cx = cv.getContext("2d"), W = cv.width, H = cv.height;
@@ -246,7 +191,7 @@
   var TS = { x: W / 2, y: 500, w: W * .44, rot: 0 };
   function pintarTryChips() {
     $("#tModels").innerHTML = PROD.map(function (p) { return '<button type="button" class="chip' + (p.id === tModel ? " sel" : "") + '" data-t="' + p.id + '">' + esc(p.nombre) + "</button>"; }).join("");
-    $$("#tModels .chip").forEach(function (b) { b.onclick = function () { tModel = b.dataset.t; tVar = elegida[tModel]; pintarTryChips(); cargarTry(tModel); }; });
+    $$("#tModels .chip").forEach(function (b) { b.onclick = function () { tModel = b.dataset.t; tVar = 0; pintarTryChips(); cargarTry(tModel); }; });
     var p = porId(tModel); var a = $("#tWa"); a.href = wa("Hola Trópico! Me probé los " + p.nombre + " en el probador de la web y me gustaron. ¿Tienen stock?"); a.target = "_blank"; a.rel = "noopener";
   }
   function cargarTry(id) {
@@ -255,7 +200,7 @@
     var im = new Image(); im.onload = function () { tImg = im; dibujar(); }; im.src = src;
   }
   function cara() {
-    var g = cx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#c9d3ea"); g.addColorStop(1, "#eceef3");
+    var g = cx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#e6dccd"); g.addColorStop(1, "#f6f2ec");
     cx.fillStyle = g; cx.fillRect(0, 0, W, H);
     cx.fillStyle = "#2b211b"; cx.beginPath(); cx.ellipse(450, 470, 255, 300, 0, 0, 7); cx.fill();
     cx.fillStyle = "#d8a985"; cx.fillRect(392, 700, 116, 200);
@@ -300,8 +245,8 @@
 
   /* ---------- Fotos ---------- */
   $("#filmImg").src = foto(C.fotos.editorial, 1800);
-  var altG = ["Mujer con lentes cat-eye entre hojas de palmera", "Hombre con lentes aviador dorados y campera de cuero", "Mujer con lentes de acetato bordó junto a la pileta", "Mujer con lentes blancos en la rambla"];
-  $("#gal").innerHTML = C.fotos.calle.map(function (id, i) { return '<figure class="rv"><img src="' + foto(id, i === 0 ? 1100 : 700) + '" alt="' + esc(altG[i]) + '" loading="lazy">' + (i === 0 ? "<figcaption>#TrópicoEnLaCalle</figcaption>" : "") + "</figure>"; }).join("");
+  var GAL = [[img(C.fotos.grupos[0]), "Dos modelos de doble puente dorado con su estuche"], [foto(C.fotos.calle[0], 700), "Mujer con lentes cat-eye entre hojas de palmera"], [img(C.fotos.grupos[1]), "Modelos Cannes y Amalfi con su estuche"], [foto(C.fotos.calle[1], 700), "Hombre con lentes aviador dorados y campera de cuero"]];
+  $("#gal").innerHTML = GAL.map(function (g, i) { return '<figure class="rv"><img src="' + g[0] + '" alt="' + esc(g[1]) + '" loading="lazy">' + (i === 0 ? "<figcaption>#TrópicoEnLaCalle</figcaption>" : "") + "</figure>"; }).join("");
 
   /* ---------- Calidad y caja ---------- */
   var SPECS = [
@@ -313,19 +258,16 @@
     ["Control", "Par por par", "Revisamos alineación, bisagras y cristales antes de despachar."]
   ];
   $("#specs").innerHTML = SPECS.map(function (s) { return '<div class="spec"><dt>' + esc(s[0]) + "</dt><dd>" + esc(s[1]) + "<small>" + esc(s[2]) + "</small></dd></div>"; }).join("");
-  function craftImg() { var s = imgDe("riviera", porId("riviera").variantes[0], "tres"); if (s) $("#craftImg").src = s; }
-  craftImg();
-  $("#craftBtn").onclick = function () { abrirVisor("riviera", { variante: 0, despiece: true }); };
-  var BOX = [["caja", "Caja Trópico", "Rígida, lista para regalar"], ["estuche", "Estuche rígido", "Para la cartera o la guantera"], ["funda", "Funda de microfibra", "Para la playa y el día a día"], ["gamuza", "Gamuza", "Limpia sin rayar el cristal"], ["tarjetaG", "Tarjeta de garantía", P.garantiaMeses + " meses en bisagras y armazón"], ["sticker", "Sticker", "Para la compu o el termo"]];
+  $("#craftImg").src = img("0912-3");
+  $("#craftBtn").onclick = function () { abrirVisor("cannes"); };
+  var BOX = [["estuche", "Estuche incluido", "Cada par viaja y se guarda en su estuche"], ["escudo", "Revisados uno por uno", "Bisagras, cristales y alineación antes de enviar"], ["camion", "Envío a todo el país", "Con seguimiento, gratis desde " + ars(P.envioGratisDesde)], ["tarjetaG", "Garantía de " + P.garantiaMeses + " meses", "En bisagras y armazón"]];
   $("#box").innerHTML = BOX.map(function (b) { return '<div class="rv">' + ico(b[0]) + "<b>" + esc(b[1]) + "</b><span>" + esc(b[2]) + "</span></div>"; }).join("");
 
   /* ---------- Preguntas frecuentes ---------- */
   var FAQ = [
-    ["¿De qué marca son los lentes?", "Son diseños de Trópico, sin logos de otras marcas. Importamos armazones de fábricas que elegimos por su terminación, y revisamos cada par antes de enviarlo.", ["marca", "original", "logo", "replica", "réplica", "copia", "fabrica", "importa"]],
+    ["¿Vienen con estuche?", "Sí, todos los modelos vienen con su estuche, sin costo extra. Lo podés ver en las fotos de cada modelo.", ["estuche", "funda", "caja", "incluye", "trae", "viene"]],
     ["¿Qué significa UV400 y categoría 3?", "UV400 quiere decir que el cristal bloquea el 100 % de los rayos UVA y UVB. Categoría 3 es cuánto oscurece: deja pasar entre 8 y 18 % de la luz, lo recomendado para sol fuerte de verano.", ["uv", "400", "categoria", "categoría", "protec", "rayos", "ojos"]],
-    ["¿Cuál es la diferencia entre polarizado y no polarizado?", "Los dos protegen igual del sol. El polarizado además corta el reflejo del agua, la nieve y el asfalto: se ve más nítido y cansa menos la vista.", ["polariz", "reflejo", "manejar", "agua", "nieve"]],
-    ["¿Cómo sé qué talle me queda?", "Mirá la guía de talle de esta página: con los números grabados en unos lentes tuyos o con una tarjeta frente al espejo sabés si sos S, M o L. Cada modelo dice su talle.", ["tamaño", "medida", "talle", "queda", "grande", "chico", "cara"]],
-    ["¿Cómo funciona el grabado de iniciales?", "Es gratis: elegí hasta 3 letras en el visor 3D, mirá cómo quedan en la patilla y pedilo por WhatsApp. Los lentes grabados no tienen cambio, solo garantía.", ["grabado", "grabar", "iniciales", "nombre", "personaliz"]],
+    ["¿Cómo sé si me quedan bien?", "Mirá las fotos de cada modelo, probátelos con tu selfie en el probador o hacé la guía \"Tu lente ideal\". Si tenés dudas, escribinos por WhatsApp y te mandamos más fotos o un video.", ["tamaño", "medida", "talle", "queda", "grande", "chico", "cara"]],
     ["¿Hacen envíos a todo el país?", "Sí. Despachamos en 24 h hábiles con seguimiento: en Córdoba llega en 24 a 48 h y al resto del país en 3 a 6 días hábiles. Gratis desde " + ars(P.envioGratisDesde) + ".", ["envio", "envío", "mandan", "llega", "demora", "tarda", "correo", "provincia"]],
     ["¿Cómo pago?", "Con tarjeta de crédito en " + P.cuotasSinInteres + " cuotas sin interés, débito, Mercado Pago o transferencia con " + Math.round(P.descTransferencia * 100) + " % de descuento. Te pasamos el link de pago por WhatsApp.", ["pago", "pagar", "cuota", "tarjeta", "transfer", "mercado", "descuento", "efectivo"]],
     ["¿Puedo cambiarlos?", "Sí, tenés " + P.cambiosDias + " días para cambiarlos sin usar, con su estuche. Además tienen " + P.garantiaMeses + " meses de garantía en bisagras y armazón.", ["cambio", "cambiar", "devol", "garant", "rompe", "roto"]],
@@ -381,8 +323,9 @@
       var s = 0;
       if (p.caras.indexOf(S.cara) > -1) s += 4;
       if (p.estilo.indexOf(S.estilo) > -1) s += 3;
-      if ((S.uso === "manejo" || S.uso === "playa") && p.polarizado) s += 2;
-      if (S.uso === "ciudad" && !p.polarizado) s += .5;
+      if (S.uso === "manejo" && (p.cristal === "degrade" || p.cristal === "marron")) s += 1.5;
+      if (S.uso === "playa" && (p.cristal === "humo" || p.cristal === "marron")) s += 1.5;
+      if (S.uso === "ciudad" && (p.cristal === "degrade" || p.cristal === "rosa")) s += 1;
       return { p: p, s: s };
     }).sort(function (a, b) { return b.s - a.s; }).slice(0, 2).map(function (x) { return x.p; });
   }
@@ -401,7 +344,7 @@
     if (paso === 1) h = cab("¿Qué forma tiene tu cara?", "Mirate al espejo con el pelo recogido y elegí la más parecida.") +
       '<div class="opts">' + CARAS.map(function (c) { return '<button type="button" class="opt' + (S.cara === c[0] ? " sel" : "") + '" data-cara="' + c[0] + '"><svg viewBox="0 0 46 56" fill="none" stroke="currentColor" stroke-width="1.5">' + c[3] + "</svg>" + esc(c[1]) + "<span>" + esc(c[2]) + "</span></button>"; }).join("") + "</div>" + nav(!!S.cara, "Siguiente");
     else if (paso === 2) h = cab("¿Cómo es tu estilo?", "Pensá en la ropa que más usás.") + chipsT("estilo", ESTILOS, S.estilo) + nav(!!S.estilo, "Siguiente");
-    else if (paso === 3) h = cab("¿Para qué los vas a usar?", "Así sabemos si te conviene un cristal polarizado.") + chipsT("uso", USOS, S.uso) + nav(!!S.uso, "Siguiente");
+    else if (paso === 3) h = cab("¿Para qué los vas a usar?", "Así te recomendamos el cristal que más te conviene.") + chipsT("uso", USOS, S.uso) + nav(!!S.uso, "Siguiente");
     else if (paso === 4) h = cab("¿A dónde te mandamos tu recomendación?", "Te escribimos con los modelos, colores y stock. No compartimos tus datos.") +
       '<label class="fld"><span>Nombre</span><input id="pNom" autocomplete="name" value="' + esc(S.nombre) + '"></label>' +
       '<label class="fld"><span>WhatsApp</span><input id="pTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="351 555 1234" value="' + esc(S.tel) + '"></label>' +
@@ -413,8 +356,7 @@
     var r = recomendados();
     return '<div class="prog"><i style="width:100%"></i></div><p class="pstep">Tu recomendación</p><h3>' + esc(S.nombre.split(" ")[0]) + ', estos van con vos</h3><p class="sub">' + esc(POR_QUE[S.cara]) + "</p>" +
       '<div class="picks">' + r.map(function (p) {
-        var src = imgDe(p.id, p.variantes[0], "tres");
-        return '<div class="pick">' + (src ? '<img src="' + src + '" alt="Lentes ' + esc(p.nombre) + '">' : "") + "<b>" + esc(p.nombre) + "</b><p>" + ars(p.precio) + " · Talle " + talle(p) + (p.polarizado ? " · polarizado" : "") + '</p><button type="button" data-ver="' + p.id + '">Ver en 3D</button></div>';
+        return '<div class="pick"><img src="' + img(p.fotos[0]) + '" alt="Lentes ' + esc(p.nombre) + '"><b>' + esc(p.nombre) + "</b><p>" + ars(p.precio) + ' · con estuche</p><button type="button" data-ver="' + p.id + '">Ver fotos</button></div>';
       }).join("") + "</div>" +
       '<p class="note">Recomendación orientativa según la forma de la cara y el uso. Cada cara es única: probalos con tu selfie o consultanos por WhatsApp antes de comprar.</p>' +
       '<div class="tool-nav"><button type="button" class="btn btn-o" data-reini>Empezar de nuevo</button><a class="btn btn-p" target="_blank" rel="noopener" href="' + wa("Hola Trópico! Soy " + S.nombre + ". Hice la guía en la web: cara " + S.cara + ", estilo " + S.estilo + ", uso: " + S.uso + ". Me recomendaron los " + r.map(function (p) { return p.nombre; }).join(" y ") + ". ¿Tienen stock?") + '">Pedirlos por WhatsApp</a></div>';
@@ -461,7 +403,7 @@
 
   /* ---------- Asistente ---------- */
   var chat = $("#chat"), fab = $("#aiFab"), chatM = $("#chatM"), chatI = $("#chatI"), hist = [];
-  var SUG = ["¿Qué modelos tienen?", "¿Cuál me queda con cara redonda?", "¿Qué talle soy?", "¿Cómo es el grabado?"];
+  var SUG = ["¿Qué modelos tienen?", "¿Cuál me queda con cara redonda?", "¿Vienen con estuche?", "¿Cómo pago?"];
   function abrir() { chat.classList.add("on"); fab.style.opacity = "0"; fab.style.pointerEvents = "none"; if (!chatM.children.length) saludo(); setTimeout(function () { chatI.focus(); }, 250); }
   function cerrar() { chat.classList.remove("on"); fab.style.opacity = ""; fab.style.pointerEvents = ""; }
   fab.addEventListener("click", abrir); $("#chatX").addEventListener("click", cerrar);
@@ -472,7 +414,7 @@
     d.appendChild(document.createElement("br")); d.appendChild(a); chatM.scrollTop = chatM.scrollHeight;
   }
   function saludo() {
-    burbuja("b", "¡Hola! Soy la asistente de Trópico. Te ayudo a elegir modelo según tu cara, y con talles, grabado, envíos y pagos. ¿Qué estás buscando?");
+    burbuja("b", "¡Hola! Soy la asistente de Trópico. Te ayudo a elegir modelo según tu cara, y con envíos y pagos. ¿Qué estás buscando?");
     $("#chatC").innerHTML = SUG.map(function (s) { return '<button type="button">' + esc(s) + "</button>"; }).join("");
     $$("#chatC button").forEach(function (b) { b.onclick = function () { preguntar(b.textContent); }; });
   }
@@ -480,7 +422,7 @@
   function local(q) {
     var n = norm(q);
     var hit = PROD.filter(function (p) { return n.indexOf(norm(p.nombre)) > -1; });
-    if (hit.length) return hit.map(function (p) { return p.nombre + ": " + p.detalle + " " + ars(p.precio) + " o " + P.cuotasSinInteres + " cuotas de " + cuota(p.precio) + ". Talle " + talle(p) + " (" + p.medidas.join("-") + " mm)." + (p.polarizado ? " Polarizado." : "") + (p.edicion ? " Edición limitada de " + p.edicion + " unidades." : ""); }).join("\n") + "\nTocá el modelo en la colección para verlo en 3D.";
+    if (hit.length) return hit.map(function (p) { return p.nombre + ": " + p.detalle + " " + ars(p.precio) + " o " + P.cuotasSinInteres + " cuotas de " + cuota(p.precio) + ". Viene con su estuche."; }).join("\n") + "\nTocá el modelo en la colección para ver sus 3 fotos.";
     for (var i = 0; i < CARAS.length; i++) if (n.indexOf(CARAS[i][0]) > -1 || n.indexOf(norm(CARAS[i][1])) > -1) {
       var k = CARAS[i][0], r = PROD.filter(function (p) { return p.caras.indexOf(k) > -1; });
       return POR_QUE[k] + " Te recomendamos: " + r.map(function (p) { return p.nombre; }).join(", ") + ". Si querés, hacé la guía \"Tu lente ideal\" para afinar la elección.";
@@ -489,7 +431,7 @@
       var rf = PROD.filter(function (p) { return p.forma === f; });
       return FORMAS[f] + ": " + rf.map(function (p) { return p.nombre + " (" + ars(p.precio) + ")"; }).join(", ") + ". Los encontrás en \"Comprá por forma\".";
     }
-    if (/modelo|tienen|catalogo|coleccion|cuales/.test(n)) return "Tenemos " + PROD.length + " modelos: " + PROD.map(function (p) { return p.nombre + " (" + ars(p.precio) + ")"; }).join(", ") + ". Todos se pueden ver en 3D en la colección.";
+    if (/modelo|tienen|catalogo|coleccion|cuales/.test(n)) return "Tenemos " + PROD.length + " modelos: " + PROD.map(function (p) { return p.nombre + " (" + ars(p.precio) + ")"; }).join(", ") + ". Todos vienen con su estuche; tocá cualquiera en la colección para ver sus fotos.";
     var mejor = null, pts = 0;
     FAQ.forEach(function (fq) { var c = fq[2].filter(function (w) { return n.indexOf(norm(w)) > -1; }).length; if (c > pts) { pts = c; mejor = fq; } });
     if (mejor) return mejor[1];
@@ -499,9 +441,9 @@
   }
   function sistema() {
     return "Sos la asistente virtual de " + N.nombre + ", tienda online de lentes de sol con base en " + N.ciudad + ", Argentina. Hablás en español rioplatense con voseo, cálida, con buen gusto y breve (máximo 3 oraciones). " +
-      N.horario + ". " + N.extra + ".\nModelos (precios en pesos):\n" + PROD.map(function (p) { return "- " + p.nombre + " (" + FORMAS[p.forma] + "): " + p.detalle + " " + ars(p.precio) + ". Talle " + talle(p) + ", medidas " + p.medidas.join("-") + " mm. " + (p.polarizado ? "Polarizado. " : "") + (p.edicion ? "Edición limitada de " + p.edicion + " unidades. " : "") + "Colores (armazón / cristal): " + p.variantes.map(nomCol).join("; ") + ". Ideal para caras: " + p.caras.join(", ") + "."; }).join("\n") +
-      "\nPagos: " + P.cuotasSinInteres + " cuotas sin interés, " + Math.round(P.descTransferencia * 100) + " % off por transferencia. Envío gratis desde " + ars(P.envioGratisDesde) + ". Cambios en " + P.cambiosDias + " días, garantía de " + P.garantiaMeses + " meses. Todos UV400, categoría 3. Grabado de iniciales gratis (hasta 3 letras).\nPreguntas frecuentes:\n" + FAQ.map(function (f) { return "- " + f[0] + " " + f[1]; }).join("\n") +
-      "\nNunca menciones ni compares con marcas de otras empresas, y nunca digas que son réplicas: son diseños propios de Trópico. Nunca inventes modelos, colores, precios ni stock que no estén acá. Para elegir, invitá a la guía \"Tu lente ideal\", la guía de talle o el probador con selfie; para comprar, a escribir por WhatsApp.";
+      N.horario + ". " + N.extra + ".\nModelos (precios en pesos):\n" + PROD.map(function (p) { return "- " + p.nombre + " (" + FORMAS[p.forma] + "): " + p.detalle + " " + ars(p.precio) + ". Color: " + colorDe(p) + ". Viene con estuche. Ideal para caras: " + p.caras.join(", ") + "."; }).join("\n") +
+      "\nPagos: " + P.cuotasSinInteres + " cuotas sin interés, " + Math.round(P.descTransferencia * 100) + " % off por transferencia. Envío gratis desde " + ars(P.envioGratisDesde) + ". Cambios en " + P.cambiosDias + " días, garantía de " + P.garantiaMeses + " meses. Todos UV400 y todos vienen con su estuche.\nPreguntas frecuentes:\n" + FAQ.map(function (f) { return "- " + f[0] + " " + f[1]; }).join("\n") +
+      "\nNo hables de marcas ni de su procedencia: si preguntan, invitá a consultarlo por WhatsApp. Nunca inventes modelos, colores, precios ni stock que no estén acá. Para elegir, invitá a la guía \"Tu lente ideal\" o al probador con selfie; para comprar, a escribir por WhatsApp.";
   }
   function preguntar(q) {
     q = q.trim(); if (!q) return;
@@ -545,6 +487,15 @@
   gsap.fromTo("#filmImg", { yPercent: -8 }, { yPercent: 8, ease: "none", scrollTrigger: { trigger: ".film", start: "top bottom", end: "bottom top", scrub: true } });
   gsap.to("#lineFill", { width: "100%", ease: "none", scrollTrigger: { trigger: "#steps", start: "top 75%", end: "bottom 55%", scrub: true } });
   $$(".step").forEach(function (s, i) { ScrollTrigger.create({ trigger: "#steps", start: "top+=" + (i * 50) + " 72%", onEnter: function () { s.classList.add("on"); }, onLeaveBack: function () { s.classList.remove("on"); } }); });
+  if (hl) {
+    gsap.fromTo(hl, { opacity: 0, y: 40, rotateX: 22, scale: .92 }, { opacity: 1, y: 0, rotateX: 0, scale: 1, duration: 1.6, ease: "power3.out", delay: .2 });
+    gsap.to(".hero-lens .float", { y: -14, duration: 3.4, yoyo: true, repeat: -1, ease: "sine.inOut" });
+    gsap.to(hl, { yPercent: 18, scale: .94, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    if (matchMedia("(hover: hover)").matches) addEventListener("pointermove", function (e) {
+      var x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+      gsap.to(".hero-lens .tilt", { rotateY: x * 16, rotateX: -y * 10, duration: .9, ease: "power2.out" });
+    }, { passive: true });
+  }
   if (matchMedia("(hover: hover)").matches) $$(".tcard,.box>div").forEach(function (c) {
     c.addEventListener("pointermove", function (e) { var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transition = "transform .08s"; c.style.transform = "perspective(900px) rotateY(" + x * 8 + "deg) rotateX(" + -y * 8 + "deg)"; });
     c.addEventListener("pointerleave", function () { c.style.transition = "transform .5s"; c.style.transform = ""; });

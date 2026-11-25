@@ -490,7 +490,7 @@
   var ok = (function () { try { var c = document.createElement("canvas"); return !!(c.getContext("webgl") || c.getContext("experimental-webgl")); } catch (e) { return false; } })();
   window.SOLENNE_3D = { ok: ok, build: build, visor: function () { return V || visor(); } };
   if (!ok) { document.documentElement.classList.add("no3d"); document.dispatchEvent(new CustomEvent("solenne:imagenes")); return; }
-  portada();
+  if (document.getElementById("heroCanvas")) portada();
   // Las miniaturas se generan apenas la portada arrancó
   setTimeout(miniaturas, 250);
 })();
