@@ -34,7 +34,7 @@
   $("#cHor").textContent = N.horario;
   $("#cExt").textContent = N.extra;
   $("#cEnv").textContent = "A todo el país · gratis desde " + ars(P.envioGratisDesde);
-  var TOP = ["Envío gratis desde " + ars(P.envioGratisDesde), P.cambiosDias + " días para cambios", "Cada par con su estuche", P.cuotasSinInteres + " cuotas sin interés"];
+  var TOP = ["Desde Córdoba, Argentina, a todo el país", "Envío gratis desde " + ars(P.envioGratisDesde), "Cada par con su estuche", P.cuotasSinInteres + " cuotas sin interés"];
   $("#topbar").innerHTML = TOP.map(function (t, i) { return (i ? "<i" + (i > 1 ? ' class="x"' : "") + "></i>" : "") + '<span' + (i > 1 ? ' class="x"' : "") + ">" + esc(t) + "</span>"; }).join("");
 
   var hdr = $("#hdr"), burger = $("#burger");
@@ -55,10 +55,11 @@
     funda: '<path d="M6 3h12l-1 18H7z"/><path d="M8 7h8"/>',
     gamuza: '<rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10l6-6M4 16L16 4M8 20L20 8M14 20l6-6"/>',
     tarjetaG: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h6M7 14h10"/><circle cx="17" cy="9.5" r="1.5"/>',
-    sticker: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 9 9h-6a3 3 0 0 1-3-3z"/>'
+    sticker: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 9 9h-6a3 3 0 0 1-3-3z"/>',
+    pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'
   };
   function ico(k, w) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"' + (w ? ' width="' + w + '"' : "") + ">" + IC[k] + "</svg>"; }
-  var TRUST = [["camion", "Envío gratis", "Desde " + ars(P.envioGratisDesde) + " a todo el país"], ["vuelta", P.cambiosDias + " días para cambios", "Sin usar y con su estuche"], ["escudo", "Garantía de " + P.garantiaMeses + " meses", "En bisagras y armazón"], ["estuche", "Estuche incluido", "Con cada par, sin costo extra"], ["tarjeta", P.cuotasSinInteres + " cuotas sin interés", Math.round(P.descTransferencia * 100) + " % off por transferencia"]];
+  var TRUST = [["camion", "Envío gratis", "Desde " + ars(P.envioGratisDesde) + " a todo el país"], ["pin", "Córdoba, Argentina", "Showroom con cita en Nueva Córdoba"], ["escudo", "Garantía de " + P.garantiaMeses + " meses", "En bisagras y armazón"], ["estuche", "Estuche incluido", "Con cada par, sin costo extra"], ["tarjeta", P.cuotasSinInteres + " cuotas sin interés", Math.round(P.descTransferencia * 100) + " % off por transferencia"]];
   $("#trust").innerHTML = TRUST.map(function (t) { return '<div class="it">' + ico(t[0]) + "<div><b>" + esc(t[1]) + "</b><span>" + esc(t[2]) + "</span></div></div>"; }).join("");
 
   /* ---------- Comprá por forma ---------- */
@@ -154,7 +155,7 @@
     $$("#vThumbs button").forEach(function (b, k) { b.onclick = function () { verFoto(k); }; });
     verFoto(0);
     pintarAcc(p);
-    $("#vTrio").innerHTML = ["Envío gratis desde " + ars(P.envioGratisDesde), P.cambiosDias + " días para cambios", "Garantía " + P.garantiaMeses + " meses"].map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("");
+    $("#vTrio").innerHTML = ["Envío gratis desde " + ars(P.envioGratisDesde), "Desde Córdoba, Argentina", "Garantía " + P.garantiaMeses + " meses"].map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("");
     var adv = $("#vAdv"); adv.href = wa("Hola Trópico! Estoy mirando los " + p.nombre + " y quiero que me ayuden a elegir."); adv.target = "_blank"; adv.rel = "noopener";
     var otros = PROD.filter(function (x) { return x.id !== id && x.forma !== p.forma; }).slice(0, 2);
     $("#vPair").innerHTML = otros.map(function (x) { return '<button type="button" data-otro="' + x.id + '"><img src="' + img(x.fotos[0]) + '" alt=""><b style="font-weight:500">' + esc(x.nombre) + "</b><span style='color:var(--iron)'>" + ars(x.precio) + "</span></button>"; }).join("");
@@ -168,7 +169,7 @@
       "<details open><summary>Qué incluye</summary><div class='in'><p>Los lentes con su estuche. Los revisamos uno por uno antes de despacharlos.</p></div></details>" +
       "<details><summary>El cristal</summary><div class='in'><p>" + esc(CRISTAL_TXT[p.cristal] || "") + "</p><p>Con filtro UV400: bloquea los rayos UVA y UVB.</p></div></details>" +
       "<details><summary>Materiales</summary><div class='in'><p>" + (esMetal(p) ? "Frente de metal " + (p.armazon === "oro" ? "dorado" : "plateado") + " con plaquetas regulables." : "Acetato pulido con bisagras metálicas.") + "</p></div></details>" +
-      "<details><summary>Envíos, cambios y garantía</summary><div class='in'><p>Despacho en 24 h hábiles con seguimiento. Envío gratis desde " + ars(P.envioGratisDesde) + ". " + P.cambiosDias + " días para cambiarlos sin usar y " + P.garantiaMeses + " meses de garantía.</p></div></details>";
+      "<details><summary>Envíos y garantía</summary><div class='in'><p>Despachamos desde Córdoba, Argentina, en 24 h hábiles y con seguimiento. Envío gratis desde " + ars(P.envioGratisDesde) + ". " + P.garantiaMeses + " meses de garantía en bisagras y armazón.</p></div></details>";
   }
   function cerrarVisor() {
     viewer.classList.remove("on"); viewer.setAttribute("aria-hidden", "true"); document.body.classList.remove("lock");
@@ -244,9 +245,50 @@
   pintarTryChips(); dibujar();
 
   /* ---------- Fotos ---------- */
-  $("#filmImg").src = foto(C.fotos.editorial, 1800);
-  var GAL = [[img(C.fotos.grupos[0]), "Dos modelos de doble puente dorado con su estuche"], [foto(C.fotos.calle[0], 700), "Mujer con lentes cat-eye entre hojas de palmera"], [img(C.fotos.grupos[1]), "Modelos Cannes y Amalfi con su estuche"], [foto(C.fotos.calle[1], 700), "Hombre con lentes aviador dorados y campera de cuero"]];
-  $("#gal").innerHTML = GAL.map(function (g, i) { return '<figure class="rv"><img src="' + g[0] + '" alt="' + esc(g[1]) + '" loading="lazy">' + (i === 0 ? "<figcaption>#TrópicoEnLaCalle</figcaption>" : "") + "</figure>"; }).join("");
+  /* Campaña: fotos de modelos (Unsplash, de referencia) con el estilo parecido de la colección */
+  $("#camp").innerHTML = C.fotos.modelos.map(function (m, i) {
+    var p = porId(m.modelo);
+    return '<figure class="cf c' + (i + 1) + '"><img src="' + foto(m.id, i === 0 ? 1300 : 900) + '" alt="' + esc(m.alt) + '" loading="lazy"' + (m.pos ? ' style="object-position:' + m.pos + '"' : "") + '>' +
+      '<span class="ref">Foto de referencia</span><figcaption><span><small>' + esc(m.txt) + "</small><b>Estilo " + esc(p.nombre) + '</b></span><button class="go" type="button" data-ver="' + p.id + '">Ver el ' + esc(p.nombre) + " →</button></figcaption></figure>";
+  }).join("");
+  $$("#camp [data-ver]").forEach(function (b) { b.onclick = function () { abrirVisor(b.dataset.ver); }; });
+
+  /* Órbita 3D: los doce modelos en un anillo que gira con el scroll */
+  var ring = $("#ring");
+  ring.innerHTML = PROD.map(function (p, i) { return '<button type="button" class="oi" data-ver="' + p.id + '" aria-label="Ver ' + esc(p.nombre) + '" style="transform:rotateY(' + (i * 360 / PROD.length) + 'deg) translateZ(var(--or))"><img src="' + img(p.fotos[0]) + '" alt="" loading="lazy"><span>' + esc(p.nombre) + "</span></button>"; }).join("");
+  $$("#ring [data-ver]").forEach(function (b) { b.onclick = function () { abrirVisor(b.dataset.ver); }; });
+  function orbitar(g) {
+    ring.style.transform = "translateZ(calc(var(--or) * -1)) rotateX(" + (-8 + Math.sin(g / 360 * Math.PI) * 4) + "deg) rotateY(" + (-g) + "deg)";
+    var k = ((Math.round(g / (360 / PROD.length)) % PROD.length) + PROD.length) % PROD.length;
+    $("#orbitName").textContent = PROD[k].nombre;
+  }
+  orbitar(0);
+
+  /* Reseñas (de ejemplo) */
+  var RES = [
+    ["Camila R.", "Nueva Córdoba", "milano", "Los elegí por las fotos y llegaron exactamente iguales. El estuche es hermoso, parece de óptica cara.", "hace 3 días"],
+    ["Martín G.", "Rosario", "cannes", "Antes de comprar me mandaron un video por WhatsApp. Los Cannes dorados no me los saco más.", "hace 1 semana"],
+    ["Lucía P.", "Neuquén", "riviera", "Llegaron en tres días, impecables. Me probé tres modelos con la selfie hasta decidirme.", "hace 2 semanas"],
+    ["Agustina M.", "Villa Carlos Paz", "capri", "Súper livianos y el cristal rosado es divino. Ya le encargué otros a mi hermana.", "hace 5 días"],
+    ["Joaquín F.", "CABA", "ibiza", "Muy buena atención. Pregunté de todo y me respondieron al toque. Los uso para manejar.", "hace 4 días"],
+    ["Sofía L.", "Mendoza", "positano", "La forma hexagonal me encantó. Vinieron con su estuche y bien protegidos en la caja.", "hace 3 semanas"],
+    ["Valentina C.", "Córdoba", "tulum", "Los retiré en el showroom y me ayudaron a elegir. Chiquitos y cómodos, justo lo que buscaba.", "hace 1 semana"],
+    ["Tomás B.", "Salta", "monaco", "Pagué en 3 cuotas y llegaron antes de lo que decía el seguimiento. Calidad muy buena.", "hace 2 semanas"],
+    ["Florencia D.", "Mar del Plata", "amalfi", "El color chocolate es más lindo en persona. Los uso todos los días en la playa.", "hace 6 días"],
+    ["Nicolás A.", "Tucumán", "marbella", "Plateados, finos y bien terminados. Las bisagras se sienten firmes.", "hace 1 mes"]
+  ];
+  var AVC = ["#c9c1ff", "#9fd8ff", "#ffd8a8", "#b8f0cf", "#ffc2d6"];
+  function resena(r, i) {
+    var p = porId(r[2]), ini = r[0].split(" ").map(function (w) { return w[0]; }).join("");
+    return '<article class="rc"><div class="top"><span class="av" style="background:' + AVC[i % AVC.length] + '">' + esc(ini) + '</span><span class="nm">' + esc(r[0]) + "<small>" + esc(r[1]) + " · " + esc(r[4]) + '</small></span><span class="ok">Compra verificada</span></div>' +
+      '<span class="st" aria-label="5 estrellas">★★★★★</span><p>' + esc(r[3]) + '</p><button class="pr" type="button" data-ver="' + p.id + '"><img src="' + img(p.fotos[0]) + '" alt="" loading="lazy"><span>Compró <b>' + esc(p.nombre) + '</b></span><span class="demo">Ejemplo</span></button></article>';
+  }
+  var r1 = RES.slice(0, 5).map(resena).join(""), r2 = RES.slice(5).map(function (r, i) { return resena(r, i + 2); }).join("");
+  $("#rvw1").innerHTML = r1 + r1; $("#rvw2").innerHTML = r2 + r2;
+  $$("#rvw1 .rc, #rvw2 .rc").forEach(function (c, i) { if (i % 10 >= 5) c.setAttribute("aria-hidden", "true"); });
+  $$(".rvw [data-ver]").forEach(function (b) { b.onclick = function () { abrirVisor(b.dataset.ver); }; });
+  var BARS = [["Calidad", "4,9", 98], ["Igual a las fotos", "5,0", 100], ["Atención", "4,9", 98], ["Envío", "4,8", 96]];
+  $("#rbars").innerHTML = BARS.map(function (b) { return '<div class="rbar"><span>' + b[0] + "<b>" + b[1] + '</b></span><i><em style="--w:' + b[2] + '%"></em></i></div>'; }).join("");
 
   /* ---------- Calidad y caja ---------- */
   var SPECS = [
@@ -270,7 +312,8 @@
     ["¿Cómo sé si me quedan bien?", "Mirá las fotos de cada modelo, probátelos con tu selfie en el probador o hacé la guía \"Tu lente ideal\". Si tenés dudas, escribinos por WhatsApp y te mandamos más fotos o un video.", ["tamaño", "medida", "talle", "queda", "grande", "chico", "cara"]],
     ["¿Hacen envíos a todo el país?", "Sí. Despachamos en 24 h hábiles con seguimiento: en Córdoba llega en 24 a 48 h y al resto del país en 3 a 6 días hábiles. Gratis desde " + ars(P.envioGratisDesde) + ".", ["envio", "envío", "mandan", "llega", "demora", "tarda", "correo", "provincia"]],
     ["¿Cómo pago?", "Con tarjeta de crédito en " + P.cuotasSinInteres + " cuotas sin interés, débito, Mercado Pago o transferencia con " + Math.round(P.descTransferencia * 100) + " % de descuento. Te pasamos el link de pago por WhatsApp.", ["pago", "pagar", "cuota", "tarjeta", "transfer", "mercado", "descuento", "efectivo"]],
-    ["¿Puedo cambiarlos?", "Sí, tenés " + P.cambiosDias + " días para cambiarlos sin usar, con su estuche. Además tienen " + P.garantiaMeses + " meses de garantía en bisagras y armazón.", ["cambio", "cambiar", "devol", "garant", "rompe", "roto"]],
+    ["¿Tienen garantía?", "Sí, todos tienen " + P.garantiaMeses + " meses de garantía en bisagras y armazón. Si tenés cualquier problema con tu par, escribinos por WhatsApp y lo resolvemos.", ["garant", "rompe", "roto", "falla", "cambio", "cambiar"]],
+    ["¿Dónde están?", "Estamos en Córdoba, Argentina. Vendemos online y despachamos a todo el país; si estás en Córdoba, podés verlos en el showroom de Nueva Córdoba con cita previa.", ["donde", "dónde", "ubic", "cordoba", "córdoba", "local", "showroom", "retiro", "retirar"]],
     ["¿Se pueden graduar?", "Los modelos de acetato admiten cristales recetados en cualquier óptica. Si querés, te recomendamos una en tu ciudad.", ["gradu", "receta", "aumento", "optica", "óptica", "miopia"]]
   ];
   $("#faq").innerHTML = FAQ.map(function (f, i) { return '<div class="fq rv"><button type="button" aria-expanded="false" aria-controls="fa' + i + '">' + esc(f[0]) + '<i></i></button><div class="fa" id="fa' + i + '"><div><p>' + esc(f[1]) + "</p></div></div></div>"; }).join("");
@@ -442,7 +485,7 @@
   function sistema() {
     return "Sos la asistente virtual de " + N.nombre + ", tienda online de lentes de sol con base en " + N.ciudad + ", Argentina. Hablás en español rioplatense con voseo, cálida, con buen gusto y breve (máximo 3 oraciones). " +
       N.horario + ". " + N.extra + ".\nModelos (precios en pesos):\n" + PROD.map(function (p) { return "- " + p.nombre + " (" + FORMAS[p.forma] + "): " + p.detalle + " " + ars(p.precio) + ". Color: " + colorDe(p) + ". Viene con estuche. Ideal para caras: " + p.caras.join(", ") + "."; }).join("\n") +
-      "\nPagos: " + P.cuotasSinInteres + " cuotas sin interés, " + Math.round(P.descTransferencia * 100) + " % off por transferencia. Envío gratis desde " + ars(P.envioGratisDesde) + ". Cambios en " + P.cambiosDias + " días, garantía de " + P.garantiaMeses + " meses. Todos UV400 y todos vienen con su estuche.\nPreguntas frecuentes:\n" + FAQ.map(function (f) { return "- " + f[0] + " " + f[1]; }).join("\n") +
+      "\nPagos: " + P.cuotasSinInteres + " cuotas sin interés, " + Math.round(P.descTransferencia * 100) + " % off por transferencia. Envío gratis desde " + ars(P.envioGratisDesde) + ". Garantía de " + P.garantiaMeses + " meses. No ofrezcas cambios ni devoluciones con plazo: si preguntan, que lo consulten por WhatsApp. Todos UV400 y todos vienen con su estuche.\nPreguntas frecuentes:\n" + FAQ.map(function (f) { return "- " + f[0] + " " + f[1]; }).join("\n") +
       "\nNo hables de marcas ni de su procedencia: si preguntan, invitá a consultarlo por WhatsApp. Nunca inventes modelos, colores, precios ni stock que no estén acá. Para elegir, invitá a la guía \"Tu lente ideal\" o al probador con selfie; para comprar, a escribir por WhatsApp.";
   }
   function preguntar(q) {
@@ -465,16 +508,16 @@
       var fmt = function (v) { return v.toLocaleString("es-AR", { minimumFractionDigits: dec, maximumFractionDigits: dec }); };
       if (directo || !window.gsap) { el.textContent = fmt(fin); return; }
       var o = { v: 0 }; el.textContent = fmt(0);
-      gsap.to(o, { v: fin, duration: 2, delay: .8, ease: "power2.out", onUpdate: function () { el.textContent = fmt(o.v); } });
+      gsap.to(o, { v: fin, duration: 2, ease: "power2.out", onUpdate: function () { el.textContent = fmt(o.v); }, scrollTrigger: { trigger: el, start: "top 90%" } });
     });
   }
-  if (!window.gsap || reduced) { arranco = true; $$(".rv").forEach(function (e) { e.style.opacity = 1; e.style.transform = "none"; }); $$(".step").forEach(function (s) { s.classList.add("on"); }); contar(true); return; }
+  if (!window.gsap || reduced) { $("#rbars").classList.add("on"); arranco = true; $$(".rv").forEach(function (e) { e.style.opacity = 1; e.style.transform = "none"; }); $$(".step").forEach(function (s) { s.classList.add("on"); }); contar(true); return; }
   gsap.registerPlugin(ScrollTrigger);
   gsap.to(".hero .rv", { opacity: 1, y: 0, duration: 1.1, ease: "power3.out", stagger: .12, delay: .5 });
-  gsap.from(".fl", { opacity: 0, y: 20, scale: .9, duration: .9, stagger: .15, delay: 1.1, ease: "back.out(1.6)" });
-  gsap.to(".fl.a", { y: -10, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
-  gsap.to(".fl.b", { y: 12, duration: 3.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
-  gsap.to(".hero .mark", { yPercent: 40, opacity: .3, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  gsap.from(".hero-meta span", { opacity: 0, y: -10, duration: .9, stagger: .1, delay: .9, ease: "power3.out" });
+  gsap.set([".orb", "#heroLens"], { x: 0, y: 0, xPercent: -50, yPercent: -50 });
+  gsap.from(".orb i", { opacity: 0, duration: 2.2, stagger: .25, delay: .3, ease: "power2.out" });
+  gsap.fromTo(".orb", { y: 0, rotate: 0, opacity: 1 }, { y: function () { return -innerHeight * .2; }, rotate: 18, opacity: .2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true, invalidateOnRefresh: true } });
   contar(false);
   $$(".rv").filter(function (e) { return !e.closest(".hero"); }).forEach(function (el) {
     var i = Array.prototype.indexOf.call(el.parentNode.children, el) % 6;
@@ -484,19 +527,33 @@
     } else gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: "power3.out", delay: i * .06, scrollTrigger: { trigger: el, start: "top 92%" } });
   });
   arranco = true;
-  gsap.fromTo("#filmImg", { yPercent: -8 }, { yPercent: 8, ease: "none", scrollTrigger: { trigger: ".film", start: "top bottom", end: "bottom top", scrub: true } });
+  /* Órbita: el anillo gira 360° mientras la sección queda fija */
+  var og = { g: 0 };
+  gsap.to(og, { g: 360, ease: "none", onUpdate: function () { orbitar(og.g); }, scrollTrigger: { trigger: ".orbit-sec", start: "top top", end: "bottom bottom", scrub: .6 } });
+  gsap.from(".orbit", { scale: .7, opacity: 0, rotateX: 30, ease: "power2.out", scrollTrigger: { trigger: ".orbit-sec", start: "top 80%", end: "top top", scrub: true } });
+  gsap.from(".orbit-head > *", { opacity: 0, y: 30, stagger: .1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".orbit-sec", start: "top 60%" } });
+  /* Campaña: cada foto entra girando en 3D y la imagen se desplaza por dentro */
+  $$(".cf").forEach(function (f, i) {
+    var lado = i % 2 ? 1 : -1;
+    gsap.fromTo(f, { rotateY: 22 * lado, rotateX: 10, z: -260, opacity: 0, transformPerspective: 1400 },
+      { rotateY: 0, rotateX: 0, z: 0, opacity: 1, ease: "power2.out", scrollTrigger: { trigger: f, start: "top 98%", end: "top 45%", scrub: .8 } });
+    gsap.fromTo(f.querySelector("img"), { yPercent: -12 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: f, start: "top bottom", end: "bottom top", scrub: true } });
+  });
+  ScrollTrigger.create({ trigger: "#rbars", start: "top 88%", onEnter: function () { $("#rbars").classList.add("on"); } });
   gsap.to("#lineFill", { width: "100%", ease: "none", scrollTrigger: { trigger: "#steps", start: "top 75%", end: "bottom 55%", scrub: true } });
   $$(".step").forEach(function (s, i) { ScrollTrigger.create({ trigger: "#steps", start: "top+=" + (i * 50) + " 72%", onEnter: function () { s.classList.add("on"); }, onLeaveBack: function () { s.classList.remove("on"); } }); });
   if (hl) {
-    gsap.fromTo(hl, { opacity: 0, y: 40, rotateX: 22, scale: .92 }, { opacity: 1, y: 0, rotateX: 0, scale: 1, duration: 1.6, ease: "power3.out", delay: .2 });
-    gsap.to(".hero-lens .float", { y: -14, duration: 3.4, yoyo: true, repeat: -1, ease: "sine.inOut" });
-    gsap.to(hl, { yPercent: 18, scale: .94, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.fromTo(".hero-lens .tilt", { opacity: 0, y: 40, scale: .9 }, { opacity: 1, y: 0, scale: 1, duration: 1.6, ease: "power3.out", delay: .2 });
+    gsap.from(".hero-lens .cap", { opacity: 0, y: 10, duration: 1, delay: 1.2, ease: "power3.out" });
+    gsap.to(".hero-lens .tilt img", { y: -14, duration: 3.4, yoyo: true, repeat: -1, ease: "sine.inOut" });
+    gsap.fromTo(".hero-lens .float", { rotateY: 0, rotateX: 0, z: 0, scale: 1, opacity: 1 }, { rotateY: -38, rotateX: 18, z: -120, scale: .82, opacity: .25, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.fromTo(hl, { y: 0 }, { y: function () { return innerHeight * .2; }, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true, invalidateOnRefresh: true } });
     if (matchMedia("(hover: hover)").matches) addEventListener("pointermove", function (e) {
       var x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
       gsap.to(".hero-lens .tilt", { rotateY: x * 16, rotateX: -y * 10, duration: .9, ease: "power2.out" });
     }, { passive: true });
   }
-  if (matchMedia("(hover: hover)").matches) $$(".tcard,.box>div").forEach(function (c) {
+  if (matchMedia("(hover: hover)").matches) $$(".box>div,.card").forEach(function (c) {
     c.addEventListener("pointermove", function (e) { var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transition = "transform .08s"; c.style.transform = "perspective(900px) rotateY(" + x * 8 + "deg) rotateX(" + -y * 8 + "deg)"; });
     c.addEventListener("pointerleave", function () { c.style.transition = "transform .5s"; c.style.transform = ""; });
   });

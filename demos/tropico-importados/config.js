@@ -8,9 +8,9 @@ window.CONFIG = {
     corto: "Trópico",
     whatsapp: "5493516069281",              // maqueta: WhatsApp de Facundo (cambiar por el de la tienda)
     instagram: "tropico.importados",            // de ejemplo
-    ciudad: "Córdoba",
+    ciudad: "Córdoba",                        // Córdoba, Argentina
     horario: "Atendemos por WhatsApp de lunes a sábados de 10 a 20 h",
-    extra: "Showroom con cita previa en Nueva Córdoba"
+    extra: "Córdoba, Argentina · showroom con cita previa en Nueva Córdoba"
   },
 
   // IA de Google (Gemini). Sin clave, el asistente responde igual con la información de la página.
@@ -24,7 +24,6 @@ window.CONFIG = {
     cuotasSinInteres: 3,
     descTransferencia: 0.10,
     envioGratisDesde: 120000,
-    cambiosDias: 30,
     garantiaMeses: 6
   },
 
@@ -67,7 +66,13 @@ window.CONFIG = {
   // Fotos de ambiente (Unsplash, licencia gratuita; se reemplazan por las fotos propias de la marca)
   fotos: {
     grupos: ["grupo-0926", "grupo-0927"],          // fotos de varios modelos juntos (img/)
-    editorial: "photo-1766228385031-ad983e6a360e",
+    // Campaña: modelos con lentes de estilo parecido (fotos de referencia, no son lentes de la tienda)
+    modelos: [
+      { id: "photo-1679507655428-ab3d50356bac", modelo: "positano", txt: "Dorado · cristal degradé", alt: "Mujer con lentes dorados de cristal degradé", pos: "50% 20%" },
+      { id: "photo-1614252369475-531eba835eb1", modelo: "milano",   txt: "Doble puente · degradé",   alt: "Hombre con lentes aviador dorados de doble puente y campera de cuero", pos: "50% 25%" },
+      { id: "photo-1687610265701-1255ece05d75", modelo: "tulum",    txt: "Acetato negro",            alt: "Mujer con lentes negros de acetato", pos: "50% 30%" },
+      { id: "photo-1636619953466-f2dfd50b3d5e", modelo: "cannes",   txt: "Cuadrado dorado",          alt: "Hombre con lentes cuadrados dorados y campera marrón", pos: "50% 22%" }
+    ],
     calle: ["photo-1564086334005-5c65e4f9f242", "photo-1614252369475-531eba835eb1", "photo-1784154752284-3959332ed722", "photo-1766228385031-ad983e6a360e"]
   }
 };

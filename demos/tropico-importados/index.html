@@ -5,20 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trópico Importados · Lentes de sol de diseño</title>
 <meta name="description" content="Lentes de sol importados de metal y acetato, cada par con su estuche. Mirá las fotos reales de cada modelo, probátelos con tu selfie y pedilos por WhatsApp. Envíos a todo el país y 3 cuotas sin interés.">
-<meta name="theme-color" content="#fbf9f5">
+<meta name="theme-color" content="#06070b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Estilo: "boutique de óptica" — marfil y arena, texto espresso, acento champagne (el dorado de los armazones).
-   Serif Garamond para lo editorial, sans a peso 400 para la interfaz. Rediseño 25-11-2026 con las fotos reales. */
+/* Estilo "observatorio": negro espacial, texto marfil frío, acento lavanda-estelar.
+   Fondo 3D con una galaxia (espacio.js). Tipografía Inter Tight, etiquetas en mono. Rediseño 26-11-2026. */
 :root{
-  --white:#fbf9f5; --fog:#f2ede5; --dove:#d8cfc1; --mist:#b3a895; --iron:#6e655a; --graphite:#1f1b17; --carbon:#141110;
-  --cobalt:#1f1b17; --wash:#3b332b; --gold:#a8865a; --gold-2:#c7a876; --photo:#f3f3f1;
-  --serif:"Cormorant Garamond","EB Garamond",Garamond,Georgia,serif;
+  --white:#06070b; --fog:#0f1118; --dove:#262a39; --mist:#5d6178; --iron:#9599b0; --graphite:#eef0f8; --carbon:#030408;
+  --cobalt:#eef0f8; --wash:#c9cee2; --gold:#a99bff; --gold-2:#7d8cff; --photo:#eeeeeb; --ink:#06070b;
+  --acc:#a99bff; --acc-2:#6fd3ff; --line:rgba(255,255,255,.08); --glass:rgba(14,16,24,.62);
+  --serif:"Inter Tight",Inter,"Helvetica Neue",Arial,sans-serif;
   --sans:Inter,"Helvetica Neue",Arial,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  --pad:clamp(16px,4vw,50px); --max:1200px; --ease:cubic-bezier(.22,.8,.2,1);
+  --pad:clamp(16px,4vw,50px); --max:1240px; --ease:cubic-bezier(.22,.8,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -493,21 +494,281 @@ body.lock{overflow:hidden}
 .news .rowf{display:flex;gap:8px;flex-wrap:wrap}
 .news input{font:inherit;font-size:16px;background:var(--fog);border:0;border-radius:15px;padding:13px 18px;flex:1;min-width:180px}
 
+/* ===================== Tema galáctico (26-11-2026) ===================== */
+html{background:var(--ink)}
+body{background:var(--ink);color:var(--graphite)}
+#space{position:fixed;inset:0;width:100vw;height:100lvh;z-index:0;pointer-events:none;display:block}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(60% 50% at 78% 8%,rgba(111,125,255,.10),transparent 70%),radial-gradient(50% 45% at 10% 60%,rgba(169,155,255,.07),transparent 70%)}
+main,footer{position:relative;z-index:1}
+::selection{background:var(--acc);color:var(--ink)}
+:focus-visible{outline-color:var(--acc)}
+
+/* Tipografía */
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.4vw,70px);line-height:.98;letter-spacing:-.04em}
+h2 em,.hero h1 em{font-style:normal;color:var(--iron)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--iron)}
+.eyebrow::before{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc)}
+.lead{color:var(--iron)}
+.prod h3,.card h3,.step h3,.shape b,.pick b,.cbox h3,.news h3,.fitcard h3{font-weight:500;letter-spacing:-.03em}
+.prod h3{font-size:26px}
+.fq button{font-size:21px;font-weight:500;letter-spacing:-.02em}
+.vinfo h3{font-weight:500;letter-spacing:-.04em}
+
+/* Botones */
+.btn{border-radius:100px}
+.btn-p{background:var(--graphite);color:var(--ink)}
+.btn-p:hover{background:#fff;box-shadow:0 0 0 6px rgba(169,155,255,.16)}
+.btn-o{background:transparent;border-color:var(--dove);color:var(--graphite)}
+.btn-o:hover{border-color:var(--graphite)}
+.btn-w,.hero .btn-w{background:rgba(255,255,255,.06);color:var(--graphite);border:1px solid rgba(255,255,255,.18)}
+.btn-w:hover,.hero .btn-w:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4)}
+
+/* Header y logo */
+.hdr{color:var(--graphite)}
+.hdr.solid{background:rgba(6,7,11,.72);border-color:var(--line);color:var(--graphite)}
+.hdr:not(.solid) .btn-o{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18)}
+.hdr .topbar{background:#000;color:var(--iron);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.hdr .topbar i{background:var(--acc)}
+.logo{gap:11px;align-items:center;color:var(--graphite)}
+.logo .lm{width:34px;height:34px;flex:none;color:var(--graphite);overflow:visible}
+.logo .lw{display:grid;font-family:var(--serif);font-weight:500;font-size:16px;letter-spacing:.32em;line-height:1}
+.logo .lw small{font-family:var(--mono);font-size:8.5px;letter-spacing:.42em;opacity:.6;margin-top:5px;text-transform:uppercase}
+.logo:hover .lm{transform:rotate(-12deg)}
+.logo .lm{transition:transform .6s var(--ease)}
+@media (max-width:960px){.nav{background:rgba(6,7,11,.96);border-color:var(--line)}.nav a{border-color:var(--line)}}
+
+/* Hero */
+.hero{background:transparent;color:var(--graphite);min-height:min(100svh,980px)}
+.hero::after{background:linear-gradient(transparent,var(--ink));height:22%}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.4vw,74px);line-height:.98;letter-spacing:-.045em}
+.hero p{color:var(--iron)}
+.hero-lens img{mix-blend-mode:normal;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6)) drop-shadow(0 0 1px rgba(255,255,255,.35))}
+.hero-lens::before{content:"";position:absolute;inset:-18% -8%;z-index:-1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,236,214,.34),rgba(169,155,255,.16) 55%,transparent 75%);filter:blur(10px)}
+.hero-lens::after{background:radial-gradient(closest-side,rgba(169,155,255,.35),transparent);bottom:-6%}
+.hero-lens .cap{background:var(--glass);border-color:var(--line);color:var(--iron)}
+.hero-lens .cap b{color:var(--graphite)}
+.hero-lens .cap i{background:var(--acc);box-shadow:0 0 14px var(--acc)}
+.hero-lens .cap i::after{background:var(--ink)}
+.orb{position:absolute;left:50%;top:clamp(170px,38%,360px);width:min(92vw,980px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:-2;perspective:1600px;pointer-events:none}
+.orb i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(201,196,255,.16);transform:rotateX(76deg);transform-style:preserve-3d}
+.orb i:nth-child(2){inset:12%;border-color:rgba(201,196,255,.10);transform:rotateX(76deg) rotateY(-14deg)}
+.orb i:nth-child(3){inset:-14%;border-style:dashed;border-color:rgba(201,196,255,.08);transform:rotateX(78deg) rotateY(10deg)}
+.orb i::after{content:"";position:absolute;left:50%;top:-3px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px 2px rgba(169,155,255,.9)}
+.orb i:nth-child(1){animation:orbita 26s linear infinite}
+.orb i:nth-child(2){animation:orbita2 38s linear infinite reverse}
+.orb i:nth-child(3)::after{display:none}
+@keyframes orbita{to{transform:rotateX(76deg) rotateZ(360deg)}}
+@keyframes orbita2{to{transform:rotateX(76deg) rotateY(-14deg) rotateZ(360deg)}}
+.hero-meta{position:absolute;left:0;right:0;top:calc(112px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--iron)}
+.hero-meta span:first-child::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc);margin-right:9px;vertical-align:1px}
+.scroll-pill{background:transparent;color:var(--iron);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;display:flex;gap:10px;align-items:center}
+.scroll-pill i{width:1px;height:26px;background:linear-gradient(var(--acc),transparent);display:block}
+@media (max-width:820px){
+  .hero-meta{top:calc(108px + env(safe-area-inset-top,0px))}
+  .hero-meta span:nth-child(2),.hero-meta span:nth-child(3){display:none}
+  .orb{top:clamp(200px,33svh,300px);width:130vw}
+  .scroll-pill{display:none}
+}
+
+/* Franja de confianza */
+.trust{border-color:var(--line);background:rgba(6,7,11,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.trust .it+.it,.trust .it{border-color:var(--line)}
+.trust svg{color:var(--acc)}
+.trust b{font-weight:500}
+
+/* Órbita 3D de la colección */
+.orbit-sec{position:relative;height:300vh}
+.orbit-pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding-top:calc(118px + env(safe-area-inset-top,0px));padding-bottom:28px}
+.orbit-head{display:grid;gap:16px;justify-items:center;text-align:center}
+.orbit-head h2{max-width:16ch}
+.orbit{position:relative;perspective:1300px;perspective-origin:50% 40%;display:grid;place-items:center;min-height:0}
+.ring{position:relative;width:var(--ow);height:var(--ow);transform-style:preserve-3d;--ow:min(21vw,250px);--or:calc(var(--ow) * 2.25)}
+.ring .oi{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:var(--photo);transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:pointer;
+  box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+.ring .oi img{width:100%;height:100%;object-fit:cover;display:block}
+.ring .oi span{position:absolute;left:10px;bottom:10px;font-size:12px;font-weight:500;background:rgba(6,7,11,.82);color:#fff;padding:5px 10px;border-radius:100px}
+.orbit-hint{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--iron)}
+.orbit-hint span{color:var(--graphite)}
+@media (max-width:760px){.ring{--ow:44vw;--or:calc(var(--ow) * 2.1)}.orbit{perspective:900px}.orbit-sec{height:260vh}}
+
+/* Formas */
+.shape{background:var(--fog);border:1px solid var(--line)}
+.shape:hover{background:#151824}
+.shape .im{background:var(--photo);border-radius:12px}
+.shape.on{background:var(--graphite);color:var(--ink)}
+.shape.on span{color:rgba(6,7,11,.6)}
+
+/* Colección */
+.fbtn{border-color:var(--dove)}
+.fbtn.on{background:var(--graphite);color:var(--ink);border-color:var(--graphite)}
+.prod .ph{border-radius:20px;box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+.prod .t,.prod .badges span{color:var(--ink);background:rgba(255,255,255,.92)}
+.prod .badges .lim{background:var(--ink);color:#fff}
+.prod .v3d{background:rgba(6,7,11,.86);color:#fff}
+.prod:hover .v3d{background:var(--acc);color:var(--ink)}
+.prod .meta2{border-color:var(--line)}
+.chip-x{background:var(--graphite);color:var(--ink)}
+
+/* Campaña con modelos */
+.camp-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;perspective:1400px}
+.cf{position:relative;margin:0;border-radius:26px;overflow:hidden;background:var(--fog);transform-style:preserve-3d;will-change:transform}
+.cf img{width:100%;height:118%;object-fit:cover;display:block;will-change:transform}
+.cf.c1{grid-column:1 / span 7;grid-row:1;aspect-ratio:4/5}
+.cf.c2{grid-column:8 / span 5;grid-row:1;aspect-ratio:4/5;align-self:end}
+.cf.c3{grid-column:1 / span 5;grid-row:2;aspect-ratio:4/5}
+.cf.c4{grid-column:6 / span 7;grid-row:2;aspect-ratio:5/4;align-self:center}
+.cf::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(3,4,8,.7));pointer-events:none}
+.cf figcaption{position:absolute;left:18px;right:18px;bottom:18px;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;color:#fff}
+.cf figcaption small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:6px}
+.cf figcaption b{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2.2vw,28px);letter-spacing:-.03em}
+.cf .go{min-height:40px;padding:0 14px;border-radius:100px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12.5px;white-space:nowrap;color:#fff}
+.cf .go:hover{background:#fff;color:var(--ink)}
+.cf .ref{position:absolute;right:14px;top:14px;z-index:1;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(3,4,8,.45);padding:4px 8px;border-radius:100px}
+.camp-quote{grid-column:1 / span 5;align-self:center;font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);line-height:1.15;letter-spacing:-.03em;color:var(--iron)}
+.camp-quote b{color:var(--graphite);font-weight:500}
+@media (max-width:760px){
+  .camp-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .cf.c1{grid-column:1 / -1;grid-row:auto}
+  .cf.c2{grid-column:1;grid-row:auto;align-self:start}
+  .cf.c3{grid-column:2;grid-row:auto;margin-top:48px}
+  .cf.c4{grid-column:1 / -1;grid-row:auto;aspect-ratio:4/3}
+  .cf figcaption{left:12px;right:12px;bottom:12px;flex-direction:column;align-items:flex-start}
+  .cf.c2 .go,.cf.c3 .go{min-height:36px;padding:0 11px;font-size:12px}
+  .cf.c2 small,.cf.c3 small{display:none}
+  .cf.c2 .ref,.cf.c3 .ref{font-size:8.5px;right:10px;top:10px}
+  .cf.c2 figcaption b,.cf.c3 figcaption b{font-size:18px}
+  .orbit-pin{padding-bottom:96px}
+  .hero::after{height:48%;background:linear-gradient(transparent,rgba(6,7,11,.85) 45%,var(--ink))}
+}
+
+/* Probador, guía, tarjetas */
+.tstage{background:var(--fog);border:1px solid var(--line)}
+.chip{border-color:var(--dove)}
+.chip.sel{background:var(--graphite);color:var(--ink);border-color:var(--graphite)}
+input[type=range]{accent-color:var(--acc)}
+#ideal{background:linear-gradient(180deg,rgba(15,17,24,.0),rgba(15,17,24,.85) 12%,rgba(15,17,24,.85) 88%,rgba(15,17,24,0))!important}
+.tool{border-color:var(--line);background:rgba(6,7,11,.8)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.opt{border-color:var(--dove)}
+.opt.sel{background:#171a26;border-color:var(--acc)}
+.prog{background:var(--dove)}
+.prog i{background:linear-gradient(90deg,var(--acc),var(--acc-2))}
+.card{background:var(--fog);border:1px solid var(--line)}
+.checks svg{color:var(--acc)}
+.note{border-color:var(--acc)}
+.box div{background:var(--fog);border:1px solid var(--line);transition:border-color .3s}
+.box div:hover{border-color:rgba(169,155,255,.4)}
+.box svg{color:var(--acc)}
+.specs,.spec{border-color:var(--line)}
+.craft .vis{box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+
+/* Reseñas nuevas */
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.score .big{font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,92px);letter-spacing:-.05em;line-height:.9}
+.score .big small{font-size:.3em;color:var(--iron);letter-spacing:0;margin-left:4px}
+.score .sd{display:grid;gap:4px;font-size:13px;color:var(--iron)}
+.score .sd b{color:var(--graphite);font-weight:500}
+.stars{color:#ffd88a;letter-spacing:3px;font-size:15px}
+.rbars{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px}
+.rbar{border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;gap:10px;background:rgba(15,17,24,.6)}
+.rbar span{font-size:12.5px;color:var(--iron);display:flex;justify-content:space-between}
+.rbar span b{color:var(--graphite);font-weight:500;font-family:var(--mono);font-size:12px}
+.rbar i{height:3px;border-radius:3px;background:var(--dove);overflow:hidden;display:block}
+.rbar i em{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc-2));width:0;transition:width 1.4s var(--ease)}
+.rbars.on .rbar i em{width:var(--w)}
+@media (max-width:760px){.rbars{grid-template-columns:1fr 1fr}}
+.rvw{display:grid;gap:16px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rvw-row{overflow:hidden}
+.rvw-track{display:flex;gap:16px;width:max-content;animation:rvw 70s linear infinite}
+.rvw-row.rev .rvw-track{animation-direction:reverse;animation-duration:80s}
+.rvw:hover .rvw-track{animation-play-state:paused}
+@keyframes rvw{to{transform:translateX(calc(-50% - 8px))}}
+.rc{width:min(360px,82vw);flex:none;border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:14px;background:rgba(13,15,22,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-content:start}
+.rc .top{display:flex;gap:12px;align-items:center}
+.rc .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:500;color:var(--ink);flex:none}
+.rc .nm{display:grid;gap:2px;font-size:14px;line-height:1.2}
+.rc .nm small{font-size:12px;color:var(--iron)}
+.rc .ok{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#9fe3b8;display:flex;gap:5px;align-items:center;white-space:nowrap}
+.rc .ok::before{content:"";width:6px;height:6px;border-radius:50%;background:#5fd38d}
+.rc p{font-size:14.5px;line-height:1.5;color:#d6d8e4}
+.rc .st{color:#ffd88a;letter-spacing:2px;font-size:13px}
+.rc .pr{display:flex;gap:10px;align-items:center;border-top:1px solid var(--line);padding-top:12px;font-size:12.5px;color:var(--iron);cursor:pointer;background:none;text-align:left;width:100%}
+.rc .pr img{width:40px;height:40px;border-radius:10px;object-fit:cover;background:var(--photo)}
+.rc .pr b{color:var(--graphite);font-weight:500}
+.rc .pr .demo{margin-left:auto}
+
+/* Pasos, preguntas, contacto */
+.line{background:var(--dove)}
+.line i{background:linear-gradient(90deg,var(--acc),var(--acc-2))}
+.step .n{background:var(--ink);border-color:var(--dove)}
+.step.on .n{background:var(--graphite);color:var(--ink);border-color:var(--graphite);box-shadow:0 0 0 6px rgba(169,155,255,.15)}
+.fq{border-color:var(--line)}
+.cbox{background:rgba(15,17,24,.82);border:1px solid var(--line)}
+.form .fld input,.form .fld textarea{background:var(--ink)}
+.fld input,.fld textarea{background:#0b0d13;border:1px solid var(--line)}
+.demo{border-color:var(--dove)}
+
+/* Cierre y pie */
+.final{background:radial-gradient(80% 120% at 50% 0%,rgba(169,155,255,.28) 0%,rgba(79,94,255,.12) 40%,rgba(6,7,11,.9) 75%),#090a10;border:1px solid var(--line);position:relative;overflow:hidden}
+.final h2{color:var(--graphite)}
+.final p{color:var(--iron)}
+.news{border-color:var(--line);background:rgba(15,17,24,.7)}
+.news input{background:var(--ink);border:1px solid var(--line);color:var(--graphite)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{align-items:center}
+footer .logo{color:var(--graphite)}
+footer .fnote{flex-basis:100%;font-size:12px;color:var(--mist)}
+
+/* Visor */
+.viewer{background:var(--ink)}
+.vstage{background:var(--fog);border:1px solid var(--line)}
+#vImg{box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.vnav{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.vnav:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4)}
+.vcount{background:var(--glass);color:var(--iron);border:1px solid var(--line)}
+.vthumbs button.on{border-color:var(--acc)}
+.vinc{background:var(--fog);border:1px solid var(--line)}
+.vclose{border-color:var(--dove)}
+@media (max-width:900px){.vclose{background:var(--glass)}}
+.acc,.acc details{border-color:var(--line)}
+.pair button{background:var(--fog);border:1px solid var(--line)}
+
+/* Flotantes y chat */
+.fab-wa{background:var(--graphite);color:var(--ink)}
+.fab-ai{background:var(--glass);border-color:var(--dove);color:var(--graphite);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.chat{background:#0b0d13;border-color:var(--dove);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.chat header,#chatF{border-color:var(--line)}
+.msg.b{background:var(--fog)}
+.msg.u{background:var(--graphite);color:var(--ink)}
+#chatC button{border-color:var(--dove)}
+#chatI{background:var(--fog);color:var(--graphite)}
+
 </style>
 </head>
 <body class="no-js">
 <script>document.body.classList.remove("no-js");if(matchMedia("(prefers-reduced-motion: reduce)").matches)document.body.classList.add("reduced");</script>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f2ff"/><stop offset=".55" stop-color="#b6a9ff"/><stop offset="1" stop-color="#6f7dff"/></linearGradient>
+  <symbol id="marca" viewBox="0 0 40 40">
+    <path d="M4.03 25.81A17 6 -20 0 1 35.97 14.19" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".45"/>
+    <circle cx="20" cy="20" r="9" fill="url(#mg)"/>
+    <path d="M11 20h18" stroke="#06070b" stroke-width="1.1" opacity=".35"/>
+    <path d="M35.97 14.19A17 6 -20 0 1 4.03 25.81" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="31.6" cy="22.2" r="1.7" fill="currentColor"/>
+  </symbol></defs></svg>
+<canvas id="space" aria-hidden="true"></canvas>
 <header class="hdr" id="hdr">
   <div class="topbar" id="topbar"></div>
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Trópico Importados, inicio">trópico<small>logo de ejemplo</small></a>
+    <a href="#top" class="logo" aria-label="Trópico Importados, inicio"><svg class="lm" viewBox="0 0 40 40" aria-hidden="true"><use href="#marca"/></svg><span class="lw">TRÓPICO<small>Importados</small></span></a>
     <nav class="nav" id="nav" aria-label="Principal">
       <a href="#coleccion">Colección</a>
       <a href="#formas">Formas</a>
       <a href="#probador">Probador</a>
       <a href="#ideal">Tu lente ideal</a>
-      <a href="#calidad">Calidad</a>
+      <a href="#resenas">Reseñas</a>
       <a href="#asesor">Asesor</a>
     </nav>
     <a class="btn btn-o" data-wa="Hola Trópico! Quiero consultar por los lentes.">WhatsApp</a>
@@ -517,27 +778,34 @@ body.lock{overflow:hidden}
 
 <main id="top">
 <section class="hero" id="hero">
-  <div class="mark" aria-hidden="true">trópico</div>
+  <div class="orb" aria-hidden="true"><i></i><i></i><i></i></div>
   <button class="hero-lens" id="heroLens" data-id="milano" type="button" aria-label="Ver las fotos del modelo Milano"><span class="float"><span class="tilt"><img src="img/hero-lente.webp" width="1500" height="705" alt="Lentes Milano, doble puente dorado y negro"></span></span><span class="cap"><i></i><span><b>Milano</b> · doble puente dorado</span></span></button>
-  <div class="floaters" aria-hidden="true">
-    <div class="fl a"><i></i><span>Cada par con <b>su estuche</b></span></div>
-    <div class="fl b"><span><b><span data-count="4.9" data-dec="1">4,9</span> ★</b> · <span data-count="1200">1.200</span> pedidos</span></div>
-    <div class="fl c"><i></i><span><b>3 cuotas</b> sin interés</span></div>
-  </div>
+  <div class="hero-meta wrap" aria-hidden="true"><span>Córdoba, Argentina</span><span>Colección verano 2027</span><span>31°25′S · 64°11′O</span></div>
   <div class="wrap hero-copy">
-    <h1 class="rv">Lentes de sol <em>importados,</em> elegidos uno por uno.</h1>
+    <h1 class="rv">Lentes de sol importados, <em>elegidos uno por uno.</em></h1>
     <div class="hero-r">
-      <p class="rv">Modelos de metal y acetato, cada uno con su estuche. Mirá las fotos reales de cada par, probátelos con tu selfie y pedilos por WhatsApp.</p>
+      <p class="rv">Metal y acetato, cada par con su estuche. Mirá las fotos reales de cada modelo, probátelos con tu selfie y pedilos por WhatsApp.</p>
       <div class="ctas rv">
         <a class="btn btn-p" href="#coleccion">Ver la colección</a>
         <a class="btn btn-w" href="#probador">Probármelos con mi selfie</a>
       </div>
     </div>
   </div>
-  <span class="scroll-pill" aria-hidden="true">Seguí bajando</span>
+  <span class="scroll-pill" aria-hidden="true"><i></i>Bajá despacio</span>
 </section>
 
 <div class="trust" aria-label="Condiciones de compra"><div class="wrap" id="trust"></div></div>
+
+<section class="orbit-sec" id="orbita" aria-label="La colección en 3D">
+  <div class="orbit-pin">
+    <div class="wrap orbit-head">
+      <span class="eyebrow">La colección en órbita</span>
+      <h2>Doce modelos. <em>Todos con su estuche.</em></h2>
+    </div>
+    <div class="orbit"><div class="ring" id="ring"></div></div>
+    <p class="orbit-hint"><span id="orbitName">Milano</span> · seguí bajando para girarla o tocá un modelo</p>
+  </div>
+</section>
 
 <section class="sec" id="formas" style="padding-bottom:0">
   <div class="wrap">
@@ -563,12 +831,13 @@ body.lock{overflow:hidden}
   </div>
 </section>
 
-<section class="film" aria-label="Comprá el look">
-  <img data-par alt="Mujer sonriendo con lentes blancos rectangulares en una rambla con viento" id="filmImg">
-  <div class="shade"></div>
-  <div class="q">
-    <blockquote class="rv">Mirá el verano <em>con otro estilo.</em></blockquote>
-    <p class="rv">Metal dorado, acetato y cristales degradé para todo el verano.</p>
+<section class="sec camp" id="campana" aria-label="Campaña verano">
+  <div class="wrap">
+    <div class="head split">
+      <div class="ttl"><span class="eyebrow rv">Campaña verano 2027</span><h2 class="rv">Mirá el verano <em>con otro estilo.</em></h2></div>
+      <p class="lead rv">Dorado con cristal degradé, acetato negro, doble puente. Así se llevan los estilos de la colección.</p>
+    </div>
+    <div class="camp-grid" id="camp"></div>
   </div>
 </section>
 
@@ -629,18 +898,21 @@ body.lock{overflow:hidden}
   </div>
 </section>
 
-<section class="sec" style="padding-top:0" id="opiniones">
+<section class="sec resenas" id="resenas">
   <div class="wrap">
     <div class="head split">
-      <div style="display:grid;gap:18px"><span class="eyebrow rv">Opiniones</span><h2 class="rv">Lo que dicen <em>quienes ya los usan.</em></h2></div>
-      <div class="rating rv"><b>4,9</b><div><span class="stars">★★★★★</span><br><span style="font-size:13px;color:var(--iron)">128 opiniones</span></div><span class="demo">Opiniones de ejemplo</span></div>
+      <div class="ttl"><span class="eyebrow rv">Reseñas</span><h2 class="rv">Más de 1.200 pedidos <em>en todo el país.</em></h2></div>
+      <div class="score rv">
+        <div class="big"><span data-count="4.9" data-dec="1">4,9</span><small>/5</small></div>
+        <div class="sd"><span class="stars" aria-label="5 estrellas">★★★★★</span><span><b data-count="1200">1.200</b> pedidos despachados desde Córdoba</span></div>
+        <span class="demo">Reseñas de ejemplo</span>
+      </div>
     </div>
-    <div class="tests">
-      <div class="tcard rv"><q>Los elegí por las fotos, me los probé con la selfie y llegaron exactamente iguales. El estuche es divino.</q><div class="who"><b>Camila R. · Nueva Córdoba · Capri</b><span class="demo">Ejemplo</span></div></div>
-      <div class="tcard rv"><q>Me mandaron un video por WhatsApp antes de comprar. Los Cannes dorados no me los saco más.</q><div class="who"><b>Martín G. · Rosario · Cannes</b><span class="demo">Ejemplo</span></div></div>
-      <div class="tcard rv"><q>Pedí dos pares con el descuento. Llegaron en tres días a Neuquén, impecables y con la caja para regalar.</q><div class="who"><b>Lucía P. · Neuquén · Riviera</b><span class="demo">Ejemplo</span></div></div>
-    </div>
-    <div class="gal" id="gal"></div>
+    <div class="rbars rv" id="rbars"></div>
+  </div>
+  <div class="rvw" aria-label="Reseñas de clientes (de ejemplo)">
+    <div class="rvw-row"><div class="rvw-track" id="rvw1"></div></div>
+    <div class="rvw-row rev"><div class="rvw-track" id="rvw2"></div></div>
   </div>
 </section>
 
@@ -683,7 +955,7 @@ body.lock{overflow:hidden}
           <div><span>WhatsApp</span><a data-wa="Hola Trópico! Quiero consultar por los lentes." id="cWa"></a></div>
           <div><span>Instagram</span><b style="font-weight:400" id="cIg"></b></div>
           <div><span>Horario</span><b style="font-weight:400" id="cHor"></b></div>
-          <div><span>Showroom</span><b style="font-weight:400" id="cExt"></b></div>
+          <div><span>Dónde estamos</span><b style="font-weight:400" id="cExt"></b></div>
           <div><span>Envíos</span><b style="font-weight:400" id="cEnv"></b></div>
         </div>
         <a class="btn btn-p" data-wa="Hola Trópico! Quiero que un asesor me ayude a elegir lentes." style="justify-self:start;margin-top:8px">Hablar con un asesor</a>
@@ -695,7 +967,7 @@ body.lock{overflow:hidden}
 <section class="sec" style="padding-top:0">
   <div class="wrap" style="display:grid;gap:20px">
     <div class="final rv">
-      <span class="eyebrow" style="color:rgba(255,255,255,.8)">Envíos a todo el país</span>
+      <span class="eyebrow">Desde Córdoba a todo el país</span>
       <h2>Tu próximo par <em>te está esperando.</em></h2>
       <p>Elegilo por foto, probátelo con tu selfie y pedilo por WhatsApp. Te respondemos en minutos.</p>
       <div class="row" style="justify-content:center"><a class="btn btn-p" href="#coleccion">Ver la colección</a><a class="btn btn-w" data-wa="Hola Trópico! Quiero hacer un pedido.">Pedir por WhatsApp</a></div>
@@ -714,8 +986,9 @@ body.lock{overflow:hidden}
 
 <footer>
   <div class="wrap">
-    <span class="logo">trópico</span>
-    <span>Maqueta de diseño: logo, precios, especificaciones y opiniones son de ejemplo. Fotos de producto: propias. Fotos de ambiente: Unsplash.</span>
+    <span class="logo"><svg class="lm" viewBox="0 0 40 40" aria-hidden="true"><use href="#marca"/></svg><span class="lw">TRÓPICO<small>Importados</small></span></span>
+    <span>Trópico Importados · Córdoba, Argentina · Envíos a todo el país</span>
+    <span class="fnote">Boceto de diseño: logo, precios y reseñas son de ejemplo. Fotos de producto: propias. Fotos de campaña: Unsplash, de referencia.</span>
   </div>
 </footer>
 
@@ -763,11 +1036,12 @@ body.lock{overflow:hidden}
   <form id="chatF"><input id="chatI" placeholder="Escribí tu pregunta" autocomplete="off" aria-label="Tu pregunta"><button class="btn btn-p" type="submit">Enviar</button></form>
 </div>
 
-<script src="config.js?v=12"></script>
+<script src="config.js?v=18"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="lentes3d.js?v=12"></script>
-<script src="app.js?v=12"></script>
+<script src="espacio.js?v=18"></script>
+<script src="lentes3d.js?v=18"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>
